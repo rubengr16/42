@@ -9,6 +9,7 @@
 /*   Updated: 2021/08/08 16:45:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 void	ft_putchar(char c);
 
 void	printsqr(int col, int row, int x, int y)
