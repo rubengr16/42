@@ -6,9 +6,10 @@
 /*   By: mcalabuc <mcalabuc@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 11:35:28 by mcalabuc          #+#    #+#             */
-/*   Updated: 2021/08/07 11:35:42 by mcalabuc         ###   ########.fr       */
+/*   Updated: 2021/08/08 10:55:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
 void	ft_putchar(char	c)

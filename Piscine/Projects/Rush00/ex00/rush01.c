@@ -6,49 +6,45 @@
 /*   By: mcalabuc <mcalabuc@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 11:13:50 by mcalabuc          #+#    #+#             */
-/*   Updated: 2021/08/07 12:50:19 by mcalabuc         ###   ########.fr       */
+/*   Updated: 2021/08/08 16:45:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 void	ft_putchar(char c);
 
-void	printsqr01(int i, int j, int x, int y)
+void	printsqr(int col, int row, int x, int y)
 {
-	if (j == 0 || j == y - 1)
-	{
-		if (i == j)
-			ft_putchar('/');
-		else
-		{
-			if (i == x - 1 || i == 0)
-				ft_putchar('\\');
-			else
-				ft_putchar('*');
-		}
-	}
+	if ((col == 0 && row == 0 ) || ((col == x - 1 && row == y - 1)
+			&& (y > 1 && x > 1)))
+		ft_putchar ('/');
 	else
 	{
-		if (i == 0 || i == x - 1)
-			ft_putchar('*');
+		if ((col == 0 && row == y - 1) || (col == x - 1 && row == 0))
+			ft_putchar ('\\');
 		else
-			ft_putchar(' ');
+		{
+			if (col == 0 || row == 0 || col == x - 1 || row == y - 1)
+				ft_putchar('*');
+			else
+				ft_putchar(' ');
+		}
 	}
 }
 
-void	rush01(int x, int y)
+void	rush(int x, int y)
 {
-	int	i;
-	int	j;
+	int	col;
+	int	row;
 
-	j = 0;
-	while (j < y)
+	row = 0;
+	while (row < y)
 	{
-		i = 0;
-		while (i < x)
+		col = 0;
+		while (col < x)
 		{
-			printsqr01(i, j, x, y);
-			i++;
+			printsqr(col, row, x, y);
+			col++;
 		}
-		j++;
+		row++;
 		ft_putchar('\n');
 	}
 }

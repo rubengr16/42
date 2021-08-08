@@ -6,31 +6,28 @@
 /*   By: mcalabuc <mcalabuc@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 11:13:50 by mcalabuc          #+#    #+#             */
-/*   Updated: 2021/08/08 16:02:17 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/08 18:59:52 by mcalabuc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 void	ft_putchar(char c);
 
 void	printsqr(int col, int row, int x, int y)
+
 {
-	if (row == 0 || row == y - 1)
-	{
-		if (col == 0)
-			ft_putchar('A');
-		else
-		{
-			if (col == x - 1)
-				ft_putchar('C');
-			else
-				ft_putchar('B');
-		}
-	}
+	if ((col == 0 && row == 0) || ((col == x - 1 && row == y - 1)
+			&& (y > 1 && x > 1)))
+		ft_putchar('A');
 	else
 	{
-		if (col == 0 || col == x - 1)
-			ft_putchar('B');
+		if ((col == 0 && row == y - 1) || (col == x - 1 && row == 0))
+			ft_putchar('C');
 		else
-			ft_putchar(' ');
+		{
+			if (col == 0 || row == 0 || col == x - 1 || row == y - 1)
+				ft_putchar('B');
+			else
+				ft_putchar(' ');
+		}
 	}
 }
 
