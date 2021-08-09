@@ -1,6 +1,0 @@
-Credentials cache: API:5816
-        Principal: rgallego@42MADRID.COM
-
-  Issued                Expires             Flags    Principal
-Aug  2 14:27:55 2021  Aug  3 00:27:55 2021  FPIA   krbtgt/42MADRID.COM@42MADRID.COM
-Aug  2 14:27:55 2021  Aug  3 00:27:55 2021  FPA    HTTP/student-storage.42madrid.com@42MADRID.COM
