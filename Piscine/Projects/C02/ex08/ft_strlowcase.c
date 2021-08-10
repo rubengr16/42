@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_strdowncase.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 12:55:48 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 14:22:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/10 14:31:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	to_up(char c)
+char	to_low(char c)
 {
-	return (c - 'a' + 'A');
+	return (c - 'A' + 'a');
 }
 
-char	*ft_strupcase(char *str)
+char	*ft_strlowcase(char *str)
 {
-	char	*upstr;
+	char	*lowstr;
 
-	upstr = str;
-	while (*upstr != '\0')
+	lowstr = str;
+	while (*lowstr != '\0')
 	{
-		if ('a' <= *upstr && *upstr <= 'z')
-			*upstr = to_up(*upstr);
-		upstr++;
+		if ('A' <= *lowstr && *lowstr <= 'Z')
+			*lowstr = to_low(*lowstr);
+		lowstr++;
 	}
-	*upstr = '\0';
+	*lowstr = '\0';
 	return (str);
 }
