@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 09:42:49 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 11:18:53 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/10 12:15:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n);
 
 int	main(void)
 {
-	char	*st = "hola ruben";
+	char	*st = "hello ruben";
 	char	*cpy = NULL;
 	char	str[20];
 

@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 11:41:10 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 11:55:15 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/10 11:31:45 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/10 12:14:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
-{
-	int	alpha;
+#include <stdio.h>
 
-	alpha = 1;
-	while (str[alpha - 1] != '\0' && alpha)
-	{
-		if (('a' <= str[alpha - 1] && str[alpha - 1] <= 'z')
-			|| ('A' <= str[alpha - 1] && str[alpha - 1] <= 'Z'))
-			alpha++;
-		else
-			alpha = 0;
-	}
-	if (alpha)
-		alpha = 1;
-	return (alpha);
+int	ft_str_is_alpha(char *str);
+
+int	main(void)
+{
+	char	*str;
+	int	resul;
+
+	str = "-12345678";
+	resul = ft_str_is_alpha(str);
+	if (resul == 1)
+		printf("Is alpha %d", resul);
+	else
+		printf("It is not %d", resul);
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 11:31:45 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 11:39:15 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/10 12:14:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	str = "-12345678";
 	resul = ft_str_is_numeric(str);
 	if (resul == 1)
-		printf("Es numérica %d", resul);
+		printf("Is numeric %d", resul);
 	else
-		printf("No lo es %d", resul);
+		printf("It is not %d", resul);
 }
