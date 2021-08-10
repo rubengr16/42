@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:38:06 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 15:36:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/10 15:52:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	to_up(char c)
 
 char	to_low(char c)
 {
-	return (c -'A' + 'a');
+	return (c - 'A' + 'a');
 }
 
 char	*ft_strcapitalize(char *str)
