@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 18:00:05 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 18:53:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/10 19:03:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ void	to_hex(int num, char *hex)
 	}
 	aux[cont] = dec_to_hex(num);
 	hex[0] = '\\';
-	aux_cont = cont;
-	while (cont >= 0)
+	aux_cont = 1;
+	while (aux_cont <= cont)
 	{
-		hex[4 - cont + 1] = aux[cont];
-		cont++;
+		hex[4 - cont] = aux[cont];
+		aux_cont++;
 	}
-	hex[aux_cont +1] = '\0';
+	hex[aux_cont + 1] = '\0';
 }
 
 void	print_hex(char *str)
