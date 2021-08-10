@@ -5,24 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 09:42:49 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 12:31:13 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/10 11:31:45 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/10 12:46:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-char	*ft_strcpy(char *dest, char *src);
+int	ft_str_is_printable(char *str);
 
 int	main(void)
 {
-	char	*st = "hello ruben";
-	char	*cpy;
-	char	str[20];
-	
-	cpy = str;
-	printf("%s\n", st);
-	cpy = ft_strcpy(cpy, st);	
-	printf("%s\n", st);
-	printf("%s\n", cpy);
+	char	*str;
+	int		resul;
+
+	str = "ASDFGHJ";
+	resul = ft_str_is_printable(str);
+	if (resul == 1)
+		printf("Is printable %d", resul);
+	else
+		printf("It is not %d", resul);
 }
