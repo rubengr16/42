@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 09:42:49 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 11:18:53 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/10 11:27:37 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/10 11:47:22 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-char	*ft_strncpy(char *dest, char *src, unsigned int n);
-
-int	main(void)
+int	ft_str_is_numeric(char *str)
 {
-	char	*st = "hola ruben";
-	char	*cpy = NULL;
-	char	str[20];
+	int	numeric;
 
-	cpy = str;
-	printf("%s\n", st);
-	cpy = ft_strncpy(cpy, st, 4);	
-	printf("%s\n", st);
-	printf("%s\n", cpy);
-
+	numeric = 1;
+	if (*str == '-')
+		numeric++;
+	while (numeric && str[numeric - 1] != '\0')
+	{
+		if ('0' <= str[numeric - 1] && str[numeric - 1] <= '9')
+			numeric++;
+		else
+			numeric = 0;
+	}
+	if (numeric)
+		numeric = 1;
+	return (numeric);
 }

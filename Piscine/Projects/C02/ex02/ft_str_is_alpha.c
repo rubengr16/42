@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 09:42:49 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 11:18:53 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/10 11:41:10 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/10 11:55:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-char	*ft_strncpy(char *dest, char *src, unsigned int n);
-
-int	main(void)
+int	ft_str_is_alpha(char *str)
 {
-	char	*st = "hola ruben";
-	char	*cpy = NULL;
-	char	str[20];
+	int	alpha;
 
-	cpy = str;
-	printf("%s\n", st);
-	cpy = ft_strncpy(cpy, st, 4);	
-	printf("%s\n", st);
-	printf("%s\n", cpy);
-
+	alpha = 1;
+	while (str[alpha - 1] != '\0' && alpha)
+	{
+		if (('a' <= str[alpha - 1] && str[alpha - 1] <= 'z')
+			|| ('A' <= str[alpha - 1] && str[alpha - 1] <= 'Z'))
+			alpha++;
+		else
+			alpha = 0;
+	}
+	if (alpha)
+		alpha = 1;
+	return (alpha);
 }
