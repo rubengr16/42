@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 18:36:37 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 19:04:00 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/10 19:50:27 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_putstr_non_printable(char *str);
 
 int	main(void)
 {
-	char	str[] = "hello\n, there\t, dude\t, bye";
+	char	str[] = "hello\n, there\t, dude\b, bye";
 
 
 	printf("%s\n", str);
