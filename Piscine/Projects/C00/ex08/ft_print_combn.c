@@ -6,56 +6,78 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 17:39:52 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 09:37:37 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/11 12:54:23 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	lvl_comb(char num[], int lvl, int size);
-
-
-void	print_comb(char num[], int lvl, int size)
+void	ft_putnbr(int nb, int pow)
 {
-	if (lvl == (size - 1))
+	char	c;
+
+	if (nb / pow == 0)
 	{
-		write(1, num, size);
-		if (num[0] < ((10 - size) + '0'))
-			write(1, ", ", 2);
+		write(1, "0", 1);
+		if (pow != 1)
+			ft_putnbr(nb % pow, pow / 10);
+	}
+	else
+	{	
+		if (nb > 0)
+		{
+			c = nb / pow + '0';
+			write(1, &c, 1);
+			if (pow != 1)
+				ft_putnbr(nb % pow, pow / 10);
+		}
 	}
 }
 
-
-void	ft_comb_aux(char num[], int lvl, int size)
+void	backtrak_combn(int num, int lvl, int n, int pow)
 {
-	if (lvl < size)
+	if (lvl == (n - 1))
 	{
-		if (lvl == 0)
-			lvl_comb(num, lvl + 1, size);
-		else
+		num = (num * 10) + (num % 10);
+		while (((num + 1) % 10 > 0) && ((num % 10) < (11 + lvl - n)))
 		{
-			num[lvl] = num[lvl - 1] + 1;
-			lvl_comb(num, lvl + 1, size);
+			num++;
+			ft_putnbr(num, pow);
+			if ((num / pow) < (10 - n))
+				write(1, ", ", 2);
 		}
 	}
 	else
-		print_comb(num, lvl, size);
-}
-
-void	lvl_comb(char num[], int lvl, int size)
-{
-	while (num[lvl] < ((10 + lvl - size) + '0'))
 	{
-		num[lvl] = num[lvl] + 1;
-		ft_comb_aux(num, lvl + 1, size);
+		if (num == -1)
+			num = 0;
+		else
+			num = (num * 10) + (num % 10 + 1);
+		while (((num + 1) % 10 > 0) && ((num % 10) < (11 + lvl - n)))
+		{
+			backtrak_combn(num, lvl + 1, n, pow);
+			num++;
+		}
 	}
 }
 
+int	ft_pow(int n)
+{
+	int	cont;
+	int	num;
+
+	cont = 0;
+	num = 1;
+	while (cont < (n - 1))
+	{
+		num *= 10;
+		cont++;
+	}
+	return (num);
+}
 
 void	ft_print_combn(int n)
 {
-	char	num[10];
-
-	num[0] = '/';
-	ft_comb_aux(num, 0, n);
+	if (0 < n && n < 10)
+		backtrak_combn(-1, 0, n, ft_pow(n));
 }

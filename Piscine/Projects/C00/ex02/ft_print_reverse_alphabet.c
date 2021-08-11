@@ -6,13 +6,13 @@
 /*   By: rgallego <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 12:54:20 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/05 12:55:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/11 12:58:09 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void 	ft_print_alphabet(void)
+void	ft_print_alphabet(void)
 {
 	char	c;
 

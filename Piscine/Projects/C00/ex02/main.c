@@ -6,7 +6,7 @@
 /*   By: rgallego <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 12:54:07 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/08 11:31:45 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/11 12:58:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_print_alphabet(void);
 
-int 	main(void)
+int	main(void)
 {
 	ft_print_alphabet();
 	return (0);
