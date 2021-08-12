@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 11:31:45 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 12:28:53 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/12 11:21:13 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	char	*str;
 	int		resul;
 
-	str = "ASDFGHJ";
+	str = "ASDFGHJKL";
 	resul = ft_str_is_uppercase(str);
 	if (resul == 1)
 		printf("Is uppercase %d", resul);

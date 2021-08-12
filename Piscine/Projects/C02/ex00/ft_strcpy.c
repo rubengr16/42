@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 19:20:36 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 11:21:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/12 10:47:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	char	*aux_dest;
-	char	*aux_src;
+	int	cont;
 
-	aux_dest = dest;
-	aux_src = src;
-	while (*aux_src != '\0')
+	cont = 0;
+	while (src[cont])
 	{
-		*aux_dest = *aux_src;
-		aux_dest++;
-		aux_src++;
+		dest[cont] = src[cont];
+		cont++;
 	}
-	*aux_dest = '\0';
+	dest[cont] = '\0';
 	return (dest);
 }

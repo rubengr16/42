@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 11:41:10 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/12 11:19:21 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/11 17:01:33 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/11 17:22:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_uppercase(char *str)
+char	*ft_strcat(char *dest, char *src)
 {
-	int	alpha;
+	int	cont_src;
+	int	cont_dest;
 
-	alpha = 1;
-	while (str[alpha - 1] && alpha)
+	cont_src = 0;
+	cont_dest = 0;
+	while (dest[cont_dest] != '\0')
+		cont_dest++;
+	while (src[cont_src] != '\0')
 	{
-		if ('A' <= str[alpha - 1] && str[alpha - 1] <= 'Z')
-			alpha++;
-		else
-			alpha = 0;
+		dest[cont_dest] = src[cont_src];
+		cont_src++;
+		cont_dest++;
 	}
-	if (alpha)
-		alpha = 1;
-	return (alpha);
+	dest[cont_dest] = '\0';
+	return (dest);
 }

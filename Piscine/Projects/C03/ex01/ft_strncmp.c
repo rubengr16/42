@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 11:41:10 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/12 11:19:21 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/11 16:34:29 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/11 18:15:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_uppercase(char *str)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	alpha;
+	int	cont;
 
-	alpha = 1;
-	while (str[alpha - 1] && alpha)
-	{
-		if ('A' <= str[alpha - 1] && str[alpha - 1] <= 'Z')
-			alpha++;
-		else
-			alpha = 0;
-	}
-	if (alpha)
-		alpha = 1;
-	return (alpha);
+	cont = 0;
+	while (s1[cont] == s2[cont] && s1[cont] && s2[cont] && cont < n)
+		cont++;
+	return (s1[cont] - s2[cont]);
 }

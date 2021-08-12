@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 11:31:45 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 12:14:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/12 11:09:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	char	*str;
 	int	resul;
 
-	str = "-12345678";
+	str = "kajsk4kjs";
 	resul = ft_str_is_alpha(str);
 	if (resul == 1)
 		printf("Is alpha %d", resul);

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 11:27:37 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/10 11:47:22 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/12 11:13:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int	ft_str_is_numeric(char *str)
 	int	numeric;
 
 	numeric = 1;
-	if (*str == '-')
+	if (*str == '-' && ('0' <= str[numeric] && str[numeric] <= '9'))
 		numeric++;
 	while (numeric && str[numeric - 1] != '\0')
 	{

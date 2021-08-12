@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 11:41:10 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/12 11:19:21 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/11 15:02:09 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/11 17:33:30 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_uppercase(char *str)
-{
-	int	alpha;
+#include <stdio.h>
+#include <string.h>
 
-	alpha = 1;
-	while (str[alpha - 1] && alpha)
-	{
-		if ('A' <= str[alpha - 1] && str[alpha - 1] <= 'Z')
-			alpha++;
-		else
-			alpha = 0;
-	}
-	if (alpha)
-		alpha = 1;
-	return (alpha);
+int	ft_strcmp(char *s1, char *s2);
+
+int	main(void)
+{
+	char	*st;
+	char	*c;
+
+	c = "helloooooo";
+	st = "hello";
+	printf("%d\n", strcmp(c, st));
+	printf("%d\n", ft_strcmp(c, st));
 }
