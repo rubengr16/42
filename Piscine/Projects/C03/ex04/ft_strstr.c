@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 15:00:31 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/12 11:48:47 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/12 12:56:49 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/12 13:13:11 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
-
-int	main(void)
+char	*ft_strstr(char *str, char *to_find)
 {
-	char	str[] = "hello, world";
-	char	dest[5];
+	char	*result;
+	int	cont;
+	int	cont_srch;
 
-	printf("%s\n", str);
-	printf("%d\n", ft_strlcpy(dest, str, 6));
-	printf("%s", dest);
-	return (0);
+	cont = 0;
+	while (str[cont])
+	{
+		
+		while (
+	}
 }

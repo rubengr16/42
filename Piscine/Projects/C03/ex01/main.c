@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 15:02:09 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/11 16:49:13 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/12 12:23:34 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(void)
 	char	*st;
 	char	*c;
 
-	c = "hell";
-	st = "hella";
+	c = "hellaaaaaa";
+	st = "hellaaaa";
 	printf("%d", strncmp(c, st, 5));
 	printf("%d", ft_strncmp(c, st, 5));
 }

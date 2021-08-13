@@ -6,13 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:01:33 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/11 17:22:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/12 12:57:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int	cont_src;
+	unsigned int	cont_src;
 	int	cont_dest;
 
 	cont_src = 0;

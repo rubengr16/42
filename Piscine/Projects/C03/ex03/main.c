@@ -6,25 +6,22 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:01:33 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/11 17:22:51 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/12 12:50:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
-{
-	int	cont_src;
-	int	cont_dest;
+#include <stdio.h>
+#include <string.h>
 
-	cont_src = 0;
-	cont_dest = 0;
-	while (dest[cont_dest] != '\0')
-		cont_dest++;
-	while (src[cont_src] != '\0')
-	{
-		dest[cont_dest] = src[cont_src];
-		cont_src++;
-		cont_dest++;
-	}
-	dest[cont_dest] = '\0';
-	return (dest);
+char	*ft_strncat(char *dest, char *src, unsigned int n);
+
+int	main(void)
+{
+	char	*str = "hello";
+	char	str2[15];
+
+	str2[0] = 'H';
+	str2[1] = '\0';
+	printf("%s", strncat(str2, str, 3));
+	printf("%s", ft_strncat(str2, str, 3));
 }
