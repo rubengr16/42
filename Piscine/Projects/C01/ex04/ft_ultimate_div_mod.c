@@ -6,11 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 12:49:54 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/09 19:14:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/09 13:10:54 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ultimate_div_mod(int *a, int *b)
+void	ft_div_mod(int *a, int *b)
 {
 	int	aux;
 

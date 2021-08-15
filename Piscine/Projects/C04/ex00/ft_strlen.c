@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/09 13:13:54 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/09 13:51:54 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/15 22:48:36 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/15 22:50:43 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int	ft_strlen(char *str)
 {
-	char	*aux;
+	int	len;
 
-	aux = str;
-	while (*aux != '\0')
+	len = 0;
+	while (str[len])
 	{
-		write(1, aux, 1);
-		aux++;
+		len++;
 	}
+	return (len);
 }
