@@ -6,11 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 11:37:58 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/16 12:00:42 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/16 12:13:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	unsigned int	cont_dest;
 	int				cont_src;
@@ -27,10 +27,12 @@ unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
 	}
 	dest[cont_dest] = '\0';
 	if ((size - 1) == cont_dest)
+	{
 		while (src[cont_src])
 		{
 			cont_dest++;
 			cont_src++;
 		}
+	}
 	return (cont_dest);
 }
