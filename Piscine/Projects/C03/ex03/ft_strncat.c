@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 17:01:33 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/12 12:57:19 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/16 10:14:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 
 	cont_src = 0;
 	cont_dest = 0;
-	while (dest[cont_dest] != '\0')
+	while (dest[cont_dest])
 		cont_dest++;
-	while (src[cont_src] != '\0' && cont_src < nb)
+	while (src[cont_src] && cont_src < nb)
 	{
 		dest[cont_dest] = src[cont_src];
 		cont_src++;

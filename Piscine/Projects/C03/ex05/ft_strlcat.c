@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   strlcat.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 17:01:33 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/15 23:25:10 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/16 11:37:58 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/16 12:00:42 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
+unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int	cont_src;
-	int	cont_dest;
+	unsigned int	cont_dest;
+	int				cont_src;
 
-	cont_src = 0;
 	cont_dest = 0;
-	while (dest[cont_dest])
+	cont_src = 0;
+	while (dest[cont_dest] && cont_dest < (size - 1))
 		cont_dest++;
-	while (src[cont_src])
+	while (src[cont_src] && cont_dest < (size - 1))
 	{
 		dest[cont_dest] = src[cont_src];
-		cont_src++;
 		cont_dest++;
+		cont_src++;
 	}
 	dest[cont_dest] = '\0';
-	return (dest);
+	if ((size - 1) == cont_dest)
+		while (src[cont_src])
+		{
+			cont_dest++;
+			cont_src++;
+		}
+	return (cont_dest);
 }
