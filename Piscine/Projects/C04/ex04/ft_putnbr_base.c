@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 18:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/16 19:58:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/17 10:39:07 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strlen(char *str)
 	len = 0;
 	while (str[len])
 		len++;
-	return (len);	
+	return (len);
 }
 
 int	is_base(char *base)

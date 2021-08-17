@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 12:52:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/16 18:49:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/17 09:34:27 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int	ft_isspace(char *str)
 	int	resul;
 
 	resul = 0;
-	if (*str == '\t' || *str == '\n' || *str == '\v' || *str == ' '
+	if (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\r'
 		|| *str == ' ')
 		resul = 1;
 	return (resul);
