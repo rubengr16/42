@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/17 09:13:06 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/20 10:23:22 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/17 12:05:33 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/21 00:50:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_fibonacci_aux(int index)
+int	ft_sqrt(int nb)
 {
-	if (index == 0 || index == 1)
-		return (index);
-	else
-		return (ft_fibonacci_aux(index - 1) + ft_fibonacci_aux(index - 2));
-}
+	int	sqrt_nb;
+	int	pow_sqrt;
 
-int	ft_fibonacci(int index)
-{
-	if (index >= 0)
-		return (ft_fibonacci_aux(index));
-	else
-		return (-1);
+	sqrt_nb = 0;
+	if (nb > 0)
+	{
+		while ((sqrt_nb * sqrt_nb) < nb && sqrt_nb < 46341)
+		{
+			sqrt_nb++;
+			pow_sqrt = sqrt_nb * sqrt_nb;
+		}
+		if ((sqrt_nb * sqrt_nb) > nb || sqrt_nb >= 46341)
+			sqrt_nb = 0;
+	}
+	return (sqrt_nb);
 }

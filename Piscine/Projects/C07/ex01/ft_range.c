@@ -1,27 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/17 09:13:06 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/20 10:23:22 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/20 12:03:35 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/20 12:50:27 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_fibonacci_aux(int index)
+#include <stdlib.h>
+
+int	*ft_range_aux(int min, int max)
 {
-	if (index == 0 || index == 1)
-		return (index);
-	else
-		return (ft_fibonacci_aux(index - 1) + ft_fibonacci_aux(index - 2));
+	int	*tab;
+	int	size;
+	int	i;
+
+	size = max - min;
+	tab = (int *)malloc(sizeof(int *) * size);
+	if (tab)
+	{
+		i = 0;
+		while (i < size)
+		{
+			tab[i] = min;
+			min++;
+			i++;
+		}
+	}
+	return (tab);
 }
 
-int	ft_fibonacci(int index)
+int	*ft_range(int min, int max)
 {
-	if (index >= 0)
-		return (ft_fibonacci_aux(index));
+	int	*tab;
+
+	if (min < max)
+		tab = ft_range_aux(min, max);
 	else
-		return (-1);
+		tab = 0;
+	return (tab);
 }

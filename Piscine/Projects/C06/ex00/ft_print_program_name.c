@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/17 09:13:06 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/20 10:23:22 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/17 19:08:32 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/20 10:42:07 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_fibonacci_aux(int index)
+#include <unistd.h>
+
+void	ft_putstr(char *str)
 {
-	if (index == 0 || index == 1)
-		return (index);
-	else
-		return (ft_fibonacci_aux(index - 1) + ft_fibonacci_aux(index - 2));
+	int	cnt;
+
+	cnt = -1;
+	while (str[++cnt])
+		write(1, &str[cnt], 1);
 }
 
-int	ft_fibonacci(int index)
+int	main(int argc, char **argv)
 {
-	if (index >= 0)
-		return (ft_fibonacci_aux(index));
-	else
-		return (-1);
+	if (argc)
+	{
+		ft_putstr(argv[0]);
+		ft_putstr("\n");
+	}
+	return (0);
 }

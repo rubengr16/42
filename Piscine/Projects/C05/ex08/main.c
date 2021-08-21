@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/17 09:13:06 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/20 10:23:22 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/17 15:47:05 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/18 10:31:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_fibonacci_aux(int index)
-{
-	if (index == 0 || index == 1)
-		return (index);
-	else
-		return (ft_fibonacci_aux(index - 1) + ft_fibonacci_aux(index - 2));
-}
+#include <stdio.h>
 
-int	ft_fibonacci(int index)
+int	ft_ten_queens_puzzle(void);
+
+int	main(void)
 {
-	if (index >= 0)
-		return (ft_fibonacci_aux(index));
-	else
-		return (-1);
+	printf("%d\n",ft_ten_queens_puzzle());
 }

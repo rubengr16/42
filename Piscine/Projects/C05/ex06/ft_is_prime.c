@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/17 09:13:06 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/20 10:23:22 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/17 13:00:32 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/19 12:33:07 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_fibonacci_aux(int index)
+int	ft_is_prime(int nb)
 {
-	if (index == 0 || index == 1)
-		return (index);
-	else
-		return (ft_fibonacci_aux(index - 1) + ft_fibonacci_aux(index - 2));
-}
+	int	result;
 
-int	ft_fibonacci(int index)
-{
-	if (index >= 0)
-		return (ft_fibonacci_aux(index));
+	if (nb < 0)
+		result = 0;
 	else
-		return (-1);
+	{
+		result = 2;
+		while ((result <= (nb / 2)) && result)
+		{
+			if (!(nb % result))
+				result = 0;
+			else
+				result++;
+		}
+		if (nb == 0 || nb == 1)
+			result = 0;
+		else if (result > (nb / 2))
+			result = 1;
+	}
+	return (result);
 }

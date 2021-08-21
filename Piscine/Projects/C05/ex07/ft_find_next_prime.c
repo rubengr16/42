@@ -1,28 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/16 20:00:25 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/20 09:17:49 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/17 13:34:32 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/21 00:57:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
+int	ft_is_prime(int nb)
 {
 	int	result;
 
-	result = 0;
-	if (nb >= 0)
+	if (nb < 0)
+		result = 0;
+	else
 	{
-		result = 1;
-		while (nb > 0)
+		result = 2;
+		while ((result <= (nb / 2)) && result)
 		{
-			result *= nb;
-			nb--;
+			if (!(nb % result))
+				result = 0;
+			else
+				result++;
 		}
+		if (nb == 0 || nb == 1)
+			result = 0;
+		else if (result > (nb / 2))
+			result = 1;
 	}
 	return (result);
+}
+
+int	ft_find_next_prime(int nb)
+{
+	if (nb < 0)
+		nb = 2;
+	while (!(ft_is_prime(nb)) && (nb < 2147483647))
+		nb++;
+	return (nb);
 }
