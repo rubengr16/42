@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 11:51:01 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/20 12:46:35 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/23 10:11:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strdup(char *src)
 {
 	char	*cpy;
 
-	cpy =(char *)malloc(sizeof(char) * (ft_strlen(src) + 1));
+	cpy = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1));
 	if (cpy)
 		cpy = ft_strcpy(cpy, src);
 	return (cpy);
