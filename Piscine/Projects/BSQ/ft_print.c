@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: lbrazale <lbrazale@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 11:38:44 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/25 09:50:27 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/25 18:36:04 by lbrazale          #+#    #+#             */
+/*   Updated: 2021/08/26 13:45:32 by lbrazale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "struct.h"
+#include <unistd.h>
 
-char	*ft_strjoin(int size, char	**strs, char *sep);
-
-int	main(void)
+void	ft_putchar(char c)
 {
-	char *s[4] = {"hola", "que", "tal", "estás"};
-	char *str;
-	str = ft_strjoin(4, s, ", ");
-	printf("%s", str);
+	write(1, &c, 1);
+}
+
+char	*ft_trim_nb(char *str)
+{
+	while ('0' <= *str && *str <= '9')
+		str++;
+	return (str);
 }

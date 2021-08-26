@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 11:38:44 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/25 09:50:27 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/25 09:51:39 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/25 09:58:48 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef FT_H
+# define FT_H
 
-char	*ft_strjoin(int size, char	**strs, char *sep);
+void	ft_putchar(char c);
+void	ft_swap(int *a, int *b);
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+int		ft_strcmp(char *s1, char *s2);
 
-int	main(void)
-{
-	char *s[4] = {"hola", "que", "tal", "estás"};
-	char *str;
-	str = ft_strjoin(4, s, ", ");
-	printf("%s", str);
-}
+#endif

@@ -5,19 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 11:38:44 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/25 09:50:27 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/25 10:42:19 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/25 10:44:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_point.h"
 #include <stdio.h>
-
-char	*ft_strjoin(int size, char	**strs, char *sep);
-
-int	main(void)
+void set_point(t_point *point)
 {
-	char *s[4] = {"hola", "que", "tal", "estás"};
-	char *str;
-	str = ft_strjoin(4, s, ", ");
-	printf("%s", str);
+point->x = 42;
+point->y = 21;
+}
+int main(void)
+{
+t_point point;
+set_point(&point);
+printf("%d, %d\n", point.x, point.y);
+return (0);
 }

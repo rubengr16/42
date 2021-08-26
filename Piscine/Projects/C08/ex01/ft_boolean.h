@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 11:38:44 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/25 09:50:27 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/25 09:59:21 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/25 10:27:52 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
 
-char	*ft_strjoin(int size, char	**strs, char *sep);
+# define TRUE true
+# define FALSE false
+# define EVEN_MSG "I have an even number of arguments.\n"
+# define ODD_MSG "I have an odd number of arguments.\n"
+# define SUCCESS 0
+# define EVEN(nbr) nbr % 2 == 0
 
-int	main(void)
+# include <unistd.h>
+
+typedef enum e_bool
 {
-	char *s[4] = {"hola", "que", "tal", "estás"};
-	char *str;
-	str = ft_strjoin(4, s, ", ");
-	printf("%s", str);
-}
+	TRUE = 1,
+	FALSE = 0
+}	t_bool;
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 01:12:35 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/24 09:02:48 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/08/25 09:51:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,42 +37,42 @@ int	ft_strslen(int size, char **strs)
 	return (len);
 }
 
-char	*ft_strcpy(char *dest, char *src)
+int	ft_strcpy(char *dest, char *src, int	cnt)
 {
 	while (*src)
 	{
-		*dest = *src;
+		dest[cnt] = *src;
+		cnt++;
 		src++;
-		dest++;
 	}
-	return (dest);
+	return (cnt);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	char	*result;
-	char	*aux;
+	int		cnt;
 	int		i;
 
+	cnt = 0;
 	if (size)
 	{
 		result = malloc(sizeof(char) * (ft_strslen(size, strs)
 					+ ((size - 1) * ft_strlen(sep)) + 1));
 		if (result)
 		{
-			aux = result;
 			i = 0;
 			while (i < size)
 			{
-				aux = ft_strcpy(aux, strs[i]);
+				cnt = ft_strcpy(result, strs[i], cnt);
 				i++;
 				if (i < size)
-					aux = ft_strcpy(aux, sep);
+					cnt = ft_strcpy(result, sep, cnt);
 			}
-			*aux = '\0';
 		}
 	}
 	else
-		result = NULL;
+		result = malloc(sizeof(char));
+	result[cnt] = '\0';
 	return (result);
 }

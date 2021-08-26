@@ -5,19 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 11:38:44 by rgallego          #+#    #+#             */
-/*   Updated: 2021/08/25 09:50:27 by rgallego         ###   ########.fr       */
+/*   Created: 2021/08/25 10:06:20 by rgallego          #+#    #+#             */
+/*   Updated: 2021/08/25 10:24:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_boolean.h"
 
-char	*ft_strjoin(int size, char	**strs, char *sep);
-
-int	main(void)
+void ft_putstr(char *str)
 {
-	char *s[4] = {"hola", "que", "tal", "estás"};
-	char *str;
-	str = ft_strjoin(4, s, ", ");
-	printf("%s", str);
+while (*str)
+write(1, str++, 1);
+}
+t_bool ft_is_even(int nbr)
+{
+return ((EVEN(nbr)) ? TRUE : FALSE);
+}
+int main(int argc, char **argv)
+{
+(void)argv;
+if (ft_is_even(argc - 1) == TRUE)
+ft_putstr(EVEN_MSG);
+else
+ft_putstr(ODD_MSG);
+return (SUCCESS);
 }
