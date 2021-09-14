@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 10:04:47 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/14 11:42:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/09/14 14:01:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		str_s++;
 		n--;
 	}
-	if (*str_s == (unsigned char)c && n > 0)
+	if (n > 0 && *str_s == (unsigned char)c)
 		return ((void *)str_s);
 	else
 		return (NULL);

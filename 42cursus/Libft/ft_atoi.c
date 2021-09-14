@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 10:22:53 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/14 13:11:09 by rgallego         ###   ########.fr       */
+/*   Created: 2021/09/14 13:26:28 by rgallego          #+#    #+#             */
+/*   Updated: 2021/09/14 15:12:27 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_atoi(const char *s)
 {
-	const unsigned char	*str_s1;
-	const unsigned char	*str_s2;
+	int					sign;
+	unsigned long long	num;
 
-	str_s1 = s1;
-	str_s2 = s2;
-	while (n > 0 && *str_s1 == *str_s2)
+	sign = 1;
+	num = 0;
+	while (*s && (*s == '\t' || *s == '\n' || *s == '\v' || *s == '\f'
+			|| *s == '\r' || *s == ' '))
+		s++;
+	if (*s == '-')
+		sign = -1;
+	if (*s == '-' || *s == '+')
+		s++;
+	while (*s && '0' <= *s && *s <= '9')
 	{
-		str_s1++;
-		str_s2++;
-		n--;
+		num = num * 10 + (*s - '0');
+		s++;
 	}
-	if (n == 0)
+	if (sign == 1 && num > LLONG_MAX)
+		return (-1);
+	else if (sign == -1 && num > LLONG_MAX)
 		return (0);
 	else
-		return (*str_s1 - *str_s2);
+		return (sign * num);
 }
