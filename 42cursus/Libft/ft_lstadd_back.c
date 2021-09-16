@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 16:17:52 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/16 14:54:29 by rgallego         ###   ########.fr       */
+/*   Created: 2021/09/16 11:44:03 by rgallego          #+#    #+#             */
+/*   Updated: 2021/09/16 14:45:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t		cnt;
-	char		*str_dst;
-	const char	*str_src;
+	t_list	*aux;
 
-	cnt = 0;
-	str_dst = dst;
-	str_src = src;
-	if ((dst && !src) || (!dst && src) || (dst && src))
+	if (lst)
 	{
-		if (src < dst)
-			while (*str_dst != str_src[cnt])
-				cnt++;
-		if (cnt < len)
-			ft_memcpy(dst, src, len);
-		else
+		if (*lst)
 		{
-			ft_memcpy(&dst[cnt], dst, len - cnt);
-			ft_memcpy(dst, src, cnt);
+			aux = ft_lstlast(*lst);
+			aux->next = new;
 		}
+		else
+			*lst = new;
 	}
-	return (dst);
 }

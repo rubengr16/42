@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:02:59 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/14 17:03:24 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/09/16 11:58:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,17 @@ char	*ft_strdup(const char *s1);
 /**************************************************************************** */
 /******************************* PART 2 ************************************* */
 /**************************************************************************** */
-char	*ft_substr(char const *s, unsigned int start, size_t len); // all test f
-/**** 6 left ****/
+char	*ft_substr(char const *s, unsigned int start, size_t len); // war fail
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set); // war fail
+// char	**ft_split(char const *s, char c); // in progress
+/**** 1 left ****/
+char	*ft_strmapi(char const *s1, char (*f)(unsigned int, char));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd); // not protected
-void	ft_putendl_fd(char *s, int fd); // not protected
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+/**** 1 left ****/
 
 /**************************************************************************** */
 /******************************* BONUS ************************************** */
@@ -66,5 +72,15 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new); // fail
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstclear(t_list **lst, void (*del)(void *)); // fail
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+/**** 1 left ****/
 
 #endif

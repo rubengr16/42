@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 16:17:52 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/16 14:54:29 by rgallego         ###   ########.fr       */
+/*   Created: 2021/09/16 10:47:20 by rgallego          #+#    #+#             */
+/*   Updated: 2021/09/16 10:55:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t		cnt;
-	char		*str_dst;
-	const char	*str_src;
+	char	*res;
+	int		cnt;
 
+	res = NULL;
 	cnt = 0;
-	str_dst = dst;
-	str_src = src;
-	if ((dst && !src) || (!dst && src) || (dst && src))
+	if (s)
 	{
-		if (src < dst)
-			while (*str_dst != str_src[cnt])
-				cnt++;
-		if (cnt < len)
-			ft_memcpy(dst, src, len);
-		else
+		res = malloc(sizeof(char) * (ft_strlen(s) + 1));
+		if (res)
 		{
-			ft_memcpy(&dst[cnt], dst, len - cnt);
-			ft_memcpy(dst, src, cnt);
+			while (s[cnt])
+			{
+				res[cnt] = f(cnt, s[cnt]);
+				cnt++;
+			}
+			res[cnt] = '\0';
 		}
 	}
-	return (dst);
+	return (res);
 }
