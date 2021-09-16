@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 09:42:12 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/16 10:25:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/09/16 17:07:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 			s1++;
 			len--;
 		}
-		while (len > 0 && ft_strchr(set, s1[len - 2]))
+		while (len > 1 && ft_strchr(set, s1[len - 2]))
 			len--;
 		s = malloc(sizeof(char) * (len));
 		if (s)
