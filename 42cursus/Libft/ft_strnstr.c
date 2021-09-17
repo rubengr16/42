@@ -6,32 +6,33 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 15:27:17 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/14 16:26:05 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/09/17 16:11:37 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *haystac, const char *needle, size_t len)
 {
-	/*size_t	cnt_haystack;
-	size_t	cnt_needle;
-
-	cnt_haystack = 0;
-	cnt_needle = 0;
-	while (haystack[cnt_haystack] && *needle[cnt_needle] && cnt < len)
+	size_t	cnt;
+	char *haystack = (char*)haystac;
+	
+	
+	cnt = 0;	
+	if (needle)
 	{
-		cnt_haystack = 0;
-		cnt_needle = 0;
-		while (*haystack && *needle && *haystack == *needle && cnt < len)
+		while (*haystack && len && cnt < len && needle[cnt])
 		{
-
-			cnt++;
+			cnt = 0;
+			while (haystack[cnt] == needle[cnt] && needle[cnt])
+				cnt++;
+			haystack++;
+			len--;
 		}
+		haystack--;
 	}
-	if (!(*aux) || cnt == len)*/
-	(void)haystack;
-	(void)needle;
-	(void)len;
-	return (NULL);
+	if ((!needle[cnt] && cnt < len))
+		return ((char*)haystack);
+	else
+		return (NULL);
 }
