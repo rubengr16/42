@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 15:53:53 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/23 09:36:14 by rgallego         ###   ########.fr       */
+/*   Created: 2021/09/23 09:36:35 by rgallego          #+#    #+#             */
+/*   Updated: 2021/09/23 10:07:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_putnbr_fd_aux(unsigned int n, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (n < 10)
-		ft_putchar_fd('0' + n, fd);
-	else
-	{
-		ft_putnbr_fd_aux(n / 10, fd);
-		ft_putchar_fd('0' + n % 10, fd);
-	}
-}
+	t_list	*new_lst;
+	t_list	*aux;
 
-void	ft_putnbr_fd(int n, int fd)
-{
-	unsigned int	aux;
-
-	aux = (unsigned int)n;
-	if (n < 0)
+	new_lst = NULL;
+	if(lst && f)
 	{
-		ft_putchar_fd('-', fd);
-		aux = n * -1;
+		aux = ft_lstnew((*f)(lst->content));
+		while (lst && aux)
+		{
+			ft_lstadd_back(&new_lst, aux);
+			lst = lst->next;
+			if (lst)
+				aux = ft_lstnew((*f)(lst->content));
+		}
+		if (!aux)
+		{
+			ft_lstclear(&new_lst, del);
+			new_lst = NULL;
+		}
 	}
-	ft_putnbr_fd_aux(aux, fd);
+	return (new_lst);
 }

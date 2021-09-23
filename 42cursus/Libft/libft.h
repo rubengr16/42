@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:02:59 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/17 15:26:15 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/09/23 09:50:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len); // libftT
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set); // war fail
-// char	**ft_split(char const *s, char c); // in progress
-/**** 1 left ****/
+char	**ft_split(char const *s, char c); // in progress
+char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s1, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
-/**** 1 left ****/
+void	ft_putnbr_fd(int n, int fd);
 
 /**************************************************************************** */
 /******************************* BONUS ************************************** */
@@ -77,10 +77,10 @@ t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new); // fail
+void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
-/**** 1 left ****/
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif
