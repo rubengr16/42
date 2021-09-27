@@ -6,68 +6,58 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 10:31:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/27 21:29:19 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/09/27 21:13:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static int	ft_count_words(char const *s, char c)
+static int	ft_count_words(char	const *s, char c)
 {
-	int	cnt;
+	int	n_words;
+	int	i;
 
-	cnt = 0;
-	if (*s != c)
-		cnt++;
-	else
-		while (*s == c)
-			s++;
-	while (*s)
+	n_words = 0;
+	i = 0;
+	if (s[i] != c)
+		n_words = 1;
+	while (s[i])
 	{
-		if (*s == c && *(s + 1) != c)
-			cnt++;
-		s++;
+		if (s[i] == c && s[i + 1] != c)
+		   n_words++;
+		i++;
 	}
-	return (cnt);
+	return (n_words);
 }
 
-static int	ft_word_len(const char *s, char c)
+static char	*ft_put_word(const char *s, char c, int	*pos)
 {
-	int	len;
+	int		len;
+	int		cnt;
+	char	*word;
 
 	len = 0;
-	while (*s != c)
-	{
+	cnt = 0;
+	while (s[*pos] == c)
+		(*pos)++;
+	while (s[len] && s[len] != c)
 		len++;
-		s++;
-	}
-	return (len);
-}
-
-static char	*ft_insert_word(const char *s, char c, int *cnt)
-{
-	char	*res;
-	int		i;
-
-	while (s[*cnt] == c)
-		(*cnt)++;
-	res = malloc(sizeof(char) * (ft_word_len(&s[*cnt], c)));
-	if (res)
+	word = malloc(sizeof(char) * (len + 1));
+	if (word)
 	{
-		i = 0;
-		while (s[*cnt] != c)
+		while (s[*pos] && s[*pos] != c)
 		{
-			res[i] = s[*cnt];
-			i++;
-			(*cnt)++;
+			word[cnt] = s[*pos];
+			(*pos)++;
+			cnt++;
 		}
-		res[i] = '\0';
+		word[cnt] = '\0';
 	}
-	return (res);
+	return (word);
 }
 
-static char	**ft_reset(char	**res, int i)
+static char	**ft_reset(char	**res, int	i)
 {
 	while (0 <= i)
 	{
@@ -82,27 +72,24 @@ char	**ft_split(char const *s, char c)
 {
 	char	**res;
 	int		n_words;
-	int 	cnt;
+	int		pos;	
 	int		i;
 
 	if (!s)
 		return (NULL);
 	n_words = ft_count_words(s, c);
 	res = malloc(sizeof(char *) * (n_words + 1));
-	if (res)
+	if (!res)
+		return (NULL);
+	i = 0;
+	pos = 0;
+	while (s[pos] && i < n_words)
 	{
-		cnt = 0;
-		i = 0;
-		res[i] = ft_insert_word(s, c, &cnt);
+		res[i] = ft_put_word(s, c, &pos);
+		if (!res[i])
+			return (ft_reset(res, i - 1));
 		i++;
-		while (s[cnt] && res[i - 1] && i < n_words)
-		{
-			res[i] = ft_insert_word(s, c, &cnt);
-			i++;
-		}
-		if (i < n_words && res[i - 1])
-			return (ft_reset(res, i - 2));
-		res[i] = NULL;
 	}
+	res[i] = NULL;
 	return (res);
 }
