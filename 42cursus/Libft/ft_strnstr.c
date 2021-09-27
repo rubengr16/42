@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 15:27:17 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/24 16:03:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/09/27 19:08:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		haystack++;
 		len--;
 	}
-	if (*needle && !needle[cnt] && cnt < len)
+	if (*needle && !needle[cnt] && cnt <= len + 1)
 		return ((char *)(haystack - 1));
 	else if (!*needle)
 		return ((char *)haystack);
