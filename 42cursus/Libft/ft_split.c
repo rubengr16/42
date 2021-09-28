@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 10:31:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/27 21:29:19 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/09/28 10:09:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@ static int	ft_count_words(char const *s, char c)
 	int	cnt;
 
 	cnt = 0;
-	if (*s != c)
-		cnt++;
-	else
-		while (*s == c)
-			s++;
-	while (*s)
+	if (*s)
 	{
-		if (*s == c && *(s + 1) != c)
+		if (*s != c)
 			cnt++;
 		s++;
+		while (*s)
+		{
+			if (*s != c && *(s - 1) == c)
+				cnt++;
+			s++;
+		}
 	}
 	return (cnt);
 }
@@ -37,7 +38,7 @@ static int	ft_word_len(const char *s, char c)
 	int	len;
 
 	len = 0;
-	while (*s != c)
+	while (*s && *s != c)
 	{
 		len++;
 		s++;
@@ -50,13 +51,13 @@ static char	*ft_insert_word(const char *s, char c, int *cnt)
 	char	*res;
 	int		i;
 
-	while (s[*cnt] == c)
+	while (s[*cnt] && s[*cnt] == c)
 		(*cnt)++;
-	res = malloc(sizeof(char) * (ft_word_len(&s[*cnt], c)));
+	res = malloc(sizeof(char) * (ft_word_len(&s[*cnt], c) + 1));
 	if (res)
 	{
 		i = 0;
-		while (s[*cnt] != c)
+		while (s[*cnt] && s[*cnt] != c)
 		{
 			res[i] = s[*cnt];
 			i++;
@@ -82,7 +83,7 @@ char	**ft_split(char const *s, char c)
 {
 	char	**res;
 	int		n_words;
-	int 	cnt;
+	int		cnt;
 	int		i;
 
 	if (!s)
@@ -93,15 +94,13 @@ char	**ft_split(char const *s, char c)
 	{
 		cnt = 0;
 		i = 0;
-		res[i] = ft_insert_word(s, c, &cnt);
-		i++;
-		while (s[cnt] && res[i - 1] && i < n_words)
+		while (s[cnt] && i < n_words)
 		{
 			res[i] = ft_insert_word(s, c, &cnt);
+			if (!res[i])
+				return (ft_reset(res, i - 1));
 			i++;
 		}
-		if (i < n_words && res[i - 1])
-			return (ft_reset(res, i - 2));
 		res[i] = NULL;
 	}
 	return (res);
