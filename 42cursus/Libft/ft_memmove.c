@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:17:52 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/17 12:49:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/09/28 13:35:25 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	char		*dst_str;
 	const char	*src_str;
 
-	cnt = -1;
+	cnt = 0;
 	dst_str = dst;
 	src_str = src;
 	if (src || dst)
@@ -27,8 +27,13 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 			while (len-- > 0)
 				dst_str[len] = src_str[len];
 		else if (src > dst)
-			while (++cnt < len)
+		{
+			while (cnt < len)
+			{
 				dst_str[cnt] = src_str[cnt];
+				cnt++;
+			}
+		}
 	}
 	return (dst);
 }

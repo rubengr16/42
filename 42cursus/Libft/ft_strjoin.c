@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 09:12:02 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/16 10:29:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/09/28 13:34:30 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		len;
 	char	*s;
-	char	*aux;
 
 	if (s1 && s2)
 	{
@@ -24,9 +23,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s = malloc(sizeof(char) * (len));
 		if (s)
 		{
-			aux = s;
-			(void)ft_strlcpy(aux, s1, len);
-			(void)ft_strlcat(aux, s2, len);
+			(void)ft_strlcpy(s, s1, len);
+			(void)ft_strlcat(s, s2, len);
 		}
 		return (s);
 	}
