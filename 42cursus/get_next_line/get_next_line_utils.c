@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:05:45 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/12 22:18:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/14 13:17:10 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	search_nl(char *buffer, int *pos_nl, int n_char)
 		(*pos_nl)++;
 }
 
-void	insert_line(char **line, char *buffer, int *len, int *pos_nl)
+void	insert_line(char **line, char *buffer, int *pos_nl, int *len)
 {
 	char	*aux;
 	int		cnt;
@@ -29,7 +29,7 @@ void	insert_line(char **line, char *buffer, int *len, int *pos_nl)
 	*line = malloc(sizeof(char) * (*len + *pos_nl + 2));
 	if (*line)
 	{
-		while (cnt < *len)
+		while (aux && aux[cnt] && cnt < *len)
 		{
 			(*line)[cnt] = aux[cnt];
 			cnt++;
@@ -42,8 +42,7 @@ void	insert_line(char **line, char *buffer, int *len, int *pos_nl)
 			(*len)++;
 		}
 		(*line)[*len] = '\0';
-		//if(aux)
-	   	//	free(aux);	   
+		free(aux);	   
 	}
 	else
 		*pos_nl = -1;
@@ -74,23 +73,25 @@ void	read_line(char **rest, char **line, int len, int fd)
 	int		n_char;
 	int		pos_nl;
 
-	n_char = read(fd, buffer, BUFFER_SIZE);
-	buffer[n_char] = '\0';
-	search_nl(buffer, &pos_nl, n_char);
-	insert_line(line, buffer, &pos_nl, &len);
+	n_char = BUFFER_SIZE;
+	pos_nl = BUFFER_SIZE;
 	while (n_char == BUFFER_SIZE && pos_nl == BUFFER_SIZE)
 	{
 		n_char = read(fd, buffer, BUFFER_SIZE);
-		buffer[n_char] = '\0';
-		search_nl(buffer, &pos_nl, n_char);
-		insert_line(line, buffer, &pos_nl, &len);
+		if (n_char > 0)
+		{		
+			buffer[n_char] = '\0';
+			search_nl(buffer, &pos_nl, n_char);
+			insert_line(line, buffer, &pos_nl, &len);
+		}
 	}
 	if (n_char == -1 || pos_nl == -1)
 	{
-		//if(*line)
-		//	free(*line);
-		//line = NULL;
+		free(*line);
+		line = NULL;
 	}
-	else if ((pos_nl - 1) != n_char)
+	else if (n_char > 0 && (pos_nl - 1) != n_char)
 		fill_rest(rest, buffer, pos_nl);
+	else 
+		line = NULL;	
 }

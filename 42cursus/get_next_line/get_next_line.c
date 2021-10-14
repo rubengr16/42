@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:02:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/12 22:18:12 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/14 11:59:34 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	*get_next_line(int fd)
 			while (line[len])
 				len++;
 		}
+		else
+			line = NULL;
 		read_line(&rest, &line, len, fd);
 		return (line);
 	}
