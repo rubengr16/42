@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:05:45 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/14 13:17:10 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/14 15:34:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	insert_line(char **line, char *buffer, int *pos_nl, int *len)
 			cnt++;
 			(*len)++;
 		}
-		(*line)[*len] = '\0';
+		if (*pos_nl != BUFFER_SIZE) //revisar
+			(*line)[*len] = '\0';
 		free(aux);	   
 	}
 	else
@@ -51,20 +52,25 @@ void	insert_line(char **line, char *buffer, int *pos_nl, int *len)
 void	fill_rest(char **rest, char *buffer, int pos_nl)
 {
 	int	cnt;
-	
-	*rest = malloc(sizeof(char) * (BUFFER_SIZE - pos_nl));
-	if (*rest)
+
+	pos_nl++;
+	if (buffer[pos_nl])
 	{
-		cnt = 0;
-		pos_nl++;
-		while (pos_nl < BUFFER_SIZE)
+		*rest = malloc(sizeof(char) * (BUFFER_SIZE - pos_nl));
+		if (*rest)
 		{
-			(*rest)[cnt] = buffer[pos_nl];
-			cnt++;
-			pos_nl++;
+			cnt = 0;
+			while (buffer[pos_nl] && pos_nl < BUFFER_SIZE)
+			{
+				(*rest)[cnt] = buffer[pos_nl];
+				cnt++;
+				pos_nl++;
+			}
+			(*rest)[cnt] = '\0';
 		}
-		(*rest)[cnt] = '\0';
 	}
+	else 
+		*rest = NULL;
 }
 
 void	read_line(char **rest, char **line, int len, int fd)
@@ -90,8 +96,6 @@ void	read_line(char **rest, char **line, int len, int fd)
 		free(*line);
 		line = NULL;
 	}
-	else if (n_char > 0 && (pos_nl - 1) != n_char)
-		fill_rest(rest, buffer, pos_nl);
-	else 
-		line = NULL;	
+	else if ((pos_nl - 1) != n_char)
+		fill_rest(rest, buffer, pos_nl);	
 }
