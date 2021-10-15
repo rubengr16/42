@@ -6,96 +6,96 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:05:45 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/14 15:34:20 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/15 17:38:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	search_nl(char *buffer, int *pos_nl, int n_char)
+void	search_nl(char *buffer, int *n_char)
 {
-	*pos_nl = 0;
-	while (*pos_nl < n_char && buffer[*pos_nl] != '\n')
-		(*pos_nl)++;
+	*n_char = 0;
+	while (buffer[*n_char] && buffer[*n_char] != '\n')
+		(*n_char)++;
+	if (!buffer[*n_char] && *n_char < BUFFER_SIZE)
+		(*n_char)--;
 }
 
-void	insert_line(char **line, char *buffer, int *pos_nl, int *len)
+void	insert_line(char **line, char *buffer, int *n_char, int *len)
 {
 	char	*aux;
 	int		cnt;
 
 	aux = *line;
-	cnt = 0;
-	*line = malloc(sizeof(char) * (*len + *pos_nl + 2));
+	*line = malloc(sizeof(char) * (*len + *n_char + 2));
 	if (*line)
 	{
-		while (aux && aux[cnt] && cnt < *len)
+		cnt = 0;
+		while (cnt < *len && aux && aux[cnt])
 		{
 			(*line)[cnt] = aux[cnt];
 			cnt++;
 		}
 		cnt = 0;
-		while (cnt <= *pos_nl)
+		while (cnt <= *n_char && cnt < BUFFER_SIZE)
 		{
-			(*line)[*len] = buffer[cnt],
+			(*line)[*len] = buffer[cnt];
 			cnt++;
 			(*len)++;
 		}
-		if (*pos_nl != BUFFER_SIZE) //revisar
-			(*line)[*len] = '\0';
+		(*line)[*len] = '\0';
 		free(aux);	   
 	}
 	else
-		*pos_nl = -1;
+		*n_char = -1;
 }
 
-void	fill_rest(char **rest, char *buffer, int pos_nl)
+void	fill_rest(char **rest, char *buffer, int n_char)
 {
 	int	cnt;
 
-	pos_nl++;
-	if (buffer[pos_nl])
+	n_char++;
+	if (n_char < BUFFER_SIZE && buffer[n_char])
 	{
-		*rest = malloc(sizeof(char) * (BUFFER_SIZE - pos_nl));
+		*rest = malloc(sizeof(char) * (BUFFER_SIZE - n_char));
 		if (*rest)
 		{
 			cnt = 0;
-			while (buffer[pos_nl] && pos_nl < BUFFER_SIZE)
+			while (n_char < BUFFER_SIZE && buffer[n_char])
 			{
-				(*rest)[cnt] = buffer[pos_nl];
+				(*rest)[cnt] = buffer[n_char];
 				cnt++;
-				pos_nl++;
+				n_char++;
 			}
-			(*rest)[cnt] = '\0';
 		}
 	}
-	else 
-		*rest = NULL;
 }
 
 void	read_line(char **rest, char **line, int len, int fd)
 {
-	char	buffer[BUFFER_SIZE + 1];
+	char	*buffer;
 	int		n_char;
-	int		pos_nl;
 
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	n_char = BUFFER_SIZE;
-	pos_nl = BUFFER_SIZE;
-	while (n_char == BUFFER_SIZE && pos_nl == BUFFER_SIZE)
+	if (buffer)
 	{
-		n_char = read(fd, buffer, BUFFER_SIZE);
-		if (n_char > 0)
-		{		
-			buffer[n_char] = '\0';
-			search_nl(buffer, &pos_nl, n_char);
-			insert_line(line, buffer, &pos_nl, &len);
+		while (n_char == BUFFER_SIZE)
+		{
+			n_char = read(fd, buffer, BUFFER_SIZE);
+			if (n_char > 0)
+			{		
+				buffer[n_char] = '\0';
+				search_nl(buffer, &n_char);
+				insert_line(line, buffer, &n_char, &len);
+			}
 		}
+		if (n_char == -1)
+			free(*line);
+		else if (n_char > 0 && buffer[n_char + 1] != '\0')
+			fill_rest(rest, buffer, n_char);
 	}
-	if (n_char == -1 || pos_nl == -1)
-	{
-		free(*line);
-		line = NULL;
-	}
-	else if ((pos_nl - 1) != n_char)
-		fill_rest(rest, buffer, pos_nl);	
+	if (!buffer || n_char == -1)
+		line = NULL;	
+	free(buffer);
 }

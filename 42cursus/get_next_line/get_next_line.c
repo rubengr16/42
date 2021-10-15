@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:02:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/14 15:34:30 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/15 17:38:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			len;
 
-	if (fd >= 0)
+	if (fd >= 0 && BUFFER_SIZE > 0)
 	{
 		len = 0;
 		if (rest)
