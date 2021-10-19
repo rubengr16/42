@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:02:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/15 17:38:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/19 10:19:17 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,11 @@ char	*get_next_line(int fd)
 	if (fd >= 0 && BUFFER_SIZE > 0)
 	{
 		len = 0;
-		if (rest)
-		{
-			line = rest;
-			rest = NULL;
+		line = rest;
+		rest = NULL;
+		if (line)
 			while (line[len])
 				len++;
-		}
-		else
-			line = NULL;
 		read_line(&rest, &line, len, fd);
 		return (line);
 	}
