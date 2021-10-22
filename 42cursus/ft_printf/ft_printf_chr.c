@@ -6,9 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 15:19:07 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/21 15:20:12 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/22 20:23:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libftprintf.h"
 
 int	ft_printf_chr(char c)
 {

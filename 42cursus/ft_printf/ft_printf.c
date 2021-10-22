@@ -6,11 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:36:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/21 15:35:35 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/22 20:25:42 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_conversor(char c, va_list arg_list, int *n_char)
+#include "libftprintf.h"
+
+int	ft_conversor(char c, va_list arg_list, int *n_char)
 {
 	if (c == 'c')
 		return (ft_printf_chr(va_arg(arg_list, int)));
@@ -25,7 +27,7 @@ int ft_conversor(char c, va_list arg_list, int *n_char)
 	else if (c == 'x')
 		return (ft_printf_hex(va_arg(arg_list, int)));
 	else if (c == 'X')
-		return (ft_printf_HEX(va_arg(arg_list, int)));
+		return (ft_printf_hexup(va_arg(arg_list, int)));
 	else
 		return ((int)write(1, &c, 1));
 }
