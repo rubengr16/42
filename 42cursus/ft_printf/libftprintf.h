@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 19:57:31 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/22 20:25:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/25 21:14:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define LIBFTPRINTF_H
 
 # include <unistd.h>
+# include <stdarg.h>
 
 /********************************* PRINTF *********************************** */
 int	ft_printf(const char *format, ...);
-int	ft_conversor(char c, va_list arg_list, int *n_char);
+int	ft_conversor(char c, va_list arg_list);
 
 /*************************** AUXILIARY FUNCTIONS **************************** */
 int	ft_printf_chr(char c);
@@ -25,9 +26,9 @@ int	ft_printf_str(char *s);
 int	ft_printf_ptr(void *ptr);
 int	ft_printf_int(int nb);
 int	ft_printf_uns(unsigned int nb);
-int	ft_printf_hex(int nb);
+int	ft_printf_hex(unsigned int nb);
 int	ft_printf_hexup(int nb);
 
 /***************************** FT_PUTNBR_BASE ******************************* */
-int	ft_putnbr_base(unsigned long long nb, char *base, int len_base);
+int	ft_putnbr_base(long long nb, char *base, int len_base);
 #endif

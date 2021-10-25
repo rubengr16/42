@@ -6,21 +6,21 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 15:27:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/22 20:24:40 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/25 20:55:27 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
+#include <stdio.h>
 int	ft_printf_int(int nb)
 {
-	unsigned long long	aux;
+	long long	aux;
 	int					n_char;
 
 	if (nb < 0)
 	{
 		n_char = write(1, "-", 1);
-		aux = nb * -1;
+		aux = (long long)nb * -1;
 	}
 	else
 	{

@@ -6,13 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 19:39:12 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/22 20:24:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/25 20:55:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printf_chr(unsigned int nb)
+int	ft_printf_uns(unsigned int nb)
 {
 	return (ft_putnbr_base(nb, "0123456789", 10));
 }
