@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:36:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/25 21:14:30 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:18:27 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_printf(const char *format, ...)
 			n_char += ft_conversor(format[cnt], arg_list);
 		}
 		else
-			n_char += write(1, &format[cnt], 1);;
+			n_char += write(1, &format[cnt], 1);
 		cnt++;
 	}
 	va_end(arg_list);

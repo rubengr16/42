@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 15:27:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/26 10:49:10 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:17:37 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_printf_int(int nb)
 {
 	long long	aux;
-	int					n_char;
+	int			n_char;
 
 	if (nb < 0)
 	{
