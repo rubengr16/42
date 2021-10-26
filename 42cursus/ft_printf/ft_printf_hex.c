@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 19:43:00 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/25 21:14:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/26 10:43:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_printf_hex(unsigned int nb)
 {
-	return (ft_putnbr_base((long long)nb, "0123456789abcdef", 16));
+	return (ft_putnbr_base(nb, "0123456789abcdef", 16));
 }

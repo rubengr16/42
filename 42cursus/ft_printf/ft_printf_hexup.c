@@ -6,26 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 19:46:06 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/25 20:58:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/26 10:53:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printf_hexup(int nb)
+int	ft_printf_hexup(unsigned int nb)
 {
-	long long	aux;
-	int					n_char;
-
-	if (nb < 0)
-	{
-		n_char = write(1, "-", 1);
-		aux = (long long)nb * -1;
-	}
-	else
-	{
-		n_char = 0;
-		aux = nb;
-	}
-	return (n_char + ft_putnbr_base(aux, "0123456789ABCDEF", 16));
+	return (ft_putnbr_base(nb, "0123456789ABCDEF", 16));
 }
