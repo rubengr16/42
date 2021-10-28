@@ -6,12 +6,12 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 15:27:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/26 11:17:37 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/10/28 10:49:23 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
+
 int	ft_printf_int(int nb)
 {
 	long long	aux;
