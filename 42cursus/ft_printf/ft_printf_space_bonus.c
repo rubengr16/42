@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_space_bonus.c                            :+:      :+:    :+:   */
+/*   ft_printf_space.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 11:26:45 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 12:12:04 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/01 12:36:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,8 @@ int	ft_printf_space_str(char *format, char *str, int *cnt)
 	int	n_space;
 	int	n_char;
 
-	n_space = 0;
+	n_space = ft_width(format, cnt);
 	n_char = 0;
-	while ('0' <= format[*cnt] && format[*cnt] <= '9')
-	{
-		(*cnt)++;
-		n_space++;
-	}
 	if (format[*cnt] == 's')
 	{
 		if (n_space)

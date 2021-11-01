@@ -6,12 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 15:27:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 00:21:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/01 12:32:23 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "libftprintf_bonus.h"
 
 int	ft_printf_int(int nb)
 {

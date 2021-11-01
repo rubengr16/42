@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:36:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 11:58:02 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/01 12:58:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	ft_conversor(char c, va_list arg_list)
 int	ft_conversor_bonus(char *str, va_list arg_list, int *cnt)
 {
 	(*cnt)++;
-	/*if (str[*cnt - 1] == '-')
-		return (ft_printf_minus(va_arg(arg_list, int)));
-	else if (str[*cnt - 1] == '0')
+	if (str[*cnt - 1] == '-')
+		return (ft_printf_minus(str, arg_list, cnt));
+	/*else if (str[*cnt - 1] == '0')
 		return (ft_printf_zer(va_arg(arg_list, char *)));
 	else if (str[*cnt - 1] == '.')
-		return (ft_printf_point(va_arg(arg_list, void *)));
-	else*/ if (str[*cnt - 1] == '#' && (str[*cnt] == 'x' || str[*cnt] == 'X'))
+		return (ft_printf_point(va_arg(arg_list, void *)));*/
+	else if (str[*cnt - 1] == '#' && (str[*cnt] == 'x' || str[*cnt] == 'X'))
 		return (ft_printf_sharp(va_arg(arg_list, unsigned int), str[*cnt]));
 	else if (str[*cnt - 1] == ' ' && (str[*cnt] == 'd' || str[*cnt] == 'i'))
 		return (ft_printf_space_int(va_arg(arg_list, int)));

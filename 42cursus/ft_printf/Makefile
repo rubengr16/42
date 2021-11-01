@@ -10,6 +10,7 @@ SRCS	=			ft_printf_chr.c \
 					ft_putnbr_base.c
 
 SRCSBONUS	=		ft_printf_bonus.c \
+					ft_printf_minus_bonus.c \
 					ft_printf_sharp_bonus.c \
 					ft_printf_space_bonus.c \
 					ft_printf_plus_bonus.c \
