@@ -6,13 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 11:42:52 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 11:46:00 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/01 12:01:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_bonus.h"
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int	cnt;
 
@@ -30,5 +30,5 @@ int	ft_strchr(char *str, char c)
 	cnt = 0;
 	while (str[cnt] && str[cnt] != c)
 		cnt++;
-	return(str[cnt]);
+	return (str[cnt]);
 }

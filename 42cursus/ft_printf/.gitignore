@@ -1,0 +1,26 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    .gitignore                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/09/14 12:47:31 by rgallego          #+#    #+#              #
+#    Updated: 2021/11/01 12:02:11 by rgallego         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Test files
+printfTester/
+
+
+# Make files
+date
+gcc
+hostname
+libftprintf.a
+*.*.swp
+*.o
+a.out
+a.out.dSYM/
+main.c

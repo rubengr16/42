@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 00:09:35 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 01:06:30 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/01 12:00:48 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_printf_plus(int nb)
 {
 	if (nb >= 0)
-		return (write(1 , "+", 1) + ft_printf_int(nb));
+		return (write(1, "+", 1) + ft_printf_int(nb));
 	else
 		return (ft_printf_int(nb));
 }
