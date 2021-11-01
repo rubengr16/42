@@ -11,8 +11,9 @@ SRCS	=			ft_printf_chr.c \
 
 SRCSBONUS	=		ft_printf_bonus.c \
 					ft_printf_sharp.c \
+					ft_printf_space.c \
 					ft_printf_plus.c \
-					ft_strchr.c
+					ft_strutils.c
 
 SRCH	=			libftprintf.h
 

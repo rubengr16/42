@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:36:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 11:00:46 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/01 11:58:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,15 @@ int	ft_conversor_bonus(char *str, va_list arg_list, int *cnt)
 		return (ft_printf_point(va_arg(arg_list, void *)));
 	else*/ if (str[*cnt - 1] == '#' && (str[*cnt] == 'x' || str[*cnt] == 'X'))
 		return (ft_printf_sharp(va_arg(arg_list, unsigned int), str[*cnt]));
-	/*else if (str[*cnt - 1] == ' ' //careful s???
-			&& (str[*cnt] == 'd' || str[*cnt] == 'i' || str[*cnt] == 's'))
-		return (ft_printf_space(va_arg(arg_list, int)));*/
+	else if (str[*cnt - 1] == ' ' && (str[*cnt] == 'd' || str[*cnt] == 'i'))
+		return (ft_printf_space_int(va_arg(arg_list, int)));
+	else if (str[*cnt - 1] == ' ' && (str[*cnt] == 's'
+			|| ('0' <= str[*cnt] && str[*cnt] <= '9')))
+		return (ft_printf_space_str(str, va_arg(arg_list, char *), cnt));
 	else if (str[*cnt - 1] == '+' && (str[*cnt] == 'd' || str[*cnt] == 'i'))
 		return (ft_printf_plus(va_arg(arg_list, int)));
-		else return (0);
+	else
+		return (0);
 }
 
 int	ft_normal_bonus(char *str, va_list arg_list, int *cnt)

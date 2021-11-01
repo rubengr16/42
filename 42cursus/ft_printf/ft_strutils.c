@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strutils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 00:36:28 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 01:08:06 by rgallego         ###   ########.fr       */
+/*   Created: 2021/11/01 11:42:52 by rgallego          #+#    #+#             */
+/*   Updated: 2021/11/01 11:46:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_bonus.h"
+
+int ft_strlen(char *str)
+{
+	int	cnt;
+
+	cnt = 0;
+	if (str)
+		while (str[cnt])
+			cnt++;
+	return (cnt);
+}
 
 int	ft_strchr(char *str, char c)
 {
