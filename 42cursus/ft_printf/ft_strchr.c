@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_int.c                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 15:27:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 00:21:41 by rgallego         ###   ########.fr       */
+/*   Created: 2021/11/01 00:36:28 by rgallego          #+#    #+#             */
+/*   Updated: 2021/11/01 01:08:06 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
 #include "libftprintf_bonus.h"
 
-int	ft_printf_int(int nb)
+int	ft_strchr(char *str, char c)
 {
-	long long	aux;
-	int			n_char;
+	int	cnt;
 
-	if (nb < 0)
-	{
-		n_char = write(1, "-", 1);
-		aux = (long long)nb * -1;
-	}
-	else
-	{
-		n_char = 0;
-		aux = nb;
-	}
-	return (n_char + ft_putnbr_base(aux, "0123456789", 10));
+	cnt = 0;
+	while (str[cnt] && str[cnt] != c)
+		cnt++;
+	return(str[cnt]);
 }

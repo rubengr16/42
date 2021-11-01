@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_int.c                                    :+:      :+:    :+:   */
+/*   ft_printf_sharp.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 15:27:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 00:21:41 by rgallego         ###   ########.fr       */
+/*   Created: 2021/11/01 10:51:57 by rgallego          #+#    #+#             */
+/*   Updated: 2021/11/01 11:06:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
 #include "libftprintf_bonus.h"
 
-int	ft_printf_int(int nb)
+int	ft_printf_sharp(unsigned int nb, char c)
 {
-	long long	aux;
-	int			n_char;
-
-	if (nb < 0)
-	{
-		n_char = write(1, "-", 1);
-		aux = (long long)nb * -1;
-	}
+	if (!nb)
+		return (ft_printf_hex(nb));
+	else if (c == 'x')
+		return (write(1, "0x", 2) + ft_printf_hex(nb));
 	else
-	{
-		n_char = 0;
-		aux = nb;
-	}
-	return (n_char + ft_putnbr_base(aux, "0123456789", 10));
+		return (write(1, "0X", 2) + ft_printf_hexup(nb));
 }

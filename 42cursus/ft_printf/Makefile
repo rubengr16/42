@@ -1,5 +1,6 @@
-SRCS	=			ft_printf.c \
-					ft_printf_chr.c \
+PRINTF	=			ft_printf.c
+
+SRCS	=			ft_printf_chr.c \
 					ft_printf_str.c \
 					ft_printf_ptr.c \
 					ft_printf_int.c \
@@ -7,13 +8,21 @@ SRCS	=			ft_printf.c \
 					ft_printf_hex.c \
 					ft_printf_hexup.c \
 					ft_putnbr_base.c
-#SRCSBONUS	=		
+
+SRCSBONUS	=		ft_printf_bonus.c \
+					ft_printf_sharp.c \
+					ft_printf_plus.c \
+					ft_strchr.c
 
 SRCH	=			libftprintf.h
 
+SRCHBONUS	=		libftprintf_bonus.h
+
+OBJSPRINTF	=		$(PRINTF:.c=.o)
+
 OBJS	=			$(SRCS:.c=.o)
 
-#OBJSBONUS	=		$(SRCSBONUS:.c=.o)
+OBJSBONUS	=		$(SRCSBONUS:.c=.o)
 
 CC		=			gcc
 
@@ -28,22 +37,22 @@ NAME	=			libftprintf.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(SRCH)
-	$(AR) $(NAME) $(OBJS)
+$(NAME): $(OBJSPRINTF) $(OBJS) $(SRCH)
+	$(AR) $(NAME) $(OBJSPRINTF) $(OBJS)
 
 clean:
-	$(RM) $(OBJS)       #     $(OBJSBONUS)
+	$(RM) $(OBJSPRINTF) $(OBJS)  $(OBJSBONUS)
 
 fclean: clean
 	$(RM) $(NAME)
 
-#bonus: $(OBJSBONUS)
-#	$(AR) $(NAME) $(OBJSBONUS)
+bonus: $(OBJS) $(OBJSBONUS) $(SRCHBONUS)
+	$(AR) $(NAME) $(OBJS) $(OBJSBONUS)
 
 re: fclean all
 
 so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libftprintf.so $(OBJS)
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(PRINTF) $(SRCS) $(SRCSBONUS)
+	gcc -nostartfiles -shared -o libftprintf.so $(OBJSPRINTF) $(OBJS) $(OBJSBONUS)
 
 .PHONY: all clean fclean bonus re so 

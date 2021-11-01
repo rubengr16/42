@@ -6,11 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:36:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/28 15:32:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/01 11:00:46 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
 int	ft_conversor(char c, va_list arg_list)
 {
@@ -35,19 +35,20 @@ int	ft_conversor(char c, va_list arg_list)
 int	ft_conversor_bonus(char *str, va_list arg_list, int *cnt)
 {
 	(*cnt)++;
-	if (str[*cnt - 1] == '-')
+	/*if (str[*cnt - 1] == '-')
 		return (ft_printf_minus(va_arg(arg_list, int)));
 	else if (str[*cnt - 1] == '0')
-		return (ft_printf_zer(ova_arg(arg_list, char *)));
+		return (ft_printf_zer(va_arg(arg_list, char *)));
 	else if (str[*cnt - 1] == '.')
 		return (ft_printf_point(va_arg(arg_list, void *)));
-	else if (str[*cnt - 1] == '#' && (str[*cnt] == 'x' || str[*cnt] == 'X'))
-		return (ft_printf_sharp(va_arg(arg_list, int)));
-	else if (str[*cnt - 1] == ' ' //careful s???
+	else*/ if (str[*cnt - 1] == '#' && (str[*cnt] == 'x' || str[*cnt] == 'X'))
+		return (ft_printf_sharp(va_arg(arg_list, unsigned int), str[*cnt]));
+	/*else if (str[*cnt - 1] == ' ' //careful s???
 			&& (str[*cnt] == 'd' || str[*cnt] == 'i' || str[*cnt] == 's'))
-		return (ft_printf_space(va_arg(arg_list, unsigned int)));
+		return (ft_printf_space(va_arg(arg_list, int)));*/
 	else if (str[*cnt - 1] == '+' && (str[*cnt] == 'd' || str[*cnt] == 'i'))
-		return (ft_printf_plus(va_arg(arg_list, unsigned int)));
+		return (ft_printf_plus(va_arg(arg_list, int)));
+		else return (0);
 }
 
 int	ft_normal_bonus(char *str, va_list arg_list, int *cnt)
@@ -55,7 +56,7 @@ int	ft_normal_bonus(char *str, va_list arg_list, int *cnt)
 	if (ft_strchr("-0.# +", str[*cnt]))
 		return (ft_conversor_bonus(str, arg_list, cnt));
 	else
-		return (ft_conversor(str[cnt], arg_list));
+		return (ft_conversor(str[*cnt], arg_list));
 }
 
 int	ft_printf(const char *format, ...)
@@ -72,7 +73,7 @@ int	ft_printf(const char *format, ...)
 		if (format[cnt] == '%')
 		{
 			cnt++;
-			n_char += ft_normal_bonus(&format[cnt], arg_list, &cnt);
+			n_char += ft_normal_bonus((char *)format, arg_list, &cnt);
 		}
 		else
 			n_char += write(1, &format[cnt], 1);
