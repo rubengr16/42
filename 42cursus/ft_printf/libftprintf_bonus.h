@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 19:57:31 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 12:52:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/01 13:25:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	ft_printf_hex(unsigned int nb);
 int	ft_printf_hexup(unsigned int nb);
 
 /***************************** FLAGS FUNCTIONS ****************************** */
+int	ft_printf_width(char *str, va_list arg_list, int *cnt);
 int	ft_printf_minus(char *str, va_list arg_list, int *cnt);
 int	ft_printf_sharp(unsigned int nb, char c);
 int	ft_printf_space_int(int nb);
