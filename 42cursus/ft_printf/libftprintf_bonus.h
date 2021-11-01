@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 19:57:31 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 11:50:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/01 12:20:04 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ int ft_printf_space_str(char *format, char *str, int *cnt);
 int	ft_printf_plus(int nb);
 
 
-/***************************** FT_PUTNBR_BASE ******************************* */
+/******************************** FT_UTILS ********************************** */
 int	ft_putnbr_base(unsigned long long nb, char *base, int len_base);
+int	ft_width(char *str, int *cnt);
 int	ft_strlen(char *str);
 int	ft_strchr(char *str, char c);
 #endif
