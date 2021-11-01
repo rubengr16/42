@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_sharp.c                                  :+:      :+:    :+:   */
+/*   ft_printf_plus_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 10:51:57 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 11:26:29 by rgallego         ###   ########.fr       */
+/*   Created: 2021/11/01 00:09:35 by rgallego          #+#    #+#             */
+/*   Updated: 2021/11/01 12:10:54 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_bonus.h"
 
-int	ft_printf_sharp(unsigned int nb, char c)
+int	ft_printf_plus(int nb)
 {
-	if (!nb)
-		return (ft_printf_hex(nb));
-	else if (c == 'x')
-		return (write(1, "0x", 2) + ft_printf_hex(nb));
+	if (nb >= 0)
+		return (write(1, "+", 1) + ft_printf_int(nb));
 	else
-		return (write(1, "0X", 2) + ft_printf_hexup(nb));
+		return (ft_printf_int(nb));
 }

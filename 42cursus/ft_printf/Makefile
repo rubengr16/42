@@ -10,10 +10,10 @@ SRCS	=			ft_printf_chr.c \
 					ft_putnbr_base.c
 
 SRCSBONUS	=		ft_printf_bonus.c \
-					ft_printf_sharp.c \
-					ft_printf_space.c \
-					ft_printf_plus.c \
-					ft_strutils.c
+					ft_printf_sharp_bonus.c \
+					ft_printf_space_bonus.c \
+					ft_printf_plus_bonus.c \
+					ft_strutils_bonus.c
 
 SRCH	=			libftprintf.h
 
