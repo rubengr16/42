@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:02:16 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/04 11:24:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/05 13:48:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 #include <stdlib.h>
 
 char	*get_next_line(int fd);
-int		ft_strlen(char *str, int *len, int *pos_nl);
-int		ft_strjoin(char **dest, char *src, int *len, int pos_nl);
-void	fill_rest(char **rest, char *buffer, int len, int start);
-//void	free_line(char **line);
 void	read_line(char **rest, char **line, int len, int fd);
+int		ft_strchr_nl(char *str, int *pos_nl);
+void	ft_strcpy(char **dest, char *src, int len);
+int		ft_strjoin(char **dest, char *src, int len1, int len2);
+void	ft_free_resources(char **line);
+
 
 #endif

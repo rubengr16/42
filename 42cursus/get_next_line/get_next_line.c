@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:02:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/05 13:42:19 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/05 13:45:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	read_line(char **line, char **rest, int len, int fd)
 			if (n_char > 0)
 			{
 				buffer[n_char] = '\0';
-				pos_nl = ft_strchr_nl(str, &pos_nl);
+				(void)ft_strchr_nl(str, &pos_nl);
 				len = ft_strjoin(line, buffer, len, pos_nl + 1);
 			}
 		}
