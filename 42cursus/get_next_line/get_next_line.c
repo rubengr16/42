@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:02:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/05 13:08:54 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/05 13:33:54 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,21 @@ void	read_line(char **line, char **rest, int len, int fd)
 	{
 		n_char = BUFFER_SIZE;
 		pos_nl = BUFFER_SIZE;
-		while (n_char == BUFFER_SIZE && pos_nl == BUFFER_SIZE)
+		while (n_char == BUFFER_SIZE && pos_nl == BUFFER_SIZE && len >= 0)
 		{
 			n_char = read(fd, buffer, BUFFER_SIZE);
 			if (n_char > 0)
 			{
 				buffer[n_char] = '\0';
 				pos_nl = ft_strchr_nl(str, &pos_nl);
-				ft_strjoin(
+				len = ft_strjoin(line, buffer, len, pos_nl);
 			}
 		}
+		if (
 	}
+	if (!buffer || len == -1 || n_char == -1)
+		ft_free_resources(line);
+	free(buffer);
 }
 
 char	*get_next_line(int fd)
@@ -54,7 +58,7 @@ char	*get_next_line(int fd)
 		if (ft_strchr_nl(line, &pos_nl) && pos_nl < len && line[pos_nl + 1])
 		{
 			(void)ft_strjoin(&rest, &line[pos_nl], len - pos_nl - 1, 0),
-			(void)ft_strjoin(&line, line, 0, pos_nl);
+			(void)ft_strjoin(&line, line, 0, pos_nl + 1);
 		}
 		else if (!line || pos_nl == len)
 			read_line(&rest, &line, len, fd);
