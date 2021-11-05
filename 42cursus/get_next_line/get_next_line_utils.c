@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:05:45 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/04 15:36:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/05 09:58:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_strchr_nl(char *str, int *pos_nl)
 		return (0);
 }
 
-void	ft_strcpy(char **dest, char *src, int len)
+void	ft_-1strcpy(char **dest, char *src, int len)
 {
 	int	cnt;
 
@@ -48,14 +48,19 @@ void	ft_strcpy(char **dest, char *src, int len)
 			(*dest)[cnt] = src[cnt];
 			cnt++;
 		}
-		(*dest)[cnt] = '\0';
 	}
 }
 
-int ft_strdup(char **dest, char *src, int len)
+int ft_strjoin(char **dest, char *src, int len1, int len2)
 {
-	*dest = malloc(sizeof(char) * (len + 1));
+	*dest = malloc(sizeof(char) * (len1 + len2 + 1));
 	if (*dest)
-		ft_strcpy(dest, src, len);
-
+	{
+		ft_strcpy(dest, *dest, len1);
+		ft_strcpy(dest, src, len2);
+		dest[len1 + len2] = '\0';
+		return (0);
+	}
+	else
+		return (-1);
 }
