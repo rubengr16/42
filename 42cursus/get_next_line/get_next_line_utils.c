@@ -6,9 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:05:45 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/05 13:45:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/05 14:35:30 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"
 
 int	ft_strchr_nl(char *str, int *pos_nl)
 {
@@ -45,18 +47,18 @@ int ft_strjoin(char **dest, char *src, int len1, int len2)
 		ft_strcpy(dest, aux, len1);
 		if (len2)
 		{
-			ft_strcpy(&(*dest[len1]), src, len2);
+			ft_strcpy(&dest[len1], src, len2);
 			free(aux);
 		}
-		dest[len1 + len2] = '\0';
+		*dest[len1 + len2] = '\0';
 		return (len1 + len2);
 	}
 	else
 		return (-1);
 }
 
-void	ft_free_resources(char **line)
+void	ft_free_resources(char **str)
 {
-	free(*line);
-	*line = NULL;
+	free(*str);
+	*str = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:02:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/05 13:45:26 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/05 14:33:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	read_line(char **line, char **rest, int len, int fd)
 			if (n_char > 0)
 			{
 				buffer[n_char] = '\0';
-				(void)ft_strchr_nl(str, &pos_nl);
+				(void)ft_strchr_nl(buffer, &pos_nl);
 				len = ft_strjoin(line, buffer, len, pos_nl + 1);
 			}
 		}
-		if (n_char > 0 && (pos_nl + 1) < n_char)
+		if (n_char > 0 && (pos_nl + 1) < n_char && len >= 0)
 			(void)ft_strjoin(rest, &buffer[pos_nl + 1], 0, n_char - pos_nl - 1);
 	}
 	if (!buffer || len == -1 || n_char == -1)
@@ -53,8 +53,8 @@ char	*get_next_line(int fd)
 		line = rest;
 		rest = NULL;
 		len = 0;
-		if (str)
-			while (str[len])
+		if (line)
+			while (line[len])
 				len++;
 		if (ft_strchr_nl(line, &pos_nl) && pos_nl < len && line[pos_nl + 1])
 		{
