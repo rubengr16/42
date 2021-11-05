@@ -6,103 +6,56 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:05:45 by rgallego          #+#    #+#             */
-/*   Updated: 2021/10/19 15:31:51 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/04 15:36:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-void	old_line_cpy(char **line, char *aux)
+int	ft_strlen(char *str)
 {
-	int cnt;
+	int	len;
 
-	cnt = 0;
-	while (aux && aux[cnt])
-	{
-		(*line)[cnt] = aux[cnt];
-		cnt++;
-	}
+	len = 0;
+	if (str)
+		while (str[len])
+			len++;
+	return (len);
 }
-	
-void	new_line_cpy(char **line, char *buffer, int n_char, int *len)
+
+int	ft_strchr_nl(char *str, int *pos_nl)
+{
+	*pos_nl = 0;
+	if (str)
+		while (str[*pos_nl] && str[*pos_nl] != '\n')
+			(*pos_nl)++;
+	if (str && str[*pos_nl])
+	{
+		(*pos_nl)++;
+		return (*pos_nl);
+	}
+	else
+		return (0);
+}
+
+void	ft_strcpy(char **dest, char *src, int len)
 {
 	int	cnt;
 
 	cnt = 0;
-	while (cnt <= n_char && buffer[cnt])
+	if (src)
 	{
-		(*line)[*len] = buffer[cnt];
-		(*len)++;
-		cnt++;
-	}
-	(*line)[*len] = '\0';
-}
-
-void	insert_line(char **line, char *buffer, int *n_char, int *len)
-{
-	char	*aux;
-
-	*n_char = 0;
-	aux = *line;
-	while (buffer[*n_char] && buffer[*n_char] != '\n')
-		(*n_char)++;
-	if (!buffer[*n_char])
-		*line = malloc(sizeof(char) * (*len + *n_char + 1));
-	else
-		*line = malloc(sizeof(char) * (*len + *n_char + 2));
-	if (*line)
-	{
-		old_line_cpy(line, aux);
-		new_line_cpy(line, buffer, *n_char, len);
-	}
-	else
-		*n_char = -1;
-	free(aux);
-}
-
-void	fill_rest(char **rest, char *buffer, int n_char)
-{
-	int	cnt;
-
-	*rest = malloc(sizeof(char) * (BUFFER_SIZE - n_char));
-	if (*rest)
-	{
-		cnt = 0;
-		n_char++;
-		while (buffer[n_char])
+		while (cnt < len && src[cnt])
 		{
-			(*rest)[cnt] = buffer[n_char];
+			(*dest)[cnt] = src[cnt];
 			cnt++;
-			n_char++;
 		}
-		(*rest)[cnt] = '\0';
+		(*dest)[cnt] = '\0';
 	}
 }
 
-void	read_line(char **rest, char **line, int len, int fd)
+int ft_strdup(char **dest, char *src, int len)
 {
-	char	*buffer;
-	int		n_char;
+	*dest = malloc(sizeof(char) * (len + 1));
+	if (*dest)
+		ft_strcpy(dest, src, len);
 
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (buffer)
-	{
-		n_char = BUFFER_SIZE;
-		while (n_char == BUFFER_SIZE)
-		{
-			n_char = read(fd, buffer, BUFFER_SIZE);
-			if (n_char > 0)
-			{		
-				buffer[n_char] = '\0';
-				insert_line(line, buffer, &n_char, &len);
-			}
-		}
-		if (n_char == -1)
-			free(*line);
-		else if (buffer[n_char] == '\n' && buffer[n_char + 1])
-			fill_rest(rest, buffer, n_char);
-	}
-	if (!buffer || n_char == -1)
-		line = NULL;	
-	free(buffer);
 }
