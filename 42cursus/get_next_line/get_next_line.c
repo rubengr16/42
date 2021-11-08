@@ -6,40 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:02:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/05 20:04:24 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/08 16:18:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void	read_line(char **line, char **rest, int len, int fd)
-{
-	char	*buffer;
-	int		n_char;
-	int		pos_nl;
-
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (buffer)
-	{
-		n_char = BUFFER_SIZE;
-		pos_nl = BUFFER_SIZE;
-		while (n_char == BUFFER_SIZE && pos_nl == BUFFER_SIZE && len >= 0)
-		{
-			n_char = read(fd, buffer, BUFFER_SIZE);
-			if (n_char > 0)
-			{
-				buffer[n_char] = '\0';
-				(void)ft_strchr_nl(buffer, &pos_nl);
-				len = ft_strjoin(line, buffer, len, pos_nl);
-			}
-		}
-		if (n_char > 0 && (pos_nl + 1) < n_char && len >= 0)
-			(void)ft_strjoin(rest, &buffer[pos_nl + 1], 0, n_char - pos_nl - 1);
-	}
-	if (!buffer || len == -1 || n_char == -1)
-		ft_free_resources(line);
-	free(buffer);
-}
 
 char	*get_next_line(int fd)
 {	
@@ -58,7 +29,7 @@ char	*get_next_line(int fd)
 				len++;
 		if (ft_strchr_nl(line, &pos_nl) && pos_nl < len && line[pos_nl + 1])
 		{
-			(void)ft_strjoin(&rest, &line[pos_nl + 1], len - pos_nl - 1, -1); // revisar logica
+			(void)ft_strjoin(&rest, &line[pos_nl + 1], 0, len - pos_nl - 1);
 			(void)ft_strjoin(&line, line, 0, pos_nl);
 		}
 		else if (!line || pos_nl == len)
