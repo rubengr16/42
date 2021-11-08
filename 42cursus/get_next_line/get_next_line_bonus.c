@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:02:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/08 17:16:31 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/08 17:21:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {	
-	static char	*rest = NULL;
+	static char	*rest[4096];
 	char		*line;
 	int			len;
 	int			pos_nl;
 
 	if (fd >= 0 && BUFFER_SIZE > 0)
 	{
-		line = rest;
-		rest = NULL;
+		line = rest[fd];
+		rest[fd] = NULL;
 		len = 0;
 		if (line)
 			while (line[len])
 				len++;
 		if (ft_strchr_nl(line, &pos_nl) && (pos_nl + 1) < len)
 		{
-			(void)ft_strjoin(&rest, &line[pos_nl + 1], 0, len - pos_nl - 1);
+			(void)ft_strjoin(&rest[fd], &line[pos_nl + 1], 0, len - pos_nl - 1);
 			(void)ft_strjoin(&line, line, 0, pos_nl);
 		}
 		else if (!line || pos_nl == len)
-			read_line(&line, &rest, len, fd);
+			read_line(&line, &rest[fd], len, fd);
 		return (line);
 	}
 	else
