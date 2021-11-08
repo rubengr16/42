@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:05:45 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/08 16:18:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/08 16:25:56 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_strchr_nl(char *str, int *pos_nl)
 		while (str[*pos_nl] && str[*pos_nl] != '\n')
 			(*pos_nl)++;
 		if (str[*pos_nl] == '\n')
-			return  (1);
+			return (1);
 	}
 	return (0);
 }
@@ -40,13 +40,13 @@ void	ft_strcpy(char *dest, char *src, int len)
 	}
 }
 
-int ft_strjoin(char **dest, char *src, int len1, int len2)
+int	ft_strjoin(char **dest, char *src, int len1, int len2)
 {
 	char	*aux;
 
 	aux = *dest;
-	 if (src[len2] == '\n')
-	 	len2++;
+	if (src[len2] == '\n')
+		len2++;
 	*dest = malloc(sizeof(char) * (len1 + len2 + 1));
 	if (*dest)
 	{
@@ -54,7 +54,6 @@ int ft_strjoin(char **dest, char *src, int len1, int len2)
 		ft_strcpy((*dest) + len1, src, len2);
 		(*dest)[len1 + len2] = '\0';
 		free(aux);
-
 		return (len1 + len2);
 	}
 	else
@@ -95,4 +94,3 @@ void	read_line(char **line, char **rest, int len, int fd)
 		ft_free_resources(line);
 	free(buffer);
 }
-
