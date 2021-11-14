@@ -7,4 +7,5 @@ It is a function which reproduces the original printf found in the
 ### Mandatory Part
 The prototype of the function must be the following: 
 ```c 
-int ft_printf(const char *, ...)```
+int ft_printf(const char *, ...)
+```
