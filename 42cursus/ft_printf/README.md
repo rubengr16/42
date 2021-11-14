@@ -6,4 +6,4 @@ It is a function which reproduces the original printf found in the
 
 ### Mandatory Part
 The prototype of the function must be the following: 
-```C int ft_printf(const char *, ...)```
+```c int ft_printf(const char *, ...)```
