@@ -11,5 +11,6 @@ int ft_printf(const char *, ...)
 ```
 
 We are allowed to user *malloc* and *free*, but I decided that they were not 
-necessary for my code. On the other hand, I did use the other permitted
-functions such as *write*, *va\_start*, *va\_arg*, *va\_copy* and *va\_end*.
+necessary for my code. The same decision was made on the case of *va\_copy*. 
+On the other hand, I did use the other permitted
+functions such as *write*, *va\_start*, *va\_arg*, and *va\_end*.
