@@ -14,12 +14,12 @@ SRCSBONUS	=		ft_printf_bonus.c \
 					ft_printf_sharp_bonus.c \
 					ft_printf_space_bonus.c \
 					ft_printf_plus_bonus.c \
-					ft_widthutils_bonus.c \
+					ft_width_bonus.c \
 					ft_strutils_bonus.c
 
-SRCH	=			libftprintf.h
+SRCH	=			ft_printf.h
 
-SRCHBONUS	=		libftprintf_bonus.h
+SRCHBONUS	=		ft_printf_bonus.h
 
 OBJSPRINTF	=		$(PRINTF:.c=.o)
 

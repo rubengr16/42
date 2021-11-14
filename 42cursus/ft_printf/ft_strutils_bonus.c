@@ -6,27 +6,28 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 11:42:52 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 12:33:30 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/14 17:29:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int	cnt;
+#include <stdlib.h>
 
-	cnt = 0;
-	if (str)
-		while (str[cnt])
-			cnt++;
-	return (cnt);
+size_t	ft_strlen(const char *s)
+{
+	size_t	len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
 }
 
-int	ft_strchr(char *str, char c)
+char	*ft_strchr(const char *s, int c)
 {
-	int	cnt;
-
-	cnt = 0;
-	while (str[cnt] && str[cnt] != c)
-		cnt++;
-	return (str[cnt]);
+	while (*s && *s != (unsigned char)c)
+		s++;
+	if (*s == (unsigned char)c)
+		return ((char *)s);
+	else
+		return (NULL);
 }

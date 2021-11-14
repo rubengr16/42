@@ -6,11 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 12:17:10 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 13:02:17 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/14 17:39:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_width(char *str, int *cnt)
+int	ft_width(char *str, int *cnt)
 {
 	int	n_space;
 
@@ -19,7 +19,6 @@ int ft_width(char *str, int *cnt)
 	{
 		n_space = (n_space * 10) + (str[*cnt] - '0');
 		(*cnt)++;
-
 	}
 	return (n_space);
 }

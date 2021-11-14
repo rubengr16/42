@@ -6,11 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 15:27:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/01 12:32:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/14 17:44:13 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printf_int(int nb)
 {
@@ -19,7 +19,7 @@ int	ft_printf_int(int nb)
 
 	if (nb < 0)
 	{
-		n_char = write(1, "-", 1);
+		n_char = (int)write(1, "-", 1);
 		aux = (long long)nb * -1;
 	}
 	else
