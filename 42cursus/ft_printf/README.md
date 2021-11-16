@@ -4,15 +4,6 @@ The following project consist of the creation of ft\_printf function.
 It is a function which reproduces the original printf found in the 
 <stdio.h> library.
 
-```html
-<div class="project-status-box" data-status="success">
-  <div class="iconf-check-4 mt-4">
-  success
-  </div>
-  <span>111</span>
-</div>
-```
-
 ### Mandatory Part
 The prototype of the function must be the following: 
 ```c 
