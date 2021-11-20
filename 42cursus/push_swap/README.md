@@ -1,5 +1,5 @@
-#push\_swap
-##Insert numbers in a stack -**a**- and later sort it with the help of another
+# push\_swap
+## Insert numbers in a stack -**a**- and later sort it with the help of another
 stack -**b**-
 
 This project needs the creation of a stack. A stack is a type of data
@@ -8,7 +8,7 @@ In this structure the numbers received will be inserted in a stack **a**.
 Later, with an algorithm chosen by the student and the help of just another
 stack **b**.
 
-##Mandatory Part
+## Mandatory Part
 I decided to use the following data structure to create a stack:
 
 ```c
