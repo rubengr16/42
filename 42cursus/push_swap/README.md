@@ -14,13 +14,23 @@ I decided to use the following data structure to create a stack:
 ```c
 typedef struct s_node
 {
+	int				num;
 	struct s_node	*next;
 	struct s_node	*prvs;
-	int				num;
 }	t_node;
 
 typedef struct s_stack
 {
+	int		n_elem;
 	t_node *stack;
 }	t_stack;
 ```
+
+In order to move its elements, we will use only 11 allowed movements:
+
+	* *sa* : swaps the first 2 elements at the top of stack **a** -nothing is
+	done if there is less than 2 elements-.
+
+	* *sb* : same bahaviour as *sa* but in **b**.
+
+	* *ss* : does *sa* and *sb* at the same time.
