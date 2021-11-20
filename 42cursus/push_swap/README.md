@@ -28,9 +28,9 @@ typedef struct s_stack
 
 In order to move its elements, we will use only 11 allowed movements:
 
-* *sa* : swaps the first 2 elements at the top of stack **a** -nothing is
+* *sa* : swap a - swaps the first 2 elements at the top of stack **a** -nothing is
 done if there is less than 2 elements-.
 
-* *sb* : same bahaviour as *sa* but in **b**.
+* *sb* : swap b - same bahaviour as *sa* but in **b**.
 
 * *ss* : does *sa* and *sb* at the same time.
