@@ -23,4 +23,4 @@ typedef struct s_stack
 {
 	t_node *stack;
 }	t_stack;
-	```
+```
