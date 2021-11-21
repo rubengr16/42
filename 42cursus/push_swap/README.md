@@ -16,13 +16,13 @@ typedef struct s_node
 {
 	int				num;
 	struct s_node	*next;
+	struct s_node	*prvs;
 }	t_node;
 
 typedef struct s_stack
 {
 	int		n_elem;
 	t_node	*head;
-	t_node	*tail;
 }	t_stack;
 ```
 
@@ -35,14 +35,21 @@ movements.
 In order to move its elements, we will use only 11 allowed movements:
 
 * *sa* : swap a - swaps the first 2 elements at the top of stack **a** -nothing
-is done if there is less than 2 elements-.
+is done if there is less than 2 elements-.  **TODO**
 
-* *sb* : swap b - same bahaviour as *sa* but in **b**.
+* *sb* : swap b - same bahaviour as *sa* but in **b**. **TODO**
 
-* *ss* : does *sa* and *sb* at the same time.
+* *ss* : does *sa* and *sb* at the same time.  **TODO**
 
 * *pa* : push a - takes the first element at the top of **b** and put it at the
-top of **a** -nothing is done if **b** is empty-.
+top of **a** -nothing is done if **b** is empty-.  **TODO**
 
 * *pb* : push b - same behaviour as *pa*, but takes the first element from **a**
-and puts it on **b** if possible.
+and puts it on **b** if possible.  **TODO**
+
+* *ra* : rotate a - shift up all elements of stack **a** by 1 -the first
+element becomes the last one-.
+
+* *rb* : rotate b - same as *ra* but in **b**.
+
+* *rr* : *ra* and *rb* at the same time.
