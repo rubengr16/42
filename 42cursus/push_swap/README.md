@@ -1,6 +1,5 @@
 # push\_swap
-## Insert numbers in a stack -**a**- and later sort it with the help of another\
-stack -**b**-
+## Insert numbers in a stack -**a**- and later sort it with the help of another stack -**b**-
 
 This project needs the creation of a stack. A stack is a type of data
 structure which follows  FILO -**F**irst **I**n **L**ast **O**ut- behaviour.
