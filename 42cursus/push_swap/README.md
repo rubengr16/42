@@ -28,15 +28,21 @@ typedef struct s_stack
 
 Although if we observe it in detail, we are able to notice it is not technically
 a stack. It has more a **queue** structure as we have a pointer to the first
-element -head- and later another to the last -**tail**-. This is due to the
+element -**head**- and later another to the last -**tail**-. This is due to the
 computanional benefits it will give us once we implement some of the required
 movements. 
 
 In order to move its elements, we will use only 11 allowed movements:
 
-* *sa* : swap a - swaps the first 2 elements at the top of stack **a** -nothing is
-done if there is less than 2 elements-.
+* *sa* : swap a - swaps the first 2 elements at the top of stack **a** -nothing
+is done if there is less than 2 elements-.
 
 * *sb* : swap b - same bahaviour as *sa* but in **b**.
 
 * *ss* : does *sa* and *sb* at the same time.
+
+* *pa* : push a - takes the first element at the top of **b** and put it at the
+top of **a** -nothing is done if **b** is empty-.
+
+* *pb* : push b - same behaviour as *pa*, but takes the first element from **a**
+and puts it on **b** if possible.
