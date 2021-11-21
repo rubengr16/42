@@ -27,10 +27,15 @@ typedef struct s_stack
 ```
 
 Although if we observe it in detail, we are able to notice it is not technically
-a stack. It has more a **queue** structure as we have a pointer to the first
-element -**head**- and later another to the last -**tail**-. This is due to the
-computanional benefits it will give us once we implement some of the required
-movements. 
+a stack. It has more a **queue** structure due to the nature of the data
+structure I have created. In this case, it is a **circular double linked list**.
+Maybe it is harder to program the movements and basic functions with this
+structure, but I think it is a great opportunity to cope with these problems.
+
+Those basic functions to manage the **circular double linked list** are the
+following ones:
+
+-- CONTINUE HERE
 
 In order to move its elements, we will use only 11 allowed movements:
 
@@ -45,7 +50,7 @@ is done if there is less than 2 elements-.  **TODO**
 top of **a** -nothing is done if **b** is empty-.  **TODO**
 
 * *pb* : push b - same behaviour as *pa*, but takes the first element from **a**
-and puts it on **b** if possible.  **TODO**
+if possible and puts it on **b**.  **TODO**
 
 * *ra* : rotate a - shift up all elements of stack **a** by 1 -the first
 element becomes the last one-.
