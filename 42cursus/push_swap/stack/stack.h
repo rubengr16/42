@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:05:19 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/21 19:16:05 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/21 19:22:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ typedef struct s_stack
 		t_node	*head;
 }	t_stack;
 
-/* *********************** ALLOWED FUNCTIONS ********************************* */
+/* ************************** ALLOWED FUNCTIONS ****************************** */
+/* *************************** ROTATE FUNCTIONS ****************************** */
 void	ft_rotate_a(t_stack *a)
 void	ft_rotate_b(t_stack *b)
 void	ft_rotate_ab(t_stack *a, t_stack *b)
-
+/* *********************** REVERSE ROTATE FUNCTIONS ************************** */
+void	ft_reverse_rotate_a(t_stack *a)
+void	ft_reverse_rotate_b(t_stack *b)
+void	ft_reverse_rotate_ab(t_stack *a, t_stack *b)
 #endif

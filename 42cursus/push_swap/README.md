@@ -53,3 +53,10 @@ element becomes the last one-.
 * *rb* : rotate b - same as *ra* but in **b**.
 
 * *rr* : *ra* and *rb* at the same time.
+
+* *rra* : reverse rotate a - shift down all elements of stack **a** by 1 -the
+last element becomes the last one-.
+
+* *rrb* : reverse rotate b - same as *rra* but in **b**.
+
+* *rrr* : *rra* and *rrb* at the same time.
