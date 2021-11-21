@@ -16,13 +16,13 @@ typedef struct s_node
 {
 	int				num;
 	struct s_node	*next;
-	struct s_node	*prvs;
 }	t_node;
 
 typedef struct s_stack
 {
 	int		n_elem;
-	t_node *stack;
+	t_node	*head;
+	t_node	*tail;
 }	t_stack;
 ```
 
