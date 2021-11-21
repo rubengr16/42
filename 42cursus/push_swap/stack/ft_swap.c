@@ -6,51 +6,46 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/20 18:14:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/21 17:16:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 
-void	ft_swap_a(t_stack *a)
+int	ft_swap_stack(t_stack *stack)
 {
-	int	aux;
+	t_node	*aux;
 
-	if (a->n_elem > 1)
+	if (stack->n_elem > 1)
 	{
-		aux = a->stack->num;
-		a->stack->num = a->stack->next->num;
-		a->stack->next->num = aux;
-		ft_putstr_fd("sa", 1);
+		aux = stack->head;
+		stack->head = stack->head->next;
+		aux->next = stack->head->next;
+		stack->head->next = aux;
+		return (1);
 	}
+	else
+		return (0);
 }
 
+void	ft_swap_a(t_stack *a)
+{
+	if (ft_swap_stack(a))
+		ft_putstr_fd("sa", 1);
+}
 
 void	ft_swap_a(t_stack *b)
 {
-	int	aux;
-
-	if (b->n_elem > 1)
-	{
-		aux = b->stack->num;
-		b->stack->num = b->stack->next->num;
-		b->stack->next->num = aux;
+	if (ft_swap_stack(b))
 		ft_putstr_fd("sb", 1);
-	}
 }
 
 void	ft_swap_ab(t_stack *a, t_stack *b)
 {
-	int	aux;
-
-	if (a->elem > 1 && b->elem > 1)
+	if (a->n_elem > 1 && b->n_elem > 1)
 	{
-		aux = a->stack->num;
-		a->stack->num = a->stack->next->num;
-		a->stack->next->num = aux;
-		aux = b->stack->num;
-		b->stack->num = b->stack->next->num;
-		b->stack->next->num = aux;
+		ft_swap_stack(a);
+		ft_swap_stack(b);
 		ft_putstr_fd("ss", 1);
 	}
 }
