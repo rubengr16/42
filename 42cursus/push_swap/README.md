@@ -1,5 +1,5 @@
 # push\_swap
-## Insert numbers in a stack -**a**- and later sort it with the help of another
+## Insert numbers in a stack -**a**- and later sort it with the help of another\
 stack -**b**-
 
 This project needs the creation of a stack. A stack is a type of data
