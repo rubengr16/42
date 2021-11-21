@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/21 17:16:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/21 19:03:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int	ft_swap_stack(t_stack *stack)
 
 	if (stack->n_elem > 1)
 	{
-		aux = stack->head;
-		stack->head = stack->head->next;
-		aux->next = stack->head->next;
-		stack->head->next = aux;
+		/* jejeje, some problems and brainfuck */
 		return (1);
 	}
 	else
