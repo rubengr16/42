@@ -26,6 +26,12 @@ typedef struct s_stack
 }	t_stack;
 ```
 
+Although if we observe it in detail, we are able to notice it is not technically
+a stack. It has more a **queue** structure as we have a pointer to the first
+element -head- and later another to the last -**tail**-. This is due to the
+computanional benefits it will give us once we implement some of the required
+movements. 
+
 In order to move its elements, we will use only 11 allowed movements:
 
 * *sa* : swap a - swaps the first 2 elements at the top of stack **a** -nothing is
