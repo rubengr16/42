@@ -20,6 +20,6 @@ some sort of change. Once we find a variadic function, it means that there
 will be two parts:
 
 
-necessary for my code. The same decision was made on the case of *va\_copy*.
+()(()()necessary for my code. The same decision was made on the case of *va\_copy*.
 On the other hand, I did use the other permitted
 functions such as *write*, *va\_start*, *va\_arg*, and *va\_end*.
