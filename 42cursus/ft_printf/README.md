@@ -1,6 +1,6 @@
 # ft\_printf
 ## Recode printf in order to learn about variadic arguments
-The following project consist of the creation of ft\_printf function.
+The following project consists of the creation of ft\_printf function.
 It is a function which reproduces the original printf found in the
 <stdio.h> library.
 
@@ -20,10 +20,55 @@ them are included in *<starg.h>*. The term variadic implies that there will
 be some sort of change. Once we find a variadic function, it means that there
 will be two parts:
 
-* *Mandatory* arguments: at leas one of them is required. Keep in mind that 
-the order is important. So, mandatory arguments *must* be first and later
+* **Mandatory** arguments: at leas one of them is required. Keep in mind that 
+the order is important. So, mandatory arguments **must** be first and later
 the optional ones.
-* *Optional* arguments.
+
+* **Optional** arguments.
+
+In order to store these **optional** arguments we use the va\_list data
+strucure. It will be managed with different functions:
+
+* void	*va\_start*(va\_list ap, argN) : initialices the list of variadic
+arguments.
+
+* void	*va\_copy*(va\_list dest, va\_list src) : copies the *src* list
+inside *dest*. Useless in this project.
+
+* type	*va\_arg*(va\_list ap, type) : obtains the N element of the list
+and cast it into the chosen type.
+
+* void	*va\_end*(va\_list ap) : finishes *ap* and cleans up it.
+
+Additionally, we are permitted to use the *libft* but I decided to avoid it.
+As I thought I would only need the *ft_putstr_fd* and *ft_putchar_fd* and for
+the bonus part the *ft_strchr.c*.
+
+We are asked to manage the next conversions:
+
+* **%c** - char : prints a single character.
+
+* **%s** - string : prints a string of characters.
+
+* **%p** - pointer : prints a *void \* * in hexadecimal followed by "0x".
+
+* **%d** and **%i** - decimal : prints a decimal or integer number in base 10.
+
+* **%u** - unsigned : prints an unsigned decimal number in base 10.
+
+* **%x** and **%X** - hexadecimal : prints a number in hexadecimal in base 16,
+with the first conversion it will we displayed in lowercase and with the other
+in uppercase.
+
+* **%%** - percent : prints a percent sign.
+
+* **%<else>** - other incorrect conversions : prints just the char in the else.
+It is undefined behaviour according to the original *printf*.
+
+Finally, we need to keep in mind that I used a recursive *ft_putnbr_base* for
+the conversions which implies a number conversion such as **p**, **d** and
+**i**, **u**, **x** and **X**.
 
 ### Bibliography
 [Variadic Functions](https://www.thegeekstuff.com/2017/c-variadic-functions/)
+[man 3 stdarg](https://man7.org/linux/man-pages/man0/stdarg.h.0p.html)
