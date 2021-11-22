@@ -71,4 +71,5 @@ the conversions which implies a number conversion such as **p**, **d** and
 
 ### Bibliography
 [Variadic Functions](https://www.thegeekstuff.com/2017/c-variadic-functions/)
+
 [man 3 stdarg](https://man7.org/linux/man-pages/man0/stdarg.h.0p.html)
