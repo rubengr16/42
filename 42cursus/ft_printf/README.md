@@ -50,7 +50,7 @@ We are asked to manage the next conversions:
 
 * **%s** - string : prints a string of characters.
 
-* **%p** - pointer : prints a *void \* * in hexadecimal followed by "0x".
+* **%p** - pointer : prints a _void \*_ in hexadecimal followed by "0x".
 
 * **%d** and **%i** - decimal : prints a decimal or integer number in base 10.
 
