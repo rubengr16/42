@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:32:30 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 12:01:11 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/23 12:15:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,22 @@ t_node	ft_stckpop(t_stack *stack)
  */
 void	ft_stckadd(t_node *node, t_stack *stack)
 {
-	if (stack->n_elem)
+	if (stack->n_elem == 1)
+	{
+		stack->head->next = node;
+		stack->head->prvs = node;
+		node->next = stack->head;
+		node->prvs = stack->head;
+	}
+	else if (stack->n_elem > 1)
 	{
 		node->prvs = stack->head->prvs;	
 		node->next = stack->head;
-		stack->head = node;
-		stack->head->next->prvs = node;
-		stack->head->prvs->next = node;
+		node->next->prvs = node;
+		node->prvs->next = node;
 	}
-	else
-		stack->head = node;
+	stack->head = node;
+	stack->elem++;
 }
 
 /*

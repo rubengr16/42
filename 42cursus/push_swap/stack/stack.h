@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:05:19 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/21 20:18:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/23 12:13:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_node
 typedef struct s_stack
 {
 	int		n_elem;
-		t_node	*head;
+	t_node	*head;
 }	t_stack;
 
 /* ************************** ALLOWED FUNCTIONS ****************************** */
