@@ -6,14 +6,14 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:05:19 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 17:56:17 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/23 18:53:45 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef QUEUE_H
 # define QUEUE_H
 
-#include <stdlib.h>
+# include <stdlib.h>
 
 typedef struct s_node
 {
@@ -28,7 +28,7 @@ typedef struct s_queue
 	t_node	*head;
 }	t_queue;
 
-/*************************** BASIC QUEUE FUNCTIONS *************************** */
+/************************** BASIC QUEUE FUNCTIONS *************************** */
 t_node	*ft_newnode(int num);
 void	ft_queueadd_back(t_node *node, t_queue *queue);
 void	ft_queueadd_back_num(int num, t_queue *queue);

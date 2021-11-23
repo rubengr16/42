@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 18:34:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/23 18:54:45 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_node	*ft_newnode(int num)
 	t_node	*aux;
 
 	aux = malloc(sizeof(t_node));
-	if (aux)	
+	if (aux)
 	{
 		aux->num = num;
 		aux->next = NULL;
@@ -50,7 +50,7 @@ void	ft_queueadd_back(t_node *node, t_queue *queue)
 	}
 	else if (queue->n_elem > 1)
 	{
-		node->prvs = queue->head->prvs;	
+		node->prvs = queue->head->prvs;
 		node->next = queue->head;
 		node->next->prvs = node;
 		node->prvs->next = node;
