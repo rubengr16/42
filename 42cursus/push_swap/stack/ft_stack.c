@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:32:30 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/21 20:23:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/23 12:01:11 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,28 @@
  */
 t_node	ft_stckpop(t_stack *stack)
 {
-	t_node	aux;
+	t_node	*aux;
 
-	if (stack->n_elem)
+	aux = stack->head;
+	if (stack->n_elem == 1)
+		stack->head = NULL;
+	else if (stack->n_elem > 1)
 	{
-		aux = stack->head;
-		aux->next->prvs = aux->prvs;
-		aux->prvs->next = aux-next;
-		stack->head = aux->next;
-		stack->n_elem--;
+		if (stack->n_elem == 2)
+		{
+			aux->next->prvs = NULL;
+			aux->prvs->next = NULL;
+		}
+		else
+		{
+			aux->next->prvs = aux->prvs;
+			aux->prvs->next = aux->next;
+		}
+		stack->head = stack->head->next;
 		aux->next = NULL;
 		aux->prvs = NULL;
-		return (aux);
 	}
-	else
-		return (NULL);
+	return (aux);
 }
 
 /*
