@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:32:30 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 15:41:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/23 17:42:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  */
 void	ft_queuedelone(t_queue *queue)
 {
-	t_node	*aux;
 	if (queue->n_elem)
 	{
 		free(ft_queuepop(queue));

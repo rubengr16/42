@@ -6,9 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:18:12 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 15:56:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/23 17:56:14 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "queue.h"
 
 /*
  * function which deletes one node from a queue and returns it
@@ -16,7 +18,7 @@
  * OUTPUT:	t_node		:	deleted node with its next and previous pointers
  * 							set to NULL
  */
-t_node	ft_queuepop(t_queue *queue)
+t_node	*ft_queuepop(t_queue *queue)
 {
 	t_node	*aux;
 

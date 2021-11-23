@@ -6,9 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 15:56:31 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/23 17:41:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "queue.h"
 
 /*
  * function which a new node and establishes its value to num and its pointer
@@ -16,9 +18,9 @@
  * INPUT:	int num
  * OUTPUT:	t_node
  */
-t_node	ft_newnode(int num)
+t_node	*ft_newnode(int num)
 {
-	t_node	aux;
+	t_node	*aux;
 
 	aux = malloc(sizeof(t_node));
 	if (aux)	
@@ -27,6 +29,7 @@ t_node	ft_newnode(int num)
 		aux->next = NULL;
 		aux->prvs = NULL;
 	}
+	return (aux);
 }
 
 /*
@@ -43,7 +46,7 @@ void	ft_queueadd_back(t_node *node, t_queue *queue)
 		queue->head->next = node;
 		queue->head->prvs = node;
 		node->next = queue->head;
-		queue->prvs = queue->head;
+		node->prvs = queue->head;
 	}
 	else if (queue->n_elem > 1)
 	{
@@ -52,7 +55,7 @@ void	ft_queueadd_back(t_node *node, t_queue *queue)
 		node->next->prvs = node;
 		node->prvs->next = node;
 	}
-	queue->elem++;
+	queue->n_elem++;
 }
 
 /*
@@ -67,7 +70,7 @@ void	ft_queueadd_back_num(int num, t_queue *queue)
 
 	aux = ft_newnode(num);
 	if (aux)
-		ft_queueadd_back(aux, stack);
+		ft_queueadd_back(aux, queue);
 }
 
 /*
