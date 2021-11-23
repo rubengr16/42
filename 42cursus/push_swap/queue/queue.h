@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   queue.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:05:19 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 12:13:53 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/23 15:58:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+#ifndef QUEUE_H
+# define QUEUE_H
 
-#include "../libft/libft.h"
+#include <stdlib.h>
 
 typedef struct s_node
 {
@@ -22,19 +22,20 @@ typedef struct s_node
 	struct s_node	*prvs;
 }	t_node;
 
-typedef struct s_stack
+typedef struct s_queue
 {
 	int		n_elem;
 	t_node	*head;
-}	t_stack;
+}	t_queue;
 
-/* ************************** ALLOWED FUNCTIONS ****************************** */
-/* *************************** ROTATE FUNCTIONS ****************************** */
-void	ft_rotate_a(t_stack *a)
-void	ft_rotate_b(t_stack *b)
-void	ft_rotate_ab(t_stack *a, t_stack *b)
-/* *********************** REVERSE ROTATE FUNCTIONS ************************** */
-void	ft_reverse_rotate_a(t_stack *a)
-void	ft_reverse_rotate_b(t_stack *b)
-void	ft_reverse_rotate_ab(t_stack *a, t_stack *b)
+/*************************** BASIC QUEUE FUNCTIONS *************************** */
+t_node	ft_newnode(int num);
+void	ft_queueadd_back(t_node *node, t_queue *queue);
+void	ft_queueadd_back_num(int num, t_queue *queue);
+void	ft_queueadd_front(t_node *node, t_queue *queue);
+void	ft_queueadd_front_num(int num, t_queue *queue);
+t_node	ft_queuepop(t_queue *queue);
+void	ft_queuedelone(t_queue *queue);
+void	ft_queuedelall(t_queue *queue);
+
 #endif
