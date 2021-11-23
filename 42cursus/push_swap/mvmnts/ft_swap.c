@@ -6,43 +6,78 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/21 19:03:00 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/23 20:35:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "mvmnts.h"
 
-int	ft_swap_stack(t_stack *stack)
+/*
+ * function which swaps the first element of the queue with the second one.
+ * Ending the first element as the second and the second element as the
+ * first one in the resulting list
+ * INPUT:	t_queue *queue
+ * OUTPUT:	int	:	1	push is fullfilled
+ * 					0	push has failed
+ */
+static int	ft_swap_queue(t_queue *queue)
 {
 	t_node	*aux;
 
-	if (stack->n_elem > 1)
+	if (queue->n_elem > 1)
 	{
-		/* jejeje, some problems and brainfuck */
+		if (queue->n_elem == 2)
+			(void)ft_rotate_queue(queue);
+		else
+		{
+			queue->head->next->prvs = queue->head->prvs;
+			queue->head->prvs->next = queue->head->next;
+			queue->head->prvs = queue->head->next;
+			queue->head->next = queue->head->next->next;
+			queue->head->next->prvs = queue->head;
+			queue->head->prvs->next = queue->head;
+			queue->head = queue->head->prvs;
+		}
 		return (1);
 	}
 	else
 		return (0);
 }
 
-void	ft_swap_a(t_stack *a)
+ /*
+ * function which makes the swap in the queue a
+ * INPUT:	t_queue *a
+ * OUTPUT:	void
+ */ 
+void	ft_swap_a(t_queue *a)
 {
-	if (ft_swap_stack(a))
-		ft_putstr_fd("sa", 1);
+	if (ft_swap_queue(a))
+		ft_putendl_fd("sa", 1);
 }
 
-void	ft_swap_a(t_stack *b)
+/*
+ * function which makes the swap in the queue b
+ * INPUT:	t_queue *b
+ * OUTPUT:	void
+ */ 
+void	ft_swap_a(t_queue *b)
 {
-	if (ft_swap_stack(b))
-		ft_putstr_fd("sb", 1);
+	if (ft_swap_queue(b))
+		ft_putendl_fd("sb", 1);
 }
 
-void	ft_swap_ab(t_stack *a, t_stack *b)
+ /*
+ * function which makes the swap in the queue a and also in the queue b
+ * INPUT:	t_queue *a, t_queue *b
+ * OUTPUT:	void
+ */ 
+void	ft_swap_ab(t_queue *a, t_queue *b)
 {
-	if (a->n_elem > 1 && b->n_elem > 1)
+	if (ft_swap_queue(a))
 	{
-		ft_swap_stack(a);
-		ft_swap_stack(b);
-		ft_putstr_fd("ss", 1);
+		if (ft_swap_queue(b))
+			ft_putstr_fd("ss", 1);
+		else
+			ft_swap_queue(b);
 	}
 }

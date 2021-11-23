@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:17:16 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 18:45:25 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/23 20:34:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  * OUTPUT:	int	:	1	reverse rotate is fullfilled
  * 					0	reverse rotate has failed
  */
-
 int	ft_reverse_rotate_queue(t_queue *queue)
 {
 	if (queue->n_elem > 1)
