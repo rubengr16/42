@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:27:40 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 20:34:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/24 22:06:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	ft_push_queue(t_queue *dst, t_queue *src)
 void	ft_push_a(t_queue *a, t_queue *b)
 {
 	if (ft_push_queue(a, b))
-		ft_putendl("pa", 1);
+		ft_putendl_fd("pa", 1);
 }
 
 /*
@@ -51,5 +51,5 @@ void	ft_push_a(t_queue *a, t_queue *b)
 void	ft_push_b(t_queue *b, t_queue *a)
 {
 	if (ft_push_queue(b, a))
-		ft_putendl("pb", 1);
+		ft_putendl_fd("pb", 1);
 }

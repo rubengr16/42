@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 20:35:12 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/24 22:46:04 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
  */
 static int	ft_swap_queue(t_queue *queue)
 {
-	t_node	*aux;
-
 	if (queue->n_elem > 1)
 	{
 		if (queue->n_elem == 2)
@@ -60,7 +58,7 @@ void	ft_swap_a(t_queue *a)
  * INPUT:	t_queue *b
  * OUTPUT:	void
  */ 
-void	ft_swap_a(t_queue *b)
+void	ft_swap_b(t_queue *b)
 {
 	if (ft_swap_queue(b))
 		ft_putendl_fd("sb", 1);

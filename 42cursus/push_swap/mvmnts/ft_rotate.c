@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:04:21 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 20:35:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/11/24 22:04:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_rotate_a(t_queue *a)
  */
 void	ft_rotate_b(t_queue *b)
 {
-	if (ft_rotate_queue(a))
+	if (ft_rotate_queue(b))
 		ft_putendl_fd("rb", 1);
 }
 
