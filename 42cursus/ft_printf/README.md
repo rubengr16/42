@@ -47,27 +47,34 @@ the bonus part the *ft_strchr.c*.
 We are asked to manage the next conversions:
 
 * **%c** - char : prints a single character -which I managed in 
-[ft\_printf\_chr.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf_chr.c)
+[ft\_printf\_chr.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf_chr.c)-.
 
-* **%s** - string : prints a string of characters.
+* **%s** - string : prints a string of characters
+-[ft\_printf\_str.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf_str.c)-.
 
-* **%p** - pointer : prints a _void \*_ in hexadecimal followed by "0x".
+* **%p** - pointer : prints a _void \*_ in hexadecimal followed by "0x"
+-[ft\_printf\_ptr.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf_ptr.c)-.
 
-* **%d** and **%i** - decimal : prints a decimal or integer number in base 10.
+* **%d** and **%i** - decimal : prints a decimal or integer number in base 10
+-[ft\_printf\_int.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf_int.c)-.
 
 * **%u** - unsigned : prints an unsigned decimal number in base 10.
+-[ft\_printf\_uns.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf_uns.c)-.
 
 * **%x** and **%X** - hexadecimal : prints a number in hexadecimal in base 16,
 with the first conversion it will we displayed in lowercase and with the other
 in uppercase.
+-[ft\_printf\_hex.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf_hex.c) and
+[ft\_printf\_hexup.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf_hexup.c)-
 
 * **%%** - percent : prints a percent sign.
 
 * **%<else>** - other incorrect conversions : prints just the char in the else.
 It is undefined behaviour according to the original *printf*.
 
-Finally, we need to keep in mind that I used a recursive *ft_putnbr_base* for
-the conversions which implies a number conversion such as **p**, **d** and
+Finally, we need to keep in mind that I used a recursive *ft_putnbr_base* 
+-[ft\_putnbr\_base](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_putnbr_base.c)-
+for the conversions which implies a number conversion such as **p**, **d** and
 **i**, **u**, **x** and **X**.
 
 ### Bibliography
