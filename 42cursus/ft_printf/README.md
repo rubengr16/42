@@ -63,8 +63,7 @@ We are asked to manage the next conversions:
 
 * **%x** and **%X** - hexadecimal : prints a number in hexadecimal in base 16,
 with the first conversion it will we displayed in lowercase and with the other
-in uppercase.
--[ft\_printf\_hex.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf_hex.c) and
+in uppercase -[ft\_printf\_hex.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf_hex.c) and
 [ft\_printf\_hexup.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf_hexup.c)-
 
 * **%%** - percent : prints a percent sign.
