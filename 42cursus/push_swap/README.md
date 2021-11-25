@@ -39,17 +39,17 @@ following ones:
 In order to move its elements, we will use only 11 allowed movements:
 
 * *sa* : swap a - swaps the first 2 elements at the top of stack **a** -nothing
-is done if there is less than 2 elements-.  **TODO**
+is done if there is less than 2 elements-
 
-* *sb* : swap b - same bahaviour as *sa* but in **b**. **TODO**
+* *sb* : swap b - same bahaviour as *sa* but in **b**. 
 
-* *ss* : does *sa* and *sb* at the same time.  **TODO**
+* *ss* : does *sa* and *sb* at the same time.
 
 * *pa* : push a - takes the first element at the top of **b** and put it at the
-top of **a** -nothing is done if **b** is empty-.  **TODO**
+top of **a** -nothing is done if **b** is empty-.
 
 * *pb* : push b - same behaviour as *pa*, but takes the first element from **a**
-if possible and puts it on **b**.  **TODO**
+if possible and puts it on **b**.
 
 * *ra* : rotate a - shift up all elements of stack **a** by 1 -the first
 element becomes the last one-.

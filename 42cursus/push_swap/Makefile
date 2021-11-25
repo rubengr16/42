@@ -4,17 +4,13 @@ QUEUE =
 
 SRCS += $(adprefix queue/, $(QUEUE))
 
-SRCSBONUS	=		
-
-SRCH	=			libft.h
+SRCH	=			
 
 OBJS	=			$(SRCS:.c=.o)
 
-OBJSBONUS	=		$(SRCSBONUS:.c=.o)
-
 CC		=			gcc
 
-RM		=			rm -f
+RM		=			-rm -f
 
 AR		=			ar rcs
 

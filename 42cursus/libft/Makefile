@@ -51,7 +51,7 @@ OBJSBONUS	=		$(SRCSBONUS:.c=.o)
 
 CC		=			gcc
 
-RM		=			rm -f
+RM		=			-rm -f
 
 AR		=			ar rcs
 
