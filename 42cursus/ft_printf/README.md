@@ -10,17 +10,17 @@ The prototype of the function must be the following:
 int ft_printf(const char *, ...)
 ```
 
-We are allowed to user *malloc* and *free*, but I decided that they were not
-necessary for my code. The same decision was made on the case of *va\_copy*.
-On the other hand, I did use the other permitted
-functions such as *write*, *va\_start*, *va\_arg*, and *va\_end*.
+We are allowed to use *malloc* and *free*, but I decided that they were not
+necessary for my code. The same decision I made in the case of *va\_copy*.
+On the other hand, I did use the other permitted functions such as *write*,
+*va\_start*, *va\_arg*, and *va\_end*.
 
-Firstly, we should get to know all the va\_<macro> functons . The four of 
+Firstly, we should get to know all the va\_<macro> functions . The four of 
 them are included in *<starg.h>*. The term variadic implies that there will
 be some sort of change. Once we find a variadic function, it means that there
 will be two parts:
 
-* **Mandatory** arguments: at leas one of them is required. Keep in mind that 
+* **Mandatory** arguments: at least one of them is required. Keep in mind that 
 the order is important. So, mandatory arguments **must** be first and later
 the optional ones.
 
@@ -35,7 +35,7 @@ arguments.
 * void	*va\_copy*(va\_list dest, va\_list src) : copies the *src* list
 inside *dest*. Useless in this project.
 
-* type	*va\_arg*(va\_list ap, type) : obtains the N element of the list
+* type	*va\_arg*(va\_list ap, type) : obtains the *N* element of the list
 and cast it into the chosen type.
 
 * void	*va\_end*(va\_list ap) : finishes *ap* and cleans up it.
@@ -46,7 +46,8 @@ the bonus part the *ft_strchr.c*.
 
 We are asked to manage the next conversions:
 
-* **%c** - char : prints a single character.
+* **%c** - char : prints a single character -which I managed in 
+[ft\_printf\_chr.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf_chr.c)
 
 * **%s** - string : prints a string of characters.
 
