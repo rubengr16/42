@@ -15,7 +15,7 @@ necessary for my code. The same decision I made in the case of *va\_copy*.
 On the other hand, I did use the other permitted functions such as *write*,
 *va\_start*, *va\_arg*, and *va\_end*.
 
-Firstly, we should get to know all the va\_<macro> functions . The four of 
+Firstly, we should get to know all the va\_\<macro> functions . The four of 
 them are included in *<starg.h>*. The term variadic implies that there will
 be some sort of change. Once we find a variadic function, it means that there
 will be two parts:
