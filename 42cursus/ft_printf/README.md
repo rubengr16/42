@@ -4,6 +4,9 @@ The following project consists of the creation of ft\_printf function.
 It is a function which reproduces the original printf found in the
 <stdio.h> library.
 
+**Mark**: [![rgallego's ft\_printf Score](https://badge42.herokuapp.com/api/project/rgallego/ft_printf)](https://github.com/rubengr16)
+
+
 ### Mandatory Part
 The prototype of the function must be the following:
 ```c
