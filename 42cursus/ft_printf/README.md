@@ -72,10 +72,16 @@ in uppercase.
 * **%<else>** - other incorrect conversions : prints just the char in the else.
 It is undefined behaviour according to the original *printf*.
 
-Finally, we need to keep in mind that I used a recursive *ft_putnbr_base* 
+In order to know which function was needed for each conversion I used different *else if*'s located
+in the main file of my project which is
+[ft\_printf.c](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_printf.c).
+
+Finally, we need to keep in mind that I used a recursive
 -[ft\_putnbr\_base](https://github.com/rubengr16/42/blob/main/42cursus/ft_printf/ft_putnbr_base.c)-
 for the conversions which implies a number conversion such as **p**, **d** and
 **i**, **u**, **x** and **X**.
+
+### Bonus Part
 
 ### Bibliography
 * [Variadic Functions](https://www.thegeekstuff.com/2017/c-variadic-functions/)
