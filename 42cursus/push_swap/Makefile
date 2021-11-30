@@ -1,26 +1,4 @@
-SRCS =
-
-QUEUE = 
-
-SRCS += $(adprefix queue/, $(QUEUE))
-
-SRCH	=			
-
-OBJS	=			$(SRCS:.c=.o)
-
-CC		=			gcc
-
-RM		=			-rm -f
-
-AR		=			ar rcs
-
-CFLAGS	=			-Wall -Werror -Wextra
-
-NAME	=			push_swap	
-
-LIBFT	=			libft/
-
-LIBFTNAME =			libft.a
+-include vbles.mk
 
 all: $(NAME)
 

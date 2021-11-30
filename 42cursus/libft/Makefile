@@ -2,11 +2,11 @@
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(SRCH)
-	$(AR) $(NAME) $(OBJS)
-
 %.o: %.c
 	$(CC) $(CFLAGS) -I $(INC_DIR) -c $^ -o $@
+
+$(NAME): $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
 clean:
 	$(RM) $(OBJS) $(OBJSBONUS)
