@@ -5,6 +5,9 @@ all: $(NAME)
 $(NAME): $(OBJS) $(SRCH)
 	$(AR) $(NAME) $(OBJS)
 
+%.o: %.c
+	$(CC) $(CFLAGS) -I $(INC_DIR) -c $^ -o $@
+
 clean:
 	$(RM) $(OBJS) $(OBJSBONUS)
 
