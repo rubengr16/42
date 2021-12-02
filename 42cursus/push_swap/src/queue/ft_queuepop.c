@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:18:12 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 18:34:22 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/02 13:01:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ t_node	*ft_queuepop(t_queue *queue)
 		aux->next = NULL;
 		aux->prvs = NULL;
 	}
+	if (queue->n_elem)
+		queue->n_elem--;
 	return (aux);
 }
