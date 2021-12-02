@@ -9,7 +9,7 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 clean:
-	$(RM) $(OBJS) $(OBJSBONUS)
+	$(RM) $(OBJS) $(DPNDS) $(OBJSBONUS) $(DPNDSBONUS)
 
 fclean: clean
 	$(RM) $(NAME)
