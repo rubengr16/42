@@ -57,12 +57,16 @@ OBJS	=			$(SRCS:.c=.o)
 
 OBJSBONUS	=		$(SRCSBONUS:.c=.o)
 
+DPNDS	=			$(SRC:.c=.d)
+
+DPNDSBONUS	=		$(SRCSBONUS:.c=.o)
+
 CC		=			gcc
 
 RM		=			-rm -f
 
 AR		=			ar rcs
 
-CFLAGS	=			-Wall -Werror -Wextra
+CFLAGS	=			-Wall -Werror -Wextra -MD
 
 NAME	=			libft.a

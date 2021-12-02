@@ -6,14 +6,15 @@ QUEUE_DIR =			queue/
 
 MVMNTS_DIR =		mvmnts/
 
-QUEUE =				\
+QUEUE	=			\
 					$(addprefix $(QUEUE_DIR), \
 					ft_queueadd.c \
 					ft_queuedel.c \
 					ft_queuepop.c \
-					)
+					) \
+					test/test_queue.c
 
-MVMNTS =			\
+MVMNTS	=			\
 					$(addprefix $(MVMNTS_DIR), \
 					ft_push.c \
 					ft_reverse_rotate.c \
@@ -21,9 +22,14 @@ MVMNTS =			\
 					ft_swap.c \
 					)
 
-SRCS = 		
+SRCS	= 			$(addprefix $(SRC_DIR), \
+					$(QUEUE) \
+					$(MVMNTS) \
+					)
 
 OBJS	=			$(SRCS:.c=.o)
+
+DPNDS	=			$(SRCS:.c=.d)
 
 CC		=			gcc
 
@@ -31,10 +37,16 @@ RM		=			-rm -f
 
 AR		=			ar rcs
 
-CFLAGS	=			-Wall -Werror -Wextra
+CFLAGS	=			-Wall -Werror -Wextra -MD 
+
+LDFLAGS	=			$(LIBFTNAME)
 
 NAME	=			push_swap	
 
-LIBFT	=			$(SRC_DIR)libft/
+INC_ALL	=			\
+					$(INC_DIR) \
+					$(LIBFT)$(INC_DIR)
 
-LIBFTNAME =			libft.a
+LIBFT	=			libft/
+
+LIBFTNAME =			$(LIBFT)libft.a

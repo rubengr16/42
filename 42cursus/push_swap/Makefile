@@ -3,15 +3,16 @@
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@ 	
+	$(CC) $(CFLAGS) $(addprefix -I, $(INC_ALL)) -c $< -o $@	
 
-$(LIBFT)$(LIBFTNAME):
-	$(MAKE) -C $(LIBFT) 
+$(LIBFTNAME):
+	$(MAKE) -C $(LIBFT)
 
-$(NAME): $(OBJS) $(LIBFT)$(LIBFTNAME)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFTNAME) -o $@
+$(NAME): $(OBJS) $(LIBFTNAME)
+	$(CC) $(LDFLAGS) $(OBJS) -o $@
+
 clean:
-	$(RM) $(OBJS) $(OBJSBONUS)
+	$(RM) $(OBJS) $(DPNDS)
 
 fclean: clean
 	$(RM) $(NAME)
@@ -19,4 +20,6 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean bonus re so 
+-include $(SRCS:.c=.d)
+
+.PHONY: all clean fclean bonus re 
