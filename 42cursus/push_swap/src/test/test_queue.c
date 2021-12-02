@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/23 17:56:11 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/02 12:59:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,22 @@ int	main(void)
 		i++;
 	}
 	i = 0;
-	/*	
+		
 	while (i < 100)
 	{
 		printf("Elemento %d: %d\n", i, ft_queuepop(my_queue)->num);
 		i++;
 	}
-	*/
 	/*
 	while (my_queue->head)
 	{
 		printf("Elemento %d: %d\n", i, my_queue->head->num);
 		ft_queuedelone(my_queue);
 		i++;
-	}
 	*/
+printf("n_elem = %d", my_queue->n_elem);
+
 	ft_queuedelall(my_queue);
-	system("leaks a.out");
+//	system("leaks a.out");
 	return (0);
 }
