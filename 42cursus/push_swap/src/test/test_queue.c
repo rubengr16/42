@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/02 14:46:47 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/03 20:35:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	main(void)
 	t_node	*my_node;
 	int		i;
 
-	my_queue = malloc(sizeof(t_queue));
-	my_b_queue = malloc(sizeof(t_queue));
+	my_queue = ft_queueinit();
+	my_b_queue = ft_queueinit();
 	i = 0;
 	while (i < 100)
 	{
@@ -38,11 +38,11 @@ int	main(void)
 	printf("\n****************** ORDERED ********************\n");
 	while (i < 100)
 	{
-		printf("Elemento %d: %d\n", i, my_node->num);
+		printf("Elemento %p: %d\n", my_node, my_node->num);
 		my_node = my_node->next;
 		i++;
 	}
-
+/*
 	printf("\n****************** sa ********************\n");
 	ft_swap_a(my_queue);
 	i = 0;
@@ -75,34 +75,47 @@ int	main(void)
 		my_node = my_node->next;
 		i++;
 	}
-
+*/
 	printf("\n****************** pb ********************\n");
 	ft_push_b(my_b_queue, my_queue);
 	i = 0;
 	my_node = my_queue->head;
 	while (i < 99)
 	{
-		printf("Elemento %d: %d\n", i, my_node->num);
+		printf("Elemento %p: %d\n", my_node, my_node->num);
 		my_node = my_node->next;
 		i++;
 	}
 	i = 0;
-	printf("my_b_queue->n_elem = %d", my_b_queue->n_elem);
+	printf("my_b_queue->n_elem = %d, dir = %p\n", my_b_queue->n_elem, my_b_queue->head);
+	printf("%p\n", my_b_queue->head);
 	while (my_b_queue->n_elem)
 	{
-		printf("Elemento %d: %d\n", i, ft_queuepop(my_b_queue)->num);
-		printf("n_elem: %d", my_b_queue->n_elem
+ 		my_node = ft_queuepop(my_b_queue);
+		printf("Elemento %d: %d\n", i, my_node->num);
 		i++;
 	}
-	printf("HOLE");
-	/*
-	while (my_queue->head)
+	free(my_node);
+	i = 0;
+	printf("%p\n", my_b_queue->head);
+ 	while (my_b_queue->n_elem)
+	{
+		printf("Elemento %d: %d\n", i, my_b_queue->head->num);
+		ft_queuedelone(my_b_queue);
+		i++;
+	}
+	i = 0;
+ 	while (my_queue->n_elem)
 	{
 		printf("Elemento %d: %d\n", i, my_queue->head->num);
 		ft_queuedelone(my_queue);
 		i++;
-	*/
+	}
 	ft_queuedelall(my_queue);
-//	system("leaks a.out");
+	printf("%p\n", my_queue->head);
+	printf("%p\n", my_b_queue->head);
+	ft_queuedelall(my_b_queue);
+	printf("%p\n", my_b_queue->head);
+	system("leaks push_swap");
 	return (0);
 }
