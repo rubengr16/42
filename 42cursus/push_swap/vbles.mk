@@ -8,6 +8,7 @@ MVMNTS_DIR =		mvmnts/
 
 QUEUE	=			\
 					$(addprefix $(QUEUE_DIR), \
+					ft_queueinit.c \
 					ft_queueadd.c \
 					ft_queuedel.c \
 					ft_queuepop.c \
@@ -37,7 +38,7 @@ RM		=			-rm -f
 
 AR		=			ar rcs
 
-CFLAGS	=			-Wall -Werror -Wextra -MD -g 
+CFLAGS	=			-Wall -Werror -Wextra -MD -g
 
 LDFLAGS	=			$(LIBFTNAME)
 

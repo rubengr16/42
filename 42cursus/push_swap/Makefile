@@ -9,7 +9,7 @@ $(LIBFTNAME):
 	$(MAKE) -C $(LIBFT)
 
 $(NAME): $(OBJS) $(LIBFTNAME)
-	$(CC) $(LDFLAGS) $(OBJS) -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@
 
 clean:
 	$(RM) $(OBJS) $(DPNDS)
