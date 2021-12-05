@@ -3,7 +3,7 @@
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I $(INC_DIR) -c $^ -o $@
+	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
