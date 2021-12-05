@@ -3,13 +3,13 @@
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(addprefix -I, $(INC_ALL)) -c $< -o $@	
+	$(CC) $(CFLAGS) $(addprefix -I, $(INC_ALL)) -c $< -o $@
 
 $(LIBFTNAME):
 	$(MAKE) -C $(LIBFT)
 
 $(NAME): $(OBJS) $(LIBFTNAME)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@
+	$(CC) $(CFLAGS) libft/libft.a $(OBJS) -o $@
 
 clean:
 	$(RM) $(OBJS) $(DPNDS)
@@ -22,4 +22,4 @@ re: fclean all
 
 -include $(SRCS:.c=.d)
 
-.PHONY: all clean fclean bonus re 
+.PHONY: all clean fclean bonus re

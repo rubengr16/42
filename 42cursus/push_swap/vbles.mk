@@ -38,11 +38,11 @@ RM		=			-rm -f
 
 AR		=			ar rcs
 
-CFLAGS	=			-Wall -Werror -Wextra -MD -g
+CFLAGS	=			-Wall -Werror -Wextra -MD
 
 LDFLAGS	=			$(LIBFTNAME)
 
-NAME	=			push_swap	
+NAME	=			push_swap
 
 INC_ALL	=			\
 					$(INC_DIR) \

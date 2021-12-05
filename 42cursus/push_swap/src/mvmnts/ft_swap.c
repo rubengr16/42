@@ -74,7 +74,7 @@ void	ft_swap_ab(t_queue *a, t_queue *b)
 	if (ft_swap_queue(a))
 	{
 		if (ft_swap_queue(b))
-			ft_putstr_fd("ss", 1);
+			ft_putendl_fd("ss", 1);
 		else
 			ft_swap_queue(b);
 	}
