@@ -9,7 +9,7 @@ $(LIBFTNAME):
 	$(MAKE) -C $(LIBFT)
 
 $(NAME): $(OBJS) $(LIBFTNAME)
-	$(CC) $(CFLAGS) libft/libft.a $(OBJS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFTNAME) -o $@
 
 clean:
 	$(RM) $(OBJS) $(DPNDS)
