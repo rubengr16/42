@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>       +#+  +:+       +#+    */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/03 20:36:05 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/08 14:42:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 #include "libft.h"
 
 int	ft_strisdigit(char *str);
+int	ft_setisdigit(char **set);
 
 #endif
