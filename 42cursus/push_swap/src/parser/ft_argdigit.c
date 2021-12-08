@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_argalpha.c                                      :+:      :+:    :+:   */
+/*   ft_argdigit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/08 14:41:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/08 14:51:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_setisdigit(char **set)
 
 	if (set)
 	{
-		cnt = 0;
+		cnt = 1;
 		while (set[cnt] && ft_strisdigit(set[cnt]))
 			cnt++;
 		if (!set[cnt])
