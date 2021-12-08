@@ -1,10 +1,12 @@
-SRC_DIR =			src/
+SRC_DIR	=			src/
 
-INC_DIR =			inc/
+INC_DIR	=			inc/
 
-QUEUE_DIR =			queue/
+QUEUE_DIR	=			queue/
 
-MVMNTS_DIR =		mvmnts/
+MVMNTS_DIR	=		mvmnts/
+
+PARSER_DIR	=		parser/
 
 QUEUE	=			\
 					$(addprefix $(QUEUE_DIR), \
@@ -23,9 +25,15 @@ MVMNTS	=			\
 					ft_swap.c \
 					)
 
+PARSER	=			\
+					$(addprefix $(PARSER_DIR), \
+					ft_argdigit.c \
+					)
+
 SRCS	= 			$(addprefix $(SRC_DIR), \
 					$(QUEUE) \
 					$(MVMNTS) \
+					$(PARSER) \
 					)
 
 OBJS	=			$(SRCS:.c=.o)
