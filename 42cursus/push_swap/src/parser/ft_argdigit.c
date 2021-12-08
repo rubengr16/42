@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/08 14:51:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:54:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_strisdigit(char  *str)
 	if (str)
 	{
 		cnt = 0;
-		while (str[cnt] && ft_isdigit(str[cnt]))
+		while (str[cnt] && (ft_isdigit(str[cnt]) || str[cnt] == ' '))
 			cnt++;
 		if (!str[cnt])
 			return (1);
@@ -45,7 +45,7 @@ int	ft_setisdigit(char **set)
 
 	if (set)
 	{
-		cnt = 1;
+		cnt = 0;
 		while (set[cnt] && ft_strisdigit(set[cnt]))
 			cnt++;
 		if (!set[cnt])
