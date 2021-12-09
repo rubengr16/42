@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 14:55:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/09 23:28:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	main(int argc, char **argv)
 					aux = aux->next;
 					cnt++;
 				}
+				ft_queuedelall(a);
+				ft_queuedelall(b);
 			}
 		}
 		else
@@ -46,7 +48,5 @@ int	main(int argc, char **argv)
 	}
 	else
 		printf("More arguments please\n");
-	ft_queuedelall(a);
-	ft_queuedelall(b);
 	return (0);
 }

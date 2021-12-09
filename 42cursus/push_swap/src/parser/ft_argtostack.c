@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 14:49:24 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/09 23:27:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	ft_settostack(t_queue *queue, char	**set)
 			}
 			else
 			{
-				ft_queueadd_front_num(queue, nb);
+				ft_queueadd_back_num(queue, nb);
 				cnt++;
 			}
 		}
