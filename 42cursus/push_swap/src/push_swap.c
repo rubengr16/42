@@ -1,0 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
+/*   Updated: 2021/12/09 14:55:21 by rgallego         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include "queue.h"
+#include "mvmnts.h"
+#include "parser.h"
+
+int	main(int argc, char **argv)
+{
+	t_queue	*a;
+	t_queue	*b;
+	t_node	*aux;
+	int		cnt;
+
+	if (argc > 1)
+	{
+		if (ft_setisdigit(&argv[1]))
+		{
+			a = ft_queueinit();
+			b = ft_queueinit();
+			if (a && b)
+			{
+				ft_argtostack(a, &argv[1]);
+				cnt = 0;
+				aux = a->head;
+				while (cnt < a->n_elem)
+				{
+					printf("Elem %d: %d\n", cnt, aux->num);
+					aux = aux->next;
+					cnt++;
+				}
+			}
+		}
+		else
+			printf("Nay, bad input\n");
+	}
+	else
+		printf("More arguments please\n");
+	ft_queuedelall(a);
+	ft_queuedelall(b);
+	return (0);
+}
