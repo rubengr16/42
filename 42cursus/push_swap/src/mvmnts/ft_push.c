@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:27:40 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/03 20:36:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/09 14:36:07 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_push_queue(t_queue *dst, t_queue *src)
 {
 	if (src->n_elem)
 	{
-		ft_queueadd_front(ft_queuepop(src), dst);
+		ft_queueadd_front(dst, ft_queuepop(src));
 		return (1);
 	}
 	else
