@@ -8,14 +8,15 @@ MVMNTS_DIR	=		mvmnts/
 
 PARSER_DIR	=		parser/
 
+PUSH_SWAP	=		push_swap.c
+
 QUEUE	=			\
 					$(addprefix $(QUEUE_DIR), \
 					ft_queueinit.c \
 					ft_queueadd.c \
 					ft_queuedel.c \
 					ft_queuepop.c \
-					) \
-					test/test_queue.c
+					)
 
 MVMNTS	=			\
 					$(addprefix $(MVMNTS_DIR), \
@@ -28,12 +29,14 @@ MVMNTS	=			\
 PARSER	=			\
 					$(addprefix $(PARSER_DIR), \
 					ft_argdigit.c \
+					ft_argtostack.c \
 					)
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
 					$(QUEUE) \
 					$(MVMNTS) \
 					$(PARSER) \
+					$(PUSH_SWAP) \
 					)
 
 OBJS	=			$(SRCS:.c=.o)
