@@ -57,7 +57,7 @@ OBJS	=			$(SRCS:.c=.o)
 
 OBJSBONUS	=		$(SRCSBONUS:.c=.o)
 
-DPNDS	=			$(SRC:.c=.d)
+DPNDS	=			$(SRCS:.c=.d)
 
 DPNDSBONUS	=		$(SRCSBONUS:.c=.o)
 

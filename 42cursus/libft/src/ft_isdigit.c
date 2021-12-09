@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   isdigit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:11:27 by rgallego          #+#    #+#             */
 /*   Updated: 2021/09/13 13:53:59 by rgallego         ###   ########.fr       */
@@ -12,6 +12,12 @@
 
 #include "libft.h"
 
+
+/*
+ * function which receives a character and decides if it is a digit
+ * INPUT:	int c
+ * OUTPUT:	int
+ */
 int	ft_isdigit(int c)
 {
 	int	digit;
