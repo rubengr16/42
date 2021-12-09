@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 13:45:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/09 14:07:07 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ t_node	*ft_newnode(int num)
 
 /*
  * function which inserts a node received as argument at the back of a queue
- * INPUT:	t_node *node, t_queue *queue
+ * INPUT:	t_queue *queue, t_node *node
  * OUTPUT:	void
  */
-void	ft_queueadd_back(t_node *node, t_queue *queue)
+void	ft_queueadd_back(t_queue *queue, t_node *node)
 {
 	if (!queue->n_elem)
 		queue->head = node;
@@ -61,10 +61,10 @@ void	ft_queueadd_back(t_node *node, t_queue *queue)
 /*
  * function which creates a node with the received number as argument and
  * inserts it at the back of a queue
- * INPUT:	int num, t_queue *queue
+ * INPUT:	t_queue *queue, int num
  * OUTPUT:	void
  */
-void	ft_queueadd_back_num(int num, t_queue *queue)
+void	ft_queueadd_back_num(t_queue *queue, int num)
 {
 	t_node	*aux;
 
@@ -75,10 +75,10 @@ void	ft_queueadd_back_num(int num, t_queue *queue)
 
 /*
  * function which inserts a node received as argument at the front of a queue
- * INPUT:	t_node *node, t_queue *queue
+ * INPUT:	t_queue *queue, t_node *node
  * OUTPUT:	void
  */
-void	ft_queueadd_front(t_node *node, t_queue *queue)
+void	ft_queueadd_front(t_queue *queue, t_node *node)
 {
 	ft_queueadd_back(node, queue);
 	queue->head = node;
@@ -87,10 +87,10 @@ void	ft_queueadd_front(t_node *node, t_queue *queue)
 /*
  * function which creates a node with the received number as argument and
  * inserts it at the front of a queue
- * INPUT:	int num, t_queue *queue
+ * INPUT:	t_queue *queue, int num
  * OUTPUT:	void
  */
-void	ft_queueadd_front_num(int num, t_queue *queue)
+void	ft_queueadd_front_num(t_queue *queue, int num)
 {
 	t_node	*aux;
 
