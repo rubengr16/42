@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 13:26:28 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/30 14:43:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/09 13:55:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+ * function which receives a string and transforms it to int.
+ * INPUT:	const char *s
+ * OUTPUT:	int	:	N	the string represents a number in int's range
+ *					0	the number represented is lower than INT_MIN
+ *					-1	the number is greater than INT_MAX
+ */
 
 int	ft_atoi(const char *s)
 {
