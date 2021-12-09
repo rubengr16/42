@@ -6,15 +6,15 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/03 20:36:05 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/09 13:45:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "queue.h"
 
 /*
- * function which a new node and establishes its value to num and its pointer
- * to NULL
+ * function which receives a new node and establishes its value to num and its
+ * pointer to NULL
  * INPUT:	int num
  * OUTPUT:	t_node
  */
