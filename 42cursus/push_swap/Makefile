@@ -20,6 +20,4 @@ fclean: clean
 
 re: fclean all
 
--include $(SRCS:.c=.d)
-
 .PHONY: all clean fclean bonus re
