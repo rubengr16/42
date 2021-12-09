@@ -6,11 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 14:08:18 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/09 14:37:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "parser.h"
 
 /*
  * function which decides if a string is only numerical

@@ -6,9 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 14:17:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/09 14:49:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "parser.h"
 
 /*
  * function which receives a set of strings and tranforms each one to int and
@@ -51,9 +53,12 @@ void	ft_argtostack(t_queue *queue, char **argv)
 		cnt = 0;
 		while (cnt >= 0 && argv[cnt])
 		{
-			set = ft_split(argv[cnt]);
+			set = ft_split(argv[cnt], ' ');
 			if (set)
+			{
 				ft_settostack(queue, set);
+				cnt++;
+			}
 			else
 			{
 				ft_queuedelall(queue);
