@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 18:47:23 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/03 19:31:34 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/09 14:37:07 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ t_queue	*ft_queueinit(void)
 	t_queue	*queue;
 
 	queue = malloc(sizeof(t_queue));
-	queue->head = NULL;
-	queue->n_elem = 0;
+	if (queue)
+	{
+		queue->head = NULL;
+		queue->n_elem = 0;
+	}
 	return (queue);
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 14:07:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/09 14:34:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_queueadd_back_num(t_queue *queue, int num)
 
 	aux = ft_newnode(num);
 	if (aux)
-		ft_queueadd_back(aux, queue);
+		ft_queueadd_back(queue, aux);
 }
 
 /*
@@ -80,7 +80,7 @@ void	ft_queueadd_back_num(t_queue *queue, int num)
  */
 void	ft_queueadd_front(t_queue *queue, t_node *node)
 {
-	ft_queueadd_back(node, queue);
+	ft_queueadd_back(queue, node);
 	queue->head = node;
 }
 
@@ -96,5 +96,5 @@ void	ft_queueadd_front_num(t_queue *queue, int num)
 
 	aux = ft_newnode(num);
 	if (aux)
-		ft_queueadd_front(aux, queue);
+		ft_queueadd_front(queue, aux);
 }
