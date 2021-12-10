@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/24 22:46:04 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/10 20:59:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ static int	ft_swap_queue(t_queue *queue)
 		return (0);
 }
 
- /*
+/*
  * function which makes the swap in the queue a
  * INPUT:	t_queue *a
  * OUTPUT:	void
- */ 
+ */
 void	ft_swap_a(t_queue *a)
 {
 	if (ft_swap_queue(a))
@@ -57,18 +57,18 @@ void	ft_swap_a(t_queue *a)
  * function which makes the swap in the queue b
  * INPUT:	t_queue *b
  * OUTPUT:	void
- */ 
+ */
 void	ft_swap_b(t_queue *b)
 {
 	if (ft_swap_queue(b))
 		ft_putendl_fd("sb", 1);
 }
 
- /*
+/*
  * function which makes the swap in the queue a and also in the queue b
  * INPUT:	t_queue *a, t_queue *b
  * OUTPUT:	void
- */ 
+ */
 void	ft_swap_ab(t_queue *a, t_queue *b)
 {
 	if (ft_swap_queue(a))

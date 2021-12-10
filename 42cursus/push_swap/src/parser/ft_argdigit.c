@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 14:37:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/10 20:56:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * OUTPUT:	int	:	1	numerical
  *					0	non numerical
  */
-static int	ft_strisdigit(char  *str)
+static int	ft_strisdigit(char *str)
 {
 	int	cnt;
 

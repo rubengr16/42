@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 23:27:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/10 20:56:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_argtostack(t_queue *queue, char **argv)
 {
 	char	**set;
 	int		cnt;
-	
+
 	if (argv)
 	{
 		cnt = 0;
