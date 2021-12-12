@@ -49,7 +49,7 @@ RM		=			-rm -f
 
 AR		=			ar rcs
 
-CFLAGS	=			-Wall -Werror -Wextra -MD
+CFLAGS	=			-Wall -Werror -Wextra -MD -g
 
 LDFLAGS	=			$(LIBFTNAME)
 

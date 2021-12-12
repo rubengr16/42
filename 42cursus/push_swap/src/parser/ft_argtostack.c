@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/11 15:18:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/13 00:20:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	ft_argtostack(t_queue *queue, char **argv)
 			else
 				cnt = -1;
 		}
+		printf("\nn_elem: %d, head->num: %d", queue->n_elem, queue->head->num);
 		if (cnt == -1)
 		{
 			printf("hello");
