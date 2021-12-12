@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_queueadd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 14:34:58 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/13 00:31:42 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

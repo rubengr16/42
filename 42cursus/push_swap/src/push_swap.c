@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/13 00:14:24 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/13 00:37:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	main(int argc, char **argv)
 {
 	t_queue	*a;
 	t_queue	*b;
-	//t_node	*aux;
-	//int		cnt;
+	t_node	*aux;
+	int		cnt;
 
 	if (argc > 1)
 	{
@@ -30,9 +30,8 @@ int	main(int argc, char **argv)
 			b = ft_queueinit();
 			if (a && b)
 			{
-				ft_argtostack(a, &argv[1]);
-				printf("\n%d", a->head->num);
-		/*		if (a)
+				ft_argtostack(&a, &argv[1]);
+				if (a)
 				{
 					cnt = 0;
 					aux = a->head;
@@ -42,12 +41,10 @@ int	main(int argc, char **argv)
 						aux = aux->next;
 						cnt++;
 					}
-					//ft_queuedelall(a);
-				}*/
-				//if (a)
-				//	ft_queuedelall(a);
+					ft_queuedelall(&a);
+				}
 				if (b)
-					ft_queuedelall(b);
+					ft_queuedelall(&b);
 			}
 		}
 		else

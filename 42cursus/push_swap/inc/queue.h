@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:05:19 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 14:05:30 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/13 00:32:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	ft_queueadd_front(t_queue *queue, t_node *node);
 void	ft_queueadd_front_num(t_queue *queue, int num);
 t_node	*ft_queuepop(t_queue *queue);
 void	ft_queuedelone(t_queue *queue);
-void	ft_queuedelall(t_queue *queue);
+void	ft_queuedelall(t_queue **queue);
 
 #endif
