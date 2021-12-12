@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:32:30 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/13 00:36:13 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/13 00:39:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_queuedelone(t_queue *queue)
 }
 
 /* function which deletes a queue
- * INPUT: 	t_queue *queue
+ * INPUT: 	t_queue **queue
  * OUTPUT:	void
  */
 void	ft_queuedelall(t_queue **queue)
