@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_queueinit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 18:47:23 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 14:37:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/11 14:36:09 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

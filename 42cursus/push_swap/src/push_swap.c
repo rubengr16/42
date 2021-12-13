@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 23:28:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/13 00:37:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,21 @@ int	main(int argc, char **argv)
 			b = ft_queueinit();
 			if (a && b)
 			{
-				ft_argtostack(a, &argv[1]);
-				cnt = 0;
-				aux = a->head;
-				while (cnt < a->n_elem)
+				ft_argtostack(&a, &argv[1]);
+				if (a)
 				{
-					printf("Elem %d: %d\n", cnt, aux->num);
-					aux = aux->next;
-					cnt++;
+					cnt = 0;
+					aux = a->head;
+					while (cnt < a->n_elem)
+					{
+						printf("Elem %d: %d\n", cnt, aux->num);
+						aux = aux->next;
+						cnt++;
+					}
+					ft_queuedelall(&a);
 				}
-				ft_queuedelall(a);
-				ft_queuedelall(b);
+				if (b)
+					ft_queuedelall(&b);
 			}
 		}
 		else

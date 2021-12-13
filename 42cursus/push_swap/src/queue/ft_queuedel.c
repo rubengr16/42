@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_queuedel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:32:30 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/03 20:35:59 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/13 00:39:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "queue.h"
 
 /* function which deletes the first node of a queue
@@ -24,13 +23,14 @@ void	ft_queuedelone(t_queue *queue)
 }
 
 /* function which deletes a queue
- * INPUT: 	t_queue *queue
+ * INPUT: 	t_queue **queue
  * OUTPUT:	void
  */
-void	ft_queuedelall(t_queue *queue)
+void	ft_queuedelall(t_queue **queue)
 {
-	while (queue->n_elem)
-		ft_queuedelone(queue);
-	queue->head = NULL;
-	free(queue);
+	while ((*queue)->n_elem)
+		ft_queuedelone(*queue);
+	(*queue)->head = NULL;
+	free(*queue);
+	*queue = NULL;
 }
