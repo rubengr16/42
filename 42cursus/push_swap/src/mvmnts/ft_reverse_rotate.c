@@ -1,21 +1,21 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/21 19:17:16 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/24 22:04:32 by rgallego         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+	/* ************************************************************************** */
+	/*                                                                            */
+	/*                                                        :::      ::::::::   */
+	/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
+	/*                                                    +:+ +:+         +:+     */
+	/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+	/*                                                +#+#+#+#+#+   +#+           */
+	/*   Created: 2021/11/21 19:17:16 by rgallego          #+#    #+#             */
+/*   Updated: 2021/12/17 19:49:49 by rgallego         ###   ########.fr       */
+	/*                                                                            */
+	/* ************************************************************************** */
 
 #include "mvmnts.h"
 
-/*
- * function which reverse rotates a queue. This means that the last element
- * of your queue will be the first one
- * INPUT:	t_queue *queue
+	/*
+	 * function which reverse rotates a queue. This means that the last element
+	 * of your queue will be the first one
+	 * INPUT:	t_queue *queue
  * OUTPUT:	int	:	1	reverse rotate is fullfilled
  * 					0	reverse rotate has failed
  */

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/13 00:37:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/17 20:12:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,27 @@
 #include "queue.h"
 #include "mvmnts.h"
 #include "parser.h"
+#include "algorithm.h"
+
+void	printqueue(t_queue *queue)
+{
+	t_node	*aux;
+	int		cnt;
+
+	cnt = 0;
+	aux = queue->head;
+	while (cnt < queue->n_elem)
+	{
+		printf("Elem %d: %d\n", cnt, aux->num);
+		aux = aux->next;
+		cnt++;
+	}
+}
 
 int	main(int argc, char **argv)
 {
 	t_queue	*a;
 	t_queue	*b;
-	t_node	*aux;
-	int		cnt;
 
 	if (argc > 1)
 	{
@@ -33,14 +47,9 @@ int	main(int argc, char **argv)
 				ft_argtostack(&a, &argv[1]);
 				if (a)
 				{
-					cnt = 0;
-					aux = a->head;
-					while (cnt < a->n_elem)
-					{
-						printf("Elem %d: %d\n", cnt, aux->num);
-						aux = aux->next;
-						cnt++;
-					}
+					printqueue(a);
+					ft_sortbase_a(a);
+					printqueue(a);
 					ft_queuedelall(&a);
 				}
 				if (b)

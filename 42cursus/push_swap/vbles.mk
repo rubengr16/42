@@ -2,11 +2,13 @@ SRC_DIR	=			src/
 
 INC_DIR	=			inc/
 
-QUEUE_DIR	=			queue/
+QUEUE_DIR	=		queue/
 
 MVMNTS_DIR	=		mvmnts/
 
 PARSER_DIR	=		parser/
+
+ALGORITHM_DIR	=	algorithm/
 
 PUSH_SWAP	=		push_swap.c
 
@@ -32,10 +34,17 @@ PARSER	=			\
 					ft_argtostack.c \
 					)
 
+ALGORITHM	=		\
+					$(addprefix $(ALGORITHM_DIR), \
+					ft_comprobations.c \
+					ft_mysort.c \
+					)
+
 SRCS	= 			$(addprefix $(SRC_DIR), \
 					$(QUEUE) \
 					$(MVMNTS) \
 					$(PARSER) \
+					$(ALGORITHM) \
 					$(PUSH_SWAP) \
 					)
 
@@ -49,7 +58,7 @@ RM		=			-rm -f
 
 AR		=			ar rcs
 
-CFLAGS	=			-Wall -Werror -Wextra -MD -g
+CFLAGS	=			-Wall -Werror -Wextra -MD
 
 LDFLAGS	=			$(LIBFTNAME)
 
