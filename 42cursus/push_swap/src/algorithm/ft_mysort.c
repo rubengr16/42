@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 20:00:20 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/17 20:12:05 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/17 20:39:30 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void	ft_sortbase_a(t_queue *a)
 			&& a->head->num > a->head->prvs->num)
 			ft_rotate_a(a);
 		if (!ft_issorted(a))
-			ft_swap_a(a);	
+			ft_swap_a(a);
 	}
 }

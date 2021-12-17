@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/13 00:33:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/17 20:42:23 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static int	ft_settostack(t_queue *queue, char	**set)
 		while (cnt >= 0 && set[cnt])
 		{
 			nb = ft_atoi(set[cnt]);
-			if (((!nb || nb == -1) && ft_strlen(set[cnt]) > 2) ||
-				ft_nbrepeated(queue, nb))
+			if (((!nb || nb == -1) && ft_strlen(set[cnt]) > 2)
+				|| ft_nbrepeated(queue, nb))
 				cnt = -1;
 			else
 			{
