@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_comprobations.c                                 :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 19:00:58 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/17 20:12:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/20 14:28:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,16 @@ int	ft_issorted(t_queue *queue)
 		return (1);
 	else
 		return (0);
+}
+
+void	ft_setsorted(t_queue *queue, int n)
+{
+	t_node	*aux;
+
+	aux = queue->head;
+	while (n)
+	{
+		aux->state = 0;
+		n--;
+	}
 }
