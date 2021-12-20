@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:27:40 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/17 20:40:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/20 15:29:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	ft_push_a(t_queue *a, t_queue *b)
 /*
  * function which moves the first element of a to insert it as the first one
  * of b
- * INPUT:	t_queue *b, t_queue *a
+ * INPUT:	t_queue *a, t_queue *b
  * OUTPUT:	void
  */
-void	ft_push_b(t_queue *b, t_queue *a)
+void	ft_push_b(t_queue *a, t_queue *b)
 {
 	if (ft_push_queue(b, a))
 		ft_putendl_fd("pb", 1);
