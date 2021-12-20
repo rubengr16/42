@@ -1,0 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_decisions.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/20 15:21:15 by rgallego          #+#    #+#             */
+/*   Updated: 2021/12/20 15:31:34 by rgallego         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "algorithm.h"
+
+int	ft_n_rot(t_queue	*queue, int avg)
+{
+	int		n_rot;
+	t_node	*aux;
+
+	n_rot = 0;
+	aux = queue->head;
+	while (aux->num > avg)
+	{
+		aux = aux->next;
+		n_rot++;
+	}
+	return (n_rot);
+}
+
+int	ft_n_revrot(t_queue	*queue, int avg)
+{
+	int		n_revrot;
+	t_node	*aux;
+
+	n_revrot = 0;
+	aux = queue->head;
+	while (aux->num > avg)
+	{
+		aux = aux->prvs;
+		n_revrot++;
+	}
+	return (n_revrot);
+}
+
+void	ft_rotpush(t_queue *a, t_queue *b, int avg, int lvl)
+{
+	while (queue->head->num > avg)
+		ft_rotate_a(a);
+	queue->head->state = lvl;
+	ft_push_b(a, b);
+}
+
+void	ft_revrotpush(t_queue *a, t_queue *b, int avg, int lvl)
+{
+	while (queue->head->num > avg)
+		ft_reverse_rotate_a(a);
+	queue->head->state = lvl;
+	ft_push_b(a, b);
+}

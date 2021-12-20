@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 19:00:58 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/20 14:28:15 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/20 15:31:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,39 @@ int	ft_issorted(t_queue *queue)
 		return (0);
 }
 
-void	ft_setsorted(t_queue *queue, int n)
+void	ft_setstate(t_queue *queue, int n_elem, int state)
 {
 	t_node	*aux;
 
 	aux = queue->head;
-	while (n)
+	while (n_elem)
 	{
-		aux->state = 0;
-		n--;
+		aux->state = state;
+		n_elem--;
 	}
+}
+
+int	ft_average(t_queue *queue)
+{
+	int		sum;
+	t_node	*aux;
+
+	sum = 0;
+	if (queue && queue->n_elem)
+	{
+		sum = queue->head->num;
+		if (n_elem > 1)
+		{
+			aux = queue->head->next;
+			while (aux != queue->head)
+			{
+				if (aux->state)
+					sum += aux->num;
+				aux = aux->next;
+			}
+		}
+		return (sum / queue->n_elem);
+	}
+	else
+		return (0);
 }
