@@ -36,7 +36,8 @@ PARSER	=			\
 
 ALGORITHM	=		\
 					$(addprefix $(ALGORITHM_DIR), \
-					ft_comprobations.c \
+					ft_utils.c \
+					ft_decisions.c \
 					ft_mysort.c \
 					)
 
