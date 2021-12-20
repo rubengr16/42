@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:05:19 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/17 20:29:10 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/20 15:30:04 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_swap_ab(t_queue *a, t_queue *b);
 
 /* **************************** PUSH FUNCTIONS ****************************** */
 void	ft_push_a(t_queue *a, t_queue *b);
-void	ft_push_b(t_queue *b, t_queue *a);
+void	ft_push_b(t_queue *a, t_queue *b);
 
 /* *************************** ROTATE FUNCTIONS ***************************** */
 int		ft_rotate_queue(t_queue *queue);
