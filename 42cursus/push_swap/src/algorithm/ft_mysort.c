@@ -6,15 +6,15 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 20:00:20 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/20 15:31:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:34:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algorithm.h"
 
-void	ft_sortbase(t_queue *queue)
+int	ft_sortbase(t_queue *queue, int state)
 {
-	if (!ft_issorted(queue))
+	if (!ft_issorted(queue, state))
 	{
 		if (queue->head->num < queue->head->next->num
 			&& queue->head->next->num > queue->head->prvs->num)
@@ -22,26 +22,45 @@ void	ft_sortbase(t_queue *queue)
 		else if (queue->head->next->num < queue->head->num
 			&& queue->head->num > queue->head->prvs->num)
 			ft_rotate_a(queue);
-		if (!ft_issorted(queue))
+		if (!ft_issorted(queue, state))
 			ft_swap_a(queue);
 	}
 	ft_setstate(queue, 3, 0);
+	return (1);
+}
+
+int	ft_pushbck(t_queue *a, t_queue *b, int lvl)
+{
+	if (b && b->n_elem)
+		while (b->head->state == lvl)
+			ft_push_a(a, b);
+	return (0);
 }
 
 void	ft_sortrecavg(t_queue *a, t_queue *b, int lvl)
 {
 	int	avg;
+	int	n_rot;
 
 	if (a->n_elem < 4)
-		ft_sortbase_a(a);
+	{
+		return (ft_sortbase(a, -1));
+	}
 	else
 	{
 		avg = ft_average(a);
-		if (ft_n_rot(a, avg) <= ft_n_revrot(a, avg))
-			ft_rotpush(a, b, avg, lvl);
+		n_rot = ft_n_rot(a, avg);
+		while (n_rot < a->n_elems)
+		{
+			if (n_rot <= ft_n_revrot(a, avg))
+				ft_rotpush(a, b, avg, lvl);
+			else
+				ft_revrotpush(a, b, avg, lvl);
+			n_rot = ft_n_rot(a, avg);
+		}
+		if (ft_sortrecavg(a, b, lvl + 1) && ft_count_lvl(b, lvl) < 4)
+			return (ft_pushbcksorted(a, b, lvl));
 		else
-			ft_revrotpush(a, b, avg, lvl);
-		ft_sortrecavg(a, b, lvl + 1);
+			return (ft_pushbck(a, b, lvl));
 	}
-
 }
