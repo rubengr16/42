@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:05:19 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/17 20:27:56 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/20 14:19:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 typedef struct s_node
 {
+	char			state;
 	int				num;
 	struct s_node	*next;
 	struct s_node	*prvs;
