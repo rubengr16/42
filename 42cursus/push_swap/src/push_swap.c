@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/17 20:12:03 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/20 15:52:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 				if (a)
 				{
 					printqueue(a);
-					ft_sortbase_a(a);
+					ft_sortbase(a, -1);
 					printqueue(a);
 					ft_queuedelall(&a);
 				}
