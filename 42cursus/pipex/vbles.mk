@@ -4,6 +4,7 @@ INC_DIR	=			inc/
 
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
+					utils.c \
 					pipex.c \
 					)
 

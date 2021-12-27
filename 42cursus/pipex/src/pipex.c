@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/27 19:54:47 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/27 21:04:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@
 int	main(int argc, char **argv, char **envp)
 {
 	int i = 0;
+	char *str;
 
 	(void)argc;
-	(void)argv;
+	while (argv[i])
+		printf("\n%s", argv[i++]);
+	printf("\n%s", argv[i]);
+	i = 0;
 	printf("%s\n\n", &envp[i][5]);
 	if (!envp[i])
 		printf("fuck u");
@@ -27,10 +31,12 @@ int	main(int argc, char **argv, char **envp)
 		printf("%s\n", envp[i]);
 		i++;
 	}
-	if (isvalidcmd(argv[1], envp))
+	str = isvalidcmd(argv[1], envp);
+	if (str)
 		printf("\nYay");
 	else
 		printf("\nNay");
+	system("leaks pipex");
 	return (0);
 }
 
@@ -43,14 +49,14 @@ int	main(int argc, char **argv, char **envp)
  * OUTPUT:	int	:	1	command is valid
  * 					0	invalid command
  */
-int	isvalidcmd(char *cmd, char **envp)
+char	*isvalidcmd(char *cmd, char **envp)
 {
 	int		cnt;
 	char	*path;
 	char	**set_of_paths;
 
 	cnt = 0;
-	while (envp[cnt]
+	while (envp[cnt] 
 		&& !ft_strnstr(envp[cnt], "PATH=", ft_strlen(envp[cnt]) - 5))
 		cnt++;
 	if (envp[cnt])
@@ -59,14 +65,17 @@ int	isvalidcmd(char *cmd, char **envp)
 		if (set_of_paths)
 		{
 			cnt = 0;
-			path = ft_strjoin(ft_strjoin(set_of_paths[cnt], "/"), cmd);
+			path = ft_strjoinsep(set_of_paths[cnt], cmd, "/");
 			while (set_of_paths[cnt] && access(path, X_OK))
 			{
+				printf("\n%s", path);
+				free(path);
 				cnt++;
-				path = ft_strjoin(ft_strjoin(set_of_paths[cnt], "/"), cmd);
+				path = ft_strjoinsep(set_of_paths[cnt], cmd, "/");
 			}
+			free_set(set_of_paths);
 			if (set_of_paths[cnt])
-				return (1);
+				return (path);
 		}
 	}
 	return (0);
