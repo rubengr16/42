@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/27 20:42:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/27 21:06:27 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_set(char **set)
 	free(set);
 }
 
-char	*ft_strjoinsep(char const *s1, char const *s2, char c)
+char	*ft_strjoinsep(char const *s1, char const *s2, char *c)
 {
 	int		len;
 	char	*s;
@@ -37,7 +37,7 @@ char	*ft_strjoinsep(char const *s1, char const *s2, char c)
 		if (s)
 		{
 			(void)ft_strlcpy(s, s1, len);
-			(void)ft_strlcat(s, &c, len);
+			(void)ft_strlcat(s, c, len);
 			(void)ft_strlcat(s, s2, len);
 		}
 		return (s);
