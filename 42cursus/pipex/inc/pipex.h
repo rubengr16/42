@@ -6,12 +6,14 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/30 17:42:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/30 22:32:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
+
+# define FLAG 1
 
 # include <unistd.h>
 # include <stdlib.h>

@@ -6,16 +6,48 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/30 18:06:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/30 23:20:31 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "pipex.h"
 
+void	separate_flag(char ****set_of_cmds, char **argv)
+{
+	*set_of_cmds = malloc(sizeof(char **) * 3);
+	(*set_of_cmds)[0] = ft_split(argv[2], ' ');
+	(*set_of_cmds)[1] = ft_split(argv[3], ' ');
+	(*set_of_cmds)[2] = NULL;
+}
+
 int	main(int argc, char **argv, char **envp)
 {
-	int i = 0;
+	char	***set_of_cmds;
+	//char	*path;
+	int		i = 0;
+	int		j = 0;
+
+	(void)envp;
+	if (argc == 5)
+	{
+		set_of_cmds = NULL;
+		separate_flag(&set_of_cmds, argv);
+		while (set_of_cmds[i])
+		{
+			j = 0;
+			while (set_of_cmds[i][j])
+			{
+				printf("\n%s", set_of_cmds[i][j]);
+				j++;
+			}
+			i++;
+		}
+		perror("Fuck u");
+		//path = isvalidcmd(set_of_cmds[0][0], envp);
+		//execve(path, &argv[2], envp);
+	}
+/*	int i = 0;
 	char *str;
 
 	(void)argc;
@@ -36,10 +68,15 @@ int	main(int argc, char **argv, char **envp)
 		printf("\nYay");
 	else
 		printf("\nNay");
-//	system("leaks pipex");
+	system("leaks pipex"); */
 	return (0);
 }
 
+/*
+ * function which searchs for the correct full path of the command if possible
+ * INPUT:	char **set_of_paths, char **path, char *cmd, int *cnt
+ * OUTPUT:	void
+ */
 static void	try_path(char **set_of_paths, char **path, char *cmd, int *cnt)
 {
 	*cnt = 0;
