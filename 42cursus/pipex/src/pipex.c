@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/27 21:04:58 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/30 18:06:06 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,20 @@ int	main(int argc, char **argv, char **envp)
 		printf("\nYay");
 	else
 		printf("\nNay");
-	system("leaks pipex");
+//	system("leaks pipex");
 	return (0);
+}
+
+static void	try_path(char **set_of_paths, char **path, char *cmd, int *cnt)
+{
+	*cnt = 0;
+	*path = ft_strjoinsep(set_of_paths[*cnt], cmd, "/");
+	while (set_of_paths[*cnt] && access(*path, X_OK))
+	{
+		free(*path);
+		(*cnt)++;
+		*path = ft_strjoinsep(set_of_paths[*cnt], cmd, "/");
+	}
 }
 
 /*
@@ -56,27 +68,22 @@ char	*isvalidcmd(char *cmd, char **envp)
 	char	**set_of_paths;
 
 	cnt = 0;
-	while (envp[cnt] 
-		&& !ft_strnstr(envp[cnt], "PATH=", ft_strlen(envp[cnt]) - 5))
+	while (envp[cnt]
+		&& !ft_strnstr(envp[cnt], "PATH=", 5))
 		cnt++;
 	if (envp[cnt])
 	{
 		set_of_paths = ft_split(&envp[cnt][5], ':');
 		if (set_of_paths)
 		{
-			cnt = 0;
-			path = ft_strjoinsep(set_of_paths[cnt], cmd, "/");
-			while (set_of_paths[cnt] && access(path, X_OK))
-			{
-				printf("\n%s", path);
-				free(path);
-				cnt++;
-				path = ft_strjoinsep(set_of_paths[cnt], cmd, "/");
-			}
+			try_path(set_of_paths, &path, cmd, &cnt);
 			free_set(set_of_paths);
-			if (set_of_paths[cnt])
-				return (path);
+			if (!set_of_paths[cnt])
+			{
+				free(path);
+				path = NULL;
+			}
 		}
 	}
-	return (0);
+	return (path);
 }

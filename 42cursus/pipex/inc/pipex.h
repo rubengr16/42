@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/27 21:05:17 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/30 17:42:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft.h" 
-
 
 /********************************* UTILS *********************************** */
 void	free_set(char **set);
