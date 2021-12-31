@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/30 23:20:31 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/31 12:05:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,38 @@ void	separate_flag(char ****set_of_cmds, char **argv)
 	(*set_of_cmds)[2] = NULL;
 }
 
+void	error_msg(int error)
+{
+	if (error == BAD_NB_ARGC)
+		ft_putendl_fd("Enter 4 arguments with the following structure:", 1);
+	ft_putendl_fd("./pipex file1 cmd1 cmd2 file2", 1);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	char	***set_of_cmds;
-	//char	*path;
+	char	*path;
 	int		i = 0;
 	int		j = 0;
 
 	(void)envp;
-	if (argc == 5)
+	if (argc != 5)
+		error_msg(BAD_NB_ARGC);
+	set_of_cmds = NULL;
+	separate_flag(&set_of_cmds, argv);
+	while (set_of_cmds[i])
 	{
-		set_of_cmds = NULL;
-		separate_flag(&set_of_cmds, argv);
-		while (set_of_cmds[i])
+		j = 0;
+		while (set_of_cmds[i][j])
 		{
-			j = 0;
-			while (set_of_cmds[i][j])
-			{
-				printf("\n%s", set_of_cmds[i][j]);
-				j++;
-			}
-			i++;
+			printf("\n%s", set_of_cmds[i][j]);
+			j++;
 		}
-		perror("Fuck u");
-		//path = isvalidcmd(set_of_cmds[0][0], envp);
-		//execve(path, &argv[2], envp);
+		i++;
 	}
+	//perror("Fuck u");
+	path = isvalidcmd(set_of_cmds[0][0], envp);
+	execve(path, set_of_cmds[0], envp);
 /*	int i = 0;
 	char *str;
 

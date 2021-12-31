@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/30 22:32:03 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/31 12:06:31 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PIPEX_H
 
 # define FLAG 1
+# define BAD_NB_ARGC 1
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -22,6 +23,7 @@
 /********************************* UTILS *********************************** */
 void	free_set(char **set);
 char	*ft_strjoinsep(char const *s1, char const *s2, char *c);
+void	error_msg(int	error);
 
 /********************************* PIPEX *********************************** */
 char	*isvalidcmd(char *cmd, char **envp);
