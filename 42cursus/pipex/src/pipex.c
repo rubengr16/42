@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/31 18:45:54 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/31 18:49:17 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,8 @@ int	main(int argc, char **argv, char **envp)
 					}
 					i++;
 				}
-				//perror("Fuck u");
 				execve(set_of_cmds[0][CMD], set_of_cmds[0], envp);
-			} 
+			}
 			else
 				error_msg(ERR_CMD, set_of_cmds[1][CMD]);
 		}
@@ -71,7 +70,6 @@ int	main(int argc, char **argv, char **envp)
 	}
 	else
 		error_msg(ERR_NB_ARGC, "");
-
 /*	
  *	int i = 0;
 	char *str;
