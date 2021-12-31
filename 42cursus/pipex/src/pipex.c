@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/31 18:49:17 by rgallego         ###   ########.fr       */
+/*   Updated: 2021/12/31 19:04:25 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	error_msg(int error, char *str)
 {
 	if (error == ERR_CMD)
 	{
+		perror("COMMAND NOT FOUND");
 		ft_putstr_fd(str, 1);
 		ft_putendl_fd(": command not found", 1);
+		ft_putendl_fd(strerror(ENOENT), 1);
 	}
 	else if (error == ERR_NB_ARGC)
 	{	
