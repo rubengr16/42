@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/01 22:26:42 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/01 23:09:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,6 @@ void	separate_flag(char ****set_of_cmds, char **argv)
 	(*set_of_cmds)[0] = ft_split(argv[2], ' ');
 	(*set_of_cmds)[1] = ft_split(argv[3], ' ');
 	(*set_of_cmds)[2] = NULL;
-}
-
-int	main(int argc, char **argv, char **envp)
-{
-	char	***set_of_cmds;
-	int		pid;
-
-	(void)envp;
-	if (argc == 5)
-	{
-		set_of_cmds = NULL;
-		separate_flag(&set_of_cmds, argv);
-		if (isvalidcmd(&(set_of_cmds[0][CMD]), envp))
-		{
-			if (isvalidcmd(&(set_of_cmds[1][CMD]), envp))
-			{
-				pid = fork();
-				if (!pid)
-					execve(set_of_cmds[0][CMD], set_of_cmds[0], envp);
-				execve(set_of_cmds[1][CMD], set_of_cmds[1], envp);
-				wait(NULL);
-			}
-			else
-				error_msg(ERR_CMD, set_of_cmds[1][CMD]);
-		}
-		else
-			error_msg(ERR_CMD, set_of_cmds[0][CMD]);
-	}
-	else
-		error_msg(ERR_NB_ARGC, "");
-	return (0);
 }
 
 /*
@@ -104,4 +73,41 @@ char	*isvalidcmd(char **cmd, char **envp)
 		}
 	}
 	return (path);
+}
+
+int	main(int argc, char **argv, char **envp)
+{
+	char	***set_of_cmds;
+	int		pipefd[2];
+	int		fout;
+	int		pid;
+
+	(void)envp;
+	if (argc == 5)
+	{
+		set_of_cmds = NULL;
+		separate_flag(&set_of_cmds, argv);
+		if (isvalidcmd(&(set_of_cmds[0][CMD]), envp))
+		{
+			if (isvalidcmd(&(set_of_cmds[1][CMD]), envp))
+			{
+				if (!pipe(pipefd))
+				{
+					pid = fork();
+					if (!pid)
+						execve(set_of_cmds[0][CMD], set_of_cmds[0], envp);
+					execve(set_of_cmds[1][CMD], set_of_cmds[1], envp);
+					wait(NULL);
+				}
+
+			}
+			else
+				error_msg(ERR_CMD, set_of_cmds[1][CMD]);
+		}
+		else
+			error_msg(ERR_CMD, set_of_cmds[0][CMD]);
+	}
+	else
+		error_msg(ERR_NB_ARGC, "");
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/01 22:24:50 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/01 23:02:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	error_msg(int error, char *str)
 {
 	if (error == ERR_CMD)
 		perror(str);
-	else if (error == ERR_NB_ARGC)
-	{	
+	else if (error == ERR_ARGC)
+	{
 		ft_putendl_fd("Please, enter 4 arguments with the structure:", 1);
 		ft_putendl_fd("./pipex file1 cmd1 cmd2 file2", 1);
 	}
