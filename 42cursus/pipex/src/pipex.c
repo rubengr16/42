@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/31 19:04:25 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/01 22:11:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,7 @@ void	separate_flag(char ****set_of_cmds, char **argv)
 void	error_msg(int error, char *str)
 {
 	if (error == ERR_CMD)
-	{
-		perror("COMMAND NOT FOUND");
-		ft_putstr_fd(str, 1);
-		ft_putendl_fd(": command not found", 1);
-		ft_putendl_fd(strerror(ENOENT), 1);
-	}
+		perror(str);
 	else if (error == ERR_NB_ARGC)
 	{	
 		ft_putendl_fd("Please, enter 4 arguments with the structure:", 1);
@@ -40,8 +35,7 @@ void	error_msg(int error, char *str)
 int	main(int argc, char **argv, char **envp)
 {
 	char	***set_of_cmds;
-	int		i = 0;
-	int		j = 0;
+	int		pid;
 
 	(void)envp;
 	if (argc == 5)
@@ -52,17 +46,10 @@ int	main(int argc, char **argv, char **envp)
 		{
 			if (isvalidcmd(&(set_of_cmds[1][CMD]), envp))
 			{
-				while (set_of_cmds[i])
-				{
-					j = 0;
-					while (set_of_cmds[i][j])
-					{
-						printf("\n%s", set_of_cmds[i][j]);
-						j++;
-					}
-					i++;
-				}
-				execve(set_of_cmds[0][CMD], set_of_cmds[0], envp);
+				pid = fork();
+				if (!pid)
+					execve(set_of_cmds[0][CMD], set_of_cmds[0], envp);
+				execve(set_of_cmds[1][CMD], set_of_cmds[1], envp);
 			}
 			else
 				error_msg(ERR_CMD, set_of_cmds[1][CMD]);
@@ -107,7 +94,7 @@ static void	try_path(char **set_of_paths, char **path, char *cmd, int *cnt)
 {
 	*cnt = 0;
 	*path = ft_strjoinsep(set_of_paths[*cnt], cmd, "/");
-	while (set_of_paths[*cnt] && access(*path, X_OK))
+	while (set_of_paths[*cnt] && access(*path, F_OK | X_OK))
 	{
 		free(*path);
 		(*cnt)++;
