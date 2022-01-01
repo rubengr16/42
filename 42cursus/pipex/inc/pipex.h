@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/01 22:23:04 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/01 22:28:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@
 # define ERR_CMD 1
 # define ERR_NB_ARGC 2
 
-# include <sys/wait.h> /*** pid_t wait(int *wsatus); ***/
-# include <errno.h> /*** error constants ***/
-# include <unistd.h> /*** pid_t fork(void); ***/
+# include <sys/wait.h> /*** pid_t	wait(int *wsatus); ***/
+# include <stdio.h> /*** void	perror(const char *s); ***/
+//# include <errno.h> /*** error	constants ***/
+# include <unistd.h> /*** pid_t	fork(void); ***/
 # include <stdlib.h>
 # include "libft.h"
 

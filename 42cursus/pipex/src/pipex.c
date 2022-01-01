@@ -6,11 +6,10 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/01 22:24:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/01 22:26:42 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "pipex.h"
 
 void	separate_flag(char ****set_of_cmds, char **argv)
