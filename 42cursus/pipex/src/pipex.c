@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/01 22:11:15 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/01 22:24:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,6 @@ void	separate_flag(char ****set_of_cmds, char **argv)
 	(*set_of_cmds)[0] = ft_split(argv[2], ' ');
 	(*set_of_cmds)[1] = ft_split(argv[3], ' ');
 	(*set_of_cmds)[2] = NULL;
-}
-
-void	error_msg(int error, char *str)
-{
-	if (error == ERR_CMD)
-		perror(str);
-	else if (error == ERR_NB_ARGC)
-	{	
-		ft_putendl_fd("Please, enter 4 arguments with the structure:", 1);
-		ft_putendl_fd("./pipex file1 cmd1 cmd2 file2", 1);
-	}
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -50,6 +39,7 @@ int	main(int argc, char **argv, char **envp)
 				if (!pid)
 					execve(set_of_cmds[0][CMD], set_of_cmds[0], envp);
 				execve(set_of_cmds[1][CMD], set_of_cmds[1], envp);
+				wait(NULL);
 			}
 			else
 				error_msg(ERR_CMD, set_of_cmds[1][CMD]);
@@ -59,29 +49,6 @@ int	main(int argc, char **argv, char **envp)
 	}
 	else
 		error_msg(ERR_NB_ARGC, "");
-/*	
- *	int i = 0;
-	char *str;
-
-	(void)argc;
-	while (argv[i])
-		printf("\n%s", argv[i++]);
-	printf("\n%s", argv[i]);
-	i = 0;
-	printf("%s\n\n", &envp[i][5]);
-	if (!envp[i])
-		printf("fuck u");
-	while (envp[i])
-	{
-		printf("%s\n", envp[i]);
-		i++;
-	}
-	str = isvalidcmd(argv[1], envp);
-	if (str)
-		printf("\nYay");
-	else
-		printf("\nNay");
-	system("leaks pipex"); */
 	return (0);
 }
 
