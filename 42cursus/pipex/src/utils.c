@@ -6,12 +6,24 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/02 02:08:58 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/02 02:21:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <stdio.h>
+
+void	free_set(char **set)
+{
+	int	i;
+
+	i = 0;
+	while (set[i])
+	{
+		free(set[i]);
+		i++;
+	}
+	free(set);
+}
 
 void	free_set_of_cmd(char ****set_of_cmds)
 {
@@ -45,19 +57,6 @@ void	error_msg(char ****set_of_cmds, char *str, int error)
 		perror(str);
 	free_set_of_cmd(set_of_cmds);
 	exit(error);
-}
-
-void	free_set(char **set)
-{
-	int	i;
-
-	i = 0;
-	while (set[i])
-	{
-		free(set[i]);
-		i++;
-	}
-	free(set);
 }
 
 char	*ft_strjoinsep(char const *s1, char const *s2, char *c)

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/02 01:57:59 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/02 02:20:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@
 # include "libft.h"
 
 /********************************* UTILS *********************************** */
-void	error_msg(char ****set_of_cmds, char *str, int error);
 void	free_set(char **set);
+void	free_set_of_cmd(char ****set_of_cmds)
+void	error_msg(char ****set_of_cmds, char *str, int error);
 char	*ft_strjoinsep(char const *s1, char const *s2, char *c);
 
 /********************************* PIPEX *********************************** */
