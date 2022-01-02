@@ -6,12 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/02 02:25:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/02 11:29:14 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <stdio.h>
 
 void	separate_flag(char ****set_of_cmds, char **argv)
 {
@@ -74,4 +73,18 @@ char	*isvalidcmd(char **cmd, char **envp)
 		}
 	}
 	return (path);
+}
+
+void	forking(char ***set_of_cmds, int *pipefd)
+{
+	//int	fdout;
+	int	pid;
+
+	pid = fork();
+	if (!pid)
+	{
+		close(pipefd[PIPE_RD]);
+		if (dup2(pipefd[PIPE_WR], STDOUT_FILENO))
+			error_msg(
+	}
 }
