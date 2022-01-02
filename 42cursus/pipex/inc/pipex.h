@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/02 14:41:45 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/02 15:38:42 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 /**************************** ERROR MANAGEMENT ***************************** */
 # define ERR_ARGC 1
 # define ERR_ENVP 2
-# define ERR_CMD 3
-# define ERR_PIPE 4
+# define ERR_MALLOC 3
+# define ERR_CMD 4
+# define ERR_PIPE 5
 
 /***************************** PIPE MANAGEMENT ***************************** */
 # define PIPE_RD 0
@@ -47,13 +48,13 @@ typedef struct s_args
 
 /********************************* UTILS *********************************** */
 void	free_set(char **set);
-void	free_set_of_cmd(char ****set_of_cmds);
-void	error_msg(char ****set_of_cmds, char *str, int error);
+void	free_set_of_cmd(t_args args);
+void	error_msg(t_args args, char *str, int error);
+void	separate_flag(t_args *args, char **argv, int argc);
 char	*ft_strjoinsep(char const *s1, char const *s2, char *c);
 
 /********************************* PIPEX *********************************** */
-void	separate_flag(char ****set_of_cmds, char **argv);
 char	*isvalidcmd(char **cmd, char **envp);
-void	forking(char ***set_of_cmds, int *pipefd);
+//void	forking(char ***set_of_cmds, int *pipefd);
 
 #endif
