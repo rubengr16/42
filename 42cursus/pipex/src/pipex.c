@@ -6,19 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/02 11:29:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/02 14:47:54 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-void	separate_flag(char ****set_of_cmds, char **argv)
-{
-	*set_of_cmds = malloc(sizeof(char **) * 3);
-	(*set_of_cmds)[0] = ft_split(argv[2], ' ');
-	(*set_of_cmds)[1] = ft_split(argv[3], ' ');
-	(*set_of_cmds)[2] = NULL;
-}
 
 /*
  * function which searchs for the correct full path of the command if possible
@@ -75,7 +67,7 @@ char	*isvalidcmd(char **cmd, char **envp)
 	return (path);
 }
 
-void	forking(char ***set_of_cmds, int *pipefd)
+/*void	forking(char ***set_of_cmds, int *pipefd)
 {
 	//int	fdout;
 	int	pid;
@@ -87,4 +79,4 @@ void	forking(char ***set_of_cmds, int *pipefd)
 		if (dup2(pipefd[PIPE_WR], STDOUT_FILENO))
 			error_msg(
 	}
-}
+}*/
