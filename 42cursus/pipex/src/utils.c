@@ -6,21 +6,44 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/01 23:02:51 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/02 02:08:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include <stdio.h>
 
-void	error_msg(int error, char *str)
+void	free_set_of_cmd(char ****set_of_cmds)
 {
-	if (error == ERR_CMD)
-		perror(str);
-	else if (error == ERR_ARGC)
+	int	i;
+	int	j;
+
+	j = 0;
+	while ((*set_of_cmds)[j])
+	{
+		i = 0;
+		while ((*set_of_cmds)[j][i])
+		{
+			free((*set_of_cmds)[j][i]);
+			i++;
+		}
+		free((*set_of_cmds)[j]);
+		j++;
+	}
+}
+
+void	error_msg(char ****set_of_cmds, char *str, int error)
+{
+	if (error == ERR_ARGC)
 	{
 		ft_putendl_fd("Please, enter 4 arguments with the structure:", 1);
-		ft_putendl_fd("./pipex file1 cmd1 cmd2 file2", 1);
+		ft_putendl_fd("./pipex <file1> <cmd1> <cmd2> <file2>", 1);
 	}
+	else if (error == ERR_ENVP)
+		ft_putendl_fd("Please, enable the environment variables", 1);
+	else if (error == ERR_CMD || error == ERR_PIPE)
+		perror(str);
+	free_set_of_cmd(set_of_cmds);
 	exit(error);
 }
 

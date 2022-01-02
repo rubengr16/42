@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/01 23:09:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/02 01:57:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # define FLAG 1
 
 /**************************** ERROR MANAGEMENT ***************************** */
-# define ERR_CMD 1
-# define ERR_ARGC 2
+# define ERR_ARGC 1
+# define ERR_ENVP 2
+# define ERR_CMD 3
+# define ERR_PIPE 4
 
 /***************************** PIPE MANAGEMENT ***************************** */
 # define PIPE_RD 0
@@ -35,7 +37,7 @@
 # include "libft.h"
 
 /********************************* UTILS *********************************** */
-void	error_msg(int error, char *str);
+void	error_msg(char ****set_of_cmds, char *str, int error);
 void	free_set(char **set);
 char	*ft_strjoinsep(char const *s1, char const *s2, char *c);
 
