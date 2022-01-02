@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/02 11:29:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/02 14:41:45 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@
 						  int pipe(int pipefd[2]); ***/
 # include <stdlib.h>
 # include "libft.h"
+
+/*****************************  *********************************** */
+typedef struct s_args
+{
+	int		fdin;
+	int		fdout;
+	int		n_cmds;
+	char	***set_of_cmds;
+}	t_args;
 
 /********************************* UTILS *********************************** */
 void	free_set(char **set);
