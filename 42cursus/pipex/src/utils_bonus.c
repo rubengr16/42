@@ -6,11 +6,12 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/21 14:04:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/21 12:44:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include <stdio.h>
 
 void	free_set(char **set)
 {
@@ -33,19 +34,24 @@ void	free_set_of_cmd(t_args args)
 	int	i;
 	int	j;
 
-	j = 0;
-	while (args.cmds[j])
+	if (args)
 	{
-		i = 0;
-		while (args.cmds[j][i])
+		j = 0;
+		while ((args.set_of_cmds)[j])
 		{
-			free(args.cmds[j][i]);
-			i++;
+			i = 0;
+			printf("i = %i, j = %i", i, j);
+			while ((args.set_of_cmds)[j][i])
+			{
+				free((args.set_of_cmds)[j][i]);
+				i++;
+				printf("i = %i, j = %i", i, j);
+			}
+			free(set_of_cmds[j]);
+			j++;
+			printf("i = %i, j = %i", i, j);
 		}
-		free(args.cmds[j]);
-		j++;
 	}
-	free(args.cmds);
 }
 
 void	error_msg(t_args args, char *str, int error)
@@ -60,18 +66,21 @@ void	error_msg(t_args args, char *str, int error)
 	else if (error == ERR_MALLOC || error == ERR_CMD || error == ERR_PIPE)
 		perror(str);
 	free_set_of_cmd(args);
-	//exit(error);
+	exit(error);
 }
 
-void	separate_flag(t_args *args, char **argv)
+void	separate_flag(t_args *args, char **argv, int argc)
 {
 	int	i;
 	int	cnt;
 
-	i = 2;
+	if (argc == 6)
+		i = 3;
+	else
+		i = 2;
 	cnt = 0;
-	args->n_cmds = 2;
-	args->cmds = malloc(sizeof(char **) * (args->n_cmds + 1));
+	args->n_cmds = argc - i;
+	args->cmds = malloc(sizeof(char **) * (args->n_cmds));
 	if (args->cmds)
 	{
 		while(cnt < args->n_cmds)
@@ -80,7 +89,6 @@ void	separate_flag(t_args *args, char **argv)
 			i++;
 			cnt++;
 		}
-		args->cmds[cnt] = NULL;
 	}
 }
 

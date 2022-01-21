@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/02 14:47:54 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/21 14:04:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,23 @@
  * INPUT:	char **set_of_paths, char **path, char *cmd, int *cnt
  * OUTPUT:	void
  */
-static void	try_path(char **set_of_paths, char **path, char *cmd, int *cnt)
+static char	*try_path(char **set_of_paths, char *cmd)
 {
-	*cnt = 0;
-	*path = ft_strjoinsep(set_of_paths[*cnt], cmd, "/");
-	while (set_of_paths[*cnt] && access(*path, F_OK | X_OK))
+	char	*path;
+	int		cnt;
+	
+	cnt = 0;
+	path = ft_strjoinsep(set_of_paths[cnt], cmd, "/");
+	while (set_of_paths[cnt] && access(path, F_OK | X_OK))
 	{
-		free(*path);
-		(*cnt)++;
-		*path = ft_strjoinsep(set_of_paths[*cnt], cmd, "/");
+		free(path);
+		cnt++;
+		path = ft_strjoinsep(set_of_paths[cnt], cmd, "/");
 	}
+	if (set_of_paths[cnt])
+		return (path);
+	free(path);
+	return (NULL);
 }
 
 /*
@@ -48,23 +55,18 @@ char	*isvalidcmd(char **cmd, char **envp)
 	path = NULL;
 	while (envp[cnt] && !ft_strnstr(envp[cnt], "PATH=", 5))
 		cnt++;
-	if (envp[cnt])
-	{
-		set_of_paths = ft_split(&envp[cnt][5], ':');
-		if (set_of_paths)
-		{
-			try_path(set_of_paths, &path, *cmd, &cnt);
-			free_set(set_of_paths);
-			if (!set_of_paths[cnt])
-			{
-				free(path);
-				path = NULL;
-			}
-			else
-				*cmd = path;
-		}
-	}
-	return (path);
+	if (!envp[cnt])
+		return (NULL);
+	set_of_paths = ft_split(&envp[cnt][5], ':');
+	if (!set_of_paths)
+		return (NULL);
+	path = try_path(set_of_paths, *cmd);
+	free_set(set_of_paths);
+	if (!path)
+		return (NULL);
+	free(*cmd);
+	*cmd = path;
+	return (*cmd);
 }
 
 /*void	forking(char ***set_of_cmds, int *pipefd)
