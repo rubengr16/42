@@ -6,12 +6,18 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 13:26:28 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/30 14:43:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/29 15:49:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+ * function which receives a new node and establishes its value to num and its
+ * pointer to NULL
+ * INPUT:	int num
+ * OUTPUT:	t_node
+ */
 int	ft_atoi(const char *s)
 {
 	int					sign;
