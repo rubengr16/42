@@ -7,7 +7,7 @@ It is a function which reproduces the original printf found in the
 ### Mandatory Part
 
 
-* ```int	ft_atoi(const cahr *s)```: function which receives a string with
+* ```[int	ft_atoi(const cahr *s)](https://github.com/rubengr16/42/blob/main/42cursus/libft/src/ft_atoi.c)```: function which receives a string with
 a number writen in ASCII and returns the integer representation of it.
 
 * **%c** - char : prints a single character -which I managed in 
