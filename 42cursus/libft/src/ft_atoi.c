@@ -6,17 +6,17 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 13:26:28 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/29 15:49:53 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/29 16:05:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- * function which receives a new node and establishes its value to num and its
- * pointer to NULL
- * INPUT:	int num
- * OUTPUT:	t_node
+ * function which receives a string with a number writen in ASCII and returns
+ * the integer representation of it.
+ * INPUT:	const char num
+ * OUTPUT:	int
  */
 int	ft_atoi(const char *s)
 {
