@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/21 14:04:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:34:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,13 @@ void	separate_flag(t_args *args, char **argv)
 
 	i = 2;
 	cnt = 0;
-	args->n_cmds = 2;
-	args->cmds = malloc(sizeof(char **) * (args->n_cmds + 1));
-	if (args->cmds)
+	while(cnt < 2)
 	{
-		while(cnt < args->n_cmds)
-		{
-			args->cmds[cnt] = ft_split(argv[i], ' ');
-			i++;
-			cnt++;
-		}
-		args->cmds[cnt] = NULL;
+		args->cmds[cnt] = ft_split(argv[i], ' ');
+		i++;
+		cnt++;
 	}
+	args->cmds[cnt] = NULL;
 }
 
 
@@ -90,18 +85,14 @@ char	*ft_strjoinsep(char const *s1, char const *s2, char *c)
 	int		len;
 	char	*s;
 
-	if (s1 && s2)
-	{
-		len = ft_strlen(s1) + ft_strlen(s2) + 2;
-		s = malloc(sizeof(char) * (len));
-		if (s)
-		{
-			(void)ft_strlcpy(s, s1, len);
-			(void)ft_strlcat(s, c, len);
-			(void)ft_strlcat(s, s2, len);
-		}
-		return (s);
-	}
-	else
+	if (!s1 || !s2)
 		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2) + 2;
+	s = malloc(sizeof(char) * (len));
+	if (!s)
+		return (NULL);
+	(void)ft_strlcpy(s, s1, len);
+	(void)ft_strlcat(s, c, len);
+	(void)ft_strlcat(s, s2, len);
+	return (s);
 }
