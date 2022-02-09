@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/09 20:01:25 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/09 20:23:30 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	error_msg(t_args args, char *str, int error)
 	}
 	else if (error == ERR_ENVP)
 		ft_putendl_fd("Please, enable the environment variables", 1);
-	else if (error == ERR_MALLOC || error == ERR_CMD || error == ERR_PIPE)
+	else if (error == ERR_CMD || error == ERR_PIPE)
 		perror(str);
 	free_set_of_cmd(args);
 //	exit(error);
@@ -65,11 +65,11 @@ void	error_msg(t_args args, char *str, int error)
 /*
  * function which receives argv to divide the given commands into command 
  * and flag. Each command and its flag is stored in its position in the
- * array cmds of args 
- * INPUT:	t_args *args, char **argv
+ * cmds array
+ * INPUT:	char **cmds[], char **argv
  * OUTPUT:	void
  */
-void	separate_flag(t_args *args, char **argv)
+void	separate_flag(char **cmds[], char **argv)
 {
 	int	i;
 	int	cnt;
@@ -78,11 +78,11 @@ void	separate_flag(t_args *args, char **argv)
 	cnt = 0;
 	while(cnt < 2)
 	{
-		args->cmds[cnt] = ft_split(argv[i], ' ');
+		cmds[cnt] = ft_split(argv[i], ' ');
 		i++;
 		cnt++;
 	}
-	args->cmds[cnt] = NULL;
+	cmds[cnt] = NULL;
 }
 
 char	*ft_strjoinsep(char const *s1, char const *s2, char *c)

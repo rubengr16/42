@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/09 17:55:12 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/09 20:23:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,18 @@ static char	*try_path(char **set_of_paths, char *cmd)
 	
 	cnt = 0;
 	path = ft_strjoinsep(set_of_paths[cnt], cmd, "/");
-	while (set_of_paths[cnt] && access(path, F_OK | X_OK))
+	while (set_of_paths[cnt] && path && access(path, F_OK | X_OK))
 	{
 		free(path);
 		cnt++;
 		path = ft_strjoinsep(set_of_paths[cnt], cmd, "/");
 	}
-	if (set_of_paths[cnt])
-		return (path);
-	free(path);
-	return (NULL);
+	if (!set_of_paths[cnt] || !path)
+	{
+		free(path);
+		return (NULL);
+	}
+	return (path);
 }
 
 /*

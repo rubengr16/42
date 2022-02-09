@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/09 18:12:04 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/09 20:23:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@
 /**************************** ERROR MANAGEMENT ***************************** */
 # define ERR_ARGC 1
 # define ERR_ENVP 2
-# define ERR_MALLOC 3
-# define ERR_CMD 4
-# define ERR_PIPE 5
+# define ERR_CMD 3
+# define ERR_PIPE 4
 
 /***************************** PIPE MANAGEMENT ***************************** */
 # define PIPE_RD 0
@@ -30,7 +29,6 @@
 
 # include <sys/wait.h>	/***	pid_t	wait(int *wsatus);	***/
 # include <stdio.h>		/***	void	perror(const char *s);	***/
-//# include <errno.h> /*** error	constants ***/
 # include <unistd.h>	/***	int	dup2(int oldfd, int newfd);
 						  		pid_t	fork(void);
 						  		int pipe(int pipefd[2]);	***/
@@ -49,7 +47,7 @@ typedef struct s_args
 void	free_set(char **set);
 void	free_set_of_cmd(t_args args);
 void	error_msg(t_args args, char *str, int error);
-void	separate_flag(t_args *args, char **argv);
+void	separate_flag(char **cmds[], char **argv);
 char	*ft_strjoinsep(char const *s1, char const *s2, char *c);
 
 /********************************* PIPEX *********************************** */
