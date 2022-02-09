@@ -6,12 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 02:23:00 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/09 17:34:25 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:30:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "pipex.h"
-
 
 void	leak(void)
 {
@@ -19,18 +18,19 @@ void	leak(void)
 }
 
 
-int	main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv)
 {
-//	atexit(leak);
+	atexit(leak);
 	t_args	args;
 //	int		pipefd[2];
 
 	(void)argc;
-	(void)envp;
-	separate_flag(&args, argv);
-/*	if (argc != 5)
+	(void)argv;
+	args = (t_args){0, 0, {NULL}};
+	if (argc != 5)
 		error_msg(args, NULL, ERR_ARGC);
-	else if (!envp[0])
+	//separate_flag(&args, argv);
+/*	else if (!envp[0])
 		error_msg(args, NULL, ERR_ENVP);
 	else if (!isvalidcmd(&(args.cmds[0][CMD]), envp))
 		error_msg(args, args.cmds[0][CMD], ERR_CMD);

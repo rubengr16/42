@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/09 17:34:26 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/09 20:01:25 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,18 @@ void	free_set_of_cmd(t_args args)
 	int	i;
 	int	j;
 
-	j = 0;
-	while (args.cmds[j])
+	i = 0;
+	while (args.cmds[i])
 	{
-		i = 0;
-		while (args.cmds[j][i])
+		j = 0;
+		while (args.cmds[i][j])
 		{
-			free(args.cmds[j][i]);
-			i++;
+			free(args.cmds[i][j]);
+			j++;
 		}
-		free(args.cmds[j]);
-		j++;
+		free(args.cmds[i]);
+		i++;
 	}
-	free(args.cmds);
 }
 
 void	error_msg(t_args args, char *str, int error)
@@ -60,9 +59,16 @@ void	error_msg(t_args args, char *str, int error)
 	else if (error == ERR_MALLOC || error == ERR_CMD || error == ERR_PIPE)
 		perror(str);
 	free_set_of_cmd(args);
-	//exit(error);
+//	exit(error);
 }
 
+/*
+ * function which receives argv to divide the given commands into command 
+ * and flag. Each command and its flag is stored in its position in the
+ * array cmds of args 
+ * INPUT:	t_args *args, char **argv
+ * OUTPUT:	void
+ */
 void	separate_flag(t_args *args, char **argv)
 {
 	int	i;
@@ -78,7 +84,6 @@ void	separate_flag(t_args *args, char **argv)
 	}
 	args->cmds[cnt] = NULL;
 }
-
 
 char	*ft_strjoinsep(char const *s1, char const *s2, char *c)
 {
