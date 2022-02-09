@@ -6,12 +6,18 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 13:26:28 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/30 14:43:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/29 16:05:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+ * function which receives a string with a number writen in ASCII and returns
+ * the integer representation of it.
+ * INPUT:	const char num
+ * OUTPUT:	int
+ */
 int	ft_atoi(const char *s)
 {
 	int					sign;

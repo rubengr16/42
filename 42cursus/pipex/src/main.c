@@ -6,20 +6,22 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 02:23:00 by rgallego          #+#    #+#             */
-/*   Updated: 2022/01/21 14:04:34 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/29 15:44:17 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "pipex.h"
 
+/*
 void	leak(void)
 {
 	system("leaks pipex");
 }
+*/
 
 int	main(int argc, char **argv, char **envp)
 {
-	atexit(leak);
+//	atexit(leak);
 	t_args	args;
 //	int		pipefd[2];
 
