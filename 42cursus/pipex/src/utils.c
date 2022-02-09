@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/09 20:23:30 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/09 20:31:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,17 @@ void	error_msg(t_args args, char *str, int error)
 {
 	if (error == ERR_ARGC)
 	{
-		ft_putendl_fd("Please, enter 4 arguments with the structure:", 1);
-		ft_putendl_fd("./pipex <file1> <cmd1> <cmd2> <file2>", 1);
+		ft_putendl_fd("Please, enter 4 arguments with the structure:", \
+				STDOUT_FILENO);
+		ft_putendl_fd("./pipex <file1> <cmd1> <cmd2> <file2>", STDOUT_FILENO);
 	}
 	else if (error == ERR_ENVP)
-		ft_putendl_fd("Please, enable the environment variables", 1);
+		ft_putendl_fd("Please, enable the environment variables", \
+				STDOUT_FILENO);
 	else if (error == ERR_CMD || error == ERR_PIPE)
 		perror(str);
 	free_set_of_cmd(args);
-//	exit(error);
+	exit(error);
 }
 
 /*
@@ -76,7 +78,7 @@ void	separate_flag(char **cmds[], char **argv)
 
 	i = 2;
 	cnt = 0;
-	while(cnt < 2)
+	while (cnt < 2)
 	{
 		cmds[cnt] = ft_split(argv[i], ' ');
 		i++;
