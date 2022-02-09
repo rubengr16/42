@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/09 20:23:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/09 21:05:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,8 @@ char	*isvalidcmd(char **cmd, char **envp)
 	return (*cmd);
 }
 
-/*void	forking(char ***set_of_cmds, int *pipefd)
+/*void	forking(t_args args, int *pipefd)
 {
-	//int	fdout;
 	int	pid;
 
 	pid = fork();
@@ -83,4 +82,6 @@ char	*isvalidcmd(char **cmd, char **envp)
 		if (dup2(pipefd[PIPE_WR], STDOUT_FILENO))
 			error_msg(
 	}
+	close(pipefd[PIPE_WR]);
+	
 }*/

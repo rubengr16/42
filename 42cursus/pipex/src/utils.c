@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/09 20:31:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/09 21:05:13 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	error_msg(t_args args, char *str, int error)
 	else if (error == ERR_ENVP)
 		ft_putendl_fd("Please, enable the environment variables", \
 				STDOUT_FILENO);
-	else if (error == ERR_CMD || error == ERR_PIPE)
+	else if (error == ERR_CMD || error == ERR_PIPE || error == ERR_OPEN)
 		perror(str);
 	free_set_of_cmd(args);
 	exit(error);
