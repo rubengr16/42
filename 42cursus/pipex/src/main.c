@@ -6,22 +6,24 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 02:23:00 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/10 15:08:24 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:44:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+/*
 void	leak(void)
 {
 	system("leaks pipex");
 }
+*/
 
 int	main(int argc, char **argv, char **envp)
 {
 	t_args	args;
-	int		pipe_fd[2];
-	atexit(leak);
+	int		pipefd[2];
+	//atexit(leak);
 
 	(void)argv;
 	args = (t_args){0, 0, {NULL}};
@@ -34,15 +36,14 @@ int	main(int argc, char **argv, char **envp)
 		error_msg(args, args.cmds[0][CMD], ERR_CMD);
 	if (!isvalidcmd(&(args.cmds[1][CMD]), envp))
 		error_msg(args, args.cmds[1][CMD], ERR_CMD);
-	args.fd_in = open(argv[1], O_RDONLY);
-	if (args.fd_in < 0)
+	args.fdin = open(argv[1], O_RDONLY);
+	if (args.fdin < 0)
 		error_msg(args, argv[1], ERR_OPEN);
-	args.fd_out = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC);
-	if (args.fd_out < 0)
+	args.fdout = open(argv[4], O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (args.fdout < 0)
 		error_msg(args, argv[4], ERR_OPEN);
-	if (pipe(pipe_fd))
+	if (pipe(pipefd))
 		error_msg(args, "pipe error", ERR_PIPE);
-	//forking(args, pipe_fd);
-//	wait(NULL);
+	forking(args, envp, pipefd);
 	return (0);
 }
