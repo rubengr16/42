@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 02:23:00 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/09 21:05:17 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:08:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	leak(void)
 int	main(int argc, char **argv, char **envp)
 {
 	t_args	args;
-	int		pipefd[2];
+	int		pipe_fd[2];
 	atexit(leak);
 
 	(void)argv;
@@ -40,9 +40,9 @@ int	main(int argc, char **argv, char **envp)
 	args.fd_out = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC);
 	if (args.fd_out < 0)
 		error_msg(args, argv[4], ERR_OPEN);
-	if (pipe(pipefd))
+	if (pipe(pipe_fd))
 		error_msg(args, "pipe error", ERR_PIPE);
-	//forking(args, pipefd);
+	//forking(args, pipe_fd);
 //	wait(NULL);
 	return (0);
 }
