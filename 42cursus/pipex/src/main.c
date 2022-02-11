@@ -6,24 +6,22 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 02:23:00 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/10 15:44:40 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/11 19:38:43 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-/*
 void	leak(void)
 {
 	system("leaks pipex");
 }
-*/
 
 int	main(int argc, char **argv, char **envp)
 {
 	t_args	args;
 	int		pipefd[2];
-	//atexit(leak);
+	atexit(leak);
 
 	(void)argv;
 	args = (t_args){0, 0, {NULL}};
@@ -45,5 +43,6 @@ int	main(int argc, char **argv, char **envp)
 	if (pipe(pipefd))
 		error_msg(args, "pipe error", ERR_PIPE);
 	forking(args, envp, pipefd);
+	free_set_of_cmd(args);
 	return (0);
 }
