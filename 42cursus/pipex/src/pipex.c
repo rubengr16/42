@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/11 19:37:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/11 19:47:43 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*try_path(char **set_of_paths, char *cmd)
 {
 	char	*path;
 	int		cnt;
-	
+
 	cnt = 0;
 	path = ft_strjoinsep(set_of_paths[cnt], cmd, "/");
 	while (set_of_paths[cnt] && path && access(path, F_OK | X_OK))
@@ -71,22 +71,24 @@ char	*isvalidcmd(char **cmd, char **envp)
 	return (*cmd);
 }
 
-void	forking(t_args args, char **envp, int *pipefd)
+int	father(t_args args, char **envp, int *pipefd)
 {
 	int	pid;
-	int status;
+	int	status;
 
 	if (!fork())
 		first_child(args, envp, pipefd);
 	close(pipefd[PIPE_WR]);
 	close(args.fdin);
-	pid = fork();		
+	pid = fork();
 	if (!pid)
 		last_child(args, envp, pipefd);
 	close(pipefd[PIPE_RD]);
 	close(args.fdout);
 	wait(&status);
 	wait(&status);
+	free_set_of_cmd(args);
+	return (0);
 }
 
 void	first_child(t_args args, char **envp, int *pipefd)
