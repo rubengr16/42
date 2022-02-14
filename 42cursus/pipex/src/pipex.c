@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/11 19:47:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/14 11:50:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,17 @@ char	*isvalidcmd(char **cmd, char **envp)
 	return (*cmd);
 }
 
-int	father(t_args args, char **envp, int *pipefd)
+int	father(t_args args, char **argv, char **envp, int *pipefd)
 {
 	int	pid;
 	int	status;
 
 	if (!fork())
-		first_child(args, envp, pipefd);
+		first_child(args, argv, envp, pipefd);
 	close(pipefd[PIPE_WR]);
-	close(args.fdin);
 	pid = fork();
 	if (!pid)
-		last_child(args, envp, pipefd);
+		last_child(args, argv, envp, pipefd);
 	close(pipefd[PIPE_RD]);
 	close(args.fdout);
 	wait(&status);
@@ -91,18 +90,25 @@ int	father(t_args args, char **envp, int *pipefd)
 	return (0);
 }
 
-void	first_child(t_args args, char **envp, int *pipefd)
+void	first_child(t_args args, char **argv, char **envp, int *pipefd)
 {
 	close(pipefd[PIPE_RD]);
-	close(args.fdout);
-	dup2(args.fdin, STDIN_FILENO);
 	dup2(pipefd[PIPE_WR], STDOUT_FILENO);
 	close(pipefd[PIPE_WR]);
+	args.fdin = open(argv[1], O_RDONLY);
+	if (args.fdin < 0)
+	{
+		close(args.fdin);
+		free_set_of_cmd(args);
+		exit(ENOENT);	
+	}	
+	dup2(args.fdin, STDIN_FILENO);
 	execve(args.cmds[0][CMD], args.cmds[0], envp);
 }
 
-void	last_child(t_args args, char **envp, int *pipefd)
+void	last_child(t_args args, char **argv, char **envp, int *pipefd)
 {
+	(void)argv;
 	dup2(pipefd[PIPE_RD], STDIN_FILENO);
 	close(pipefd[PIPE_RD]);
 	dup2(args.fdout, STDOUT_FILENO);
