@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/11 19:38:37 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/14 13:45:11 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,16 @@ void	free_set_of_cmd(t_args args)
 void	error_msg(t_args args, char *str, int error)
 {
 	if (error == ERR_ARGC)
-	{
-		ft_putendl_fd("Please, enter 4 arguments with the structure:", \
+		ft_putendl_fd("Please, enter at least 4 arguments", \
 				STDOUT_FILENO);
-		ft_putendl_fd("./pipex <file1> <cmd1> <cmd2> <file2>", STDOUT_FILENO);
-	}
 	else if (error == ERR_ENVP)
 		ft_putendl_fd("Please, enable the environment variables", \
 				STDOUT_FILENO);
 	else if (error == ERR_CMD || error == ERR_PIPE || error == ERR_OPEN)
+	{
 		perror(str);
-	free_set_of_cmd(args);
+		free_set_of_cmd(args);
+	}
 	exit(error);
 }
 

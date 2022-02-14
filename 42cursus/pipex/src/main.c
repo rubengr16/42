@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 02:23:00 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/14 13:00:04 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/14 13:45:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	main(int argc, char **argv, char **envp)
 	int		pipefd[2];
 
 	atexit(leak);
-	args = (t_args){0, 0, {NULL}};
-	if (argc != 5)
+	args = (t_args){0, 0, NULL};
+	if (argc < 5)
 		error_msg(args, NULL, ERR_ARGC);
 	if (!envp[0])
 		error_msg(args, NULL, ERR_ENVP);
