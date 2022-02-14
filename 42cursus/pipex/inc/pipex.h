@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/14 13:45:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/11 19:44:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_args
 {
 	int		fdin;
 	int		fdout;
-	char	***cmds;
+	char	**cmds[3];
 }	t_args;
 
 /********************************* UTILS *********************************** */
