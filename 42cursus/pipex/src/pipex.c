@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/11 19:47:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:10:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,16 @@ char	*isvalidcmd(char **cmd, char **envp)
 
 int	father(t_args args, char **envp, int *pipefd)
 {
-	int	pid;
-	int	status;
-
 	if (!fork())
 		first_child(args, envp, pipefd);
 	close(pipefd[PIPE_WR]);
 	close(args.fdin);
-	pid = fork();
-	if (!pid)
+	if (!fork())
 		last_child(args, envp, pipefd);
 	close(pipefd[PIPE_RD]);
 	close(args.fdout);
-	wait(&status);
-	wait(&status);
+	wait(NULL);
+	wait(NULL);
 	free_set_of_cmd(args);
 	return (0);
 }
