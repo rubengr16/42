@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/16 17:10:48 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/16 19:37:48 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 # include <sys/wait.h>	/***	pid_t	wait(int *wsatus);	***/
 # include <stdio.h>		/***	void	perror(const char *s);	***/
-# include <sys/errno.h>
+# include <errno.h>
 # include <unistd.h>	/***	int		dup2(int oldfd, int newfd);
 						  		pid_t	fork(void);
 						  		int 	pipe(int pipefd[2]);	***/
