@@ -17,6 +17,6 @@ fclean: clean
 bonus: $(OBJSBONUS)
 	$(AR) $(NAME) $(OBJSBONUS)
 
-re:	fclean all
+re: fclean all
 
 .PHONY: all clean fclean bonus re

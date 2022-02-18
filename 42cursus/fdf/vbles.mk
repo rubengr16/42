@@ -4,9 +4,9 @@ INC_DIR	=			inc/
 
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
-					main.c \
-					utils.c \
-					pipex.c \
+					\
+					\
+					\
 					)
 
 OBJS	=			$(SRCS:.c=.o)
@@ -17,11 +17,14 @@ CC		=			gcc
 
 RM		=			-rm -f
 
+AR		=			ar rcs
+
 CFLAGS	=			-Wall -Werror -Wextra -MD
 
-LDFLAGS	=			$(LIBFTNAME)
+LDFLAGS	=			$(LIBFTNAME) \
+					$(GNLNAME)
 
-NAME	=			pipex
+NAME	=			fdf
 
 INC_ALL	=			\
 					$(INC_DIR) \
@@ -30,3 +33,7 @@ INC_ALL	=			\
 LIBFT	=			libft/
 
 LIBFTNAME =			$(LIBFT)libft.a
+
+GNL		=			get_next_line/
+
+GNLNAME	=			get_next_line
