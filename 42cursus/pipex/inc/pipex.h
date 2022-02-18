@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/16 19:37:48 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/18 20:34:06 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 # define PIPE_RD 0
 # define PIPE_WR 1
 
-# include <sys/wait.h>	/***	pid_t	wait(int *wsatus);	***/
+
+/******************************** LIBRARIES ******************************* */
+# include <wait.h>		/***	pid_t	wait(int *wsatus);	***/
 # include <stdio.h>		/***	void	perror(const char *s);	***/
 # include <errno.h>
 # include <unistd.h>	/***	int		dup2(int oldfd, int newfd);
@@ -39,7 +41,7 @@
 								***/
 # include "libft.h"
 
-/*****************************  *********************************** */
+/***************************** STRUCTURE *********************************** */
 typedef struct s_args
 {
 	int		fdin;
