@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/02/18 19:07:41 by rgallego          #+#    #+#              #
+#    Updated: 2022/02/18 19:12:46 by rgallego         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 -include vbles.mk
 
 all: $(NAME)
@@ -8,8 +20,8 @@ all: $(NAME)
 $(LIBFTNAME):
 	$(MAKE) -C $(LIBFT)
 
-$(NAME): $(OBJS) $(LIBFTNAME)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFTNAME) -o $@
+$(NAME): $(OBJS) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
 
 clean:
 	$(RM) $(OBJS) $(DPNDS)
@@ -20,4 +32,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean bonus re
+.PHONY: all clean fclean re

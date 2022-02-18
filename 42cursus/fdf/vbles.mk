@@ -1,10 +1,22 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    vbles.mk                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/02/18 19:07:43 by rgallego          #+#    #+#              #
+#    Updated: 2022/02/18 19:13:45 by rgallego         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SRC_DIR	=			src/
 
 INC_DIR	=			inc/
 
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
-					\
+					main.c\
 					\
 					\
 					)
@@ -28,7 +40,8 @@ NAME	=			fdf
 
 INC_ALL	=			\
 					$(INC_DIR) \
-					$(LIBFT)$(INC_DIR)
+					$(LIBFT)$(INC_DIR) \
+					$(GNL)$(INC_DIR)					
 
 LIBFT	=			libft/
 
@@ -36,4 +49,4 @@ LIBFTNAME =			$(LIBFT)libft.a
 
 GNL		=			get_next_line/
 
-GNLNAME	=			get_next_line
+GNLNAME	=			$(GNL)get_next_line.a
