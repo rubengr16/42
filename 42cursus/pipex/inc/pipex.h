@@ -6,30 +6,30 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/18 20:34:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/18 20:36:25 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-/*************************** COMMAND STRUCTURE ***************************** */
+/*************************** COMMAND STRUCTURE ****************************** */
 # define CMD 0
 # define FLAG 1
 
-/**************************** ERROR MANAGEMENT ***************************** */
+/**************************** ERROR MANAGEMENT ****************************** */
 # define ERR_ARGC 1
 # define ERR_ENVP 2
 # define ERR_CMD 3
 # define ERR_PIPE 4
 # define ERR_OPEN 5
 
-/***************************** PIPE MANAGEMENT ***************************** */
+/***************************** PIPE MANAGEMENT ****************************** */
 # define PIPE_RD 0
 # define PIPE_WR 1
 
 
-/******************************** LIBRARIES ******************************* */
+/******************************** LIBRARIES ********************************* */
 # include <wait.h>		/***	pid_t	wait(int *wsatus);	***/
 # include <stdio.h>		/***	void	perror(const char *s);	***/
 # include <errno.h>
@@ -41,7 +41,7 @@
 								***/
 # include "libft.h"
 
-/***************************** STRUCTURE *********************************** */
+/***************************** STRUCTURE ************************************ */
 typedef struct s_args
 {
 	int		fdin;
@@ -49,14 +49,14 @@ typedef struct s_args
 	char	**cmds[3];
 }	t_args;
 
-/********************************* UTILS *********************************** */
+/********************************* UTILS ************************************ */
 void	free_set(char **set);
 void	free_set_of_cmd(t_args args);
 void	error_msg(t_args args, char *str, int error);
 void	separate_flag(char **cmds[], char **argv);
 char	*ft_strjoinsep(char const *s1, char const *s2, char *c);
 
-/********************************* PIPEX *********************************** */
+/********************************* PIPEX ************************************ */
 char	*isvalidcmd(char **cmd, char **envp);
 int		father(t_args args, char **envp, int *pipefd);
 void	first_child(t_args args, char **envp, int *pipefd);
