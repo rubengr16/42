@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:02:16 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/08 20:11:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/21 14:37:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*get_next_line(int fd);
 /*************************** GET_NEXT_LINE_UTILS *************************** */
 int		ft_strchr_nl(char *str, int *pos_nl);
 void	ft_strcpy(char *dest, char *src, int len);
-int		ft_strjoin(char **dest, char *src, int len1, int len2);
+int		strjoin_gnl(char **dest, char *src, int len1, int len2);
 void	ft_free_resources(char **line);
 void	read_line(char **rest, char **line, int len, int fd);
 
