@@ -6,12 +6,24 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/18 20:36:25 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/21 14:12:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
+
+/******************************** LIBRARIES ********************************* */
+# include <wait.h>		/***	pid_t	wait(int *wsatus);	***/
+# include <stdio.h>		/***	void	perror(const char *s);	***/
+# include <errno.h>
+# include <unistd.h>	/***	int		dup2(int oldfd, int newfd);
+						  		pid_t	fork(void);
+						  		int 	pipe(int pipefd[2]);	***/
+# include <stdlib.h>
+# include <fcntl.h>		/***	int		open(const char *path, int oflag, ...);
+								***/
+# include "libft.h"
 
 /*************************** COMMAND STRUCTURE ****************************** */
 # define CMD 0
@@ -27,19 +39,6 @@
 /***************************** PIPE MANAGEMENT ****************************** */
 # define PIPE_RD 0
 # define PIPE_WR 1
-
-
-/******************************** LIBRARIES ********************************* */
-# include <wait.h>		/***	pid_t	wait(int *wsatus);	***/
-# include <stdio.h>		/***	void	perror(const char *s);	***/
-# include <errno.h>
-# include <unistd.h>	/***	int		dup2(int oldfd, int newfd);
-						  		pid_t	fork(void);
-						  		int 	pipe(int pipefd[2]);	***/
-# include <stdlib.h>
-# include <fcntl.h>		/***	int		open(const char *path, int oflag, ...);
-								***/
-# include "libft.h"
 
 /***************************** STRUCTURE ************************************ */
 typedef struct s_args
