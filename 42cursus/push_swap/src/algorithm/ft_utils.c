@@ -14,18 +14,18 @@
 
 /*
  * function which receives a queue and tells if it is sorted
- * INPUT:	t_queue *queue
+ * INPUT:	t_queue *queue, int state
  * OUTPUT:	int	:	1	sorted
  *					0	not sorted
  */
-int	ft_issorted(t_queue *queue)
+int	ft_issorted(t_queue *queue, int state)
 {
 	t_node	*aux;
 
 	if (queue || queue->n_elem <= 1)
 		return (1);
 	aux = queue->head->next;
-	while (aux != queue->head && aux->state == UNSORTED
+	while (aux != queue->head && aux->state == state
 		&& aux->num > aux->prvs->num)
 		aux = aux->next;
 	if (aux->num < aux->prvs->num)
@@ -35,22 +35,22 @@ int	ft_issorted(t_queue *queue)
 }
 
 /*
- * 
- * INPUT:	
- * OUTPUT:	
+ * function which sets the state of n_elems of queue to state
+ * INPUT:	t_queue *queue, int n_elem, int state
+ * OUTPUT:	void
  */
-void	ft_setsorted(t_queue *queue, int n_elem)
+void	ft_setstate(t_queue *queue, int n_elem, int state)
 {
 	t_node	*aux;
 
 	if (queue && n_elem)
 	{
-		queue->head->state = SORTED;
+		queue->head->state = state;
 		n_elem--;
 		aux = queue->head->next;
 		while (aux != queue->head && n_elem)
 		{
-			aux->state = SORTED;
+			aux->state = state;
 			aux = aux->next;
 			n_elem--;
 		}
@@ -59,7 +59,7 @@ void	ft_setsorted(t_queue *queue, int n_elem)
 
 /*
  * function which receives a queue of integers and calculates the average of
- * the UNSORTED elements
+ * the elements
  * INPUT:	t_queue *queue
  * OUTPUT:	int
  */
@@ -76,7 +76,7 @@ int	ft_average(t_queue *queue)
 		aux = queue->head->next;
 		while (aux != queue->head)
 		{
-			if (aux->state == UNSORTED)
+			if (aux->state)
 				sum += aux->num;
 			aux = aux->next;
 		}

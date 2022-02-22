@@ -20,8 +20,8 @@
 
 typedef struct s_node
 {
-	char			state;
 	int				num;
+	int			state;
 	struct s_node	*next;
 	struct s_node	*prvs;
 }	t_node;

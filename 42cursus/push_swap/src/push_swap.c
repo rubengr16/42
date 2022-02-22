@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 				if (a)
 				{
 					printqueue(a);
-					ft_sortbase(a);
+					ft_sortbase(a, UNSORTED);
 					printqueue(a);
 					ft_queuedelall(&a);
 				}
