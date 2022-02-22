@@ -17,6 +17,7 @@
 gcc
 *.*.swp
 *.o
+*.d
 a.out
 a.out.dSYM/
 main.c
