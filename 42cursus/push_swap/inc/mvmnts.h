@@ -18,7 +18,7 @@
 
 /* **************************** SWAP FUNCTIONS ****************************** */
 void	ft_swap_a(t_queue *a);
-void	ft_swap_a(t_queue *b);
+void	ft_swap_b(t_queue *b);
 void	ft_swap_ab(t_queue *a, t_queue *b);
 
 /* **************************** PUSH FUNCTIONS ****************************** */

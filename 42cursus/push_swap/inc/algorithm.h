@@ -19,7 +19,7 @@
 int		ft_issorted(t_queue *queue, int state);
 void	ft_setstate(t_queue *queue, int n_elem, int state);
 int		ft_average(t_queue *queue);
-int		ft_count_lvl(t_queue *queue, int lvl)
+int		ft_count_lvl(t_queue *queue, int lvl);
 
 int		ft_n_rot(t_queue	*queue, int avg);
 int		ft_n_revrot(t_queue	*queue, int avg);
@@ -28,6 +28,7 @@ void	ft_revrotpush(t_queue *a, t_queue *b, int avg, int lvl);
 
 int		ft_sortbase(t_queue *queue, int state);
 int		ft_pushbck(t_queue *a, t_queue *b, int lvl);
+int		ft_pushbcksorted(t_queue *a, t_queue *b, int lvl);
 int		ft_sortrecavg(t_queue *a, t_queue *b, int lvl);
 
 #endif

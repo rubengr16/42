@@ -12,6 +12,11 @@
 
 #include "algorithm.h"
 
+/*
+ * 
+ * INPUT:	
+ * OUTPUT:	
+ */
 int	ft_issorted(t_queue *queue, int state)
 {
 	t_node	*aux;
@@ -31,6 +36,11 @@ int	ft_issorted(t_queue *queue, int state)
 		return (1);
 }
 
+/*
+ * 
+ * INPUT:	
+ * OUTPUT:	
+ */
 void	ft_setstate(t_queue *queue, int n_elem, int state)
 {
 	t_node	*aux;
@@ -49,6 +59,11 @@ void	ft_setstate(t_queue *queue, int n_elem, int state)
 	}
 }
 
+/*
+ * 
+ * INPUT:	
+ * OUTPUT:	
+ */
 int	ft_average(t_queue *queue)
 {
 	int		sum;
@@ -74,6 +89,11 @@ int	ft_average(t_queue *queue)
 		return (0);
 }
 
+/*
+ * 
+ * INPUT:	
+ * OUTPUT:	
+ */
 int	ft_count_lvl(t_queue *queue, int lvl)
 {
 	int		n_elem;

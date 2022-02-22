@@ -12,13 +12,18 @@
 
 #include "algorithm.h"
 
+/*
+ * 
+ * INPUT:	
+ * OUTPUT:	
+ */
 int	ft_n_rot(t_queue *queue, int avg)
 {
 	int		n_rot;
 	t_node	*aux;
 
 	n_rot = 0;
-	if (queue->head > avg)
+	if (queue->head->num > avg)
 	{
 		aux = queue->head->next;
 		n_rot++;
@@ -31,13 +36,18 @@ int	ft_n_rot(t_queue *queue, int avg)
 	return (n_rot);
 }
 
+/*
+ * 
+ * INPUT:	
+ * OUTPUT:	
+ */
 int	ft_n_revrot(t_queue	*queue, int avg)
 {
 	int		n_revrot;
 	t_node	*aux;
 
 	n_revrot = 0;
-	if (queue->head > avg)
+	if (queue->head->num > avg)
 	{
 		aux = queue->head->prvs;
 		n_revrot++;
@@ -50,6 +60,11 @@ int	ft_n_revrot(t_queue	*queue, int avg)
 	return (n_revrot);
 }
 
+/*
+ * 
+ * INPUT:	
+ * OUTPUT:	
+ */
 void	ft_rotpush(t_queue *a, t_queue *b, int avg, int lvl)
 {
 	while (a->head->num > avg)
@@ -60,6 +75,11 @@ void	ft_rotpush(t_queue *a, t_queue *b, int avg, int lvl)
 		ft_swap_b(b);
 }
 
+/*
+ * 
+ * INPUT:	
+ * OUTPUT:	
+ */
 void	ft_revrotpush(t_queue *a, t_queue *b, int avg, int lvl)
 {
 	while (a->head->num > avg)

@@ -12,6 +12,11 @@
 
 #include "algorithm.h"
 
+/*
+ * 
+ * INPUT:	
+ * OUTPUT:	
+ */
 int	ft_sortbase(t_queue *queue, int state)
 {
 	if (!ft_issorted(queue, state))
@@ -29,6 +34,11 @@ int	ft_sortbase(t_queue *queue, int state)
 	return (1);
 }
 
+/*
+ * 
+ * INPUT:	
+ * OUTPUT:	
+ */
 int	ft_pushbck(t_queue *a, t_queue *b, int lvl)
 {
 	if (b && b->n_elem)
@@ -37,7 +47,20 @@ int	ft_pushbck(t_queue *a, t_queue *b, int lvl)
 	return (0);
 }
 
-void	ft_sortrecavg(t_queue *a, t_queue *b, int lvl)
+int	ft_pushbcksorted(t_queue *a, t_queue *b, int lvl)
+{
+	/******************** DUMMIE **********************/
+	(void)a;
+	(void)b;
+	return (lvl);
+}
+
+/*
+ * 
+ * INPUT:	
+ * OUTPUT:	
+ */
+int	ft_sortrecavg(t_queue *a, t_queue *b, int lvl)
 {
 	int	avg;
 	int	n_rot;
@@ -50,7 +73,7 @@ void	ft_sortrecavg(t_queue *a, t_queue *b, int lvl)
 	{
 		avg = ft_average(a);
 		n_rot = ft_n_rot(a, avg);
-		while (n_rot < a->n_elems)
+		while (n_rot < a->n_elem)
 		{
 			if (n_rot <= ft_n_revrot(a, avg))
 				ft_rotpush(a, b, avg, lvl);
