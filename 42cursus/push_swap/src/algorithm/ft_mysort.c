@@ -17,9 +17,9 @@
  * INPUT:	
  * OUTPUT:	
  */
-int	ft_sortbase(t_queue *queue, int state)
+int	ft_sortbase(t_queue *queue)
 {
-	if (!ft_issorted(queue, state))
+	if (!ft_issorted(queue))
 	{
 		if (queue->head->num < queue->head->next->num
 			&& queue->head->next->num > queue->head->prvs->num)
@@ -27,10 +27,10 @@ int	ft_sortbase(t_queue *queue, int state)
 		else if (queue->head->next->num < queue->head->num
 			&& queue->head->num > queue->head->prvs->num)
 			ft_rotate_a(queue);
-		if (!ft_issorted(queue, state))
+		if (!ft_issorted(queue))
 			ft_swap_a(queue);
 	}
-	ft_setstate(queue, 3, 0);
+	ft_setsorted(queue, 3);
 	return (1);
 }
 
@@ -66,9 +66,7 @@ int	ft_sortrecavg(t_queue *a, t_queue *b, int lvl)
 	int	n_rot;
 
 	if (a->n_elem < 4)
-	{
-		return (ft_sortbase(a, -1));
-	}
+		return (ft_sortbase(a));
 	else
 	{
 		avg = ft_average(a);

@@ -15,6 +15,9 @@
 
 # include <stdlib.h>
 
+# define SORTED 0
+# define UNSORTED -1
+
 typedef struct s_node
 {
 	char			state;

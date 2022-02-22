@@ -13,25 +13,23 @@
 #include "algorithm.h"
 
 /*
- * 
- * INPUT:	
- * OUTPUT:	
+ * function which receives a queue and tells if it is sorted
+ * INPUT:	t_queue *queue
+ * OUTPUT:	int	:	1	sorted
+ *					0	not sorted
  */
-int	ft_issorted(t_queue *queue, int state)
+int	ft_issorted(t_queue *queue)
 {
 	t_node	*aux;
 
-	if (queue && queue->n_elem > 1)
-	{
-		aux = queue->head->next;
-		while (aux != queue->head && aux->state == state
-			&& aux->num > aux->prvs->num)
-			aux = aux->next;
-		if (aux == queue->head)
-			return (1);
-		else
-			return (0);
-	}
+	if (queue || queue->n_elem <= 1)
+		return (1);
+	aux = queue->head->next;
+	while (aux != queue->head && aux->state == UNSORTED
+		&& aux->num > aux->prvs->num)
+		aux = aux->next;
+	if (aux->num < aux->prvs->num)
+		return (0);
 	else
 		return (1);
 }
@@ -41,18 +39,18 @@ int	ft_issorted(t_queue *queue, int state)
  * INPUT:	
  * OUTPUT:	
  */
-void	ft_setstate(t_queue *queue, int n_elem, int state)
+void	ft_setsorted(t_queue *queue, int n_elem)
 {
 	t_node	*aux;
 
 	if (queue && n_elem)
 	{
-		queue->head->state = state;
+		queue->head->state = SORTED;
 		n_elem--;
 		aux = queue->head->next;
 		while (aux != queue->head && n_elem)
 		{
-			aux->state = state;
+			aux->state = SORTED;
 			aux = aux->next;
 			n_elem--;
 		}
@@ -60,33 +58,30 @@ void	ft_setstate(t_queue *queue, int n_elem, int state)
 }
 
 /*
- * 
- * INPUT:	
- * OUTPUT:	
+ * function which receives a queue of integers and calculates the average of
+ * the UNSORTED elements
+ * INPUT:	t_queue *queue
+ * OUTPUT:	int
  */
 int	ft_average(t_queue *queue)
 {
 	int		sum;
 	t_node	*aux;
 
-	sum = 0;
-	if (queue && queue->n_elem)
-	{
-		sum = queue->head->num;
-		if (queue->n_elem > 1)
-		{
-			aux = queue->head->next;
-			while (aux != queue->head)
-			{
-				if (aux->state)
-					sum += aux->num;
-				aux = aux->next;
-			}
-		}
-		return (sum / queue->n_elem);
-	}
-	else
+	if (!queue || !queue->n_elem)
 		return (0);
+	sum = queue->head->num;
+	if (queue->n_elem > 1)
+	{
+		aux = queue->head->next;
+		while (aux != queue->head)
+		{
+			if (aux->state == UNSORTED)
+				sum += aux->num;
+			aux = aux->next;
+		}
+	}
+	return (sum / queue->n_elem);
 }
 
 /*
