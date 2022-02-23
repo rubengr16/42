@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isdigit.c                                          :+:      :+:    :+:   */
+/*   ft_strisbase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 13:11:27 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/23 20:28:36 by rgallego         ###   ########.fr       */
+/*   Created: 2022/02/23 20:02:16 by rgallego          #+#    #+#             */
+/*   Updated: 2022/02/23 20:31:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- * function which receives a character and decides if it is a digit
- * INPUT:	int c
- * OUTPUT:	int
- */
-int	ft_isdigit(int c)
+int	ft_strisbase(char *str, char *base)
 {
-	int	digit;
+	int	cnt;
 
-	digit = 0;
-	if ('0' <= c && c <= '9')
-		digit = 1;
-	return (digit);
-}
+	if (!str || !base)
+		return (0);
+	cnt = 0;
+	while (str[cnt] && ft_strchr(base, str[cnt]))
+		cnt++;
+	if (!str[cnt])
+		return (1);
+	else
+		return (0);
+}	

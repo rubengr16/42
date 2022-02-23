@@ -53,13 +53,23 @@ SRCSBONUS	=		\
 					ft_lstmap_bonus.c \
 					)
 
+SRCSEXTRA	=		\
+					$(addprefix $(SRC_DIR), \
+					ft_strisnumber.c \
+					ft_strisbase.c \
+					)
+
 OBJS	=			$(SRCS:.c=.o)
 
 OBJSBONUS	=		$(SRCSBONUS:.c=.o)
 
+OBJSEXTRA	=		$(SRCSEXTRA:.c=.o)
+
 DPNDS	=			$(SRCS:.c=.d)
 
 DPNDSBONUS	=		$(SRCSBONUS:.c=.o)
+
+DPNDSEXTRA	=		$(SRCSEXTRA:.c=.d)
 
 CC		=			gcc
 

@@ -5,11 +5,11 @@ all: $(NAME)
 %.o: %.c
 	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(OBJSEXTRA)
+	$(AR) $(NAME) $(OBJS) $(OBJSEXTRA)
 
 clean:
-	$(RM) $(OBJS) $(DPNDS) $(OBJSBONUS) $(DPNDSBONUS)
+	$(RM) $(OBJS) $(DPNDS) $(OBJSBONUS) $(DPNDSBONUS) $(OBJSEXTRA) $(DPNDSEXTRA)
 
 fclean: clean
 	$(RM) $(NAME)
