@@ -6,13 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:31 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/23 18:56:13 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/23 20:56:07 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	error_msg(char	*str)
+void	error_msg(char *str)
 {
 	if (str)
 		perror(str);
@@ -22,7 +22,7 @@ void	error_msg(char	*str)
 	exit(errno);
 }
 
-int		count_elems(char **set)
+int	count_elems(char **set)
 {
 	int	n_elem;
 
