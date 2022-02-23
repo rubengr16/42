@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:05:45 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/12 17:23:50 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/21 14:34:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_strcpy(char *dest, char *src, int len)
 	}
 }
 
-int	ft_strjoin(char **dest, char *src, int len1, int len2)
+int	strjoin_gnl(char **dest, char *src, int len1, int len2)
 {
 	char	*aux;
 
@@ -84,11 +84,11 @@ void	read_line(char **line, char **rest, int len, int fd)
 			{
 				buffer[n_char] = '\0';
 				(void)ft_strchr_nl(buffer, &pos_nl);
-				len = ft_strjoin(line, buffer, len, pos_nl);
+				len = strjoin_gnl(line, buffer, len, pos_nl);
 			}
 		}
 		if (n_char > 0 && (pos_nl + 1) < n_char && len >= 0)
-			(void)ft_strjoin(rest, &buffer[pos_nl + 1], 0, n_char - pos_nl - 1);
+			strjoin_gnl(rest, &buffer[pos_nl + 1], 0, n_char - pos_nl - 1);
 	}
 	if (!buffer || len == -1 || n_char == -1)
 		ft_free_resources(line);

@@ -3,18 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/18 20:39:19 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/21 15:30:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FDF_H
+#ifndef FDF_H
 # define FDF_H
 
 /******************************** LIBRARIES ********************************* */
+# include <stdio.h>
+# include <errno.h>
+# include <fcntl.h>
 # include "libft.h"
 # include "get_next_line.h"
+
+/******************************** STRUCTURE ********************************* */
+# define FILE 1
+
+/******************************** STRUCTURE ********************************* */
+typedef struct s_map
+{
+
+}	t_map;
+
+/********************************** UTILS *********************************** */
+void	error_msg(char *str);
 
 #endif

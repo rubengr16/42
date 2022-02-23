@@ -20,7 +20,7 @@ OBJSBONUS	=		$(SRCSBONUS:.c=.o)
 
 DPNDS	=			$(SRCS:.c=.d)
 
-DPNDSBONUS	=		$(SRCSBONUS:.c=.o)
+DPNDSBONUS	=		$(SRCSBONUS:.c=.d)
 
 CC		=			gcc
 

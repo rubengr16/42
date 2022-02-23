@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 19:07:43 by rgallego          #+#    #+#              #
-#    Updated: 2022/02/18 19:13:45 by rgallego         ###   ########.fr        #
+#    Updated: 2022/02/21 14:23:08 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ INC_DIR	=			inc/
 
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
-					main.c\
-					\
+					main.c \
+					utils.c \
 					\
 					)
 
