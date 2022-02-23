@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:59:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/23 18:23:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/23 18:49:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	main(int argc, char **argv)
 {
-	int	fdin;
+	int		fdin;
+	t_map	map;
 
 	if (argc != 2)
 		error_msg(NULL);
@@ -23,5 +24,6 @@ int	main(int argc, char **argv)
 	fdin = open(argv[FILE], O_RDONLY);
 	if (fdin < 0)
 		error_msg(argv[FILE]);
+	read_matrix(&map, fdin);
 	return (0);
 }
