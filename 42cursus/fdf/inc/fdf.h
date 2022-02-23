@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/23 18:15:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/02/23 18:25:06 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_cell
 {
 	int	z;
 	int	colour;
-} t_cell;
+}	t_cell;
 
 typedef struct s_map
 {

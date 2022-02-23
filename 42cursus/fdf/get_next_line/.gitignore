@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 12:47:31 by rgallego          #+#    #+#              #
-#    Updated: 2021/11/08 16:26:39 by rgallego         ###   ########.fr        #
+#    Updated: 2022/02/23 18:27:30 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ gnlTester/
 # Make files
 *.*.swp
 *.o
+get_next_line.a
 a.out
 a.out.dSYM/
 main.c
