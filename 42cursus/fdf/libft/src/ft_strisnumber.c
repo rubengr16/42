@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strisnumber.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 16:12:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/23 17:17:11 by rgallego         ###   ########.fr       */
+/*   Created: 2022/02/23 20:00:14 by rgallego          #+#    #+#             */
+/*   Updated: 2022/02/23 20:31:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include "libft.h"
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+/*
+ * function which decides if a string is only numerical
+ * INPUT:	char *str
+ * OUTPUT:	int	:	1	numerical
+ *					0	non numerical
+ */
+int	ft_strisnumber(char *str)
 {
-	char	*sub_str;
-	size_t	s_len;
+	int	cnt;
 
-	if (s)
-	{
-		s_len = ft_strlen(s);
-		if (s_len < start)
-			sub_str = ft_strdup("");
-		else
-		{
-			if (s_len < (len + start))
-				len = ft_strlen(&s[start]);
-			sub_str = malloc(sizeof(char) * (len + 1));
-			if (sub_str)
-				(void)ft_strlcpy(sub_str, &s[start], len + 1);
-		}
-		return (sub_str);
-	}
+	if (!str)
+		return (0);
+	cnt = 0;
+	if (str[cnt] == '-')
+		cnt++;
+	while (str[cnt] && ft_isdigit(str[cnt]))
+		cnt++;
+	if (!str[cnt])
+		return (1);
 	else
-		return (NULL);
+		return (0);
 }
