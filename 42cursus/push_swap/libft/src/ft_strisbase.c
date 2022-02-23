@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strisbase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 09:17:46 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/08 19:52:31 by rgallego         ###   ########.fr       */
+/*   Created: 2022/02/23 20:02:16 by rgallego          #+#    #+#             */
+/*   Updated: 2022/02/23 20:31:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strisbase(char *str, char *base)
 {
-	while (*s && *s != (unsigned char)c)
-		s++;
-	if (*s == (unsigned char)c)
-		return ((char *)s);
+	int	cnt;
+
+	if (!str || !base)
+		return (0);
+	cnt = 0;
+	while (str[cnt] && ft_strchr(base, str[cnt]))
+		cnt++;
+	if (!str[cnt])
+		return (1);
 	else
-		return (NULL);
-}
+		return (0);
+}	

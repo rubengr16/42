@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 13:26:28 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/09 13:55:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/01/29 16:05:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- * function which receives a string and transforms it to int.
- * INPUT:	const char *s
- * OUTPUT:	int	:	N	the string represents a number in int's range
- *					0	the number represented is lower than INT_MIN
- *					-1	the number is greater than INT_MAX
+ * function which receives a string with a number writen in ASCII and returns
+ * the integer representation of it.
+ * INPUT:	const char num
+ * OUTPUT:	int
  */
-
 int	ft_atoi(const char *s)
 {
 	int					sign;
