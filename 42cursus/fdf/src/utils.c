@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:31 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/02 18:36:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/02 20:29:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,15 @@
 void	ft_free_matrix(t_cell **matrix)
 {
 	int	i;
-	int j;
 
 	i = 0;
-	while (matrix[i])
+	if (matrix)
 	{
-		j = 0;
-		while (matrix[i][j])
+		while (matrix[i])
 		{
-			free(matrix[i][j]);
-			j++;
+			free(matrix[i]);
+			i++;
 		}
-		free(matrix[i]);
-		i++;
 	}
 }
 
