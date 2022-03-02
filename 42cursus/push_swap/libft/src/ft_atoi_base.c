@@ -15,13 +15,14 @@
 /*
  * function which receives a string with a number writen in ASCII and returns
  * the integer representation of it.
- * INPUT:	const char *s
+ * INPUT:	const char *s, const char *base, int base_len
  * OUTPUT:	int
  */
-int	ft_atoi(const char *s)
+int	ft_atoi_base(const char *s, const char *base, int base_len)
 {
 	int					sign;
 	unsigned long long	num;
+	char				*ptr;
 
 	sign = 1;
 	num = 0;
@@ -32,15 +33,16 @@ int	ft_atoi(const char *s)
 		sign = -1;
 	if (*s == '-' || *s == '+')
 		s++;
-	while (*s && '0' <= *s && *s <= '9')
+	ptr = ft_strchr(base, *s);
+	while (*s && ptr)
 	{
-		num = num * 10 + (*s - '0');
+		num = num * base_len + (ptr - base);
 		s++;
+		ptr = ft_strchr(base, *s);
 	}
 	if (sign == 1 && num > LLONG_MAX)
 		return (-1);
-	else if (sign == -1 && num > LLONG_MAX)
+	if (sign == -1 && num > LLONG_MAX)
 		return (0);
-	else
-		return (sign * num);
+	return (sign * num);
 }
