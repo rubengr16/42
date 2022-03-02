@@ -55,6 +55,7 @@ SRCSBONUS	=		\
 
 SRCSEXTRA	=		\
 					$(addprefix $(SRC_DIR), \
+					ft_atoi_base.c \
 					ft_strisnumber.c \
 					ft_strisbase.c \
 					)
