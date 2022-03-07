@@ -6,15 +6,15 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 12:24:28 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/07 12:48:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:51:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- * function decides if the number represented by the string is inside the range 
- * values of int
+ * function which decides if the number represented by the string is inside the
+ * range values of int
  * INPUT:	int nb, char *str
  * OUTPUT:	int	:	1	number cannot be represented 
  * 					0	number is correct
