@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 19:08:09 by rgallego          #+#    #+#              #
-#    Updated: 2022/02/18 19:20:03 by rgallego         ###   ########.fr        #
+#    Updated: 2022/03/07 16:29:49 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,11 @@ $(LIBFTNAME):
 $(GNLNAME):
 	$(MAKE) -C $(GNL)
 
+$(MLXNAME):
+	$(MAKE) -C $(MLX)
+
 $(NAME): $(OBJS) $(LDFLAGS)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(FRAMEWORK) -o $@
 
 clean:
 	$(RM) $(OBJS) $(DPNDS)
@@ -33,6 +36,7 @@ fclean: clean
 	$(RM) $(NAME)
 	$(MAKE) -C $(LIBFT) fclean 
 	$(MAKE) -C $(GNL) fclean
+	$(MAKE) -C $(MLX) clean
 
 re: fclean all
 

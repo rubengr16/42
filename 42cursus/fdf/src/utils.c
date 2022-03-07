@@ -6,28 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:31 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/07 11:35:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:52:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-
-void	ft_free_split(char **set)
-{
-	int	i;
-
-	i = 0;
-	if (set)
-	{
-		while (set[i])
-		{
-			free(set[i]);
-			i++;
-		}
-		free(set);
-	}
-}
 
 void	ft_free_matrix(t_cell **matrix)
 {
@@ -45,13 +28,12 @@ void	ft_free_matrix(t_cell **matrix)
 	}
 }
 
-void	error_msg(char *str)
+void	error_msg(char *str, int error)
 {
-	if (str)
+	if (error == ERR_SYS)
 		perror(str);
 	else
-		ft_putendl_fd("Please, respect the structure: ./fdf <file.fdf>", \
-				STDERR_FILENO);
+		ft_putendl_fd(str, STDERR_FILENO);
 	exit(errno);
 }
 

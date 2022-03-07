@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 12:24:28 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/07 12:51:19 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/07 13:44:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  */
 int	ft_atoi_check(int nb, char *str)
 {
-	if ((!nb || nb != -1) && (ft_strlen(str) > 2))
+	if ((!nb || nb == -1) && (ft_strlen(str) > 2))
 		return (1);
 	else
 		return (0);

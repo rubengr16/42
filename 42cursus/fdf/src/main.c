@@ -6,54 +6,33 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:59:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/07 12:05:20 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:08:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	print_matrix(t_map map)
-{
-	int i;
-	int	j;
-
-	i = 0;
-	while (i < map.y)
-	{
-		j = 0;
-		printf("\nRow %3d", i);
-		while (j < map.x)
-		{
-			printf("\n%6d, %6d", map.matrix[i][j].z, map.matrix[i][j].colour);
-			j++;
-		}
-		i++;
-	}
-}
-
-void leaks()
+void	leaks(void)
 {
 	system("leaks fdf");
 }
 
 int	main(int argc, char **argv)
 {
-	int		fdin;
 	t_map	map;
+	int		fdin;
 
 	map = (t_map){-1, 0, NULL};
-	//atexit(leaks);
+	atexit(leaks);
 	if (argc != 2)
-		error_msg(NULL);
+		error_msg("Please, enter 2 arguments", ERR_USR);
 	if (ft_strncmp(&argv[FILE][ft_strlen(argv[FILE]) - 4], ".fdf", 4))
-		error_msg(NULL);
+		error_msg("Please, remember: <name>.fdf", ERR_USR);
 	fdin = open(argv[FILE], O_RDONLY);
 	if (fdin < 0)
-		error_msg(argv[FILE]);
+		error_msg("File issues", ERR_SYS);
 	read_matrix(&map, fdin);
-	print_matrix(map);
+	mlx_try();
 	ft_free_matrix(map.matrix);
-	print_matrix(map);
-	system("leaks fdf");
 	return (0);
 }
