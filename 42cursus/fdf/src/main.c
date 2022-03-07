@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:59:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/02 20:29:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:05:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,18 @@ void	print_matrix(t_map map)
 	}
 }
 
+void leaks()
+{
+	system("leaks fdf");
+}
+
 int	main(int argc, char **argv)
 {
 	int		fdin;
 	t_map	map;
 
 	map = (t_map){-1, 0, NULL};
+	//atexit(leaks);
 	if (argc != 2)
 		error_msg(NULL);
 	if (ft_strncmp(&argv[FILE][ft_strlen(argv[FILE]) - 4], ".fdf", 4))
@@ -45,6 +51,9 @@ int	main(int argc, char **argv)
 	if (fdin < 0)
 		error_msg(argv[FILE]);
 	read_matrix(&map, fdin);
-	//print_matrix(map);
+	print_matrix(map);
+	ft_free_matrix(map.matrix);
+	print_matrix(map);
+	system("leaks fdf");
 	return (0);
 }

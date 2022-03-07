@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/02 18:36:22 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:35:10 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ typedef struct s_map
 }	t_map;
 
 /********************************** UTILS *********************************** */
+void	ft_free_split(char **set);
+void	ft_free_matrix(t_cell **matrix);
 void	error_msg(char *str);
 int		count_elems(char **set);
-void	ft_free_matrix(t_cell **matrix);
 
 /********************************** PARSER ********************************** */
 void	read_matrix(t_map *map, int fdin);

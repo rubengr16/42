@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/02 20:29:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:15:11 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	fill_line(t_cell *line, char **set)
 	while (set[j])
 	{
 		value = ft_split(set[j], ',');
-		printf("\n%s", value[Z]);
 		if(!ft_strisnumber(value[Z]))
 			error_msg("Invalid map: z issues 1");
 		line[j].z = ft_atoi(value[Z]);
@@ -40,6 +39,7 @@ static void	fill_line(t_cell *line, char **set)
 		}
 		else
 			line[j].colour = 0x00FFFFFF;
+		ft_free_split(value);
 		j++;
 	}
 }
@@ -62,7 +62,7 @@ static void	fill_matrix(t_map *map, char **set)
 	map->matrix[i] = malloc(sizeof(t_cell) * (map->x + 1));
 	if (!map->matrix[i])
 		error_msg("Malloc failed");
-	ft_free_matrix(aux);
+	free(aux);
 	fill_line(map->matrix[i], set);
 	map->matrix[map->y] = NULL;
 }
@@ -82,14 +82,13 @@ void	read_matrix(t_map *map, int fdin)
 		free(aux);
 		if (!set)
 			error_msg("Split failed");
-		if (map->x)
+		if (map->x < 0)
 			map->x = count_elems(set);
 		else if (map->x != count_elems(set))
 			error_msg("Invalid map: size issues");
 		map->y++;
-		// REMIND free(set);
 		fill_matrix(map, set);
+		ft_free_split(set);
 		line = get_next_line(fdin);
-	//	write(1, "hello", 5);
 	}
 }
