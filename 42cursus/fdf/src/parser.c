@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/07 14:52:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/09 16:20:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	fill_matrix(t_map *map, char **set)
 		map->matrix[i] = aux[i];
 		i++;
 	}
-	map->matrix[i] = malloc(sizeof(t_cell) * (map->x + 1));
+	map->matrix[i] = malloc(sizeof(t_cell) * (map->x));
 	if (!map->matrix[i])
 		error_msg("Malloc failed", ERR_SYS);
 	free(aux);

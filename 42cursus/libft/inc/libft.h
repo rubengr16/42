@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:02:59 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/07 12:45:25 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/09 17:01:56 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int		ft_strisnumber(char *str);
 int		ft_strisbase(char *str, char *base);
 void	ft_free_split(char **set);
 int		ft_atoi_check(int nb, char *str);
+int		ft_max(int nb1, int nb2);
 
 #endif

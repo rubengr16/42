@@ -60,6 +60,7 @@ SRCSEXTRA	=		\
 					ft_strisbase.c \
 					ft_free_split.c \
 					ft_atoi_check.c \
+					ft_max.c \
 					)
 
 OBJS	=			$(SRCS:.c=.o)

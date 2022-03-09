@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 12:47:31 by rgallego          #+#    #+#              #
-#    Updated: 2022/02/23 18:57:25 by rgallego         ###   ########.fr        #
+#    Updated: 2022/03/09 17:09:10 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,10 @@ fdf
 *.*.swp
 *.o
 *.d
+
+### minilib ###
+mlx/
+libmlx.dylib
 
 ### Test files ###
 test_maps/
