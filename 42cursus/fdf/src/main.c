@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:59:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/07 18:08:51 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:34:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ void	leaks(void)
 	system("leaks fdf");
 }
 
+
+
 int	main(int argc, char **argv)
 {
-	t_map	map;
+	t_fdf	fdf;
 	int		fdin;
 
-	map = (t_map){-1, 0, NULL};
+	fdf = (t_fdf){{NULL, NULL, {NULL, NULL, -1, -1, -1}}, {-1, 0, 1, NULL}};
 	atexit(leaks);
 	if (argc != 2)
 		error_msg("Please, enter 2 arguments", ERR_USR);
@@ -31,8 +33,9 @@ int	main(int argc, char **argv)
 	fdin = open(argv[FILE], O_RDONLY);
 	if (fdin < 0)
 		error_msg("File issues", ERR_SYS);
-	read_matrix(&map, fdin);
-	mlx_try();
-	ft_free_matrix(map.matrix);
+	read_matrix(&fdf.map, fdin);
+	ft_mlx_init(&fdf.mlx);
+	draw(&fdf);
+	ft_free_matrix(fdf.map.matrix);
 	return (0);
 }

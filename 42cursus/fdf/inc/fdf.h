@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/09 16:59:40 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:34:10 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 
 /******************************** CONSTANTS ********************************* */
 # define FILE 1
+# define WIN_X 1920
+# define WIN_Y 1080
 # define BASE "0123456789ABCDEF"
 # define WHITE 0x00FFFFFF
 # define Z 0
@@ -43,10 +45,11 @@ typedef struct s_map
 {
 	int		x;
 	int		y;
+	int		zoom;
 	t_cell	**matrix;
 }	t_map;
 
-typedef struct s_data
+typedef struct s_img_data
 {
 	void	*img;
 	void	*addr;
@@ -55,17 +58,39 @@ typedef struct s_data
 	int		endian;
 }	t_img_data;
 
+typedef struct s_mlx
+{
+	void		*mlx;
+	void		*mlx_win;
+	t_img_data	img;
+}	t_mlx_data;
+
+typedef struct s_fdf
+{
+	t_mlx_data	mlx;
+	t_map		map;
+}	t_fdf;
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
 /********************************** UTILS *********************************** */
-void	ft_free_split(char **set);
 void	ft_free_matrix(t_cell **matrix);
 void	error_msg(char *str, int error);
 int		count_elems(char **set);
+t_point	get_pt(int x, int y);
 
 /********************************** PARSER ********************************** */
 void	read_matrix(t_map *map, int fdin);
 
 /******************************** MLX_MNGMENT ******************************* */
-void	mlx_try(void);
+void	ft_mlx_init(t_mlx_data *mlx);
+void	mlx_try(t_mlx_data mlx);
 void	my_pixel_put(t_img_data *img, int x, int y, int colour);
+
+void	draw(t_fdf *fdf);
 
 #endif

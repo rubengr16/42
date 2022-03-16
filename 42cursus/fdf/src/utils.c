@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:31 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/07 14:52:35 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:34:07 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,12 @@ int	count_elems(char **set)
 	while (set[n_elem])
 		n_elem++;
 	return (n_elem);
+}
+
+t_point	get_pt(int x, int y)
+{
+	t_point	pt;
+
+	pt = (t_point){x, y};
+	return (pt);
 }
