@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:59:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/16 20:34:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/18 20:32:22 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	leaks(void)
 {
 	system("leaks fdf");
 }
-
-
 
 int	main(int argc, char **argv)
 {
@@ -37,5 +35,6 @@ int	main(int argc, char **argv)
 	ft_mlx_init(&fdf.mlx);
 	draw(&fdf);
 	ft_free_matrix(fdf.map.matrix);
+	mlx_loop(fdf.mlx.mlx);
 	return (0);
 }

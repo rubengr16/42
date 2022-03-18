@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/16 20:34:10 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/18 20:32:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 
 /******************************** CONSTANTS ********************************* */
 # define FILE 1
-# define WIN_X 1920
-# define WIN_Y 1080
-# define BASE "0123456789ABCDEF"
+# define WIN_X 1080
+# define WIN_Y 720
+# define BASE "0123456789abcdef"
 # define WHITE 0x00FFFFFF
 # define Z 0
 # define COLOUR	1
@@ -81,7 +81,7 @@ typedef struct s_point
 void	ft_free_matrix(t_cell **matrix);
 void	error_msg(char *str, int error);
 int		count_elems(char **set);
-t_point	get_pt(int x, int y);
+t_point	get_pt(int x, int y, t_fdf fdf);
 
 /********************************** PARSER ********************************** */
 void	read_matrix(t_map *map, int fdin);

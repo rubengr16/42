@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:31 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/16 20:34:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/18 20:32:25 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ int	count_elems(char **set)
 	return (n_elem);
 }
 
-t_point	get_pt(int x, int y)
+t_point	get_pt(int x, int y, t_fdf fdf)
 {
 	t_point	pt;
 
-	pt = (t_point){x, y};
+	pt = (t_point){x * fdf.map.zoom, y * fdf.map.zoom};
 	return (pt);
 }

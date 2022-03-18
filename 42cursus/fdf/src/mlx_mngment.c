@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:03:07 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/16 20:34:09 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/18 20:32:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_mlx_init(t_mlx_data *mlx)
 
 void	mlx_try(t_mlx_data mlx)
 {
-	my_pixel_put(&mlx.img, WIN_X - 100, WIN_Y - 1, 0x00FF0000);
+	my_pixel_put(&mlx.img, WIN_X - 100, WIN_Y - 1, 0x00ff0000);
 	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, mlx.img.img, 0, 0);
 	mlx_loop(mlx.mlx);
 }
