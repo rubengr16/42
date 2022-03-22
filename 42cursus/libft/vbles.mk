@@ -61,6 +61,7 @@ SRCSEXTRA	=		\
 					ft_free_split.c \
 					ft_atoi_check.c \
 					ft_max.c \
+					ft_min.c \
 					)
 
 OBJS	=			$(SRCS:.c=.o)
