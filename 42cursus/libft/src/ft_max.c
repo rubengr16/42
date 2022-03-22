@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 12:30:58 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/22 12:33:47 by rgallego         ###   ########.fr       */
+/*   Created: 2022/03/09 17:00:06 by rgallego          #+#    #+#             */
+/*   Updated: 2022/03/22 12:38:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_max(int a, int b)
+int	ft_max(int nb1, int nb2)
 {
-	if (a > b)
-		return (a);
-	return (b);
+	if (nb1 > nb2)
+		return (nb1);
+	return (nb2);
 }

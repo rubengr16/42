@@ -6,13 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:00:06 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/09 17:01:30 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/22 12:38:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_max(int nb1, int nb2)
 {
-	if (nb1 < nb2)
-		return (nb2);
-	return (nb1);
+	if (nb1 > nb2)
+		return (nb1);
+	return (nb2);
 }
