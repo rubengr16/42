@@ -6,32 +6,55 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:12:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/22 12:50:13 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/22 15:35:48 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	bresenham(t_mlx_data mlx, t_point start_pt, t_point end_pt, int colour)
+static void	bresenham(t_mlx_data mlx, t_point start, t_point end, int colour)
 {
+	int		variation;
 	t_point	d;
-	t_point step;
+	t_point	step;
 
-	dec = 2 * (start_pt.y - end_pt.y) - (start_pt.x - end_pt.x);
-	variation[0] = 2 * (start_pt.y - end_pt.y);
-	variation[1] = 2 * (start_pt.y - end_pt.y) - 2 * (start_pt.x - end_pt.x);
-	my_pixel_put(&mlx.img, start_pt.x, start_pt.y, colour);
-	while (start_pt.x < end_pt.x)
+	d.x = 2 * (ft_max(start.x, end.x) - ft_min(start.x, end.x));
+	d.y = 2 * (ft_max(start.y, end.y) - ft_min(start.y, end.y));
+	step = (t_point){1, 1};
+	if ((start.x - end.x) < 0)
+		step.x = -1;
+	if ((start.y - end.y) < 0)
+		step.y = -1;
+	my_pixel_put(&mlx.img, start.x, start.y, colour);
+	if (d.x > d.y)
 	{
-		if (dec < 0)
-			dec += variation[0];
-		else
+		variation = d.y - (d.x / 2);
+		while (start.x < end.x)
 		{
-			dec += variation[1];
-			start_pt.y++;
+			start.x += step.x;
+			if (variation >= 0)
+			{
+				start.y += step.y;
+				variation -= d.x;
+			}
+			variation += d.y;
+			my_pixel_put(&mlx.img, start.x, start.y, colour);
 		}
-		start_pt.x++;
-		my_pixel_put(&mlx.img, start_pt.x, start_pt.y, colour);
+	}
+	else
+	{
+		variation = d.x - (d.y / 2);
+		while (start.y < end.y)
+		{
+			if (variation >= 0)
+			{
+				start.x += step.x;
+				variation -= d.y;
+			}
+			start.y += step.y;
+			variation += d.y;
+			my_pixel_put(&mlx.img, start.x, start.y, colour);
+		}
 	}
 }
 
