@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:12:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/22 12:21:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/22 12:50:13 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	bresenham(t_mlx_data mlx, t_point start_pt, t_point end_pt, int colour)
 {
-	int	dec;
-	int	variation[2];
+	t_point	d;
+	t_point step;
 
 	dec = 2 * (start_pt.y - end_pt.y) - (start_pt.x - end_pt.x);
 	variation[0] = 2 * (start_pt.y - end_pt.y);
