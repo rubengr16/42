@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:59:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/18 20:32:22 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/23 18:26:18 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	t_fdf	fdf;
 	int		fdin;
 
-	fdf = (t_fdf){{NULL, NULL, {NULL, NULL, -1, -1, -1}}, {-1, 0, 1, NULL}};
+	fdf = (t_fdf){{NULL, NULL, {NULL, NULL, -1, -1, -1}}, {-1, 0, 5, X0, Y0, NULL}};
 	atexit(leaks);
 	if (argc != 2)
 		error_msg("Please, enter 2 arguments", ERR_USR);
