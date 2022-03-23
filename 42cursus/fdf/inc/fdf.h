@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/18 20:32:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/23 18:23:22 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define FILE 1
 # define WIN_X 1080
 # define WIN_Y 720
+# define X0 20
+# define Y0 20
 # define BASE "0123456789abcdef"
 # define WHITE 0x00FFFFFF
 # define Z 0
@@ -46,6 +48,8 @@ typedef struct s_map
 	int		x;
 	int		y;
 	int		zoom;
+	int		x0;
+	int		y0;
 	t_cell	**matrix;
 }	t_map;
 
