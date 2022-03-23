@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:12:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/22 15:35:48 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/23 16:54:07 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static void	bresenham(t_mlx_data mlx, t_point start, t_point end, int colour)
 	d.x = 2 * (ft_max(start.x, end.x) - ft_min(start.x, end.x));
 	d.y = 2 * (ft_max(start.y, end.y) - ft_min(start.y, end.y));
 	step = (t_point){1, 1};
-	if ((start.x - end.x) < 0)
+	if ((end.x - start.x) < 0)
 		step.x = -1;
-	if ((start.y - end.y) < 0)
+	if ((end.y - start.y) < 0)
 		step.y = -1;
 	my_pixel_put(&mlx.img, start.x, start.y, colour);
 	if (d.x > d.y)
@@ -52,7 +52,7 @@ static void	bresenham(t_mlx_data mlx, t_point start, t_point end, int colour)
 				variation -= d.y;
 			}
 			start.y += step.y;
-			variation += d.y;
+			variation += d.x;
 			my_pixel_put(&mlx.img, start.x, start.y, colour);
 		}
 	}
