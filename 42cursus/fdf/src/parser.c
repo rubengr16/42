@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/23 18:25:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:16:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	calculate_zoom(int x, int y)
 	zoom = WIN_X / x;
 	if (zoom > (WIN_Y / y))
 		zoom = WIN_Y / y;
-	zoom *= 0.95;
+	zoom *= 0.4;
 	if (zoom < 5)
 		zoom = 5;
 	return ((int)zoom);

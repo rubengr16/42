@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/23 18:23:22 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:25:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <mlx.h>
+# include <math.h>
 # include "libft.h"
 # include "get_next_line.h"
 
@@ -29,8 +30,8 @@
 # define FILE 1
 # define WIN_X 1080
 # define WIN_Y 720
-# define X0 20
-# define Y0 20
+# define X0 200
+# define Y0 300
 # define BASE "0123456789abcdef"
 # define WHITE 0x00FFFFFF
 # define Z 0
