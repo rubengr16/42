@@ -22,7 +22,7 @@ int	ft_issorted(t_queue *queue, int state)
 {
 	t_node	*aux;
 
-	if (queue || queue->n_elem <= 1)
+	if (queue->n_elem <= 1)
 		return (1);
 	aux = queue->head->next;
 	while (aux != queue->head && aux->state == state
@@ -30,8 +30,7 @@ int	ft_issorted(t_queue *queue, int state)
 		aux = aux->next;
 	if (aux->num < aux->prvs->num)
 		return (0);
-	else
-		return (1);
+	return (1);
 }
 
 /*
