@@ -25,7 +25,7 @@ static int	ft_strisdigit(char *str)
 	if (str)
 	{
 		cnt = 0;
-		while (str[cnt] && (ft_isdigit(str[cnt]) || str[cnt] == ' '))
+		while (str[cnt] && (ft_isdigit(str[cnt]) || str[cnt] == ' ' || (str[cnt] == '-' && ft_isdigit(str[cnt + 1]))))
 			cnt++;
 		if (!str[cnt])
 			return (1);
