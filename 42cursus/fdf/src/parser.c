@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/23 20:16:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/04 19:48:10 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 static void	fill_line(t_cell *line, char **set)
 {
 	char	**value;
+	char	*aux;
 	int		j;
 
 	j = 0;
 	while (set[j])
 	{
 		value = ft_split(set[j], ',');
-		if (!ft_strisnumber(value[Z]))
-			error_msg("Invalid map: z is not a number", ERR_USR);
 		line[j].z = ft_atoi(value[Z]);
-		if (ft_atoi_check(line[j].z, value[Z]))
-			error_msg("Invalid map: z is not int", ERR_USR);
+		if (!ft_strisnumber(value[Z]) && ft_atoi_check(line[j].z, value[Z]))
+			error_msg("Invalid map: z is not valid", ERR_USR);
 		line[j].colour = WHITE;
+		aux = 
 		if (value[COLOUR] && (ft_strncmp(value[COLOUR], "0x", 2)
 				|| !ft_strisbase(&value[COLOUR][2], BASE)))
 			error_msg("Invalid map: colour is not hexup", ERR_USR);
 		if (value[COLOUR])
 		{
-			line[j].colour = ft_atoi_base(value[COLOUR], BASE, ft_strlen(BASE));
-			if (ft_atoi_check(line[j].colour, value[COLOUR]))
+			line[j].colour = ft_atoi_base(&value[COLOUR][2], BASE, ft_strlen(BASE));
+			if (ft_atoi_check(line[j].colour, &value[COLOUR][2]))
 				error_msg("Invalid map: colour is not int", ERR_USR);
 		}
 		ft_free_split(value);
