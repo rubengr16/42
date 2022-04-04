@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:03:07 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/23 18:52:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:17:48 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	my_pixel_put(t_img_data *img, int x, int y, int colour)
 	int		offset;
 	char	*dst;
 
-	offset = y * img->line_len + x * (img->bpp / 8);
-	if (0 <= offset && offset < (WIN_Y * img->line_len))
+	if ((0 <= x && x < WIN_X) && (0 <= y && y < WIN_Y))
 	{
+		offset = y * img->line_len + x * (img->bpp / 8);
 		dst = img->addr + offset;
 		*(unsigned int *)dst = colour;
 	}

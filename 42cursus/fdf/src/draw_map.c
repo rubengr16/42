@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:12:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/23 20:16:44 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:17:54 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	bresenham(t_mlx_data mlx, t_point start, t_point end, int colour)
 	if (d.x > d.y)
 	{
 		variation = d.y - (d.x / 2);
-		while (start.x < end.x)
+		while (start.x != end.x)
 		{
 			start.x += step.x;
 			if (variation >= 0)
@@ -44,7 +44,7 @@ static void	bresenham(t_mlx_data mlx, t_point start, t_point end, int colour)
 	else
 	{
 		variation = d.x - (d.y / 2);
-		while (start.y < end.y)
+		while (start.y != end.y)
 		{
 			if (variation >= 0)
 			{

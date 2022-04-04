@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:31 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/23 20:28:31 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:17:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ t_point	get_pt(int x, int y, t_fdf fdf)
 
 	pt.x = x * fdf.map.zoom;
    	pt.y = y * fdf.map.zoom;
-	pt.x = (pt.x - pt.y) * cos(0.8);
-	pt.y = (pt.y + x * fdf.map.zoom ) * sin(0.8) - fdf.map.matrix[y][x].z * fdf.map.zoom;
+	pt.x = (pt.x - pt.y) * cos(0.4);
+	pt.y = (pt.y + x * fdf.map.zoom) * sin(0.4) - fdf.map.matrix[y][x].z;
 	pt.x += fdf.map.x0;
  	pt.y += fdf.map.y0;
 	return (pt);
