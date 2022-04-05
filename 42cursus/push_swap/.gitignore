@@ -21,3 +21,4 @@ gcc
 a.out
 a.out.dSYM/
 main.c
+push_swap
