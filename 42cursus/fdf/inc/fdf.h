@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/04 19:48:09 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:29:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,11 @@ typedef struct s_img_data
 	int		endian;
 }	t_img_data;
 
-typedef struct s_mlx
+typedef struct s_fdf
 {
 	void		*mlx;
 	void		*mlx_win;
 	t_img_data	img;
-}	t_mlx_data;
-
-typedef struct s_fdf
-{
-	t_mlx_data	mlx;
 	t_map		map;
 }	t_fdf;
 

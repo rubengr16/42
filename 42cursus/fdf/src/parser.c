@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/04 20:41:42 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:25:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	fill_line(t_cell *line, char **set)
 {
 	char	**value;
-	char	*aux;
 	int		j;
 
 	j = 0;
@@ -26,7 +25,6 @@ static void	fill_line(t_cell *line, char **set)
 		if (!ft_strisnumber(value[Z]) && ft_atoi_check(line[j].z, value[Z]))
 			error_msg("Invalid map: z is not valid", ERR_USR);
 		line[j].colour = WHITE;
-		aux = 
 		if (value[COLOUR] && (ft_strncmp(value[COLOUR], "0x", 2)
 				|| !ft_strisbase(&value[COLOUR][2], BASE)))
 			error_msg("Invalid map: colour is not hexup", ERR_USR);
