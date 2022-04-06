@@ -6,17 +6,17 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:03:07 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 19:22:58 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:02:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_mlx_init(void *mlx, void *mlx_win, t_img_data *img)
+void	ft_mlx_init(void **mlx, void **mlx_win, t_img_data *img)
 {
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, WIN_X, WIN_Y, "fdf");
-	img->img = mlx_new_image(mlx, WIN_X, WIN_Y);
+	*mlx = mlx_init();
+	*mlx_win = mlx_new_window(*mlx, WIN_X, WIN_Y, "fdf");
+	img->img = mlx_new_image(*mlx, WIN_X, WIN_Y);
 	img->addr = mlx_get_data_addr(\
 			img->img, &img->bpp, &img->line_len, &img->endian);
 }
