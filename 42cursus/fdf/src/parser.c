@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 18:27:54 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 18:34:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 static int	read_colour(char *str)
 {
-	int	colour;
+	int		colour;
+	char	*aux;
 
 	if (!str)
 		return (WHITE);
-	if (ft_strncmp(str, "0x", 2) || !ft_strisbase(&str[2], BASE))
-		error_msg("Invalid map: colour is not hexup", ERR_USR);
-	colour = ft_atoi_base(&str[2], BASE, ft_strlen(BASE));
-	if (ft_atoi_check(colour, &str[2]))
-		error_msg("Invalid map: colour is not int", ERR_USR);
+	aux = str;
+	str = ft_strtoupper(&str[2]);
+	if (ft_strncmp(aux, "0x", 2) || !ft_strisbase(str, BASE))
+		error_msg("Invalid map: colour is not valid", ERR_USR);
+	free(aux);
+	colour = ft_atoi_base(str, BASE, ft_strlen(BASE));
+	if (ft_atoi_check(colour, str))
+		error_msg("Invalid map: colour is not valid", ERR_USR);
 	return (colour);
 }
 
