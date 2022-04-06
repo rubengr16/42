@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:59:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 18:47:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 18:59:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 		error_msg("File issues", ERR_SYS);
 	read_matrix(&fdf.map, fdin);
 	ft_mlx_init(&fdf.mlx);
-	draw(&fdf);
+	draw(fdf);
 	ft_free_matrix(fdf.map.matrix);
 	mlx_loop(fdf.mlx.mlx);
 	return (0);

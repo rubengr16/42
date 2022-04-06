@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 18:36:25 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 19:02:18 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,6 @@ void	ft_mlx_init(t_mlx_data *mlx);
 void	mlx_try(t_mlx_data mlx);
 void	my_pixel_put(t_img_data *img, int x, int y, int colour);
 
-void	draw(t_fdf *fdf);
+void	draw(t_fdf fdf);
 
 #endif

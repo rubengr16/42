@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:12:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/04 19:48:11 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 19:03:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,26 +58,26 @@ static void	bresenham(t_mlx_data mlx, t_point start, t_point end, int colour)
 	}
 }
 
-void	draw(t_fdf *fdf)
+void	draw(t_fdf fdf)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < fdf->map.y)
+	while (i < fdf.map.y)
 	{
 		j = 0;
-		while (j < fdf->map.x)
+		while (j < fdf.map.x)
 		{
 			if (j > 0)
-				bresenham(fdf->mlx, get_pt(j - 1, i, *fdf), get_pt(j, i, *fdf), fdf->map.matrix[i][j].colour);
+				bresenham(fdf.mlx, get_pt(j - 1, i, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
 			if (i > 0)
-				bresenham(fdf->mlx, get_pt(j, i - 1, *fdf), get_pt(j, i, *fdf), fdf->map.matrix[i][j].colour);
+				bresenham(fdf.mlx, get_pt(j, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
 			if (i > 0 && j > 0)
-				bresenham(fdf->mlx, get_pt(j - 1, i - 1, *fdf), get_pt(j, i, *fdf), fdf->map.matrix[i][j].colour);
+				bresenham(fdf.mlx, get_pt(j - 1, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
 			j++;
 		}
 		i++;
 	}
-	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.mlx_win, fdf->mlx.img.img, 0, 0);
+	mlx_put_image_to_window(fdf.mlx.mlx, fdf.mlx.mlx_win, fdf.mlx.img.img, 0, 0);
 }
