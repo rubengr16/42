@@ -6,11 +6,25 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 17:25:50 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 18:17:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int	read_colour(char *str)
+{
+	int	colour;
+
+	if (!str)
+		return (WHITE);
+	if (ft_strncmp(str, "0x", 2) || !ft_strisbase(&str[2], BASE))
+		error_msg("Invalid map: colour is not hexup", ERR_USR);
+	colour = ft_atoi_base(&str[2], BASE, ft_strlen(BASE));
+	if (ft_atoi_check(colour, &str[2]))
+		error_msg("Invalid map: colour is not int", ERR_USR);
+	return (colour);
+}
 
 static void	fill_line(t_cell *line, char **set)
 {
@@ -24,16 +38,7 @@ static void	fill_line(t_cell *line, char **set)
 		line[j].z = ft_atoi(value[Z]);
 		if (!ft_strisnumber(value[Z]) && ft_atoi_check(line[j].z, value[Z]))
 			error_msg("Invalid map: z is not valid", ERR_USR);
-		line[j].colour = WHITE;
-		if (value[COLOUR] && (ft_strncmp(value[COLOUR], "0x", 2)
-				|| !ft_strisbase(&value[COLOUR][2], BASE)))
-			error_msg("Invalid map: colour is not hexup", ERR_USR);
-		if (value[COLOUR])
-		{
-			line[j].colour = ft_atoi_base(&value[COLOUR][2], BASE, ft_strlen(BASE));
-			if (ft_atoi_check(line[j].colour, &value[COLOUR][2]))
-				error_msg("Invalid map: colour is not int", ERR_USR);
-		}
+		line[j].colour = read_colour(value[COLOUR]);
 		ft_free_split(value);
 		j++;
 	}
