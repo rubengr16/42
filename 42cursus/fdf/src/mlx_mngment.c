@@ -6,26 +6,19 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:03:07 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 18:02:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 19:22:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_mlx_init(t_mlx_data *mlx)
+void	ft_mlx_init(void *mlx, void *mlx_win, t_img_data *img)
 {
-	mlx->mlx = mlx_init();
-	mlx->mlx_win = mlx_new_window(mlx->mlx, WIN_X, WIN_Y, "fdf");
-	mlx->img.img = mlx_new_image(mlx->mlx, WIN_X, WIN_Y);
-	mlx->img.addr = mlx_get_data_addr(\
-			mlx->img.img, &mlx->img.bpp, &mlx->img.line_len, &mlx->img.endian);
-}
-
-void	mlx_try(t_mlx_data mlx)
-{
-	my_pixel_put(&mlx.img, WIN_X - 100, WIN_Y - 1, 0x00ff0000);
-	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, mlx.img.img, 0, 0);
-	mlx_loop(mlx.mlx);
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, WIN_X, WIN_Y, "fdf");
+	img->img = mlx_new_image(mlx, WIN_X, WIN_Y);
+	img->addr = mlx_get_data_addr(\
+			img->img, &img->bpp, &img->line_len, &img->endian);
 }
 
 void	my_pixel_put(t_img_data *img, int x, int y, int colour)
