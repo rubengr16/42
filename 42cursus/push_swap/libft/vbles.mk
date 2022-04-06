@@ -58,6 +58,10 @@ SRCSEXTRA	=		\
 					ft_atoi_base.c \
 					ft_strisnumber.c \
 					ft_strisbase.c \
+					ft_free_split.c \
+					ft_atoi_check.c \
+					ft_max.c \
+					ft_min.c \
 					)
 
 OBJS	=			$(SRCS:.c=.o)

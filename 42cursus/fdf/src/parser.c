@@ -6,11 +6,29 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/18 20:32:19 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:55:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int	read_colour(char *str)
+{
+	int		colour;
+	char	*aux;
+
+	if (!str)
+		return (WHITE);
+	aux = str;
+	str = ft_strtoupper(&str[2]);
+	if (ft_strncmp(aux, "0x", 2) || !ft_strisbase(str, BASE))
+		error_msg("Invalid map: colour is not valid", ERR_USR);
+	colour = ft_atoi_base(str, BASE, ft_strlen(BASE));
+	if (ft_atoi_check(colour, str))
+		error_msg("Invalid map: colour is not valid", ERR_USR);
+	free(str);
+	return (colour);
+}
 
 static void	fill_line(t_cell *line, char **set)
 {
@@ -21,21 +39,10 @@ static void	fill_line(t_cell *line, char **set)
 	while (set[j])
 	{
 		value = ft_split(set[j], ',');
-		if (!ft_strisnumber(value[Z]))
-			error_msg("Invalid map: z is not a number", ERR_USR);
 		line[j].z = ft_atoi(value[Z]);
-		if (ft_atoi_check(line[j].z, value[Z]))
-			error_msg("Invalid map: z is not int", ERR_USR);
-		line[j].colour = WHITE;
-		if (value[COLOUR] && (ft_strncmp(value[COLOUR], "0x", 2)
-				|| !ft_strisbase(&value[COLOUR][2], BASE)))
-			error_msg("Invalid map: colour is not hexup", ERR_USR);
-		if (value[COLOUR])
-		{
-			line[j].colour = ft_atoi_base(value[COLOUR], BASE, ft_strlen(BASE));
-			if (ft_atoi_check(line[j].colour, value[COLOUR]))
-				error_msg("Invalid map: colour is not int", ERR_USR);
-		}
+		if (!ft_strisnumber(value[Z]) && ft_atoi_check(line[j].z, value[Z]))
+			error_msg("Invalid map: z is not valid", ERR_USR);
+		line[j].colour = read_colour(value[COLOUR]);
 		ft_free_split(value);
 		j++;
 	}
@@ -71,7 +78,9 @@ static int	calculate_zoom(int x, int y)
 	zoom = WIN_X / x;
 	if (zoom > (WIN_Y / y))
 		zoom = WIN_Y / y;
-	zoom *= 0.98;
+	zoom *= 0.8;
+	if (zoom < 5)
+		zoom = 5;
 	return ((int)zoom);
 }
 

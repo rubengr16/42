@@ -55,6 +55,7 @@ int	main(int argc, char **argv)
 				if (b)
 					ft_queuedelall(&b);
 			}
+			printf("OK\n");
 		}
 		else
 			printf("Nay, bad input\n");

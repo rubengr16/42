@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 19:07:43 by rgallego          #+#    #+#              #
-#    Updated: 2022/03/16 20:27:21 by rgallego         ###   ########.fr        #
+#    Updated: 2022/04/06 20:21:38 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@ INC_DIR	=			inc/
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
 					main.c \
-					utils.c \
+ 					utils.c \
 					parser.c \
-					mlx_mngment.c \
 					draw_map.c \
+					mlx_mngment.c \
 					)
 
 OBJS	=			$(SRCS:.c=.o)

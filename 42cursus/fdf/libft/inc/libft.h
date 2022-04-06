@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:02:59 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/22 12:36:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/04 20:25:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,7 @@ void	ft_free_split(char **set);
 int		ft_atoi_check(int nb, char *str);
 int		ft_max(int nb1, int nb2);
 int		ft_min(int nb1, int nb2);
+char	*ft_strtoupper(char *str);
+char	*ft_strtolower(char *str);
 
 #endif

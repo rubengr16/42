@@ -28,8 +28,6 @@ static int	ft_nbrepeated(t_queue *queue, int nb)
 		}
 		else if (queue->head->num == nb)
 			return (1);
-		else
-			return (0);
 	}
 	return (0);
 }

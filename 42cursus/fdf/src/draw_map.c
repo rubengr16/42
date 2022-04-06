@@ -6,55 +6,78 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:12:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/22 12:21:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 21:04:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	bresenham(t_mlx_data mlx, t_point start_pt, t_point end_pt, int colour)
+static void	bresenham(t_img img, t_point start, t_point end, int colour)
 {
-	int	dec;
-	int	variation[2];
+	int		variation;
+	t_point	d;
+	t_point	step;
 
-	dec = 2 * (start_pt.y - end_pt.y) - (start_pt.x - end_pt.x);
-	variation[0] = 2 * (start_pt.y - end_pt.y);
-	variation[1] = 2 * (start_pt.y - end_pt.y) - 2 * (start_pt.x - end_pt.x);
-	my_pixel_put(&mlx.img, start_pt.x, start_pt.y, colour);
-	while (start_pt.x < end_pt.x)
+	d.x = 2 * (ft_max(start.x, end.x) - ft_min(start.x, end.x));
+	d.y = 2 * (ft_max(start.y, end.y) - ft_min(start.y, end.y));
+	step = (t_point){1, 1};
+	if ((end.x - start.x) < 0)
+		step.x = -1;
+	if ((end.y - start.y) < 0)
+		step.y = -1;
+	my_pixel_put(img, start.x, start.y, colour);
+	if (d.x > d.y)
 	{
-		if (dec < 0)
-			dec += variation[0];
-		else
+		variation = d.y - (d.x / 2);
+		while (start.x != end.x)
 		{
-			dec += variation[1];
-			start_pt.y++;
+			start.x += step.x;
+			if (variation >= 0)
+			{
+				start.y += step.y;
+				variation -= d.x;
+			}
+			variation += d.y;
+			my_pixel_put(img, start.x, start.y, colour);
 		}
-		start_pt.x++;
-		my_pixel_put(&mlx.img, start_pt.x, start_pt.y, colour);
+	}
+	else
+	{
+		variation = d.x - (d.y / 2);
+		while (start.y != end.y)
+		{
+			if (variation >= 0)
+			{
+				start.x += step.x;
+				variation -= d.y;
+			}
+			start.y += step.y;
+			variation += d.x;
+			my_pixel_put(img, start.x, start.y, colour);
+		}
 	}
 }
 
-void	draw(t_fdf *fdf)
+void	draw(t_fdf fdf)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < fdf->map.y)
+	while (i < fdf.map.y)
 	{
 		j = 0;
-		while (j < fdf->map.x)
+		while (j < fdf.map.x)
 		{
 			if (j > 0)
-				bresenham(fdf->mlx, get_pt(j - 1, i, *fdf), get_pt(j, i, *fdf), fdf->map.matrix[i][j].colour);
+				bresenham(fdf.img, get_pt(j - 1, i, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
 			if (i > 0)
-				bresenham(fdf->mlx, get_pt(j, i - 1, *fdf), get_pt(j, i, *fdf), fdf->map.matrix[i][j].colour);
+				bresenham(fdf.img, get_pt(j, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
 			if (i > 0 && j > 0)
-				bresenham(fdf->mlx, get_pt(j - 1, i - 1, *fdf), get_pt(j, i, *fdf), fdf->map.matrix[i][j].colour);
+				bresenham(fdf.img, get_pt(j - 1, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
 			j++;
 		}
 		i++;
 	}
-	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.mlx_win, fdf->mlx.img.img, 0, 0);
+	mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, fdf.img.img, 0, 0);
 }
