@@ -58,6 +58,20 @@ static void	bresenham(t_img img, t_point start, t_point end, int colour)
 	}
 }
 
+static void	triple_print(t_fdf fdf, int i, int j)
+{
+	
+	int		colour;
+
+	colour = fdf.map.matrix[i][j].colour;
+	if (j > 0)
+		bresenham(fdf.img, get_pt(j - 1, i, fdf), get_pt(j, i, fdf), colour);
+	if (i > 0)
+		bresenham(fdf.img, get_pt(j, i - 1, fdf), get_pt(j, i, fdf), colour);
+	if (i > 0 && j > 0)
+		bresenham(fdf.img, get_pt(j - 1, i - 1, fdf), get_pt(j, i, fdf), colour);
+}
+
 void	draw(t_fdf fdf)
 {
 	int	i;
@@ -69,12 +83,7 @@ void	draw(t_fdf fdf)
 		j = 0;
 		while (j < fdf.map.x)
 		{
-			if (j > 0)
-				bresenham(fdf.img, get_pt(j - 1, i, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
-			if (i > 0)
-				bresenham(fdf.img, get_pt(j, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
-			if (i > 0 && j > 0)
-				bresenham(fdf.img, get_pt(j - 1, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
+			triple_print(fdf, i, j);
 			j++;
 		}
 		i++;
