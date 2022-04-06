@@ -6,13 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:12:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 19:03:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:23:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	bresenham(t_mlx_data mlx, t_point start, t_point end, int colour)
+static void	bresenham(t_img_data *img, t_point start, t_point end, int colour)
 {
 	int		variation;
 	t_point	d;
@@ -25,7 +25,7 @@ static void	bresenham(t_mlx_data mlx, t_point start, t_point end, int colour)
 		step.x = -1;
 	if ((end.y - start.y) < 0)
 		step.y = -1;
-	my_pixel_put(&mlx.img, start.x, start.y, colour);
+	my_pixel_put(img, start.x, start.y, colour);
 	if (d.x > d.y)
 	{
 		variation = d.y - (d.x / 2);
@@ -38,7 +38,7 @@ static void	bresenham(t_mlx_data mlx, t_point start, t_point end, int colour)
 				variation -= d.x;
 			}
 			variation += d.y;
-			my_pixel_put(&mlx.img, start.x, start.y, colour);
+			my_pixel_put(img, start.x, start.y, colour);
 		}
 	}
 	else
@@ -53,7 +53,7 @@ static void	bresenham(t_mlx_data mlx, t_point start, t_point end, int colour)
 			}
 			start.y += step.y;
 			variation += d.x;
-			my_pixel_put(&mlx.img, start.x, start.y, colour);
+			my_pixel_put(img, start.x, start.y, colour);
 		}
 	}
 }
@@ -70,14 +70,14 @@ void	draw(t_fdf fdf)
 		while (j < fdf.map.x)
 		{
 			if (j > 0)
-				bresenham(fdf.mlx, get_pt(j - 1, i, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
+				bresenham(&fdf.img, get_pt(j - 1, i, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
 			if (i > 0)
-				bresenham(fdf.mlx, get_pt(j, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
+				bresenham(&fdf.img, get_pt(j, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
 			if (i > 0 && j > 0)
-				bresenham(fdf.mlx, get_pt(j - 1, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
+				bresenham(&fdf.img, get_pt(j - 1, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
 			j++;
 		}
 		i++;
 	}
-	mlx_put_image_to_window(fdf.mlx.mlx, fdf.mlx.mlx_win, fdf.mlx.img.img, 0, 0);
+	mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, fdf.img.img, 0, 0);
 }
