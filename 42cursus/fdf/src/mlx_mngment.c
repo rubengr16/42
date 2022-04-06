@@ -6,13 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:03:07 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 20:02:00 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:59:25 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_mlx_init(void **mlx, void **mlx_win, t_img_data *img)
+void	ft_mlx_init(void **mlx, void **mlx_win, t_img *img)
 {
 	*mlx = mlx_init();
 	*mlx_win = mlx_new_window(*mlx, WIN_X, WIN_Y, "fdf");
@@ -21,7 +21,7 @@ void	ft_mlx_init(void **mlx, void **mlx_win, t_img_data *img)
 			img->img, &img->bpp, &img->line_len, &img->endian);
 }
 
-void	my_pixel_put(t_img_data *img, int x, int y, int colour)
+void	my_pixel_put(t_img *img, int x, int y, int colour)
 {
 	int		offset;
 	char	*dst;

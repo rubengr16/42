@@ -6,13 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:12:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 20:23:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:58:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	bresenham(t_img_data *img, t_point start, t_point end, int colour)
+static void	bresenham(t_img *img, t_point start, t_point end, int colour)
 {
 	int		variation;
 	t_point	d;
