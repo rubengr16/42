@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 18:34:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 18:37:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static int	read_colour(char *str)
 	str = ft_strtoupper(&str[2]);
 	if (ft_strncmp(aux, "0x", 2) || !ft_strisbase(str, BASE))
 		error_msg("Invalid map: colour is not valid", ERR_USR);
-	free(aux);
 	colour = ft_atoi_base(str, BASE, ft_strlen(BASE));
 	if (ft_atoi_check(colour, str))
 		error_msg("Invalid map: colour is not valid", ERR_USR);
+	free(str);
 	return (colour);
 }
 
