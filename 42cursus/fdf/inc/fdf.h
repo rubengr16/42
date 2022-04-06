@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 21:01:05 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 21:04:25 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	read_matrix(t_map *map, int fdin);
 
 /******************************** MLX_MNGMENT ******************************* */
 void	ft_mlx_init(void **mlx, void **mlx_win, t_img *img);
-void	my_pixel_put(t_img *img, int x, int y, int colour);
+void	my_pixel_put(t_img img, int x, int y, int colour);
 
 void	draw(t_fdf fdf);
 

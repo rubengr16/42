@@ -6,13 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:12:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 20:58:51 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/06 21:04:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	bresenham(t_img *img, t_point start, t_point end, int colour)
+static void	bresenham(t_img img, t_point start, t_point end, int colour)
 {
 	int		variation;
 	t_point	d;
@@ -70,11 +70,11 @@ void	draw(t_fdf fdf)
 		while (j < fdf.map.x)
 		{
 			if (j > 0)
-				bresenham(&fdf.img, get_pt(j - 1, i, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
+				bresenham(fdf.img, get_pt(j - 1, i, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
 			if (i > 0)
-				bresenham(&fdf.img, get_pt(j, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
+				bresenham(fdf.img, get_pt(j, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
 			if (i > 0 && j > 0)
-				bresenham(&fdf.img, get_pt(j - 1, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
+				bresenham(fdf.img, get_pt(j - 1, i - 1, fdf), get_pt(j, i, fdf), fdf.map.matrix[i][j].colour);
 			j++;
 		}
 		i++;
