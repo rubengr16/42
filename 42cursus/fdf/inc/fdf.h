@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/08 19:36:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/08 20:09:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@
 # define FILE 1
 # define WIN_X 1080
 # define WIN_Y 720
-# define X0 300
-# define Y0 300
+# define X0 200
+# define Y0 200
 # define BASE "0123456789ABCDEF"
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
 # define ZOOM0 5
+# define RAD0 0.5
 # define Z 0
 # define COLOUR	1
 # define ON_KEYDOWN 2
@@ -56,6 +57,7 @@ typedef struct s_map
 	int		height;
 	int		x0;
 	int		y0;
+	float	rad;
 	t_cell	**matrix;
 }	t_map;
 
@@ -91,7 +93,6 @@ typedef struct s_bresen
 }	t_bresen;
 
 /********************************** UTILS *********************************** */
-void	ft_free_matrix(t_cell **matrix);
 void	error_msg(char *str, int error);
 int		count_elems(char **set);
 t_point	get_pt(int x, int y, t_fdf fdf);
