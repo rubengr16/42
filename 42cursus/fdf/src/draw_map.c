@@ -6,62 +6,66 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:12:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 21:14:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/08 17:22:13 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+static void	bresen_x(t_img img, t_point start, t_point end, t_bresen bham)
+{
+	bham.variation = bham.d.y - (bham.d.x / 2);
+	while (start.x != end.x)
+	{
+		start.x += bham.step.x;
+		if (bham.variation >= 0)
+		{
+			start.y += bham.step.y;
+			bham.variation -= bham.d.x;
+		}
+		bham.variation += bham.d.y;
+		my_pixel_put(img, start.x, start.y, bham.colour);
+	}
+}
+
+static void	bresen_y(t_img img, t_point start, t_point end, t_bresen bham)
+{
+	bham.variation = bham.d.x - (bham.d.y / 2);
+	while (start.y != end.y)
+	{
+		if (bham.variation >= 0)
+		{
+			start.x += bham.step.x;
+			bham.variation -= bham.d.y;
+		}
+		start.y += bham.step.y;
+		bham.variation += bham.d.x;
+		my_pixel_put(img, start.x, start.y, bham.colour);
+	}
+}
+
 static void	bresenham(t_img img, t_point start, t_point end, int colour)
 {
-	int		variation;
-	t_point	d;
-	t_point	step;
+	t_bresen	bham;
 
-	d.x = 2 * (ft_max(start.x, end.x) - ft_min(start.x, end.x));
-	d.y = 2 * (ft_max(start.y, end.y) - ft_min(start.y, end.y));
-	step = (t_point){1, 1};
+	bham.colour = colour;
+	bham.d.x = 2 * (ft_max(start.x, end.x) - ft_min(start.x, end.x));
+	bham.d.y = 2 * (ft_max(start.y, end.y) - ft_min(start.y, end.y));
+	bham.step = (t_point){1, 1};
 	if ((end.x - start.x) < 0)
-		step.x = -1;
+		bham.step.x = -1;
 	if ((end.y - start.y) < 0)
-		step.y = -1;
+		bham.step.y = -1;
 	my_pixel_put(img, start.x, start.y, colour);
-	if (d.x > d.y)
-	{
-		variation = d.y - (d.x / 2);
-		while (start.x != end.x)
-		{
-			start.x += step.x;
-			if (variation >= 0)
-			{
-				start.y += step.y;
-				variation -= d.x;
-			}
-			variation += d.y;
-			my_pixel_put(img, start.x, start.y, colour);
-		}
-	}
+	if (bham.d.x > bham.d.y)
+		bresen_x(img, start, end, bham);
 	else
-	{
-		variation = d.x - (d.y / 2);
-		while (start.y != end.y)
-		{
-			if (variation >= 0)
-			{
-				start.x += step.x;
-				variation -= d.y;
-			}
-			start.y += step.y;
-			variation += d.x;
-			my_pixel_put(img, start.x, start.y, colour);
-		}
-	}
+		bresen_y(img, start, end, bham);
 }
 
 static void	triple_print(t_fdf fdf, int i, int j)
 {
-	
-	int		colour;
+	int	colour;
 
 	colour = fdf.map.matrix[i][j].colour;
 	if (j > 0)
@@ -69,7 +73,8 @@ static void	triple_print(t_fdf fdf, int i, int j)
 	if (i > 0)
 		bresenham(fdf.img, get_pt(j, i - 1, fdf), get_pt(j, i, fdf), colour);
 	if (i > 0 && j > 0)
-		bresenham(fdf.img, get_pt(j - 1, i - 1, fdf), get_pt(j, i, fdf), colour);
+		bresenham(fdf.img, get_pt(j - 1, i - 1, fdf), get_pt(j, i, fdf), \
+				colour);
 }
 
 void	draw(t_fdf fdf)
