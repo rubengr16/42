@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:49:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/08 20:28:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/08 20:53:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,10 @@ static void	destroy(void *mlx, void *win)
 static void zoom_mngment(t_fdf *fdf, int key_code)
 {
 	if (key_code == KEY_Z)
-	{
 		fdf->map.zoom += 5;
-		fdf->map.height += (int)(fdf->map.zoom / 5);
-	}
 	else if (key_code == KEY_X)
-	{
 		if (fdf->map.zoom > ZOOM0)
-		{
 			fdf->map.zoom -= 5;
-			fdf->map.height *= (int)(fdf->map.zoom / 5);
-		}
-	}
 }
 
 int	event_mngment(int key_code, t_fdf *fdf)
@@ -71,8 +63,6 @@ int	event_mngment(int key_code, t_fdf *fdf)
 		fdf->map.height -= 1;
 	else if (key_code == KEY_Z || key_code == KEY_X)
 		zoom_mngment(fdf, key_code);
-	else if (key_code == KEY_R)
-		fdf->map.rad -= 0.1;
 	else if (key_code == KEY_O)
 		fdf->map.rad = RAD0;
 	else if (key_code == KEY_P)
