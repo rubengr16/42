@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 21:14:37 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/08 17:22:17 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,14 @@ typedef struct s_point
 	int	x;
 	int	y;
 }	t_point;
+
+typedef struct s_bresen
+{
+	int		colour;
+	int		variation;
+	t_point	step;
+	t_point d;
+}	t_bresen;
 
 /********************************** UTILS *********************************** */
 void	ft_free_matrix(t_cell **matrix);
