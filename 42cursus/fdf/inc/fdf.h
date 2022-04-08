@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/08 18:59:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/08 19:36:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define BASE "0123456789ABCDEF"
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
+# define ZOOM0 5
 # define Z 0
 # define COLOUR	1
 # define ON_KEYDOWN 2
@@ -52,6 +53,7 @@ typedef struct s_map
 	int		x;
 	int		y;
 	int		zoom;
+	int		height;
 	int		x0;
 	int		y0;
 	t_cell	**matrix;

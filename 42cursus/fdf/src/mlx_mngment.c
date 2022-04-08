@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:03:07 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/08 18:59:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/08 19:36:37 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,14 @@ int	event_mngment(int key_code, t_fdf *fdf)
 		fdf->map.y0 += 5;
 	else if (key_code == KEY_UP)
 		fdf->map.y0 -= 5;
+	else if (key_code == KEY_U)
+		fdf->map.height += 1;
+	else if (key_code == KEY_I)
+		fdf->map.height -= 1;
 	else if (key_code == KEY_Z)
 		fdf->map.zoom += 2;
 	else if (key_code == KEY_X)
-		if (fdf->map.zoom > 5)
+		if (fdf->map.zoom > ZOOM0)
 			fdf->map.zoom -= 2;
 	clear_window(fdf->img);
 	draw(*fdf);
