@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 21:14:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/08 18:49:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,9 @@ void	read_matrix(t_map *map, int fdin)
 	char	**set;
 
 	line = get_next_line(fdin);
+	printf("\n%s", line);
+	if (!line)
+		error_msg("Invalid map: empty issues", ERR_USR);
 	while (line)
 	{
 		aux = ft_strtrim(line, "\n");

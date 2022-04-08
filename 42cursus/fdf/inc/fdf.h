@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/08 17:49:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/08 18:45:42 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define Y0 300
 # define BASE "0123456789ABCDEF"
 # define WHITE 0x00FFFFFF
+# define BLACK 0x00000000
 # define Z 0
 # define COLOUR	1
 # define ON_KEYDOWN 2
@@ -68,7 +69,7 @@ typedef struct s_img
 typedef struct s_fdf
 {
 	void		*mlx;
-	void		*mlx_win;
+	void		*win;
 	t_img		img;
 	t_map		map;
 }	t_fdf;
@@ -97,8 +98,9 @@ t_point	get_pt(int x, int y, t_fdf fdf);
 void	read_matrix(t_map *map, int fdin);
 
 /******************************** MLX_MNGMENT ******************************* */
-void	ft_mlx_init(void **mlx, void **mlx_win, t_img *img);
+void	ft_mlx_init(void **mlx, void **win, t_img *img);
 void	my_pixel_put(t_img img, int x, int y, int colour);
+int	event_mngment(int key_code, t_fdf *fdf);
 
 void	draw(t_fdf fdf);
 
