@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:12:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 21:14:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/08 16:39:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ static void	triple_print(t_fdf fdf, int i, int j)
 	if (i > 0)
 		bresenham(fdf.img, get_pt(j, i - 1, fdf), get_pt(j, i, fdf), colour);
 	if (i > 0 && j > 0)
-		bresenham(fdf.img, get_pt(j - 1, i - 1, fdf), get_pt(j, i, fdf), colour);
+		bresenham(fdf.img, get_pt(j - 1, i - 1, fdf), get_pt(j, i, fdf), \
+				colour);
 }
 
 void	draw(t_fdf fdf)
