@@ -112,5 +112,5 @@ void	read_matrix(t_map *map, int fdin)
 		ft_free_split(set);
 		line = get_next_line(fdin);
 	}
-	map->zoom = calculate_zoom(map->x, map->y);
+//	map->zoom = calculate_zoom(map->x, map->y);
 }
