@@ -39,10 +39,10 @@ static void	destroy(void *mlx, void *win)
 static void zoom_mngment(t_fdf *fdf, int key_code)
 {
 	if (key_code == KEY_Z)
-		fdf->map.zoom += 5;
+		fdf->map.zoom += ZOOM0;
 	else if (key_code == KEY_X)
 		if (fdf->map.zoom > ZOOM0)
-			fdf->map.zoom -= 5;
+			fdf->map.zoom -= ZOOM0;
 }
 
 int	event_mngment(int key_code, t_fdf *fdf)
