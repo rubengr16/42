@@ -71,20 +71,18 @@ static void	fill_matrix(t_map *map, char **set)
 	fill_line(map->matrix[i], set);
 }
 
-/*
-static int	calculate_zoom(int x, int y)
-{
-	float	zoom;
 
-	zoom = WIN_X / x;
-	if (zoom > (WIN_Y / y))
-		zoom = WIN_Y / y;
-	zoom *= 0.8;
-	if (zoom < ZOOM0)
-		zoom = ZOOM0;
-	return ((int)zoom);
+static void	calculate_zoom(int x, int y, int *zoom, int *zoom0)
+{
+	*zoom = WIN_X / x;
+	if (*zoom > (WIN_Y / y))
+		*zoom = WIN_Y / y;
+	*zoom *= 0.8;
+	if (*zoom < ZOOM0)
+		*zoom = ZOOM0;
+	*zoom0 = *zoom;
 }
-*/
+
 
 void	read_matrix(t_map *map, int fdin)
 {
@@ -112,5 +110,5 @@ void	read_matrix(t_map *map, int fdin)
 		ft_free_split(set);
 		line = get_next_line(fdin);
 	}
-//	map->zoom = calculate_zoom(map->x, map->y);
+	calculate_zoom(map->x, map->y, &map->zoom, &map->zoom0);
 }
