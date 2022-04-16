@@ -105,7 +105,7 @@ void	read_matrix(t_map *map, int fdin);
 /******************************** MLX_MNGMENT ******************************* */
 void	ft_mlx_init(void **mlx, void **win, t_img *img);
 void	my_pixel_put(t_img img, int x, int y, int colour);
-int	event_mngment(int key_code, t_fdf *fdf);
+int		event_mngment(int key_code, t_fdf *fdf);
 
 void	draw(t_fdf fdf);
 
