@@ -66,7 +66,7 @@ int	event_mngment(int key_code, t_fdf *fdf)
 	else if (key_code == KEY_O)
 		fdf->map.rad = RAD0;
 	else if (key_code == KEY_P)
-		fdf->map.rad = 0;
+		fdf->map.perspective *= -1;
 	clear_window(fdf->img);
 	draw(*fdf);
 	return (0);
