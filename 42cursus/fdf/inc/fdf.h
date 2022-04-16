@@ -58,6 +58,7 @@ typedef struct s_map
 	int		height;
 	int		x0;
 	int		y0;
+	int		perspective;
 	float	rad;
 	t_cell	**matrix;
 }	t_map;
