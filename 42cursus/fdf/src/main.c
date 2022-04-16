@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	int		fdin;
 
 	fdf = (t_fdf){NULL, NULL, {NULL, NULL, -1, -1, -1}, \
-		{-1, 0, ZOOM0, 1, X0, Y0, RAD0, NULL}};
+		{-1, 0, ZOOM0, 1, X0, Y0, ISOM, RAD0, NULL}};
 	if (argc != 2)
 		error_msg("Please, enter 2 arguments", ERR_USR);
 	if (ft_strncmp(&argv[FILE][ft_strlen(argv[FILE]) - 4], ".fdf", 4))
