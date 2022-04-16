@@ -71,6 +71,7 @@ static void	fill_matrix(t_map *map, char **set)
 	fill_line(map->matrix[i], set);
 }
 
+/*
 static int	calculate_zoom(int x, int y)
 {
 	float	zoom;
@@ -83,6 +84,7 @@ static int	calculate_zoom(int x, int y)
 		zoom = ZOOM0;
 	return ((int)zoom);
 }
+*/
 
 void	read_matrix(t_map *map, int fdin)
 {
