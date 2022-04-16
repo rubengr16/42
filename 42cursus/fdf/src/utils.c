@@ -39,9 +39,12 @@ t_point	get_pt(int x, int y, t_fdf fdf)
 
 	pt.x = x * fdf.map.zoom;
 	pt.y = y * fdf.map.zoom;
-	pt.x = (pt.x - pt.y) * cos(fdf.map.rad);
-	pt.y = (pt.y + x * fdf.map.zoom) * sin(fdf.map.rad) - \
-		(fdf.map.matrix[y][x].z * fdf.map.height);
+	if (fdf.map.perspective == ISOM)
+	{
+		pt.x = (pt.x - pt.y) * cos(fdf.map.rad);
+		pt.y = (pt.y + x * fdf.map.zoom) * sin(fdf.map.rad) - \
+			(fdf.map.matrix[y][x].z * fdf.map.height);
+	}
 	pt.x += fdf.map.x0;
 	pt.y += fdf.map.y0;
 	return (pt);
