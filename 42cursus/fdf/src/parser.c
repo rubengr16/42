@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/17 15:11:02 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/17 16:36:46 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	fill_line(t_cell *line, char **set)
 	{
 		value = ft_split(set[j], ',');
 		line[j].z = ft_atoi(value[Z]);
-		if (!ft_strisnumber(value[Z]) && ft_atoi_check(line[j].z, value[Z]))
+		if (!ft_strisnumber(value[Z]) || ft_atoi_check(line[j].z, value[Z]))
 			error_msg("Invalid map: z is not valid", ERR_USR);
 		line[j].colour = read_colour(value[COLOUR]);
 		ft_free_split(value);
