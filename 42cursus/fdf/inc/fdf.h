@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/08 20:53:42 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/17 15:36:56 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@
 # define WIN_Y 720
 # define X0 200
 # define Y0 200
+# define ZOOM0 5
+# define HEIGHT0 1
+# define ROT0 0
 # define ISOM 1
 # define BASE "0123456789ABCDEF"
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
-# define ZOOM0 5
-# define HEIGHT0 1
-# define RAD0 0.5
+# define RAD 0.5
 # define Z 0
 # define COLOUR	1
 # define ON_KEYDOWN 2
@@ -62,7 +63,7 @@ typedef struct s_map
 	int		zoom0;
 	int		height0;
 	int		perspective;
-	float	rad;
+	float	rot;
 	t_cell	**matrix;
 }	t_map;
 
