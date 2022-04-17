@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/08 20:53:44 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/17 15:11:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ static void	fill_matrix(t_map *map, char **set)
 	fill_line(map->matrix[i], set);
 }
 
-
 static void	calculate_zoom(int x, int y, int *zoom, int *zoom0)
 {
 	*zoom = WIN_X / x;
@@ -82,7 +81,6 @@ static void	calculate_zoom(int x, int y, int *zoom, int *zoom0)
 		*zoom = ZOOM0;
 	*zoom0 = *zoom;
 }
-
 
 void	read_matrix(t_map *map, int fdin)
 {
