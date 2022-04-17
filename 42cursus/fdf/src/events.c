@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:49:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/17 15:04:04 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/17 16:03:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ static void	zoom_mngment(t_fdf *fdf, int key_code)
 			fdf->map.zoom -= fdf->map.zoom0;
 }
 
+static void	rotation_mngment(int key_code, t_fdf *fdf)
+{	
+	if (key_code == KEY_O)
+		fdf->map.rot = ROT0;
+	else if (key_code == KEY_R)
+		fdf->map.rot += 0.05;
+	else if (key_code == KEY_E)
+		fdf->map.rot -= 0.05;
+}
+
 int	event_mngment(int key_code, t_fdf *fdf)
 {
 	if (key_code == KEY_ESC)
@@ -63,8 +73,8 @@ int	event_mngment(int key_code, t_fdf *fdf)
 		fdf->map.height -= 1;
 	else if (key_code == KEY_Z || key_code == KEY_X)
 		zoom_mngment(fdf, key_code);
-	else if (key_code == KEY_O)
-		fdf->map.rad += 0.1;
+	else if (key_code == KEY_O || key_code == KEY_R || key_code == KEY_E)
+		rotation_mngment(key_code, fdf);
 	else if (key_code == KEY_P)
 		fdf->map.perspective *= -1;
 	clear_window(fdf->img);
