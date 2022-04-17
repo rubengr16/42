@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:31 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/17 15:03:59 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/17 16:03:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,22 @@ int	count_elems(char **set)
 
 t_point	get_pt(int x, int y, t_fdf fdf)
 {
+	int		aux;
+	float	ang;
 	t_point	pt;
 
+	ang = 0;
 	pt.x = x * fdf.map.zoom;
 	pt.y = y * fdf.map.zoom;
+	aux = pt.x;
+	if (fdf.map.perspective == TOP)
+		ang = RAD;
+	pt.x = (pt.x * cos(fdf.map.rot - ang)) + (pt.y * sin(fdf.map.rot - ang));
+	pt.y = (aux * -sin(fdf.map.rot - ang)) + (pt.y * cos(fdf.map.rot - ang));
 	if (fdf.map.perspective == ISOM)
 	{
-		pt.x = (pt.x - pt.y) * cos(fdf.map.rad);
-		pt.y = (pt.y + x * fdf.map.zoom) * sin(fdf.map.rad) - \
+		pt.x = (pt.x - pt.y) * cos(RAD);
+		pt.y = (pt.y + x * fdf.map.zoom) * sin(RAD) - \
 			(fdf.map.matrix[y][x].z * fdf.map.height * \
 			(fdf.map.zoom / fdf.map.zoom0));
 	}
