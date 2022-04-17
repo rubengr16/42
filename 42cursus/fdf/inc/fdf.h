@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/17 16:13:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/17 16:39:22 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ void	my_pixel_put(t_img img, int x, int y, int colour);
 void	draw(t_fdf fdf);
 
 /******************************* EVENT_MNGMENT ****************************** */
-int	event_mngment(int key_code, t_fdf *fdf);
+int		event_mngment(int key_code, t_fdf *fdf);
 
 #endif
