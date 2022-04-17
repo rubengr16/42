@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/17 15:36:56 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/17 16:03:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define HEIGHT0 1
 # define ROT0 0
 # define ISOM 1
+# define TOP -1
 # define BASE "0123456789ABCDEF"
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000

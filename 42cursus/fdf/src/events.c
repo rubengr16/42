@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:49:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/17 15:49:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/17 16:03:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	zoom_mngment(t_fdf *fdf, int key_code)
 			fdf->map.zoom -= fdf->map.zoom0;
 }
 
-static void rotation_mngment(int key_code, t_fdf *fdf)
+static void	rotation_mngment(int key_code, t_fdf *fdf)
 {	
 	if (key_code == KEY_O)
 		fdf->map.rot = ROT0;
