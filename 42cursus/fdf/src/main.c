@@ -6,16 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:59:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 21:14:34 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/08 20:53:45 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	leaks(void)
-{
-	system("leaks fdf");
-}
 
 int	main(int argc, char **argv)
 {
@@ -23,8 +18,7 @@ int	main(int argc, char **argv)
 	int		fdin;
 
 	fdf = (t_fdf){NULL, NULL, {NULL, NULL, -1, -1, -1}, \
-		{-1, 0, 5, X0, Y0, NULL}};
-	atexit(leaks);
+		{-1, 0, ZOOM0, 1, X0, Y0, ISOM, RAD0, NULL}};
 	if (argc != 2)
 		error_msg("Please, enter 2 arguments", ERR_USR);
 	if (ft_strncmp(&argv[FILE][ft_strlen(argv[FILE]) - 4], ".fdf", 4))
@@ -33,9 +27,9 @@ int	main(int argc, char **argv)
 	if (fdin < 0)
 		error_msg("File issues", ERR_SYS);
 	read_matrix(&fdf.map, fdin);
-	ft_mlx_init(&fdf.mlx, &fdf.mlx_win, &fdf.img);
+	ft_mlx_init(&fdf.mlx, &fdf.win, &fdf.img);
 	draw(fdf);
-	ft_free_matrix(fdf.map.matrix);
+	mlx_hook(fdf.win, ON_KEYDOWN, 0, event_mngment, &fdf);
 	mlx_loop(fdf.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:38:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/06 21:14:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/08 20:53:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ static int	calculate_zoom(int x, int y)
 	if (zoom > (WIN_Y / y))
 		zoom = WIN_Y / y;
 	zoom *= 0.8;
-	if (zoom < 5)
-		zoom = 5;
+	if (zoom < ZOOM0)
+		zoom = ZOOM0;
 	return ((int)zoom);
 }
 
@@ -91,6 +91,8 @@ void	read_matrix(t_map *map, int fdin)
 	char	**set;
 
 	line = get_next_line(fdin);
+	if (!line || line[0] == '\n')
+		error_msg("Invalid map: empty issues", ERR_USR);
 	while (line)
 	{
 		aux = ft_strtrim(line, "\n");

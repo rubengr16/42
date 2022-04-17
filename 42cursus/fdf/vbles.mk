@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 19:07:43 by rgallego          #+#    #+#              #
-#    Updated: 2022/04/06 20:21:38 by rgallego         ###   ########.fr        #
+#    Updated: 2022/04/08 19:50:19 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS	= 			$(addprefix $(SRC_DIR), \
 					parser.c \
 					draw_map.c \
 					mlx_mngment.c \
+					events.c \
 					)
 
 OBJS	=			$(SRCS:.c=.o)
