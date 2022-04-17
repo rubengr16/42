@@ -38,6 +38,7 @@
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
 # define ZOOM0 5
+# define HEIGHT0 1
 # define RAD0 0.5
 # define Z 0
 # define COLOUR	1
@@ -58,6 +59,8 @@ typedef struct s_map
 	int		height;
 	int		x0;
 	int		y0;
+	int		zoom0;
+	int		height0;
 	int		perspective;
 	float	rad;
 	t_cell	**matrix;
