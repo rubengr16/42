@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/17 16:13:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/17 16:31:42 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define X0 200
 # define Y0 200
 # define ZOOM0 5
-# define HEIGHT0 1
+# define HEIGHT0 5
 # define ROT0 0
 # define ISOM 1
 # define TOP -1
