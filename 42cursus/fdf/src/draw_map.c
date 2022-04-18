@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 18:12:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/08 20:53:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/18 14:06:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ static void	bresen_y(t_img img, t_point start, t_point end, t_bresen bham)
 	bham.variation = bham.d.x - (bham.d.y / 2);
 	while (start.y != end.y)
 	{
+		start.y += bham.step.y;
 		if (bham.variation >= 0)
 		{
 			start.x += bham.step.x;
 			bham.variation -= bham.d.y;
 		}
-		start.y += bham.step.y;
 		bham.variation += bham.d.x;
 		my_pixel_put(img, start.x, start.y, bham.colour);
 	}

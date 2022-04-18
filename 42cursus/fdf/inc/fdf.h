@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 20:30:51 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/18 12:59:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/04/18 14:07:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@
 # define RAD 0.5
 # define Z 0
 # define COLOUR	1
-# define ON_KEYDOWN 2
 
 /******************************** STRUCTURE ********************************* */
 typedef struct s_cell
