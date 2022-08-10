@@ -34,7 +34,32 @@ structure, but I think it is a great opportunity to cope with these problems.
 Those basic functions to manage the **circular double linked list** are the
 following ones:
 
-* *t_queue \*ft_queue *
+* *t\_queue \*ft\_queue(void)* : function which reserves memory using malloc 
+and initializes its values head and n_elem to NULL and 0 respectively.
+
+* *t\_node \*ft\_newnode(int num)*: receives a new node and establishes its 
+value to num and its pointer to NULL.
+
+* *void	ft\_queueadd\_back(t\_queue \*queue, t\_node \*node)* : inserts a node 
+received as argument at the back of a queue.
+
+* *void	ft\_queueadd\_back\_num(t\_queue \*queue, int num)* : creates a node 
+with the received number as argument and inserts it at the back of a queue.
+
+* *void	ft\_queueadd\_front(t\_queue \*queue, t\_node \*node)* : inserts a 
+node received as argument at the front of a queue.
+
+* *void	ft\_queueadd\_front\_num(t\_queue \*queue, int num)* : creates a node 
+with the received number as argument and inserts it at the front of a queue.
+
+
+* *t\_node	\*ft\_queuepop(t\_queue \*queue)* : deletes one node from a queue 
+and returns it.
+
+* *void	ft\_queuedelone(t\_queue \*queue)* : deletes the first node of a 
+queue.
+
+* *void	ft\_queuedelall(t\_queue \*\*queue)*: deletes a queue.
 
 In order to move its elements, we will use only 11 allowed movements:
 
