@@ -34,7 +34,7 @@ structure, but I think it is a great opportunity to cope with these problems.
 Those basic functions to manage the **circular double linked list** are the
 following ones:
 
--- CONTINUE HERE
+* *t_queue \*ft_queue *
 
 In order to move its elements, we will use only 11 allowed movements:
 
