@@ -34,7 +34,25 @@ structure, but I think it is a great opportunity to cope with these problems.
 Those basic functions to manage the **circular double linked list** are the
 following ones:
 
-* *t_queue \*ft_queue *
+* *t\_queue \*ft\_queue(void)* : allocates the memory of an empty queue with 0
+elements and head pointing towards NULL.
+
+* *t\_node \*ft\_newnode(int num)*: receives a num and creates a new node to
+store it.
+
+* *void	ft\_queueadd\_back(t\_queue \*queue, \_node \*node)* :
+
+* *void	ft\_queueadd\_back\_num(t\_queue \*queue, int num)* :
+
+* *void	ft\_queueadd\_front(t\_queue \*queue, t\_node \*node)* :
+
+* *void	ft\_queueadd\_front\_num(t\_queue \*queue, int num)* :
+
+* *t\_node	\*ft\_queuepop(t\_queue \*queue)* :
+
+* *void	ft\_queuedelone(t\_queue \*queue)* :
+
+* *void	ft\_queuedelall(t\_queue \*\*queue)*:
 
 In order to move its elements, we will use only 11 allowed movements:
 
