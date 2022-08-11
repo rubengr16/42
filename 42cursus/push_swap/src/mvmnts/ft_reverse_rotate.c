@@ -6,16 +6,16 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:17:16 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/17 20:41:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/11 16:28:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mvmnts.h"
 
-	/*
-	 * function which reverse rotates a queue. This means that the last element
-	 * of your queue will be the first one
-	 * INPUT:	t_queue *queue
+/*
+ * function which reverse rotates a queue. This means that the last element
+ * of your queue will be the first one
+ * INPUT:	t_queue *queue
  * OUTPUT:	int	:	1	reverse rotate is fullfilled
  * 					0	reverse rotate has failed
  */
@@ -53,7 +53,7 @@ void	ft_reverse_rotate_b(t_queue *b)
 }
 
 /*
- * function which reverse rotates the given a and b queues simulltaneously
+ * function which reverse rotates the given a and b queues simultaneously
  * INPUT:	t_queue *a, t_queue *b
  * OUTPUT:	void
  */

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/10 20:59:26 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/11 16:27:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
  * Ending the first element as the second and the second element as the
  * first one in the resulting list
  * INPUT:	t_queue *queue
- * OUTPUT:	int	:	1	push is fullfilled
- * 					0	push has failed
+ * OUTPUT:	int	:	1	swap is fullfilled
+ * 					0	swap has failed
  */
 static int	ft_swap_queue(t_queue *queue)
 {
@@ -76,6 +76,6 @@ void	ft_swap_ab(t_queue *a, t_queue *b)
 		if (ft_swap_queue(b))
 			ft_putendl_fd("ss", 1);
 		else
-			ft_swap_queue(b);
+			ft_swap_queue(a);
 	}
 }
