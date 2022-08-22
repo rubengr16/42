@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/20 14:19:51 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/11 17:58:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ t_node	*ft_newnode(int num)
 	aux = malloc(sizeof(t_node));
 	if (aux)
 	{
-		aux->state = -1;
 		aux->num = num;
-		aux->next = NULL;
-		aux->prvs = NULL;
+		aux->next = aux;
+		aux->prvs = aux;
 	}
 	return (aux);
 }

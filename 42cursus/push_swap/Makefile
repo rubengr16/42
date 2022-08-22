@@ -13,10 +13,10 @@ $(NAME): $(OBJS) $(LIBFTNAME)
 
 clean:
 	$(RM) $(OBJS) $(DPNDS)
+	$(MAKE) -C $(LIBFT) fclean 
 
 fclean: clean
 	$(RM) $(NAME)
-	$(MAKE) -C $(LIBFT) fclean 
 
 re: fclean all
 

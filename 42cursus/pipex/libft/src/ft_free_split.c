@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtoupper.c                                    :+:      :+:    :+:   */
+/*   ft_free_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 19:49:20 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/04 20:25:33 by rgallego         ###   ########.fr       */
+/*   Created: 2022/03/07 12:17:28 by rgallego          #+#    #+#             */
+/*   Updated: 2022/03/07 12:48:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtoupper(char *str)
+/*
+ * function which frees all resources used by the program after executing an 
+ * split
+ * INPUT:	char **set
+ * OUTPUT:	void
+ */
+void	ft_free_split(char **set)
 {
-	int		i;
-	char	*strupper;
+	int	i;
 
 	i = 0;
-	strupper = malloc(sizeof(char) * (ft_strlen(str) + 1));
-	while (str[i])
+	if (set)
 	{
-		strupper[i] = ft_toupper(str[i]);
-		i++;
+		while (set[i])
+		{
+			free(set[i]);
+			i++;
+		}
+		free(set);
 	}
-	strupper[i] = str[i];
-	return (strupper);
 }

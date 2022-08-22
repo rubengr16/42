@@ -34,11 +34,9 @@ PARSER	=			\
 					ft_argtostack.c \
 					)
 
-ALGORITHM	=		\
+ALGORITHM	= 	    \
 					$(addprefix $(ALGORITHM_DIR), \
-					ft_utils.c \
-					ft_decisions.c \
-					ft_mysort.c \
+					ft_threeelems.c \
 					)
 
 SRCS	= 			$(addprefix $(SRC_DIR), \

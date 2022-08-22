@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 16:12:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/23 17:17:11 by rgallego         ###   ########.fr       */
+/*   Created: 2022/03/07 12:24:28 by rgallego          #+#    #+#             */
+/*   Updated: 2022/03/07 13:44:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include "libft.h"
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+/*
+ * function which decides if the number represented by the string is inside the
+ * range values of int
+ * INPUT:	int nb, char *str
+ * OUTPUT:	int	:	1	number cannot be represented 
+ * 					0	number is correct
+ */
+int	ft_atoi_check(int nb, char *str)
 {
-	char	*sub_str;
-	size_t	s_len;
-
-	if (s)
-	{
-		s_len = ft_strlen(s);
-		if (s_len < start)
-			sub_str = ft_strdup("");
-		else
-		{
-			if (s_len < (len + start))
-				len = ft_strlen(&s[start]);
-			sub_str = malloc(sizeof(char) * (len + 1));
-			if (sub_str)
-				(void)ft_strlcpy(sub_str, &s[start], len + 1);
-		}
-		return (sub_str);
-	}
+	if ((!nb || nb == -1) && (ft_strlen(str) > 2))
+		return (1);
 	else
-		return (NULL);
+		return (0);
 }

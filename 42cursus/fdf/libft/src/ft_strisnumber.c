@@ -6,14 +6,14 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 20:00:14 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/23 20:31:35 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:34:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- * function which decides if a string is only numerical
+ * decides if a string represents only ONE number.
  * INPUT:	char *str
  * OUTPUT:	int	:	1	numerical
  *					0	non numerical

@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtolower.c                                    :+:      :+:    :+:   */
+/*   ft_setisnumber.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 19:49:20 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/04 20:23:01 by rgallego         ###   ########.fr       */
+/*   Created: 2022/08/22 17:24:16 by rgallego          #+#    #+#             */
+/*   Updated: 2022/08/22 17:36:18 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtolower(char *str)
+/*
+ * decides if a set is only numerical.
+ * INPUT:	char *str
+ * OUTPUT:	int	:	1	numerical
+ *					0	non numerical
+ */
+int	ft_setisnumber(char *str)
 {
-	int		i;
-	char	*strlower;
+	int	cnt;
 
-	i = 0;
-	strlower = malloc(sizeof(char) * (ft_strlen(str) + 1));
-	while (str[i])
-	{
-		strlower[i] = ft_tolower(str[i]);
-		i++;
-	}
-	strlower[i] = str[i];
-	return (strlower);
+	if (!str)
+		return (0);
+	cnt = 0;
+	while (str[cnt] && (ft_isdigit(str[cnt]) || str[cnt] == ' '
+			|| (str[cnt] == '-' && ft_isdigit(str[cnt + 1]))))
+		cnt++;
+	if (str[cnt])
+		return (0);
+	return (1);
 }

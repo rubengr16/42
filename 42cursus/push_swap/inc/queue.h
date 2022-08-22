@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:05:19 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/20 14:19:47 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/11 09:06:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,9 @@
 
 # include <stdlib.h>
 
-# define SORTED 0
-# define UNSORTED -1
-
 typedef struct s_node
 {
 	int				num;
-	int			state;
 	struct s_node	*next;
 	struct s_node	*prvs;
 }	t_node;

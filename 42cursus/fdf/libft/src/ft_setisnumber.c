@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   ft_setisnumber.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 16:46:56 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/08 16:49:24 by rgallego         ###   ########.fr       */
+/*   Created: 2022/08/22 17:24:16 by rgallego          #+#    #+#             */
+/*   Updated: 2022/08/22 17:36:18 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_abs(int num)
+#include "libft.h"
+
+/*
+ * decides if a set is only numerical.
+ * INPUT:	char *str
+ * OUTPUT:	int	:	1	numerical
+ *					0	non numerical
+ */
+int	ft_setisnumber(char *str)
 {
-	if (num < 0)
-		return (-1 * num);
-	return (num);
+	int	cnt;
+
+	if (!str)
+		return (0);
+	cnt = 0;
+	while (str[cnt] && (ft_isdigit(str[cnt]) || str[cnt] == ' '
+			|| (str[cnt] == '-' && ft_isdigit(str[cnt + 1]))))
+		cnt++;
+	if (str[cnt])
+		return (0);
+	return (1);
 }

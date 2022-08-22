@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:02:59 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/28 10:00:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:36:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 /**************************************************************************** */
 
 /******************************* PART 1.1 *********************************** */
+int		ft_atoi(const char *s);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -43,7 +44,6 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-int		ft_atoi(const char *s);
 
 /******************************* PART 1.2 *********************************** */
 void	*ft_calloc(size_t count, size_t size);
@@ -82,5 +82,17 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/**************************************************************************** */
+/******************************* EXTRA ************************************** */
+/**************************************************************************** */
+int		ft_atoi_base(const char *s, const char *base, int base_len);
+int		ft_strisnumber(char *str);
+int		ft_setisnumber(char *str);
+int		ft_strisbase(char *str, char *base);
+void	ft_free_split(char **set);
+int		ft_atoi_check(int nb, char *str);
+int		ft_max(int nb1, int nb2);
+int		ft_min(int nb1, int nb2);
 
 #endif

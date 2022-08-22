@@ -57,6 +57,7 @@ SRCSEXTRA	=		\
 					$(addprefix $(SRC_DIR), \
 					ft_atoi_base.c \
 					ft_strisnumber.c \
+					ft_setisnumber.c \
 					ft_strisbase.c \
 					ft_free_split.c \
 					ft_atoi_check.c \

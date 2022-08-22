@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strisbase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 16:12:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/09/23 17:17:11 by rgallego         ###   ########.fr       */
+/*   Created: 2022/02/23 20:02:16 by rgallego          #+#    #+#             */
+/*   Updated: 2022/02/23 20:31:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include "libft.h"
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+int	ft_strisbase(char *str, char *base)
 {
-	char	*sub_str;
-	size_t	s_len;
+	int	cnt;
 
-	if (s)
-	{
-		s_len = ft_strlen(s);
-		if (s_len < start)
-			sub_str = ft_strdup("");
-		else
-		{
-			if (s_len < (len + start))
-				len = ft_strlen(&s[start]);
-			sub_str = malloc(sizeof(char) * (len + 1));
-			if (sub_str)
-				(void)ft_strlcpy(sub_str, &s[start], len + 1);
-		}
-		return (sub_str);
-	}
+	if (!str || !base)
+		return (0);
+	cnt = 0;
+	while (str[cnt] && ft_strchr(base, str[cnt]))
+		cnt++;
+	if (!str[cnt])
+		return (1);
 	else
-		return (NULL);
-}
+		return (0);
+}	

@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 09:17:46 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/08 19:52:31 by rgallego         ###   ########.fr       */
+/*   Created: 2022/03/09 17:00:06 by rgallego          #+#    #+#             */
+/*   Updated: 2022/03/22 12:38:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strchr(const char *s, int c)
+int	ft_max(int nb1, int nb2)
 {
-	while (*s && *s != (unsigned char)c)
-		s++;
-	if (*s == (unsigned char)c)
-		return ((char *)s);
-	else
-		return (NULL);
+	if (nb1 > nb2)
+		return (nb1);
+	return (nb2);
 }

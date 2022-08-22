@@ -57,14 +57,12 @@ SRCSEXTRA	=		\
 					$(addprefix $(SRC_DIR), \
 					ft_atoi_base.c \
 					ft_strisnumber.c \
+					ft_setisnumber.c \
 					ft_strisbase.c \
 					ft_free_split.c \
 					ft_atoi_check.c \
-					ft_abs.c \
 					ft_max.c \
 					ft_min.c \
-					ft_strtoupper.c \
-					ft_strtolower.c \
 					)
 
 OBJS	=			$(SRCS:.c=.o)

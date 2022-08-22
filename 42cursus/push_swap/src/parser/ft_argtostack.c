@@ -6,35 +6,39 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/17 20:42:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:15:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
+/*
+ * receives a number and searchs if it is already inserted on the stack.
+ * INPUT:	t_queue *queue, int nb
+ * OUTPUT:	int	:	0	nb is not in the stack
+ *					1	nb is already on the stack
+ */
+
 static int	ft_nbrepeated(t_queue *queue, int nb)
 {
 	t_node	*aux;
 
-	if (queue && queue->n_elem)
-	{
-		if (queue->head->num != nb && queue->n_elem > 1)
-		{
-			aux = queue->head->next;
-			while (aux != queue->head && aux->num != nb)
-				aux = aux->next;
-			if (aux->num == nb)
-				return (1);
-		}
-		else if (queue->head->num == nb)
-			return (1);
-	}
+	if (!queue || !queue->n_elem)
+		return (0);
+	if (queue->head->num == nb)
+		return (1);
+	aux = queue->head->next;
+	while (aux != queue->head && aux->num != nb)
+		aux = aux->next;
+	if (aux->num == nb)
+		return (1);
 	return (0);
 }
 
 /*
- * function which receives a set of strings and tranforms each one to int and
- * inserts one by one each number to the stack.
+ * receives a set of strings and tranforms each one to int and inserts one by 
+ * one each number to the stack. For each number test that the atoi has been 
+ * executed correctly and that it is not repeated on the stack.
  * INPUT:	t_queue *queue, char **set
  * OUTPUT:	int	:	-1	error ocurred
  *					N > 0	okay
@@ -44,47 +48,44 @@ static int	ft_settostack(t_queue *queue, char	**set)
 	int	nb;
 	int	cnt;
 
+	if (!set)
+		return (0);
 	cnt = 0;
-	if (set)
+	while (set[cnt])
 	{
-		while (cnt >= 0 && set[cnt])
-		{
-			nb = ft_atoi(set[cnt]);
-			if (((!nb || nb == -1) && ft_strlen(set[cnt]) > 2)
-				|| ft_nbrepeated(queue, nb))
-				cnt = -1;
-			else
-			{
-				ft_queueadd_back_num(queue, nb);
-				cnt++;
-			}
-		}
+		nb = ft_atoi(set[cnt]);
+		if (ft_atoi_check(nb, set[cnt]) || ft_nbrepeated(queue, nb))
+			return (-1);
+		ft_queueadd_back_num(queue, nb);
+		cnt++;
 	}
 	return (cnt);
 }
+
+/*
+ * receives an initialized queue and inserts the numbers contained on argv
+ * doing the necessary tests in order to avoid non-numerical elements and
+ * repeated numbers.
+ * INPUT:	t_queue *queue, char **argv
+ * OUTPUT:	void	
+ */
 
 void	ft_argtostack(t_queue **queue, char **argv)
 {
 	char	**set;
 	int		cnt;
 
-	if (argv)
+	if (!argv)
+		return ;
+	cnt = 0;
+	while (argv[cnt])
 	{
-		cnt = 0;
-		while (cnt >= 0 && argv[cnt])
+		set = ft_split(argv[cnt], ' ');
+		if (!set || ft_settostack(*queue, set) < 0)
 		{
-			set = ft_split(argv[cnt], ' ');
-			if (set)
-			{
-				if (ft_settostack(*queue, set) >= 0)
-					cnt++;
-				else
-					cnt = -1;
-			}
-			else
-				cnt = -1;
-		}
-		if (cnt == -1)
 			ft_queuedelall(queue);
+			return ;
+		}
+		cnt++;
 	}
 }
