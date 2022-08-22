@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 19:07:41 by rgallego          #+#    #+#              #
-#    Updated: 2022/08/22 17:46:48 by rgallego         ###   ########.fr        #
+#    Updated: 2022/08/22 18:35:07 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,10 @@ $(NAME): $(OBJS) $(LDFLAGS)
 
 clean:
 	$(RM) $(OBJS) $(DPNDS)
+	$(MAKE) -C $(LIBFT) fclean 
 
 fclean: clean
 	$(RM) $(NAME)
-	$(MAKE) -C $(LIBFT) fclean 
 
 re: fclean all
 
