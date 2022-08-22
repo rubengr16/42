@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/11 17:58:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:57:07 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * INPUT:	int num
  * OUTPUT:	t_node
  */
-t_node	*ft_newnode(int num)
+t_node	*newnode(int num)
 {
 	t_node	*aux;
 
@@ -37,7 +37,7 @@ t_node	*ft_newnode(int num)
  * INPUT:	t_queue *queue, t_node *node
  * OUTPUT:	void
  */
-void	ft_queueadd_back(t_queue *queue, t_node *node)
+void	queueadd_back(t_queue *queue, t_node *node)
 {
 	if (!queue->n_elem)
 		queue->head = node;
@@ -64,13 +64,13 @@ void	ft_queueadd_back(t_queue *queue, t_node *node)
  * INPUT:	t_queue *queue, int num
  * OUTPUT:	void
  */
-void	ft_queueadd_back_num(t_queue *queue, int num)
+void	queueadd_back_num(t_queue *queue, int num)
 {
 	t_node	*aux;
 
-	aux = ft_newnode(num);
+	aux = newnode(num);
 	if (aux)
-		ft_queueadd_back(queue, aux);
+		queueadd_back(queue, aux);
 }
 
 /*
@@ -78,9 +78,9 @@ void	ft_queueadd_back_num(t_queue *queue, int num)
  * INPUT:	t_queue *queue, t_node *node
  * OUTPUT:	void
  */
-void	ft_queueadd_front(t_queue *queue, t_node *node)
+void	queueadd_front(t_queue *queue, t_node *node)
 {
-	ft_queueadd_back(queue, node);
+	queueadd_back(queue, node);
 	queue->head = node;
 }
 
@@ -90,11 +90,11 @@ void	ft_queueadd_front(t_queue *queue, t_node *node)
  * INPUT:	t_queue *queue, int num
  * OUTPUT:	void
  */
-void	ft_queueadd_front_num(t_queue *queue, int num)
+void	queueadd_front_num(t_queue *queue, int num)
 {
 	t_node	*aux;
 
-	aux = ft_newnode(num);
+	aux = newnode(num);
 	if (aux)
-		ft_queueadd_front(queue, aux);
+		queueadd_front(queue, aux);
 }

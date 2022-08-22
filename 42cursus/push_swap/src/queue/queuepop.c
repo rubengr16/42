@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:18:12 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/20 14:19:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:57:56 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * OUTPUT:	t_node		:	deleted node with its next and previous pointers
  * 							set to NULL
  */
-t_node	*ft_queuepop(t_queue *queue)
+t_node	*queuepop(t_queue *queue)
 {
 	t_node	*aux;
 

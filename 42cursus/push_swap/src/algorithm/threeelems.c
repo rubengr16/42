@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 20:00:20 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 18:06:30 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/22 19:09:54 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * OUTPUT:	int	:	1	sorted
  *					0	not sorted
  */
-static int	ft_issorted(t_queue *queue)
+static int	issorted(t_queue *queue)
 {
 	t_node	*aux;
 
@@ -37,18 +37,18 @@ static int	ft_issorted(t_queue *queue)
  * INPUT:	
  * OUTPUT:	
  */
-int	ft_sortbase(t_queue *queue)
+int	sortbase(t_queue *queue)
 {
-	if (!ft_issorted(queue))
+	if (!issorted(queue))
 	{
 		if (queue->head->num < queue->head->next->num
 			&& queue->head->next->num > queue->head->prvs->num)
-			ft_reverse_rotate_a(queue);
+			reverse_rotate_a(queue);
 		else if (queue->head->next->num < queue->head->num
 			&& queue->head->num > queue->head->prvs->num)
-			ft_rotate_a(queue);
-		if (!ft_issorted(queue))
-			ft_swap_a(queue);
+			rotate_a(queue);
+		if (!issorted(queue))
+			swap_a(queue);
 	}
 	return (1);
 }

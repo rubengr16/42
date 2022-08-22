@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:02:59 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 17:36:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/22 19:23:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 /**************************************************************************** */
 int		ft_atoi_base(const char *s, const char *base, int base_len);
 int		ft_strisnumber(char *str);
-int		ft_setisnumber(char *str);
+int		ft_setisnumber(char **str);
 int		ft_strisbase(char *str, char *base);
 void	ft_free_split(char **set);
 int		ft_atoi_check(int nb, char *str);

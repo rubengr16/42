@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 21:08:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/22 19:08:13 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	swap_queue(t_queue *queue)
 	if (queue->n_elem > 1)
 	{
 		if (queue->n_elem == 2)
-			(void)ft_rotate_queue(queue);
+			(void)rotate_queue(queue);
 		else
 		{
 			queue->head->next->prvs = queue->head->prvs;

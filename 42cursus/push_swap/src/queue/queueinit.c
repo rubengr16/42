@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_queuedel.c                                      :+:      :+:    :+:   */
+/*   ft_queueutils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/21 19:32:30 by rgallego          #+#    #+#             */
-/*   Updated: 2021/12/13 00:39:39 by rgallego         ###   ########.fr       */
+/*   Created: 2021/12/03 18:47:23 by rgallego          #+#    #+#             */
+/*   Updated: 2022/08/22 18:57:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "queue.h"
 
-/* function which deletes the first node of a queue
- * INPUT: 	t_queue *queue
+/*
+ * function which reserves memory using malloc and initializes its values
+ * head and n_elem to NULL and 0 respectively
+ * INPUT:	t_queue *queue
  * OUTPUT:	void
  */
-void	ft_queuedelone(t_queue *queue)
+t_queue	*queueinit(void)
 {
-	if (queue->n_elem)
-		free(ft_queuepop(queue));
-}
+	t_queue	*queue;
 
-/* function which deletes a queue
- * INPUT: 	t_queue **queue
- * OUTPUT:	void
- */
-void	ft_queuedelall(t_queue **queue)
-{
-	while ((*queue)->n_elem)
-		ft_queuedelone(*queue);
-	(*queue)->head = NULL;
-	free(*queue);
-	*queue = NULL;
+	queue = malloc(sizeof(t_queue));
+	if (queue)
+	{
+		queue->head = NULL;
+		queue->n_elem = 0;
+	}
+	return (queue);
 }

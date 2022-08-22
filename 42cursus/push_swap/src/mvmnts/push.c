@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:27:40 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/11 16:32:15 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:49:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
  * OUTPUT:	int	:	1	push is fullfilled
  * 					0	push has failed
  */
-static int	ft_push_queue(t_queue *dst, t_queue *src)
+static int	push_queue(t_queue *dst, t_queue *src)
 {
 	if (src->n_elem)
 	{
-		ft_queueadd_front(dst, ft_queuepop(src));
+		queueadd_front(dst, queuepop(src));
 		return (1);
 	}
 	else
@@ -36,9 +36,9 @@ static int	ft_push_queue(t_queue *dst, t_queue *src)
  * INPUT:	t_queue *a, t_queue *b
  * OUTPUT:	void
  */
-void	ft_push_a(t_queue *a, t_queue *b)
+void	push_a(t_queue *a, t_queue *b)
 {
-	if (ft_push_queue(a, b))
+	if (push_queue(a, b))
 		ft_putendl_fd("pa", 1);
 }
 
@@ -48,8 +48,8 @@ void	ft_push_a(t_queue *a, t_queue *b)
  * INPUT:	t_queue *a, t_queue *b
  * OUTPUT:	void
  */
-void	ft_push_b(t_queue *a, t_queue *b)
+void	push_b(t_queue *a, t_queue *b)
 {
-	if (ft_push_queue(b, a))
+	if (push_queue(b, a))
 		ft_putendl_fd("pb", 1);
 }

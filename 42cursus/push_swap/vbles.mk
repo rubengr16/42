@@ -14,29 +14,29 @@ PUSH_SWAP	=		push_swap.c
 
 QUEUE	=			\
 					$(addprefix $(QUEUE_DIR), \
-					ft_queueinit.c \
-					ft_queueadd.c \
-					ft_queuedel.c \
-					ft_queuepop.c \
+					queueinit.c \
+					queueadd.c \
+					queuedel.c \
+					queuepop.c \
 					)
 
 MVMNTS	=			\
 					$(addprefix $(MVMNTS_DIR), \
-					ft_push.c \
-					ft_reverse_rotate.c \
-					ft_rotate.c \
-					ft_swap.c \
+					push.c \
+					reverse_rotate.c \
+					rotate.c \
+					swap.c \
 					)
 
 PARSER	=			\
 					$(addprefix $(PARSER_DIR), \
-					ft_argdigit.c \
-					ft_argtostack.c \
+					argtostack.c \
 					)
 
 ALGORITHM	= 	    \
 					$(addprefix $(ALGORITHM_DIR), \
-					ft_threeelems.c \
+					threeelems.c \
+					mergesort.c \
 					)
 
 SRCS	= 			$(addprefix $(SRC_DIR), \

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 17:15:47 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/22 20:42:31 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  *					1	nb is already on the stack
  */
 
-static int	ft_nbrepeated(t_queue *queue, int nb)
+static int	nbrepeated(t_queue *queue, int nb)
 {
 	t_node	*aux;
 
@@ -43,7 +43,7 @@ static int	ft_nbrepeated(t_queue *queue, int nb)
  * OUTPUT:	int	:	-1	error ocurred
  *					N > 0	okay
  */
-static int	ft_settostack(t_queue *queue, char	**set)
+static int	settostack(t_queue *queue, char	**set)
 {
 	int	nb;
 	int	cnt;
@@ -54,9 +54,9 @@ static int	ft_settostack(t_queue *queue, char	**set)
 	while (set[cnt])
 	{
 		nb = ft_atoi(set[cnt]);
-		if (ft_atoi_check(nb, set[cnt]) || ft_nbrepeated(queue, nb))
+		if (ft_atoi_check(nb, set[cnt]) || nbrepeated(queue, nb))
 			return (-1);
-		ft_queueadd_back_num(queue, nb);
+		queueadd_back_num(queue, nb);
 		cnt++;
 	}
 	return (cnt);
@@ -70,7 +70,7 @@ static int	ft_settostack(t_queue *queue, char	**set)
  * OUTPUT:	void	
  */
 
-void	ft_argtostack(t_queue **queue, char **argv)
+void	argtostack(t_queue **queue, char **argv)
 {
 	char	**set;
 	int		cnt;
@@ -81,11 +81,12 @@ void	ft_argtostack(t_queue **queue, char **argv)
 	while (argv[cnt])
 	{
 		set = ft_split(argv[cnt], ' ');
-		if (!set || ft_settostack(*queue, set) < 0)
+		if (!set || settostack(*queue, set) < 0)
 		{
-			ft_queuedelall(queue);
+			queuedelall(queue);
 			return ;
 		}
 		cnt++;
 	}
+	ft_free_split(set);
 }

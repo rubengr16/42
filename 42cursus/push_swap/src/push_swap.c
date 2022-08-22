@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 17:19:26 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/22 20:54:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,26 @@ int	main(int argc, char **argv)
 	t_queue	*a;
 	t_queue	*b;
 
+
 	if (argc > 1)
 	{
-		if (ft_setisdigit(&argv[1]))
+		if (ft_setisnumber(&argv[1]))
 		{
-			a = ft_queueinit();
-			b = ft_queueinit();
+			a = queueinit();
+			b = queueinit();
 			if (a && b)
 			{
-				ft_argtostack(&a, &argv[1]);
+				argtostack(&a, &argv[1]);
 				if (a)
 				{
 					printqueue(a);
-					ft_queuedelall(&a);
+					t_vector *v = merge_sort(*a);
+					for (int i = 0; i < v->n_elem; i++)
+						printf("%d\n", v->nums[i]);
+					queuedelall(&a);
 				}
 				if (b)
-					ft_queuedelall(&b);
+					queuedelall(&b);
 			}
 		}	
 		else

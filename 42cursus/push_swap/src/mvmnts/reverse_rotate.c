@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:17:16 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/11 16:28:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/22 19:06:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * OUTPUT:	int	:	1	reverse rotate is fullfilled
  * 					0	reverse rotate has failed
  */
-int	ft_reverse_rotate_queue(t_queue *queue)
+int	reverse_rotate_queue(t_queue *queue)
 {
 	if (queue->n_elem > 1)
 	{
@@ -35,9 +35,9 @@ int	ft_reverse_rotate_queue(t_queue *queue)
  * INPUT:	t_queue *a
  * OUTPUT:	void
  */
-void	ft_reverse_rotate_a(t_queue *a)
+void	reverse_rotate_a(t_queue *a)
 {
-	if (ft_reverse_rotate_queue(a))
+	if (reverse_rotate_queue(a))
 		ft_putendl_fd("rra", 1);
 }
 
@@ -46,9 +46,9 @@ void	ft_reverse_rotate_a(t_queue *a)
  * INPUT:	t_queue *b
  * OUTPUT:	void
  */
-void	ft_reverse_rotate_b(t_queue *b)
+void	reverse_rotate_b(t_queue *b)
 {
-	if (ft_reverse_rotate_queue(b))
+	if (reverse_rotate_queue(b))
 		ft_putendl_fd("rrb", 1);
 }
 
@@ -57,13 +57,13 @@ void	ft_reverse_rotate_b(t_queue *b)
  * INPUT:	t_queue *a, t_queue *b
  * OUTPUT:	void
  */
-void	ft_reverse_rotate_ab(t_queue *a, t_queue *b)
+void	reverse_rotate_ab(t_queue *a, t_queue *b)
 {
-	if (ft_reverse_rotate_queue(a))
+	if (reverse_rotate_queue(a))
 	{
-		if (ft_reverse_rotate_queue(b))
+		if (reverse_rotate_queue(b))
 			ft_putendl_fd("rrr", 1);
 		else
-			ft_rotate_queue(a);
+			rotate_queue(a);
 	}
 }
