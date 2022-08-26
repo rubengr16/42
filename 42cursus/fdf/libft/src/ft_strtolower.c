@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm.h                                        :+:      :+:    :+:   */
+/*   ft_strtolower.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/17 19:08:25 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/26 20:32:40 by rgallego         ###   ########.fr       */
+/*   Created: 2022/04/04 19:49:20 by rgallego          #+#    #+#             */
+/*   Updated: 2022/08/24 17:25:52 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ALGORITHM_H
-# define ALGORITHM_H
+#include "libft.h"
 
-# include "queue.h"
-# include "mvmnts.h"
-
-typedef struct s_vector
+char	*ft_strtolower(char *str)
 {
-	int	n_elem;
-	int	*nums;
-}	t_vector;
+	int		i;
+	char	*strlower;
 
-int	sortbase(t_queue *queue);
-t_vector *merge_sort(t_queue queue);
-void printqueue(t_queue queue);
-void	push_swap_prep(t_queue queue);
-//void	ft_mergesort(t_queue *a, t_queue *b, int size);
-
-#endif
+	i = 0;
+	strlower = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	while (str[i])
+	{
+		strlower[i] = ft_tolower(str[i]);
+		i++;
+	}
+	strlower[i] = str[i];
+	return (strlower);
+}

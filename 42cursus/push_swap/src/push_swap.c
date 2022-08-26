@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 20:54:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/26 20:32:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "parser.h"
 #include "algorithm.h"
 
-void	printqueue(t_queue *queue)
+/*void	printqueue(t_queue *queue)
 {
 	t_node	*aux;
 	int		cnt;
@@ -29,12 +29,13 @@ void	printqueue(t_queue *queue)
 		aux = aux->next;
 		cnt++;
 	}
-}
+}*/
 
 int	main(int argc, char **argv)
 {
 	t_queue	*a;
 	t_queue	*b;
+//	int		size;
 
 
 	if (argc > 1)
@@ -46,16 +47,21 @@ int	main(int argc, char **argv)
 			if (a && b)
 			{
 				argtostack(&a, &argv[1]);
-				if (a)
-				{
-					printqueue(a);
-					t_vector *v = merge_sort(*a);
-					for (int i = 0; i < v->n_elem; i++)
-						printf("%d\n", v->nums[i]);
-					queuedelall(&a);
-				}
-				if (b)
-					queuedelall(&b);
+				//if (a)
+				//{
+					//printqueue(*a);
+					//mergesort(a);
+					//printf("\nStack a\n");
+					//printqueue(*a);
+					//push_swap_prep(*a);
+				//}
+				//if (b)
+				//{
+					//printf("\nStack b\n");
+					//printqueue(*b);
+				//}
+				queuedelall(&a);
+				queuedelall(&b);
 			}
 		}	
 		else
@@ -63,5 +69,7 @@ int	main(int argc, char **argv)
 	}
 	else
 		printf("More arguments please\n");
+	system("leaks push_swap");
+	printf("%zu\n", sizeof(t_vector));
 	return (0);
 }

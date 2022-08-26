@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:27:40 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 18:49:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:01:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ void	push_a(t_queue *a, t_queue *b)
 void	push_b(t_queue *a, t_queue *b)
 {
 	if (push_queue(b, a))
+	{
 		ft_putendl_fd("pb", 1);
+	}
 }

@@ -6,12 +6,13 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 12:47:31 by rgallego          #+#    #+#              #
-#    Updated: 2021/11/20 16:02:21 by rgallego         ###   ########.fr        #
+#    Updated: 2022/08/24 17:19:54 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Test files
-
+checker_mac
+tester.sh
 
 # Make files
 gcc
