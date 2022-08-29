@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ft_strisbase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:11:31 by rgallego         ###   ########.fr       */
+/*   Created: 2022/02/23 20:02:16 by rgallego          #+#    #+#             */
+/*   Updated: 2022/02/23 20:31:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "libft.h"
 
-# include <stdio.h>
-# include "libft.h"
-# include "queue.h"
+int	ft_strisbase(char *str, char *base)
+{
+	int	cnt;
 
-void	argtostack(t_queue *queue, char **argv);
-
-#endif
+	if (!str || !base)
+		return (0);
+	cnt = 0;
+	while (str[cnt] && ft_strchr(base, str[cnt]))
+		cnt++;
+	if (!str[cnt])
+		return (1);
+	else
+		return (0);
+}	

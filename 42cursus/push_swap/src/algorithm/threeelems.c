@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mysort.c                                        :+:      :+:    :+:   */
+/*   threeelems.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 20:00:20 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 19:09:54 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:07:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static int	issorted(t_queue *queue)
 }
 
 /*
- * 
- * INPUT:	
- * OUTPUT:	
+ *
+ * INPUT:
+ * OUTPUT:
  */
 int	sortbase(t_queue *queue)
 {
@@ -52,5 +52,3 @@ int	sortbase(t_queue *queue)
 	}
 	return (1);
 }
-
-

@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:11:31 by rgallego         ###   ########.fr       */
+/*   Created: 2021/09/13 15:08:29 by rgallego          #+#    #+#             */
+/*   Updated: 2021/11/05 18:54:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "libft.h"
 
-# include <stdio.h>
-# include "libft.h"
-# include "queue.h"
+void	*ft_memset(void *s, int c, size_t len)
+{
+	size_t			cnt;
+	unsigned char	*str_s;
 
-void	argtostack(t_queue *queue, char **argv);
-
-#endif
+	str_s = s;
+	cnt = 0;
+	while (cnt < len)
+	{
+		str_s[cnt] = c;
+		cnt++;
+	}
+	return (s);
+}

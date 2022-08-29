@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_queuedel.c                                      :+:      :+:    :+:   */
+/*   queuedel.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:32:30 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 17:44:50 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:06:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	queuedelall(t_queue **queue)
 		return ;
 	while ((*queue)->n_elem)
 		queuedelone(*queue);
-		
 	(*queue)->head = NULL;
 	free(*queue);
 	*queue = NULL;

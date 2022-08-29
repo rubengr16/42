@@ -37,7 +37,7 @@ ALGORITHM	= 	    \
 					$(addprefix $(ALGORITHM_DIR), \
 					threeelems.c \
 					mergesort.c \
-					doubt_mergesort.c \
+					algorithm_prep.c \
 					)
 
 SRCS	= 			$(addprefix $(SRC_DIR), \

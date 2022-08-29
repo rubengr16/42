@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 20:41:37 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:11:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	nbrepeated(t_queue *queue, int nb)
  * OUTPUT:	void
  */
 
-void	argtostack(t_queue **queue, char **argv)
+void	argtostack(t_queue *queue, char **argv)
 {
 	char	**set;
 	int		nb;
@@ -62,9 +62,9 @@ void	argtostack(t_queue **queue, char **argv)
 		while (set[cnt_set])
 		{
 			nb = ft_atoi_err(set[cnt_set]);
-			if (nbrepeated(*queue, nb))
-				ft_error("Error. Number already introduced.", STDERR_FILENO, ERR_USR);
-			queueadd_back_num(*queue, nb);
+			if (nbrepeated(queue, nb))
+				ft_error("Error. Number repeated.", STDERR_FILENO, ERR_USR);
+			queueadd_back_num(queue, nb);
 			cnt_set++;
 		}
 		ft_free_split(set);
