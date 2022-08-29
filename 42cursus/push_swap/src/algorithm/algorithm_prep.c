@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mergesort.c                                        :+:      :+:    :+:   */
+/*   algorithm_prep.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:42:43 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/26 20:32:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:27:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "algorithm.h"
-/*
+
 static void	merge(t_vector *vector, int i_0, int k, int i_n)
 {
 	t_vector	*aux;
-	int			pos;	
+	int			pos;
 	int			i;
 	int			j;
 
@@ -38,6 +37,7 @@ static void	merge(t_vector *vector, int i_0, int k, int i_n)
 	pos = 0;
 	while (pos < aux->n_elem)
 		vector->nums[i_0++] = aux->nums[pos++];
+	free(aux->nums);
 }
 
 static void	sort(t_vector *vector, int i_0, int i_n)
@@ -51,8 +51,8 @@ static void	sort(t_vector *vector, int i_0, int i_n)
 	sort(vector, k + 1, i_n);
 	merge(vector, i_0, k, i_n);
 }
-*/
-t_vector	*merge_sort(t_queue queue)
+
+static t_vector	*merge_sort(t_queue queue)
 {
 	t_vector	*vector;
 	t_node		*aux;
@@ -73,13 +73,13 @@ t_vector	*merge_sort(t_queue queue)
 		aux = aux->next;
 		i++;
 	}
-	//sort(vector, 0, vector->n_elem - 1);
+	sort(vector, 0, vector->n_elem - 1);
 	return (vector);
 }
 
-int binary_search(t_vector *vector, int num, int i_0, int i_n)
+static int	binary_search(t_vector *vector, int num, int i_0, int i_n)
 {
-	int	k = 0;
+	int	k;
 
 	if (i_0 == i_n && num == vector->nums[i_0])
 		return (i_0);
@@ -93,27 +93,12 @@ int binary_search(t_vector *vector, int num, int i_0, int i_n)
 	return (k);
 }
 
-void	printqueue(t_queue queue)
-{
-	t_node	*aux;
-	int		cnt;
-
-	cnt = 0;
-	aux = queue.head;
-	while (cnt < queue.n_elem)
-	{
-		printf("Elem %d: %d\n", cnt, aux->num);
-		aux = aux->next;
-		cnt++;
-	}
-}
-
-void	push_swap_prep(t_queue queue)
+void	algorithm_prep(t_queue queue)
 {
 	t_vector	*vector;
 	t_node		*aux;
 
-	vector = merge_sort(queue);		
+	vector = merge_sort(queue);
 	aux = queue.head;
 	aux->num = binary_search(vector, aux->num, 0, (vector->n_elem - 1));
 	aux = aux->next;
@@ -122,7 +107,6 @@ void	push_swap_prep(t_queue queue)
 		aux->num = binary_search(vector, aux->num, 0, (vector->n_elem -1));
 		aux = aux->next;
 	}
-	
 	free(vector->nums);
 	free(vector);
 }

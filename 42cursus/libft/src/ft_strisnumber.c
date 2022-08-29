@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ft_strisnumber.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:11:31 by rgallego         ###   ########.fr       */
+/*   Created: 2022/02/23 20:00:14 by rgallego          #+#    #+#             */
+/*   Updated: 2022/08/29 20:54:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "libft.h"
 
-# include <stdio.h>
-# include "libft.h"
-# include "queue.h"
+/*
+ * function which decides if a string is only numerical
+ * INPUT:	char *str
+ * OUTPUT:	int	:	1	numerical
+ *					0	non numerical
+ */
+int	ft_strisnumber(char *str)
+{
+	int	cnt;
 
-void	argtostack(t_queue *queue, char **argv);
-
-#endif
+	if (!str)
+		return (0);
+	cnt = 0;
+	if (str[cnt] == '-')
+		cnt++;
+	while (str[cnt] && ft_isdigit(str[cnt]))
+		cnt++;
+	if (!str[cnt])
+		return (1);
+	else
+		return (0);
+}

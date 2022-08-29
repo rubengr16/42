@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:11:31 by rgallego         ###   ########.fr       */
+/*   Created: 2022/08/29 19:43:19 by rgallego          #+#    #+#             */
+/*   Updated: 2022/08/29 20:21:14 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "libft.h"
 
-# include <stdio.h>
-# include "libft.h"
-# include "queue.h"
-
-void	argtostack(t_queue *queue, char **argv);
-
-#endif
+void	ft_error(char *msg, int fd, int code)
+{
+	ft_putendl_fd(msg, fd);
+	exit(code);
+}

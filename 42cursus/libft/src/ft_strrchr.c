@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   strrchr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:11:31 by rgallego         ###   ########.fr       */
+/*   Created: 2021/09/14 09:17:46 by rgallego          #+#    #+#             */
+/*   Updated: 2021/09/14 11:29:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "libft.h"
 
-# include <stdio.h>
-# include "libft.h"
-# include "queue.h"
+char	*ft_strrchr(const char *s, int c)
+{
+	char	*res;
 
-void	argtostack(t_queue *queue, char **argv);
-
-#endif
+	res = NULL;
+	while (*s)
+	{
+		if (*s == (unsigned char)c)
+			res = (char *)s;
+		s++;
+	}
+	if (*s == (unsigned char)c)
+		res = (char *)s;
+	return (res);
+}

@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   isdigit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:11:31 by rgallego         ###   ########.fr       */
+/*   Created: 2021/09/13 13:11:27 by rgallego          #+#    #+#             */
+/*   Updated: 2022/02/23 20:28:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "libft.h"
 
-# include <stdio.h>
-# include "libft.h"
-# include "queue.h"
+/*
+ * function which receives a character and decides if it is a digit
+ * INPUT:	int c
+ * OUTPUT:	int
+ */
+int	ft_isdigit(int c)
+{
+	int	digit;
 
-void	argtostack(t_queue *queue, char **argv);
-
-#endif
+	digit = 0;
+	if ('0' <= c && c <= '9')
+		digit = 1;
+	return (digit);
+}

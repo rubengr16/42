@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ft_strtoupper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:11:31 by rgallego         ###   ########.fr       */
+/*   Created: 2022/04/04 19:49:20 by rgallego          #+#    #+#             */
+/*   Updated: 2022/08/29 20:50:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "libft.h"
 
-# include <stdio.h>
-# include "libft.h"
-# include "queue.h"
+char	*ft_strtolower(char *str)
+{
+	int		i;
+	char	*strlower;
 
-void	argtostack(t_queue *queue, char **argv);
-
-#endif
+	i = 0;
+	strlower = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	while (str[i])
+	{
+		strlower[i] = ft_tolower(str[i]);
+		i++;
+	}
+	strlower[i] = str[i];
+	return (strlower);
+}
