@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:02:59 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 17:36:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:54:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+/**************************** ERROR MANAGEMENT ****************************** */
+# define ERR_SYS 0
+# define ERR_USR 1
 
 /**************************************************************************** */
 /******************************* PART 1 ************************************* */
@@ -87,12 +91,15 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 /******************************* EXTRA ************************************** */
 /**************************************************************************** */
 int		ft_atoi_base(const char *s, const char *base, int base_len);
-int		ft_strisnumber(char *str);
-int		ft_setisnumber(char *str);
 int		ft_strisbase(char *str, char *base);
-void	ft_free_split(char **set);
 int		ft_atoi_check(int nb, char *str);
+int		ft_strisnumber(char *str);
+void	ft_free_split(char **set);
 int		ft_max(int nb1, int nb2);
 int		ft_min(int nb1, int nb2);
+char	*ft_strtoupper(char *str);
+char	*ft_strtolower(char *str);
+void	ft_error(char *msg, int fd, int code);
+int		ft_atoi_err(const char *s);
 
 #endif

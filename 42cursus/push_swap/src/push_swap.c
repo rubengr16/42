@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/26 20:32:44 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:30:23 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,38 +38,35 @@ int	main(int argc, char **argv)
 //	int		size;
 
 
-	if (argc > 1)
+	if (argc == 1)
+		ft_error("Error. Enter more than 1 argument.", STDERR_FILENO, ERR_USR);
+	a = queueinit();
+	b = queueinit();
+	if (a && b)
 	{
-		if (ft_setisnumber(&argv[1]))
-		{
-			a = queueinit();
-			b = queueinit();
-			if (a && b)
-			{
-				argtostack(&a, &argv[1]);
-				//if (a)
-				//{
-					//printqueue(*a);
-					//mergesort(a);
-					//printf("\nStack a\n");
-					//printqueue(*a);
-					//push_swap_prep(*a);
-				//}
-				//if (b)
-				//{
-					//printf("\nStack b\n");
-					//printqueue(*b);
-				//}
-				queuedelall(&a);
-				queuedelall(&b);
-			}
-		}	
-		else
-			printf("Nay, bad input\n");
+		argtostack(&a, &argv[1]);
+		if (a->n_elem == 1)
+			ft_error("Error. Enter more than 1 number", STDERR_FILENO, ERR_USR);
+		//if (a)
+		//{
+			//printqueue(*a);
+			//mergesort(a);
+			//printf("\nStack a\n");
+			//printqueue(*a);
+			//push_swap_prep(*a);
+		//}
+		//if (b)
+		//{
+			//printf("\nStack b\n");
+			//printqueue(*b);
+		//}
+		//
+
+		queuedelall(&a);
+		queuedelall(&b);
 	}
 	else
-		printf("More arguments please\n");
+		printf("Nay, bad input\n");
 	system("leaks push_swap");
-	printf("%zu\n", sizeof(t_vector));
 	return (0);
 }

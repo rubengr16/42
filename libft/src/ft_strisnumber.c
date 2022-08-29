@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_setisnumber.c                                   :+:      :+:    :+:   */
+/*   ft_strisnumber.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 17:24:16 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 19:24:24 by rgallego         ###   ########.fr       */
+/*   Created: 2022/02/23 20:00:14 by rgallego          #+#    #+#             */
+/*   Updated: 2022/08/29 20:54:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- * decides if a set is numerical.
+ * function which decides if a string is only numerical
  * INPUT:	char *str
  * OUTPUT:	int	:	1	numerical
  *					0	non numerical
  */
-int	ft_setisnumber(char **set)
+int	ft_strisnumber(char *str)
 {
 	int	cnt;
 
-	if (!set)
+	if (!str)
 		return (0);
 	cnt = 0;
-	while (set[cnt] && ft_strisnumber(set[cnt]))
+	if (str[cnt] == '-')
 		cnt++;
-	if (set[cnt])
+	while (str[cnt] && ft_isdigit(str[cnt]))
+		cnt++;
+	if (!str[cnt])
+		return (1);
+	else
 		return (0);
-	return (1);
 }

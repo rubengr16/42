@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_argtostack.c                                    :+:      :+:    :+:   */
+/*   argtostack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 20:42:31 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:41:37 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,44 +36,19 @@ static int	nbrepeated(t_queue *queue, int nb)
 }
 
 /*
- * receives a set of strings and tranforms each one to int and inserts one by 
- * one each number to the stack. For each number test that the atoi has been 
- * executed correctly and that it is not repeated on the stack.
- * INPUT:	t_queue *queue, char **set
- * OUTPUT:	int	:	-1	error ocurred
- *					N > 0	okay
- */
-static int	settostack(t_queue *queue, char	**set)
-{
-	int	nb;
-	int	cnt;
-
-	if (!set)
-		return (0);
-	cnt = 0;
-	while (set[cnt])
-	{
-		nb = ft_atoi(set[cnt]);
-		if (ft_atoi_check(nb, set[cnt]) || nbrepeated(queue, nb))
-			return (-1);
-		queueadd_back_num(queue, nb);
-		cnt++;
-	}
-	return (cnt);
-}
-
-/*
  * receives an initialized queue and inserts the numbers contained on argv
  * doing the necessary tests in order to avoid non-numerical elements and
  * repeated numbers.
  * INPUT:	t_queue *queue, char **argv
- * OUTPUT:	void	
+ * OUTPUT:	void
  */
 
 void	argtostack(t_queue **queue, char **argv)
 {
 	char	**set;
+	int		nb;
 	int		cnt;
+	int		cnt_set;
 
 	if (!argv)
 		return ;
@@ -81,12 +56,18 @@ void	argtostack(t_queue **queue, char **argv)
 	while (argv[cnt])
 	{
 		set = ft_split(argv[cnt], ' ');
-		if (!set || settostack(*queue, set) < 0)
+		if (!set)
+			ft_error("Error. Split failed.", STDERR_FILENO, ERR_USR);
+		cnt_set = 0;
+		while (set[cnt_set])
 		{
-			queuedelall(queue);
-			return ;
+			nb = ft_atoi_err(set[cnt_set]);
+			if (nbrepeated(*queue, nb))
+				ft_error("Error. Number already introduced.", STDERR_FILENO, ERR_USR);
+			queueadd_back_num(*queue, nb);
+			cnt_set++;
 		}
+		ft_free_split(set);
 		cnt++;
 	}
-	ft_free_split(set);
 }

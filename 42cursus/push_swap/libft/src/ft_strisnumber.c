@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strisnumber.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 20:00:14 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 19:22:12 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:54:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- * decides if a string represents one or more numbers.
+ * function which decides if a string is only numerical
  * INPUT:	char *str
  * OUTPUT:	int	:	1	numerical
  *					0	non numerical
@@ -25,10 +25,12 @@ int	ft_strisnumber(char *str)
 	if (!str)
 		return (0);
 	cnt = 0;
-	while (str[cnt] && (ft_isdigit(str[cnt]) || str[cnt] == ' '
-			|| (str[cnt] == '-' && ft_isdigit(str[cnt + 1]))))
+	if (str[cnt] == '-')
 		cnt++;
-	if (str[cnt])
+	while (str[cnt] && ft_isdigit(str[cnt]))
+		cnt++;
+	if (!str[cnt])
+		return (1);
+	else
 		return (0);
-	return (1);
 }

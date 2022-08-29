@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/03/07 13:01:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:01:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PIPEX_H
 
 /******************************** LIBRARIES ********************************* */
-# include <wait.h>		/***	pid_t	wait(int *wsatus);	***/
+# include <sys/wait.h>		/***	pid_t	wait(int *wsatus);	***/
 # include <stdio.h>		/***	void	perror(const char *s);	***/
 # include <errno.h>
 # include <unistd.h>	/***	int		dup2(int oldfd, int newfd);
