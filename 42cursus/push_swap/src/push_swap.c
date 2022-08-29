@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:25:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:41:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	main(int argc, char **argv)
 {
 	t_queue	*a;
 	t_queue	*b;
-//	int		size;
 
 
 	if (argc == 1)
@@ -49,21 +48,15 @@ int	main(int argc, char **argv)
 			ft_error("Error. Enter more than 1 number", STDERR_FILENO, ERR_USR);
 		if (a)
 		{
-			printqueue(*a);
 			algorithm_prep(*a);
-			printf("\nStack a\n");
-			printqueue(*a);
-		}
-		if (b)
-		{
-			printf("\nStack b\n");
-			printqueue(*b);
+			//printqueue(*a);
+			ft_mergesort(a, b, (a->n_elem / 2));
 		}
 		queuedelall(&a);
 		queuedelall(&b);
 	}
 	else
 		printf("Nay, bad input\n");
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	return (0);
 }
