@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   queueinit.c                                        :+:      :+:    :+:   */
+/*   btreedel.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 18:47:23 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 16:39:43 by rgallego         ###   ########.fr       */
+/*   Created: 2022/08/30 16:22:11 by rgallego          #+#    #+#             */
+/*   Updated: 2022/08/30 16:44:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "queue.h"
+#include "btree.h"
 
-/*
- * reserves memory using malloc and initializes its values
- * head and n_elem to NULL and 0 respectively
- * INPUT:	void
- * OUTPUT:	t_queue *queue
- */
-t_queue	*queueinit(void)
+static void	btreedelrec(t_btree *btree, t_bnode *bnode)
 {
-	t_queue	*queue;
+	if (!bnode)
+		return ;
+	btreedelrec(btree, bnode->left);
+	bnode->left = NULL;
+	btreedelrec(btree, bnode->right);
+	bnode->right = NULL;
+	free(bnode);
+	btree->n_elem--;
+}
 
-	queue = malloc(sizeof(t_queue));
-	if (!queue)
-		return (NULL);
-	queue->head = NULL;
-	queue->n_elem = 0;
-	return (queue);
+void	btreedelall(t_btree *btree)
+{
+	if (!btree->n_elem)
+		return ;
+	btreedelrec(btree, btree->root);
+	btree->root = NULL;
+	free(btree);
+	btree = NULL;
 }

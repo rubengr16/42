@@ -4,6 +4,8 @@ INC_DIR	=			inc/
 
 QUEUE_DIR	=		queue/
 
+BTREE_DIR	=		btree/
+
 MVMNTS_DIR	=		mvmnts/
 
 PARSER_DIR	=		parser/
@@ -19,6 +21,14 @@ QUEUE	=			\
 					queuedel.c \
 					queuepop.c \
 					)
+
+BTREE	=			\
+					$(addprefix $(BTREE_DIR), \
+					btreeinit.c \
+					btreeadd.c \
+					btreedel.c \
+					)
+
 
 MVMNTS	=			\
 					$(addprefix $(MVMNTS_DIR), \
@@ -42,6 +52,7 @@ ALGORITHM	= 	    \
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
 					$(QUEUE) \
+					$(BTREE) \
 					$(MVMNTS) \
 					$(PARSER) \
 					$(ALGORITHM) \

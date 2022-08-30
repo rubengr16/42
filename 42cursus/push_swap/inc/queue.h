@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:05:19 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/26 20:32:42 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:39:04 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,28 @@
 
 # include <stdlib.h>
 
-typedef struct s_node
+typedef struct s_qnode
 {
 	int				num;
-	int				idx;
-	struct s_node	*next;
-	struct s_node	*prvs;
-}	t_node;
+	struct s_qnode	*next;
+	struct s_qnode	*prvs;
+}	t_qnode;
 
 typedef struct s_queue
 {
 	int		n_elem;
-	t_node	*head;
+	t_qnode	*head;
 }	t_queue;
 
 /************************** BASIC QUEUE FUNCTIONS *************************** */
 t_queue	*queueinit(void);
-t_node	*newnode(int num);
-void	queueadd_back(t_queue *queue, t_node *node);
+t_qnode	*newqnode(int num);
+void	queueadd_back(t_queue *queue, t_qnode *node);
 void	queueadd_back_num(t_queue *queue, int num);
-void	queueadd_front(t_queue *queue, t_node *node);
+void	queueadd_front(t_queue *queue, t_qnode *node);
 void	queueadd_front_num(t_queue *queue, int num);
-t_node	*queuepop(t_queue *queue);
+t_qnode	*queuepop(t_queue *queue);
 void	queuedelone(t_queue *queue);
-void	queuedelall(t_queue **queue);
+void	queuedelall(t_queue *queue);
 
 #endif

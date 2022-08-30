@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:53:04 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:40:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void	printqueue(t_queue queue)
 {
-	t_node	*aux;
+	t_qnode	*aux;
 	int		cnt;
 
 	cnt = 0;
@@ -52,11 +52,11 @@ int	main(int argc, char **argv)
 			//printqueue(*a);
 			ft_mergesort(a, b, (a->n_elem / 2));
 		}
-		queuedelall(&a);
-		queuedelall(&b);
+		queuedelall(a);
+		queuedelall(b);
 	}
 	else
 		printf("Nay, bad input\n");
-	// system("leaks push_swap");
+	system("leaks push_swap");
 	return (0);
 }

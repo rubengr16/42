@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 20:00:20 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:07:00 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/30 14:35:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  */
 static int	issorted(t_queue *queue)
 {
-	t_node	*aux;
+	t_qnode	*aux;
 
 	if (queue->n_elem <= 1)
 		return (1);

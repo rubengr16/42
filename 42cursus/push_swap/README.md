@@ -16,12 +16,12 @@ typedef struct s_node
 	int				num;
 	struct s_node	*next;
 	struct s_node	*prvs;
-}	t_node;
+}	t_qnode;
 
 typedef struct s_stack
 {
 	int		n_elem;
-	t_node	*head;
+	t_qnode	*head;
 }	t_stack;
 ```
 
@@ -34,29 +34,29 @@ structure, but I think it is a great opportunity to cope with these problems.
 Those basic functions to manage the **circular double linked list** are the
 following ones:
 
-* *t\_queue \*ft\_queue(void)* : function which reserves memory using malloc 
+* *t\_queue \*ft\_queue(void)* : function which reserves memory using malloc
 and initializes its values head and n_elem to NULL and 0 respectively.
 
-* *t\_node \*ft\_newnode(int num)*: receives a new node and establishes its 
+* *t\_node \*ft\_newqnode(int num)*: receives a new node and establishes its
 value to num and its pointer to NULL.
 
-* *void	ft\_queueadd\_back(t\_queue \*queue, t\_node \*node)* : inserts a node 
+* *void	ft\_queueadd\_back(t\_queue \*queue, t\_node \*node)* : inserts a node
 received as argument at the back of a queue.
 
-* *void	ft\_queueadd\_back\_num(t\_queue \*queue, int num)* : creates a node 
+* *void	ft\_queueadd\_back\_num(t\_queue \*queue, int num)* : creates a node
 with the received number as argument and inserts it at the back of a queue.
 
-* *void	ft\_queueadd\_front(t\_queue \*queue, t\_node \*node)* : inserts a 
+* *void	ft\_queueadd\_front(t\_queue \*queue, t\_node \*node)* : inserts a
 node received as argument at the front of a queue.
 
-* *void	ft\_queueadd\_front\_num(t\_queue \*queue, int num)* : creates a node 
+* *void	ft\_queueadd\_front\_num(t\_queue \*queue, int num)* : creates a node
 with the received number as argument and inserts it at the front of a queue.
 
 
-* *t\_node	\*ft\_queuepop(t\_queue \*queue)* : deletes one node from a queue 
+* *t\_node	\*ft\_queuepop(t\_queue \*queue)* : deletes one node from a queue
 and returns it.
 
-* *void	ft\_queuedelone(t\_queue \*queue)* : deletes the first node of a 
+* *void	ft\_queuedelone(t\_queue \*queue)* : deletes the first node of a
 queue.
 
 * *void	ft\_queuedelall(t\_queue \*\*queue)*: deletes a queue.
@@ -66,7 +66,7 @@ In order to move its elements, we will use only 11 allowed movements:
 * *sa* : swap a - swaps the first 2 elements at the top of stack **a** -nothing
 is done if there is less than 2 elements-
 
-* *sb* : swap b - same behaviour as *sa* but in **b**. 
+* *sb* : swap b - same behaviour as *sa* but in **b**.
 
 * *ss* : does *sa* and *sb* at the same time.
 

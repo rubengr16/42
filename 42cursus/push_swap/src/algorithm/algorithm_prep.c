@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:42:43 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:51:18 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/30 14:35:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	sort(t_vector *vector, int i_0, int i_n)
 static t_vector	*merge_sort(t_queue queue)
 {
 	t_vector	*vector;
-	t_node		*aux;
+	t_qnode		*aux;
 	int			i;
 
 	vector = malloc(sizeof(t_vector));
@@ -96,7 +96,7 @@ static int	binary_search(t_vector *vector, int num, int i_0, int i_n)
 void	algorithm_prep(t_queue queue)
 {
 	t_vector	*vector;
-	t_node		*aux;
+	t_qnode		*aux;
 
 	vector = merge_sort(queue);
 	aux = queue.head;

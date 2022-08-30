@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_queuepop.c                                      :+:      :+:    :+:   */
+/*   queuepop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:18:12 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/26 20:32:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:08:11 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "queue.h"
 
 /*
- * function which deletes one node from a queue and returns it
+ * deletes one node from a queue and returns it
  * INPUT:	t_queue *queue
- * OUTPUT:	t_node		:	deleted node with its next and previous pointers
+ * OUTPUT:	t_qnode		:	deleted node with its next and previous pointers
  * 							set to NULL
  */
-t_node	*queuepop(t_queue *queue)
+t_qnode	*queuepop(t_queue *queue)
 {
-	t_node	*aux;
+	t_qnode	*aux;
 
 	aux = queue->head;
 	if (queue->n_elem == 1)

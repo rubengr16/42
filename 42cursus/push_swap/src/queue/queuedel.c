@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:32:30 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:06:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:38:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	queuedelone(t_queue *queue)
  * INPUT: 	t_queue **queue
  * OUTPUT:	void
  */
-void	queuedelall(t_queue **queue)
+void	queuedelall(t_queue *queue)
 {
-	if (!(*queue))
+	if (!queue)
 		return ;
-	while ((*queue)->n_elem)
-		queuedelone(*queue);
-	(*queue)->head = NULL;
-	free(*queue);
-	*queue = NULL;
+	while (queue->n_elem)
+		queuedelone(queue);
+	queue->head = NULL;
+	free(queue);
+	queue = NULL;
 }

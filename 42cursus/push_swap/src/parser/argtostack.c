@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:50:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/30 14:35:31 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 static int	nbrepeated(t_queue *queue, int nb)
 {
-	t_node	*aux;
+	t_qnode	*aux;
 
 	if (!queue || !queue->n_elem)
 		return (0);
