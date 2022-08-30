@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm.h                                        :+:      :+:    :+:   */
+/*   stackpop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/17 19:08:25 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 21:02:57 by rgallego         ###   ########.fr       */
+/*   Created: 2022/08/30 20:43:06 by rgallego          #+#    #+#             */
+/*   Updated: 2022/08/30 20:57:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ALGORITHM_H
-# define ALGORITHM_H
+#include "stack.h"
 
-# include "queue.h"
-# include "btree.h"
-# include "stack.h"
-# include "mvmnts.h"
-
-typedef struct s_vector
+t_snode	*stackpop(t_stack *stack)
 {
-	int	n_elem;
-	int	*nums;
-}	t_vector;
+	t_snode	*aux;
 
-int			sortbase(t_queue *queue);
-void		algorithm_prep(t_queue queue);
-void		ft_mergesort(t_queue *a, t_queue *b, int size);
-
-#endif
+	if (!stack->head)
+		return (NULL);
+	aux = stack->head;
+	stack->head = stack->head->next;
+	aux->next = NULL;
+	return (aux);
+}

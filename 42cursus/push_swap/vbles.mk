@@ -6,6 +6,8 @@ QUEUE_DIR	=		queue/
 
 BTREE_DIR	=		btree/
 
+STACK_DIR	=		stack/
+
 MVMNTS_DIR	=		mvmnts/
 
 PARSER_DIR	=		parser/
@@ -24,11 +26,16 @@ QUEUE	=			\
 
 BTREE	=			\
 					$(addprefix $(BTREE_DIR), \
-					btreeinit.c \
 					btreeadd.c \
 					btreedel.c \
 					)
 
+STACK	=			\
+					$(addprefix $(STACK_DIR), \
+					stackpush.c \
+					stackpop.c \
+					stackdel.c \
+					)
 
 MVMNTS	=			\
 					$(addprefix $(MVMNTS_DIR), \

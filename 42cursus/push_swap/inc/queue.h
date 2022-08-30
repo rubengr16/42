@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 16:05:19 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 16:39:04 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/30 19:47:37 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct s_queue
 t_queue	*queueinit(void);
 t_qnode	*newqnode(int num);
 void	queueadd_back(t_queue *queue, t_qnode *node);
-void	queueadd_back_num(t_queue *queue, int num);
+t_qnode	*queueadd_back_num(t_queue *queue, int num);
 void	queueadd_front(t_queue *queue, t_qnode *node);
-void	queueadd_front_num(t_queue *queue, int num);
+t_qnode	*queueadd_front_num(t_queue *queue, int num);
 t_qnode	*queuepop(t_queue *queue);
 void	queuedelone(t_queue *queue);
 void	queuedelall(t_queue *queue);

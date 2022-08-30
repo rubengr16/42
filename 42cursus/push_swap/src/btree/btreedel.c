@@ -6,30 +6,30 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:22:11 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 16:44:02 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/30 20:26:17 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "btree.h"
+#include <unistd.h>
 
-static void	btreedelrec(t_btree *btree, t_bnode *bnode)
+static void	btreedelrec(t_bnode *bnode)
 {
 	if (!bnode)
 		return ;
-	btreedelrec(btree, bnode->left);
-	bnode->left = NULL;
-	btreedelrec(btree, bnode->right);
-	bnode->right = NULL;
+	btreedelrec(bnode->left);
+	if (bnode->left)
+		bnode->left = NULL;
+	btreedelrec(bnode->right);
+	if (bnode->right)
+		bnode->right = NULL;
 	free(bnode);
-	btree->n_elem--;
 }
 
-void	btreedelall(t_btree *btree)
+void	btreedelall(t_bnode *btree)
 {
-	if (!btree->n_elem)
+	if (!btree)
 		return ;
-	btreedelrec(btree, btree->root);
-	btree->root = NULL;
-	free(btree);
+	btreedelrec(btree);
 	btree = NULL;
 }

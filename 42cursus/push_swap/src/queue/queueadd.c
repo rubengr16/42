@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 16:08:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/30 19:46:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,15 @@ void	queueadd_back(t_queue *queue, t_qnode *node)
  * INPUT:	t_queue *queue, int num
  * OUTPUT:	void
  */
-void	queueadd_back_num(t_queue *queue, int num)
+t_qnode	*queueadd_back_num(t_queue *queue, int num)
 {
 	t_qnode	*aux;
 
 	aux = newqnode(num);
-	if (aux)
-		queueadd_back(queue, aux);
+	if (!aux)
+		return (NULL);
+	queueadd_back(queue, aux);
+	return (aux);
 }
 
 /*
@@ -89,11 +91,13 @@ void	queueadd_front(t_queue *queue, t_qnode *node)
  * INPUT:	t_queue *queue, int num
  * OUTPUT:	void
  */
-void	queueadd_front_num(t_queue *queue, int num)
+t_qnode *queueadd_front_num(t_queue *queue, int num)
 {
 	t_qnode	*aux;
 
 	aux = newqnode(num);
-	if (aux)
-		queueadd_front(queue, aux);
+	if (!aux)
+		return (NULL);
+	queueadd_front(queue, aux);
+	return aux;
 }

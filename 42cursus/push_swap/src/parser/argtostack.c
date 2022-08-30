@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 14:35:31 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/30 19:47:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	argtostack(t_queue *queue, char **argv)
 			nb = ft_atoi_err(set[cnt_set]);
 			if (nbrepeated(queue, nb))
 				ft_error("Error. Number repeated.", STDERR_FILENO, ERR_USR);
-			queueadd_back_num(queue, nb);
+			(void)queueadd_back_num(queue, nb);
 			cnt_set++;
 		}
 		ft_free_split(set);
