@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 19:46:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/31 16:10:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	queueadd_front(t_queue *queue, t_qnode *node)
  * INPUT:	t_queue *queue, int num
  * OUTPUT:	void
  */
-t_qnode *queueadd_front_num(t_queue *queue, int num)
+t_qnode	*queueadd_front_num(t_queue *queue, int num)
 {
 	t_qnode	*aux;
 
@@ -99,5 +99,5 @@ t_qnode *queueadd_front_num(t_queue *queue, int num)
 	if (!aux)
 		return (NULL);
 	queueadd_front(queue, aux);
-	return aux;
+	return (aux);
 }

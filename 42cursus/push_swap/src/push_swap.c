@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 16:40:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/31 16:13:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ int	main(int argc, char **argv)
 	}
 	else
 		printf("Nay, bad input\n");
-	system("leaks push_swap");
+	//system("leaks push_swap");
 	return (0);
 }

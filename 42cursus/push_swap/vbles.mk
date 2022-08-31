@@ -26,12 +26,15 @@ QUEUE	=			\
 
 BTREE	=			\
 					$(addprefix $(BTREE_DIR), \
+					btreeinit.c \
 					btreeadd.c \
+					btreepushpop.c \
 					btreedel.c \
 					)
 
 STACK	=			\
 					$(addprefix $(STACK_DIR), \
+					stackinit.c \
 					stackpush.c \
 					stackpop.c \
 					stackdel.c \
@@ -60,6 +63,7 @@ ALGORITHM	= 	    \
 SRCS	= 			$(addprefix $(SRC_DIR), \
 					$(QUEUE) \
 					$(BTREE) \
+					$(STACK) \
 					$(MVMNTS) \
 					$(PARSER) \
 					$(ALGORITHM) \

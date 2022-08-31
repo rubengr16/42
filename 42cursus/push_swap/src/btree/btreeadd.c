@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:34:16 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 19:50:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/08/31 16:09:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_bnode	*newbnode(int num)
 	aux->num = num;
 	aux->left = NULL;
 	aux->right = NULL;
+	aux->stack = NULL;
 	return (aux);
 }
 
@@ -70,7 +71,6 @@ void	btreeadd_right(t_bnode *root, t_bnode *leaf)
 	if (!root)
 		return ;
 	root->right = leaf;
-
 }
 
 /*
