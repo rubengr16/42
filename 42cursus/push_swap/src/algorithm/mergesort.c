@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:09:01 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 14:18:53 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/02 17:49:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	print_preorder(t_bnode *bnode)
 	print_preorder(bnode->right);
 }
 
-void	print_squeue(t_squeue *squeue)
+void	print_stack(t_stack *stack)
 {
-	t_sqnode	*aux;
+	t_snode	*aux;
 
-	if (!squeue)
+	if (!stack)
 		return ;
-	aux = squeue->head;
+	aux = stack->head;
 	while (aux)
 	{
 		printf("%d ", aux->num);
@@ -76,9 +76,9 @@ void	printqueue(t_queue queue)
 	}
 }
 
-static t_squeue	*transform_btree_to_stack(t_btree *btree)
+static t_stack	*transform_btree_to_stack(t_btree *btree)
 {
-	t_squeue	*num_stack;
+	t_stack	*num_stack;
 	t_btree	*bnode_stack;
 	t_bnode	*aux;
 
@@ -107,8 +107,8 @@ void	ft_mergesort(t_queue *a, t_queue *b, int half)
 {
 	t_btree	*a_btree;
 	t_btree	*b_btree;
-	t_squeue	*a_stack;
-	t_squeue	*b_stack;
+	t_stack	*a_stack;
+	t_stack	*b_stack;
 
 	// write(1, "A\n\n", 3);
 	// printqueue(*a);
@@ -128,8 +128,8 @@ void	ft_mergesort(t_queue *a, t_queue *b, int half)
 	print_preorder(b_btree->root);
 	a_stack = transform_btree_to_stack(a_btree);
 	b_stack = transform_btree_to_stack(b_btree);
-	print_squeue(a_stack);
-	print_squeue(b_stack);
+	print_stack(a_stack);
+	print_stack(b_stack);
 	write(1, "A\n\n", 3);
 	printqueue(*a);
 	write(1, "B\n\n", 3);
@@ -140,8 +140,8 @@ void	ft_mergesort(t_queue *a, t_queue *b, int half)
 	write(1, "B\n\n", 3);
 	printqueue(*b);
 	write(1, "\n\n", 2);
-	print_squeue(a_stack);
-	print_squeue(b_stack);
+	print_stack(a_stack);
+	print_stack(b_stack);
 	stackdelall(a_stack);
 	stackdelall(b_stack);
 }

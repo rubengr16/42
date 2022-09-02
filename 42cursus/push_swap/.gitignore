@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 # Test files
-checker_mac
-tester.sh
+# checker_mac
+# tester.sh
 
 # Make files
 gcc
