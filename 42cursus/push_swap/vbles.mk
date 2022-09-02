@@ -28,7 +28,6 @@ BTREE	=			\
 					$(addprefix $(BTREE_DIR), \
 					btreeinit.c \
 					btreeadd.c \
-					btreepushpop.c \
 					btreedel.c \
 					bqueueinit.c \
 					bqueueendequeue.c \

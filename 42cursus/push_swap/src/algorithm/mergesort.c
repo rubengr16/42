@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:09:01 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 17:49:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/02 20:42:14 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,28 +78,28 @@ void	printqueue(t_queue queue)
 
 static t_stack	*transform_btree_to_stack(t_btree *btree)
 {
-	t_stack	*num_stack;
-	t_btree	*bnode_stack;
-	t_bnode	*aux;
+	t_stack		*num_stack;
+	t_bqueue	*bqueue;
+	t_bqnode		*aux;
 
-	bnode_stack = btreeinit();
-	if (!bnode_stack)
+	bqueue = bqueueinit();
+	if (!bqueue)
 		ft_error("Error. Failed to malloc.", STDERR_FILENO, ERR_USR);
-	btreepush(bnode_stack, btree->root);
+	bqueueenqueuenode(bqueue, btree->root);
 	num_stack = stackinit();
 	if (!num_stack)
 		ft_error("Error. Failed to malloc.", STDERR_FILENO, ERR_USR);
-	while (bnode_stack->root)
+	while (bqueue->head && bqueue->tail)
 	{
-		aux = btreepop(bnode_stack);
-		(void)stackpush_num(num_stack, aux->num);
-		if (aux->right)
-			btreepush(bnode_stack, aux->right);
-		if (aux->left)
-			btreepush(bnode_stack, aux->left);
+		aux = bqueuedequeue(bqueue);
+		(void)stackpush_num(num_stack, aux->bnode->num);
+		if (aux->bnode->right)
+			bqueueenqueuenode(bqueue, aux->bnode->right);
+		if (aux->bnode->left)
+			bqueueenqueuenode(bqueue, aux->bnode->left);
+		free(aux);
 	}
-	btreedelall(btree);
-	free(bnode_stack);
+	free(bqueue);
 	return (num_stack);
 }
 
@@ -124,24 +124,26 @@ void	ft_mergesort(t_queue *a, t_queue *b, int half)
 	a_btree = btreeinitnum(a->n_elem);
 	b_btree = btreeinitnum(b->n_elem);
 	make_divisions_btree(a_btree, b_btree);
-	print_preorder(a_btree->root);
-	print_preorder(b_btree->root);
+	// print_preorder(a_btree->root);
+	// print_preorder(b_btree->root);
 	a_stack = transform_btree_to_stack(a_btree);
 	b_stack = transform_btree_to_stack(b_btree);
-	print_stack(a_stack);
-	print_stack(b_stack);
-	write(1, "A\n\n", 3);
-	printqueue(*a);
-	write(1, "B\n\n", 3);
-	printqueue(*b);
-	the_algorithm(a, b, a_stack, b_stack);
-	write(1, "A\n\n", 3);
-	printqueue(*a);
-	write(1, "B\n\n", 3);
-	printqueue(*b);
-	write(1, "\n\n", 2);
-	print_stack(a_stack);
-	print_stack(b_stack);
+	// print_stack(a_stack);
+	// print_stack(b_stack);
+	// write(1, "A\n\n", 3);
+	// printqueue(*a);
+	// write(1, "B\n\n", 3);
+	// printqueue(*b);
+	//the_algorithm(a, b, a_stack, b_stack);
+	// write(1, "A\n\n", 3);
+	// printqueue(*a);
+	// write(1, "B\n\n", 3);
+	// printqueue(*b);
+	// write(1, "\n\n", 2);
+	// print_stack(a_stack);
+	// print_stack(b_stack);
+	btreedelall(a_btree);
+	btreedelall(b_btree);
 	stackdelall(a_stack);
 	stackdelall(b_stack);
 }

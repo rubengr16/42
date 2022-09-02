@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 14:12:58 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 19:41:46 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/02 20:37:25 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void		btreedelall(t_btree *btree);
 /************************** BTREE-QUEUE STRUCTURE *************************** */
 typedef struct s_bqnode
 {
-	t_bnode	*bnode;
-	t_bnode	*next;
+	t_bnode			*bnode;
+	struct s_bqnode	*next;
 }	t_bqnode;
 
 typedef struct s_bqueue
@@ -57,10 +57,11 @@ typedef struct s_bqueue
 
 /*********************** BASIC BTREE-QUEUE FUNCTIONS ************************ */
 t_bqueue	*bqueueinit(void);
-t_bqueue	*bqueueinitnode(t_bnode	*bnode);
+t_bqueue	*bqueueinitnode(t_bqnode	*bnode);
 t_bqueue	*bqueueinitnum(int num);
 t_bqueue	*bqueueenqueue(t_bqueue *bqueue, t_bqnode *node);
 t_bqueue	*bqueueenqueuenode(t_bqueue *queue, t_bnode *bnode);
 t_bqnode	*bqueuedequeue(t_bqueue *queue);
+void		bqueuedelall(t_bqueue *bqueue);
 
 #endif

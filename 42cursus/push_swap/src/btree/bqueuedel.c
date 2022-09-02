@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 18:58:42 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 19:40:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/02 20:41:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	bqueuedelall(t_bqueue *bqueue)
 {
 	t_bqnode	*aux;
 
-	if (!bqueue || !bqueue->head)
+	if (!bqueue)
 		return ;
 	aux = bqueuedequeue(bqueue);
 	while (aux)

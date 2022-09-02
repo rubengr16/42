@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 09:25:56 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 19:41:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/02 20:42:52 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ t_bqnode	*bqueuedequeue(t_bqueue *queue)
 	if (!queue || !queue->tail)
 		return (NULL);
 	aux = queue->tail;
+	if (queue->head == queue->tail)
+		queue->head = queue->head->next;
 	queue->tail = queue->tail->next;
 	aux->next = NULL;
 	return (aux);

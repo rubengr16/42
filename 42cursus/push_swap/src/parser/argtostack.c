@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 19:47:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/02 19:47:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
  * OUTPUT:	int	:	0	nb is not in the stack
  *					1	nb is already on the stack
  */
-
 static int	nbrepeated(t_queue *queue, int nb)
 {
 	t_qnode	*aux;
@@ -42,7 +41,6 @@ static int	nbrepeated(t_queue *queue, int nb)
  * INPUT:	t_queue *queue, char **argv
  * OUTPUT:	void
  */
-
 void	argtostack(t_queue *queue, char **argv)
 {
 	char	**set;
@@ -51,7 +49,7 @@ void	argtostack(t_queue *queue, char **argv)
 	int		cnt_set;
 
 	if (!argv)
-		return ;
+		ft_error("Error. No argv.", STDERR_FILENO, ERR_USR);
 	cnt = 0;
 	while (argv[cnt])
 	{
