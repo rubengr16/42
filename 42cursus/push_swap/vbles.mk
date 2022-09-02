@@ -58,6 +58,7 @@ ALGORITHM	= 	    \
 					threeelems.c \
 					mergesort.c \
 					algorithm_prep.c \
+					the_algorithm.c \
 					)
 
 SRCS	= 			$(addprefix $(SRC_DIR), \

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:09:01 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/31 16:23:22 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:47:13 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,6 @@ static t_stack	*transform_btree_to_stack(t_btree *btree)
 	btreedelall(btree);
 	free(bnode_stack);
 	return (num_stack);
-}
-
-the_algorithm(t_queue *a, t_queue *b, t_stack *a_stack, t_stack *b_stack)
-{
-	
 }
 
 void	ft_mergesort(t_queue *a, t_queue *b, int half)
