@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/01 09:20:03 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/02 19:43:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static int	swap_queue(t_queue *queue)
 	else
 		return (0);
 }
-
 
 /*
  * function which makes the swap in the queue

@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btreedel.c                                         :+:      :+:    :+:   */
+/*   bqueuedel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 16:22:11 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 19:05:42 by rgallego         ###   ########.fr       */
+/*   Created: 2022/09/02 18:58:42 by rgallego          #+#    #+#             */
+/*   Updated: 2022/09/02 19:40:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "btree.h"
 
-static void	btreedelrec(t_bnode *bnode)
+void	bqueuedelall(t_bqueue *bqueue)
 {
-	if (!bnode)
-		return ;
-	btreedelrec(bnode->left);
-	if (bnode->left)
-		bnode->left = NULL;
-	btreedelrec(bnode->right);
-	if (bnode->right)
-		bnode->right = NULL;
-	free(bnode);
-}
+	t_bqnode	*aux;
 
-void	btreedelall(t_btree *btree)
-{
-	if (!btree || !btree->root)
+	if (!bqueue || !bqueue->head)
 		return ;
-	btreedelrec(btree->root);
-	btree->root = NULL;
-	free(btree);
-	btree = NULL;
+	aux = bqueuedequeue(bqueue);
+	while (aux)
+	{
+		free(aux->bnode);
+		free(aux);
+		aux = bqueuedequeue(bqueue);
+	}
+	bqueue->head = NULL;
+	bqueue->tail = NULL;
+	free(bqueue);
+	bqueue = NULL;
 }
