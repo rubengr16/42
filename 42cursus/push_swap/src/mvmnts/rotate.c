@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rotate.c                                        :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:04:21 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 18:51:40 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/01 09:09:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,17 @@ int	rotate_queue(t_queue *queue)
 }
 
 /*
- * function which rotates the given a queue 
- * INPUT:	t_queue *a
+ * function which rotates the given queue
+ * INPUT:	t_queue *queue
  * OUTPUT:	void
  */
-void	rotate_a(t_queue *a)
+void	rotate(t_queue *queue)
 {
-	if (rotate_queue(a))
-		ft_putendl_fd("ra", 1);
-}
-
-/*
- * function which rotates the given b queue 
- * INPUT:	t_queue *b
- * OUTPUT:	void
- */
-void	rotate_b(t_queue *b)
-{
-	if (rotate_queue(b))
-		ft_putendl_fd("rb", 1);
+	if (!rotate_queue(queue))
+		return ;
+	ft_putchar_fd('r', STDOUT_FILENO);
+	ft_putchar_fd(queue->id, STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
 }
 
 /*
@@ -57,12 +49,12 @@ void	rotate_b(t_queue *b)
  * INPUT:	t_queue *a, t_queue *b
  * OUTPUT:	void
  */
-void	rotate_ab(t_queue *a, t_queue *b)
+void	rotate_both(t_queue *a, t_queue *b)
 {
 	if (rotate_queue(a))
 	{
 		if (rotate_queue(b))
-			ft_putendl_fd("rr", 1);
+			ft_putendl_fd("rr", STDOUT_FILENO);
 		else
 			reverse_rotate_queue(a);
 	}

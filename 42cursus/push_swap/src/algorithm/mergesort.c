@@ -6,14 +6,14 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:09:01 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 13:47:13 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/02 14:18:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algorithm.h"
 #include <stdio.h>
 
-static void	make_divisions_btree(t_bnode *a, t_bnode *b)
+static void	make_divisions_btree_rec(t_bnode *a, t_bnode *b)
 {
 	t_bnode	*a_left;
 	t_bnode	*b_left;
@@ -27,9 +27,16 @@ static void	make_divisions_btree(t_bnode *a, t_bnode *b)
 	if (a_left->num < 3 && a_right->num < 3
 		&& b_left->num < 3 && b_right->num < 3)
 		return ;
-	make_divisions_btree(a_left, b_right);
-	make_divisions_btree(a_right, b_left);
+	make_divisions_btree_rec(a_left, b_right);
+	make_divisions_btree_rec(a_right, b_left);
 }
+
+static void	make_divisions_btree(t_btree *a, t_btree *b)
+{
+	if (a->root->num > 2 && b->root->num > 2)
+		make_divisions_btree_rec(a->root, b->root);
+}
+
 
 void	print_preorder(t_bnode *bnode)
 {
@@ -40,13 +47,13 @@ void	print_preorder(t_bnode *bnode)
 	print_preorder(bnode->right);
 }
 
-void	print_stack(t_stack *stack)
+void	print_squeue(t_squeue *squeue)
 {
-	t_snode	*aux;
+	t_sqnode	*aux;
 
-	if (!stack)
+	if (!squeue)
 		return ;
-	aux = stack->head;
+	aux = squeue->head;
 	while (aux)
 	{
 		printf("%d ", aux->num);
@@ -54,9 +61,24 @@ void	print_stack(t_stack *stack)
 	}
 }
 
-static t_stack	*transform_btree_to_stack(t_btree *btree)
+void	printqueue(t_queue queue)
 {
-	t_stack	*num_stack;
+	t_qnode	*aux;
+	int		cnt;
+
+	cnt = 0;
+	aux = queue.head;
+	while (cnt < queue.n_elem)
+	{
+		printf("Elem %d: %d\n", cnt, aux->num);
+		aux = aux->next;
+		cnt++;
+	}
+}
+
+static t_squeue	*transform_btree_to_stack(t_btree *btree)
+{
+	t_squeue	*num_stack;
 	t_btree	*bnode_stack;
 	t_bnode	*aux;
 
@@ -70,12 +92,11 @@ static t_stack	*transform_btree_to_stack(t_btree *btree)
 	while (bnode_stack->root)
 	{
 		aux = btreepop(bnode_stack);
-		printf("\n%d", aux->num);
 		(void)stackpush_num(num_stack, aux->num);
-		if (aux->left)
-			btreepush(bnode_stack, aux->left);
 		if (aux->right)
 			btreepush(bnode_stack, aux->right);
+		if (aux->left)
+			btreepush(bnode_stack, aux->left);
 	}
 	btreedelall(btree);
 	free(bnode_stack);
@@ -86,24 +107,41 @@ void	ft_mergesort(t_queue *a, t_queue *b, int half)
 {
 	t_btree	*a_btree;
 	t_btree	*b_btree;
-	t_stack	*a_stack;
-	t_stack	*b_stack;
+	t_squeue	*a_stack;
+	t_squeue	*b_stack;
 
+	// write(1, "A\n\n", 3);
+	// printqueue(*a);
+	// write(1, "B\n\n", 3);
+	// printqueue(*b);
 	while (b->n_elem < half)
 	{
 		if (a->head->num < half)
-			push_b(a, b);
+			push(b, a);
 		else
-			rotate_a(a);
+			rotate(a);
 	}
 	a_btree = btreeinitnum(a->n_elem);
 	b_btree = btreeinitnum(b->n_elem);
-	make_divisions_btree(a_btree->root, b_btree->root);
+	make_divisions_btree(a_btree, b_btree);
 	print_preorder(a_btree->root);
 	print_preorder(b_btree->root);
 	a_stack = transform_btree_to_stack(a_btree);
 	b_stack = transform_btree_to_stack(b_btree);
+	print_squeue(a_stack);
+	print_squeue(b_stack);
+	write(1, "A\n\n", 3);
+	printqueue(*a);
+	write(1, "B\n\n", 3);
+	printqueue(*b);
 	the_algorithm(a, b, a_stack, b_stack);
+	write(1, "A\n\n", 3);
+	printqueue(*a);
+	write(1, "B\n\n", 3);
+	printqueue(*b);
+	write(1, "\n\n", 2);
+	print_squeue(a_stack);
+	print_squeue(b_stack);
 	stackdelall(a_stack);
 	stackdelall(b_stack);
 }

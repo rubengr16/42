@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 20:00:20 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 14:35:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/01 09:14:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ int	sortbase(t_queue *queue)
 	{
 		if (queue->head->num < queue->head->next->num
 			&& queue->head->next->num > queue->head->prvs->num)
-			reverse_rotate_a(queue);
+			reverse_rotate(queue);
 		else if (queue->head->next->num < queue->head->num
 			&& queue->head->num > queue->head->prvs->num)
-			rotate_a(queue);
+			rotate(queue);
 		if (!issorted(queue))
-			swap_a(queue);
+			swap(queue);
 	}
 	return (1);
 }

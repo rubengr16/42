@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/31 16:13:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/01 10:18:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,6 @@
 #include "parser.h"
 #include "algorithm.h"
 
-void	printqueue(t_queue queue)
-{
-	t_qnode	*aux;
-	int		cnt;
-
-	cnt = 0;
-	aux = queue.head;
-	while (cnt < queue.n_elem)
-	{
-		printf("Elem %d: %d\n", cnt, aux->num);
-		aux = aux->next;
-		cnt++;
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_queue	*a;
@@ -39,8 +24,8 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		ft_error("Error. Enter more than 1 argument.", STDERR_FILENO, ERR_USR);
-	a = queueinit();
-	b = queueinit();
+	a = queueinit('a');
+	b = queueinit('b');
 	if (a && b)
 	{
 		argtostack(a, &argv[1]);

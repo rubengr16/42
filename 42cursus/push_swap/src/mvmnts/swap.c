@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/22 19:08:13 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/01 09:20:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,19 @@ static int	swap_queue(t_queue *queue)
 		return (0);
 }
 
-/*
- * function which makes the swap in the queue a
- * INPUT:	t_queue *a
- * OUTPUT:	void
- */
-void	swap_a(t_queue *a)
-{
-	if (swap_queue(a))
-		ft_putendl_fd("sa", 1);
-}
 
 /*
- * function which makes the swap in the queue b
- * INPUT:	t_queue *b
+ * function which makes the swap in the queue
+ * INPUT:	t_queue *queue
  * OUTPUT:	void
  */
-void	swap_b(t_queue *b)
+void	swap(t_queue *queue)
 {
-	if (swap_queue(b))
-		ft_putendl_fd("sb", 1);
+	if (!swap_queue(queue))
+		return ;
+	ft_putchar_fd('s', STDOUT_FILENO);
+	ft_putchar_fd(queue->id, STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
 }
 
 /*
@@ -69,12 +62,12 @@ void	swap_b(t_queue *b)
  * INPUT:	t_queue *a, t_queue *b
  * OUTPUT:	void
  */
-void	swap_ab(t_queue *a, t_queue *b)
+void	swap_both(t_queue *a, t_queue *b)
 {
 	if (swap_queue(a))
 	{
 		if (swap_queue(b))
-			ft_putendl_fd("ss", 1);
+			ft_putendl_fd("ss", STDOUT_FILENO);
 		else
 			swap_queue(a);
 	}
