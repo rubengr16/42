@@ -27,6 +27,6 @@ typedef struct s_vector
 int		sortbase(t_queue *queue);
 void	algorithm_prep(t_queue queue);
 void	ft_mergesort(t_queue *a, t_queue *b, int size);
-void	the_algorithm(t_queue *a, t_queue *b, t_stack *a_stck, t_stack *b_stck);
+void	the_algorithm(t_queue *a, t_queue *b, t_stack *a_stck);
 
 #endif

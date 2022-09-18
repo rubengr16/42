@@ -42,6 +42,6 @@ int	main(int argc, char **argv)
 	}
 	else
 		printf("Nay, bad input\n");
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	return (0);
 }
