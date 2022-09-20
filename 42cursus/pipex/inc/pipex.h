@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/29 21:01:03 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:38:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <fcntl.h>		/***	int		open(const char *path, int oflag, ...);
 								***/
 # include "libft.h"
+# include "cmdslist.h"
 
 /*************************** COMMAND STRUCTURE ****************************** */
 # define CMD 0

@@ -2,11 +2,21 @@ SRC_DIR	=			src/
 
 INC_DIR	=			inc/
 
+CMDSLIST_DIR	=	cmdslist/
+
+
+CMDSLIST	=		$(addprefix $(CMDSLIST_DIR), \
+					cmdslist_init.c \
+					cmdslist_push.c \
+					cmdslist_pop.c \
+					cmdslist_del.c \
+					)
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
 					main.c \
 					utils.c \
 					pipex.c \
+					$(CMDSLIST) \
 					)
 
 OBJS	=			$(SRCS:.c=.o)

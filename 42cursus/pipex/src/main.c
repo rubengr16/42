@@ -18,11 +18,11 @@ int	main(int argc, char **argv, char **envp)
 	int		pipefd[2];
 
 	args = (t_args){0, 0, {NULL}};
-	if (argc != 5)
+	if (argc < 5)
 		error_msg(args, NULL, ERR_ARGC);
+	preparate_cmds(args.cmds, argv);
 	if (!envp[0])
 		error_msg(args, NULL, ERR_ENVP);
-	separate_flag(args.cmds, argv);
 	if (!isvalidcmd(&(args.cmds[0][CMD]), envp))
 		error_msg(args, args.cmds[0][CMD], ERR_CMD);
 	if (!isvalidcmd(&(args.cmds[1][CMD]), envp))
