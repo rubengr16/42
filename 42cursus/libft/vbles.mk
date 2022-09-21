@@ -66,6 +66,7 @@ SRCSEXTRA	=		\
 					ft_strtolower.c \
 					ft_error.c \
 					ft_atoi_err.c \
+					ft_strjoinsep.c \
 					)
 
 OBJS	=			$(SRCS:.c=.o)

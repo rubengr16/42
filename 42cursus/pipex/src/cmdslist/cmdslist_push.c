@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmdslist_push.c                                        :+:      :+:    :+:   */
+/*   cmdslist_push.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:45:37 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/20 11:05:12 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/21 22:15:17 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_node	*newnode(char **cmd_flag)
 	aux->next = NULL;
 	return (aux);
 }
+
 void	cmdslistpush(t_cmdslist *list, t_node *node)
 {
 	if (!node)

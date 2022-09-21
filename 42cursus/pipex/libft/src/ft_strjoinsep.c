@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmdslist_init.c                                    :+:      :+:    :+:   */
+/*   ft_strjoinsep.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 10:18:45 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/21 22:14:39 by rgallego         ###   ########.fr       */
+/*   Created: 2022/09/21 22:05:55 by rgallego          #+#    #+#             */
+/*   Updated: 2022/09/21 22:06:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cmdslist.h"
+#include "libft.h"
 
-t_cmdslist	*cmdslistinit(void)
+char	*ft_strjoinsep(char const *s1, char const *s2, char *c)
 {
-	t_cmdslist	*list;
+	int		len;
+	char	*s;
 
-	list = malloc(sizeof(t_cmdslist));
-	if (!list)
+	if (!s1 || !s2)
 		return (NULL);
-	list->n_elem = 0;
-	list->head = NULL;
-	list->tail = NULL;
-	return (list);
+	len = ft_strlen(s1) + ft_strlen(s2) + 2;
+	s = malloc(sizeof(char) * (len));
+	if (!s)
+		return (NULL);
+	(void)ft_strlcpy(s, s1, len);
+	(void)ft_strlcat(s, c, len);
+	(void)ft_strlcat(s, s2, len);
+	return (s);
 }
