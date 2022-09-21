@@ -14,11 +14,16 @@
 # define CMDSLIST_H
 
 # include <stdlib.h>
+# include "libft.h"
 
+/*************************** COMMAND STRUCTURE ****************************** */
+# define CMD 0
+# define FLAG 1
+
+/************************** CMDSLIST STRUCTURE ****************************** */
 typedef struct s_node
 {
-	char			*cmd;
-	char			*flag;
+	char			**cmd_flag;
 	struct s_node	*next;
 }	t_node;
 
@@ -30,12 +35,12 @@ typedef struct s_cmdslist
 }	t_cmdslist;
 
 /************************* CMDSLIST FUNCTIONS ****************************** */
-t_cmdslist	*cmdslistinit(char c);
-t_node	*newnode(char *cmd, char *flag);
-void	cmdslistpush(t_cmdslist *list, t_node *node);
-t_node	*cmdslistpush_cmd(t_cmdslist *list, char *cmd, char *flag);
-t_node	*cmdslistpop(t_cmdslist *list);
-void	cmdslistdelone(t_cmdslist *list);
-void	cmdslistdelall(t_cmdslist *list);
+t_cmdslist	*cmdslistinit(void);
+t_node		*newnode(char **cmd_flag);
+void		cmdslistpush(t_cmdslist *list, t_node *node);
+t_node		*cmdslistpush_cmd(t_cmdslist *list, char **cmd_flag);
+t_node		*cmdslistpop(t_cmdslist *list);
+void		cmdslistdelone(t_cmdslist *list);
+void		cmdslistdelall(t_cmdslist *list);
 
 #endif

@@ -4,7 +4,6 @@ INC_DIR	=			inc/
 
 CMDSLIST_DIR	=	cmdslist/
 
-
 CMDSLIST	=		$(addprefix $(CMDSLIST_DIR), \
 					cmdslist_init.c \
 					cmdslist_push.c \
@@ -29,14 +28,20 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Werror -Wextra -MD
 
-LDFLAGS	=			$(LIBFTNAME)
+LDFLAGS	=			$(LIBFTNAME) \
+					$(GNLNAME)
 
 NAME	=			pipex
 
 INC_ALL	=			\
 					$(INC_DIR) \
-					$(LIBFT)$(INC_DIR)
+					$(LIBFT)$(INC_DIR) \
+					$(GNL)$(INC_DIR)
 
 LIBFT	=			libft/
 
-LIBFTNAME =			$(LIBFT)libft.a
+LIBFTNAME	=		$(LIBFT)libft.a
+
+GNL		=			get_next_line/
+
+GNLNAME	=			$(GNL)get_next_line.a

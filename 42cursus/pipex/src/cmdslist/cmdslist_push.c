@@ -12,15 +12,14 @@
 
 #include "cmdslist.h"
 
-t_node	*newnode(char *cmd, char *flag)
+t_node	*newnode(char **cmd_flag)
 {
 	t_node	*aux;
 
 	aux = malloc(sizeof(t_node));
 	if (!aux)
 		return (NULL);
-	aux->cmd = cmd;
-	aux->flag = flag;
+	aux->cmd_flag = cmd_flag;
 	aux->next = NULL;
 	return (aux);
 }
@@ -29,19 +28,18 @@ void	cmdslistpush(t_cmdslist *list, t_node *node)
 	if (!node)
 		return ;
 	if (!list->n_elem)
-	{
 		list->head = node;
-		list->tail = node;
-	}
 	else
 		list->tail->next = node;
+	list->tail = node;
+	list->n_elem++;
 }
 
-t_node	*cmdslistpush_cmd(t_cmdslist *list, char *cmd, char *flag)
+t_node	*cmdslistpush_cmd(t_cmdslist *list, char **cmd_flag)
 {
 	t_node	*aux;
 
-	aux = newnode(cmd, flag);
+	aux = newnode(cmd_flag);
 	if (!aux)
 		return (NULL);
 	cmdslistpush(list, aux);

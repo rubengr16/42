@@ -12,7 +12,7 @@
 
 #include "cmdslist.h"
 
-t_cmdslist	*cmdslistinit(char c)
+t_cmdslist	*cmdslistinit(void)
 {
 	t_cmdslist	*list;
 

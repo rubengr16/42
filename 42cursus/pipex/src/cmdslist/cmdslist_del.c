@@ -15,11 +15,11 @@
 void	cmdslistdelone(t_cmdslist *list)
 {
 	t_node	*aux;
+
 	if (!list->n_elem)
 		return ;
 	aux = cmdslistpop(list);
-	free(aux->cmd);
-	free(aux->flag);
+	ft_free_split(aux->cmd_flag);
 	free(aux);
 }
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
+#    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 19:07:41 by rgallego          #+#    #+#              #
-#    Updated: 2022/08/22 18:35:07 by rgallego         ###   ########.fr        #
+#    Updated: 2022/09/21 17:12:04 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,16 @@ all: $(NAME)
 $(LIBFTNAME):
 	$(MAKE) -C $(LIBFT)
 
+$(GNLNAME):
+	$(MAKE) -C $(GNL)
+
 $(NAME): $(OBJS) $(LDFLAGS)
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
 
 clean:
 	$(RM) $(OBJS) $(DPNDS)
-	$(MAKE) -C $(LIBFT) fclean 
+	$(MAKE) -C $(LIBFT) fclean
+	$(MAKE) -C $(GNL) fclean
 
 fclean: clean
 	$(RM) $(NAME)

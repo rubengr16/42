@@ -3,49 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/02/16 17:10:37 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/21 22:02:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-void	free_set(char **set)
-{
-	int	i;
-
-	if (set)
-	{
-		i = 0;
-		while (set[i])
-		{
-			free(set[i]);
-			i++;
-		}
-		free(set);
-	}
-}
-
-void	free_set_of_cmd(t_args args)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (args.cmds[i])
-	{
-		j = 0;
-		while (args.cmds[i][j])
-		{
-			free(args.cmds[i][j]);
-			j++;
-		}
-		free(args.cmds[i]);
-		i++;
-	}
-}
 
 void	error_msg(t_args args, char *str, int error)
 {
@@ -55,43 +20,75 @@ void	error_msg(t_args args, char *str, int error)
 				STDERR_FILENO);
 		ft_putendl_fd("./pipex <file1> <cmd1> <cmd2> <file2>", STDERR_FILENO);
 	}
-	else if (error == ERR_ENVP)
-		ft_putendl_fd("Please, enable the environment variables", \
-				STDERR_FILENO);
+	else if (error == ERR_SPLIT)
+		ft_putendl_fd("Split failed", STDERR_FILENO);
 	else if (error == ERR_CMD || error == ERR_PIPE || error == ERR_OPEN)
 		perror(str);
-	if (error == ERR_OPEN)
-	{
-		if (args.fdin >= 0)
-			close(args.fdin);
-		if (args.fdout >= 0)
-			close(args.fdout);
-	}
-	free_set_of_cmd(args);
+	if (args.fdin >= 0)
+		close(args.fdin);
+	if (args.fdout >= 0)
+		close(args.fdout);
 	exit(errno);
 }
 
+static void	files_mngment(t_args *args, char *fin, char *fout)
+{
+	char			*str;
+	unsigned long	lim_len;
+
+	if (args->limiter)
+	{
+		args->fdin = open(fin, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		lim_len = ft_strlen(args->limiter);
+		str = get_next_line(STDIN_FILENO);
+		while(str && (ft_strlen(str) != lim_len
+			|| ft_strncmp(str, args->limiter, lim_len)))
+		{
+			write(args->fdin, str, ft_strlen(str));
+			str = get_next_line(STDIN_FILENO);
+		}
+		close(args->fdin);
+	}
+	args->fdout = open(fout, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (args->fdout < 0)
+		error_msg(*args, fout, ERR_OPEN);
+	args->fdin = open(fin, O_RDONLY);
+	if (args->fdin < 0)
+		error_msg(*args, fin, ERR_OPEN);
+}
+
 /*
- * function which receives argv to divide the given commands into command 
- * and flag. Each command and its flag is stored in its position in the
- * cmds array
- * INPUT:	char **cmds[], char **argv
+ * function which receives argv to divide the given commands into command
+ * and flag. Each command and its flag is stored in the list. After the
+ * storing process, the fin and fout are opened.
+ * INPUT:	t_args *args, char **argv
  * OUTPUT:	void
  */
-void	separate_flag(char **cmds[], char **argv)
+void	preparate_pipex(t_args *args, char **argv)
 {
-	int	i;
-	int	cnt;
+	char	**aux;
+	char	*fin;
+	int		i;
 
 	i = 2;
-	cnt = 0;
-	while (cnt < 2)
+	fin = argv[1];
+	if (ft_strlen(fin) == ft_strlen(HERE_DOC)
+		&& !ft_strncmp(fin, HERE_DOC, ft_strlen(HERE_DOC)))
 	{
-		cmds[cnt] = ft_split(argv[i], ' ');
+		fin = PATH_DOC;
+		args->limiter = argv[2];
 		i++;
-		cnt++;
 	}
-	cmds[cnt] = NULL;
+	args->cmds = cmdslistinit();
+	while (argv[i] && argv[i + 1])
+	{
+		aux = ft_split(argv[i], ' ');
+		if (!aux)
+			error_msg(*args, NULL, ERR_SPLIT);
+		cmdslistpush_cmd(args->cmds, aux);
+		i++;
+	}
+	files_mngment(args, fin, argv[i]);
 }
 
 char	*ft_strjoinsep(char const *s1, char const *s2, char *c)
