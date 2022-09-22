@@ -6,65 +6,82 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/21 22:14:02 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/22 13:25:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	error_msg(t_args args, char *str, int error)
+/*
+ * receives pipex to close the fds before exiting, str for a custom message and
+ * an error code for knowing how to print the chosen message in order to inform
+ * the user about the error.
+ * INPUT:	t_pipex *pipex, char *str, int error
+ * OUTPUT:	void
+ */
+void	error_msg(t_pipex pipex, char *str, int error)
 {
 	if (error == ERR_ARGC)
 	{
-		ft_putendl_fd("Please, enter 4 arguments with the structure:", \
-				STDERR_FILENO);
-		ft_putendl_fd("./pipex <file1> <cmd1> <cmd2> <file2>", STDERR_FILENO);
+		ft_putstr_fd("Please, enter 4 ", STDERR_FILENO);
+		ft_putendl_fd("or more arguments with the structure:", STDERR_FILENO);
+		ft_putendl_fd("./pipex <f1> <cmd1> <cmd2> [...] <f2>", STDERR_FILENO);
+		ft_putstr_fd("or\n./pipex here_doc ", STDERR_FILENO);
+		ft_putendl_fd("LIMITER <cmd1> <cmd2> [...] <f2>", STDERR_FILENO);
 	}
-	else if (error == ERR_SPLIT)
-		ft_putendl_fd("Split failed", STDERR_FILENO);
-	else if (error == ERR_CMD || error == ERR_PIPE || error == ERR_OPEN)
+	else if (error == ERR_ENVP)
+		ft_putendl_fd(str, STDERR_FILENO);
+	else if (error == ERR_SYS || error == ERR_CMD)
 		perror(str);
-	if (args.fdin >= 0)
-		close(args.fdin);
-	if (args.fdout >= 0)
-		close(args.fdout);
+	if (pipex.fdin >= 0)
+		close(pipex.fdin);
+	if (pipex.fdout >= 0)
+		close(pipex.fdout);
 	exit(errno);
 }
 
-static void	files_mngment(t_args *args, char *fin, char *fout)
+/*
+ * manages the files openings either if there is here_doc or not.
+ * INPUT:	t_pipex *pipex, char *fin, char *fout
+ * OUTPUT:	void
+ */
+static void	files_mngment(t_pipex *pipex, char *fin, char *fout)
 {
 	char			*str;
 	unsigned long	lim_len;
 
-	if (args->limiter)
+	if (pipex->limiter)
 	{
-		args->fdin = open(fin, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-		lim_len = ft_strlen(args->limiter);
-		str = get_next_line(STDIN_FILENO);
-		while (str && (ft_strlen(str) != lim_len
-				|| ft_strncmp(str, args->limiter, lim_len)))
+		pipex->fdin = open(fin, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		if (pipex->fdin >= 0)
 		{
-			write(args->fdin, str, ft_strlen(str));
+			lim_len = ft_strlen(pipex->limiter);
 			str = get_next_line(STDIN_FILENO);
+			while (str && (ft_strlen(str) != lim_len
+					|| ft_strncmp(str, pipex->limiter, lim_len)))
+			{
+				write(pipex->fdin, str, ft_strlen(str));
+				str = get_next_line(STDIN_FILENO);
+			}
+			close(pipex->fdin);
 		}
-		close(args->fdin);
 	}
-	args->fdout = open(fout, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (args->fdout < 0)
-		error_msg(*args, fout, ERR_OPEN);
-	args->fdin = open(fin, O_RDONLY);
-	if (args->fdin < 0)
-		error_msg(*args, fin, ERR_OPEN);
+	pipex->fdin = open(fin, O_RDONLY);
+	pipex->fdout = open(fout, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (pipex->fdin < 0)
+		error_msg(*pipex, fin, ERR_SYS);
+	if (pipex->fdout < 0)
+		error_msg(*pipex, fout, ERR_SYS);
 }
 
 /*
- * function which receives argv to divide the given commands into command
- * and flag. Each command and its flag is stored in the list. After the
- * storing process, the fin and fout are opened.
- * INPUT:	t_args *args, char **argv
+ * receives argv to get the names of the fin, tests is here_doc, divides the
+ * given commands into command and flag which are stored in the list. After the
+ * storing process, the fin and fout are given to files_mngment.
+ * INPUT:	t_pipex *pipex, char **argv
  * OUTPUT:	void
  */
-void	preparate_pipex(t_args *args, char **argv)
+void	preparate_pipex(t_pipex *pipex, char **argv)
 {
 	char	**aux;
 	char	*fin;
@@ -76,27 +93,29 @@ void	preparate_pipex(t_args *args, char **argv)
 		&& !ft_strncmp(fin, HERE_DOC, ft_strlen(HERE_DOC)))
 	{
 		fin = PATH_DOC;
-		args->limiter = argv[2];
+		pipex->limiter = argv[2];
 		i++;
 	}
-	args->cmds = cmdslistinit();
+	pipex->cmds = cmdslistinit();
+	if (!pipex->cmds)
+		error_msg(*pipex, "cmdlistinit failed", ERR_SYS);
 	while (argv[i] && argv[i + 1])
 	{
 		aux = ft_split(argv[i], ' ');
 		if (!aux)
-			error_msg(*args, NULL, ERR_SPLIT);
-		cmdslistpush_cmd(args->cmds, aux);
+			error_msg(*pipex, "ft_split failed", ERR_SYS);
+		cmdslistpush_cmd(pipex->cmds, aux);
 		i++;
 	}
-	files_mngment(args, fin, argv[i]);
+	files_mngment(pipex, fin, argv[i]);
 }
 
 /*
- * function which searchs for the correct full path of the command if possible
+ * searchs for the correct full path of the command if possible
  * INPUT:	char **set_of_paths, char **path, char *cmd, int *cnt
  * OUTPUT:	void
  */
-static char	*try_path(char **set_of_paths, char *cmd)
+static char	*try_path(t_pipex pipex, char **set_of_paths, char *cmd)
 {
 	char	*path;
 	int		cnt;
@@ -112,22 +131,21 @@ static char	*try_path(char **set_of_paths, char *cmd)
 	if (!set_of_paths[cnt] || !path)
 	{
 		free(path);
-		return (NULL);
+		error_msg(pipex, cmd, ERR_CMD);
 	}
 	free(cmd);
 	return (path);
 }
 
 /*
- * function which receives a command -cmd- and the environment variables in
- * envp. It searchs for the "PATH=" variable, splits all the paths and later
- * adds them to the cmd in order to test if there is access to the required
+ * receives pipex for setting the cmds and the environment variables in
+ * envp. It searchs for the "PATH=" variable, splits all the source paths to
+ * give them to try_path in order to test if there is access to the required
  * commmand.
- * INPUT:	char *cmd, char **envp
- * OUTPUT:	int	:	1	command is valid
- * 					0	invalid command
+ * INPUT:	t_pipex pipex, char **envp
+ * OUTPUT:	void
  */
-char	*arevalidcmds(t_cmdslist *cmds, char **envp)
+void	arevalidcmds(t_pipex pipex, char **envp)
 {
 	t_node	*aux;
 	char	**set_of_paths;
@@ -137,20 +155,17 @@ char	*arevalidcmds(t_cmdslist *cmds, char **envp)
 	while (envp[cnt] && !ft_strnstr(envp[cnt], "PATH=", 5))
 		cnt++;
 	if (!envp[cnt])
-		return (NULL);
+		error_msg(pipex, "Please, provide env variables", ERR_ENVP);
 	set_of_paths = ft_split(&envp[cnt][5], ':');
 	if (!set_of_paths)
-		return (NULL);
-	cnt = cmds->n_elem;
+		error_msg(pipex, "Please, provide PATH source", ERR_ENVP);
+	cnt = pipex.cmds->n_elem;
 	while (cnt)
 	{
-		aux = cmdslistpop(cmds);
-		aux->cmd_flag[CMD] = try_path(set_of_paths, aux->cmd_flag[CMD]);
-		if (!aux->cmd_flag[CMD])
-			return (NULL);
-		cmdslistpush(cmds, aux);
+		aux = cmdslistpop(pipex.cmds);
+		aux->cmd_flag[CMD] = try_path(pipex, set_of_paths, aux->cmd_flag[CMD]);
+		cmdslistpush(pipex.cmds, aux);
 		cnt--;
 	}
 	ft_free_split(set_of_paths);
-	return (aux->cmd_flag[CMD]);
 }

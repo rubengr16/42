@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/21 22:01:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/22 09:41:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,10 @@
 # include "cmdslist.h"
 
 /**************************** ERROR MANAGEMENT ****************************** */
-# define ERR_ARGC 1
-# define ERR_ENVP 2
-# define ERR_CMD 3
-# define ERR_PIPE 4
-# define ERR_OPEN 5
-# define ERR_SPLIT 6
+# define ERR_DUP2 -1
+# define ERR_ARGC 2
+# define ERR_ENVP 3
+# define ERR_CMD 4
 
 /***************************** PIPE MANAGEMENT ****************************** */
 # define PIPE_RD 0
@@ -44,24 +42,22 @@
 # define PATH_DOC "/tmp/here_doc"
 
 /******************************* STRUCTURE ********************************** */
-typedef struct s_args
+typedef struct s_pipex
 {
 	int			fdin;
 	int			fdout;
+	int			pipefd[2];
 	char		*limiter;
 	t_cmdslist	*cmds;
-}	t_args;
+}	t_pipex;
 
 /********************************* UTILS ************************************ */
-void	error_msg(t_args args, char *str, int error);
-void	preparate_pipex(t_args *args, char **argv);
+void	error_msg(t_pipex pipex, char *str, int error);
+void	preparate_pipex(t_pipex *pipex, char **argv);
 char	*ft_strjoinsep(char const *s1, char const *s2, char *c);
 
 /********************************* PIPEX ************************************ */
-char	*arevalidcmds(t_cmdslist *cmds, char **envp);
-int		executor(t_args args, char **envp, int *pipefd);
-void	first_child(t_args args, char **envp, int *pipefd);
-void	middle_child(t_args args, char **envp, int *pipefd);
-void	last_child(t_args args, char **envp, int *pipefd);
+void	arevalidcmds(t_pipex pipex, char **envp);
+int		executor(t_pipex pipex, char **envp);
 
 #endif
