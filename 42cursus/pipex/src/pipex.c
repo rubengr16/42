@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/22 13:33:11 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:15:11 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,7 @@ int	executor(t_pipex pipex, char **envp)
 	}
 	close(pipex.pipefd[PIPE_WR]);
 	if (pipex.limiter)
-	{
 		unlink(PATH_DOC);
-		free(pipex.limiter);
-	}
 	if (!fork())
 		last_child(pipex, envp);
 	cmdslistdelone(pipex.cmds);

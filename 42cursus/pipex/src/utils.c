@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/22 13:25:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:28:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,20 @@ static void	files_mngment(t_pipex *pipex, char *fin, char *fout)
 	unsigned long	lim_len;
 
 	if (pipex->limiter)
-	{
 		pipex->fdin = open(fin, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-		if (pipex->fdin >= 0)
+	if (pipex->limiter && pipex->fdin >= 0)
+	{
+		lim_len = ft_strlen(pipex->limiter);
+		str = get_next_line(STDIN_FILENO);
+		while (str && ((ft_strlen(str) - 1) != lim_len
+				|| ft_strncmp(str, pipex->limiter, lim_len)))
 		{
-			lim_len = ft_strlen(pipex->limiter);
+			write(pipex->fdin, str, ft_strlen(str));
+			free(str);
 			str = get_next_line(STDIN_FILENO);
-			while (str && (ft_strlen(str) != lim_len
-					|| ft_strncmp(str, pipex->limiter, lim_len)))
-			{
-				write(pipex->fdin, str, ft_strlen(str));
-				str = get_next_line(STDIN_FILENO);
-			}
-			close(pipex->fdin);
 		}
+		free(str);
+		close(pipex->fdin);
 	}
 	pipex->fdin = open(fin, O_RDONLY);
 	pipex->fdout = open(fout, O_WRONLY | O_CREAT | O_TRUNC, 0644);
