@@ -6,46 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/23 13:45:47 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:21:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-/*
- * receives pipex to close the fds before exiting, str for a custom message and
- * an error code for knowing how to print the chosen message in order to inform
- * the user about the error.
- * INPUT:	t_pipex *pipex, char *str, int error
- * OUTPUT:	void
- */
-void	error_msg(t_pipex pipex, char *str, int error)
-{
-	if (error == ERR_ARGC)
-	{
-		ft_putstr_fd("Please, enter 4 ", STDERR_FILENO);
-		ft_putendl_fd("or more arguments with the structure:", STDERR_FILENO);
-		ft_putendl_fd("./pipex <f1> <cmd1> <cmd2> [...] <f2>", STDERR_FILENO);
-		ft_putstr_fd("or\n./pipex here_doc ", STDERR_FILENO);
-		ft_putendl_fd("LIMITER <cmd1> <cmd2> [...] <f2>", STDERR_FILENO);
-	}
-	else if (error == ERR_ENVP)
-		ft_putendl_fd(str, STDERR_FILENO);
-	else if (error == ERR_SYS || error == ERR_CMD)
-		perror(str);
-	if (pipex.fdin >= 0)
-		close(pipex.fdin);
-	if (pipex.fdout >= 0)
-		close(pipex.fdout);
-	exit(errno);
-}
-
-/*
- * manages the files openings either if there is here_doc or not.
- * INPUT:	t_pipex *pipex, char *fin, char *fout
- * OUTPUT:	void
- */
-static void	files_mngment(t_pipex *pipex, char *fin, char *fout)
+static void	read_from_stdin(t_pipex *pipex, char *fin)
 {
 	char			*str;
 	unsigned long	lim_len;
@@ -66,8 +33,21 @@ static void	files_mngment(t_pipex *pipex, char *fin, char *fout)
 		free(str);
 		close(pipex->fdin);
 	}
+}
+
+/*
+ * manages the files openings either if there is here_doc or not.
+ * INPUT:	t_pipex *pipex, char *fin, char *fout
+ * OUTPUT:	void
+ */
+static void	files_mngment(t_pipex *pipex, char *fin, char *fout)
+{
+	read_from_stdin(pipex, fin);
 	pipex->fdin = open(fin, O_RDONLY);
-	pipex->fdout = open(fout, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (pipex->limiter)
+		pipex->fdout = open(fout, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	else
+		pipex->fdout = open(fout, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (pipex->fdin < 0)
 		error_msg(*pipex, fin, ERR_SYS);
 	if (pipex->fdout < 0)

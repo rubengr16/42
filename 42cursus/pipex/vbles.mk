@@ -24,6 +24,7 @@ SRCS	= 			$(addprefix $(SRC_DIR), \
 					main.c \
 					utils.c \
 					pipex.c \
+					error_mgment.c \
 					$(CMDLIST) \
 					$(PIPELIST) \
 					)
@@ -36,7 +37,7 @@ CC		=			gcc
 
 RM		=			-rm -f
 
-CFLAGS	=			-Wall -Werror -Wextra -MD
+CFLAGS	=			-Wall -Werror -Wextra -MD -fsanitize=address -g3
 
 LDFLAGS	=			$(LIBFTNAME) \
 					$(GNLNAME)

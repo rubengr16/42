@@ -20,5 +20,5 @@ pipex
 *.d
 
 ### Test files ###
-in
-out
+infile
+outfile
