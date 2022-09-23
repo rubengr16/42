@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 02:23:00 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/22 14:30:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:09:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	main(int argc, char **argv, char **envp)
 		error_msg(pipex, NULL, ERR_ARGC);
 	preparate_pipex(&pipex, argv);
 	arevalidcmds(pipex, envp);
-	if (pipe(pipex.pipefd))
-		error_msg(pipex, "pipe failed", ERR_SYS);
-	return (executor(pipex, envp));
+	executor(pipex, envp);
+	return (0);
 }

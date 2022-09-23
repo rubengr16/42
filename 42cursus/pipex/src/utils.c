@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/22 14:28:26 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:45:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void	arevalidcmds(t_pipex pipex, char **envp)
 		error_msg(pipex, "Please, provide env variables", ERR_ENVP);
 	set_of_paths = ft_split(&envp[cnt][5], ':');
 	if (!set_of_paths)
-		error_msg(pipex, "Please, provide PATH source", ERR_ENVP);
+		error_msg(pipex, "ft_split failed", ERR_SYS);
 	cnt = pipex.cmds->n_elem;
 	while (cnt)
 	{

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/22 09:41:20 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:08:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_pipex
 {
 	int			fdin;
 	int			fdout;
-	int			pipefd[2];
+	int			pipefd[2][2];
 	char		*limiter;
 	t_cmdslist	*cmds;
 }	t_pipex;
@@ -58,6 +58,6 @@ char	*ft_strjoinsep(char const *s1, char const *s2, char *c);
 
 /********************************* PIPEX ************************************ */
 void	arevalidcmds(t_pipex pipex, char **envp);
-int		executor(t_pipex pipex, char **envp);
+void	executor(t_pipex pipex, char **envp);
 
 #endif
