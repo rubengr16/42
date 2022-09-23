@@ -37,7 +37,7 @@ CC		=			gcc
 
 RM		=			-rm -f
 
-CFLAGS	=			-Wall -Werror -Wextra -MD -fsanitize=address -g3
+CFLAGS	=			-Wall -Werror -Wextra -MD
 
 LDFLAGS	=			$(LIBFTNAME) \
 					$(GNLNAME)

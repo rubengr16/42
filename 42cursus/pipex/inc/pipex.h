@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 19:24:05 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/23 14:08:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:58:45 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ char	*ft_strjoinsep(char const *s1, char const *s2, char *c);
 
 /********************************* PIPEX ************************************ */
 void	arevalidcmds(t_pipex pipex, char **envp);
-void	executor(t_pipex pipex, char **envp);
+void	executor(t_pipex pipex, char **envp, int n_cmds);
 
 #endif

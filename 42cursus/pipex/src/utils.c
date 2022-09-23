@@ -6,20 +6,25 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/23 18:21:47 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/23 19:13:25 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+/*
+ * reads the keyboard input in the case of here_doc.
+ * INPUT:	t_pipex *pipex, char *fin
+ * OUTPUT:	void
+ */
 static void	read_from_stdin(t_pipex *pipex, char *fin)
 {
 	char			*str;
 	unsigned long	lim_len;
 
-	if (pipex->limiter)
-		pipex->fdin = open(fin, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (pipex->limiter && pipex->fdin >= 0)
+	
+	pipex->fdin = open(fin, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (pipex->fdin >= 0)
 	{
 		lim_len = ft_strlen(pipex->limiter);
 		str = get_next_line(STDIN_FILENO);
@@ -42,7 +47,8 @@ static void	read_from_stdin(t_pipex *pipex, char *fin)
  */
 static void	files_mngment(t_pipex *pipex, char *fin, char *fout)
 {
-	read_from_stdin(pipex, fin);
+	if (pipex->limiter)
+		read_from_stdin(pipex, fin);
 	pipex->fdin = open(fin, O_RDONLY);
 	if (pipex->limiter)
 		pipex->fdout = open(fout, O_WRONLY | O_CREAT | O_APPEND, 0644);

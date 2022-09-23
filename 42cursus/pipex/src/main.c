@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 02:23:00 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/23 18:56:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/23 19:01:46 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ int	main(int argc, char **argv, char **envp)
 	pipex.pipes = pipelistinitpush(pipex.cmds->n_elem - 1);
 	if (!pipex.pipes)
 		error_msg(pipex, "pipelistinitpush failed", ERR_SYS);
-	executor(pipex, envp);
+	executor(pipex, envp, pipex.cmds->n_elem);
 	cmdlistdelall(pipex.cmds);
 	pipelistdelall(pipex.pipes);
-	system("leaks pipex");
 	return (0);
 }

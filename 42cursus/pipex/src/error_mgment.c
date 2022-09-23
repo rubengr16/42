@@ -6,11 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:18:21 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/23 18:18:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/23 19:02:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "pipex.h"
+#include "pipex.h"
 
 /*
  * receives pipex to close the fds before exiting, str for a custom message and
