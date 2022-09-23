@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/23 15:06:48 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:41:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	executor(t_pipex pipex, char **envp)
 		first_child(pipex, envp);
 	cmdlistdelone(pipex.cmds);
 	close(pipex.fdin);
+	close(pipex.pipes->head->pipe[PIPE_WR]);
 	if (pipex.limiter)
 		unlink(PATH_DOC);
 	while (pipex.cmds->n_elem > 1)
@@ -90,17 +91,15 @@ void	executor(t_pipex pipex, char **envp)
 		piping(pipex, pipex.pipes->head->next);
 		if (!fork())
 			middle_child(pipex, envp);
+		close(pipex.pipes->head->pipe[PIPE_RD]);
+		close(pipex.pipes->head->next->pipe[PIPE_WR]);
 		cmdlistdelone(pipex.cmds);
 		pipelistdelone(pipex.pipes);
 	}
-	close(pipex.pipes->head->pipe[PIPE_WR]);
 	if (!fork())
 		last_child(pipex, envp);
 	close(pipex.pipes->head->pipe[PIPE_RD]);
-	close(pipex.fdout);
-	cmdlistdelone(pipex.cmds);
 	while (pipex.cmds->n_elem)
 		wait(NULL);
-	cmdlistdelall(pipex.cmds);
-	pipelistdelall(pipex.pipes);
+	close(pipex.fdout);
 }
