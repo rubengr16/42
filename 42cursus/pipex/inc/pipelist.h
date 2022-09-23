@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmdslist.h                                         :+:      :+:    :+:   */
+/*   pipelist.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CMDSLIST_H
-# define CMDSLIST_H
+#ifndef PIPELIST_H
+# define PIPELIST_H
 
 # include <stdlib.h>
 # include "libft.h"
@@ -20,27 +20,28 @@
 # define CMD 0
 # define FLAG 1
 
-/************************** CMDSLIST STRUCTURE ****************************** */
-typedef struct s_node
+/************************** PIPELIST STRUCTURE ****************************** */
+typedef struct s_pipe
 {
-	char			**cmd_flag;
-	struct s_node	*next;
-}	t_node;
+	int				pipe[2];
+	struct s_pipe	*next;
+}	t_pipe;
 
-typedef struct s_cmdslist
+typedef struct s_pipelist
 {
 	int		n_elem;
-	t_node	*head;
-	t_node	*tail;
-}	t_cmdslist;
+	t_pipe	*head;
+	t_pipe	*tail;
+}	t_pipelist;
 
-/************************* CMDSLIST FUNCTIONS ****************************** */
-t_cmdslist	*cmdslistinit(void);
-t_node		*newnode(char **cmd_flag);
-void		cmdslistpush(t_cmdslist *list, t_node *node);
-t_node		*cmdslistpush_cmd(t_cmdslist *list, char **cmd_flag);
-t_node		*cmdslistpop(t_cmdslist *list);
-void		cmdslistdelone(t_cmdslist *list);
-void		cmdslistdelall(t_cmdslist *list);
+/************************* PIPELIST FUNCTIONS ****************************** */
+t_pipelist	*pipelistinit(void);
+t_pipelist	*pipelistinitpush(int n);
+t_pipe		*newpipe(void);
+t_pipelist	*pipelistpush(t_pipelist *list);
+t_pipelist	*pipelistpush_pipe(t_pipelist *list, t_pipe *pipe);
+t_pipe		*pipelistpop(t_pipelist *list);
+void		pipelistdelone(t_pipelist *list);
+void		pipelistdelall(t_pipelist *list);
 
 #endif

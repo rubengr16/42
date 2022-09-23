@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmdslist_push.c                                    :+:      :+:    :+:   */
+/*   pipelist_push.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,39 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cmdslist.h"
+#include "pipelist.h"
 
-t_node	*newnode(char **cmd_flag)
+t_pipe	*newpipe(void)
 {
-	t_node	*aux;
+	t_pipe	*aux;
 
-	aux = malloc(sizeof(t_node));
+	aux = malloc(sizeof(t_pipe));
 	if (!aux)
 		return (NULL);
-	aux->cmd_flag = cmd_flag;
 	aux->next = NULL;
 	return (aux);
 }
 
-void	cmdslistpush(t_cmdslist *list, t_node *node)
+t_pipelist	*pipelistpush(t_pipelist *list)
 {
-	if (!node)
-		return ;
-	if (!list->n_elem)
-		list->head = node;
-	else
-		list->tail->next = node;
-	list->tail = node;
-	list->n_elem++;
-}
+	t_pipe	*aux;
 
-t_node	*cmdslistpush_cmd(t_cmdslist *list, char **cmd_flag)
-{
-	t_node	*aux;
-
-	aux = newnode(cmd_flag);
+	aux = newpipe();
 	if (!aux)
 		return (NULL);
-	cmdslistpush(list, aux);
-	return (aux);
+	if (!list->n_elem)
+		list->head = aux;
+	else
+		list->tail->next = aux;
+	list->tail = aux;
+	list->n_elem++;
+	return (list);
+}
+
+t_pipelist	*pipelistpush_pipe(t_pipelist *list, t_pipe *pipe)
+{
+	if (!pipe)
+		return (NULL);
+	if (!list->n_elem)
+		list->head = pipe;
+	else
+		list->tail->next = pipe;
+	list->tail = pipe;
+	list->n_elem++;
+	return (list);
 }

@@ -20,10 +20,14 @@ int	main(int argc, char **argv, char **envp)
 	pipex.fdout = -1;
 	pipex.limiter = NULL;
 	pipex.cmds = NULL;
+	pipex.pipes = NULL;
 	if (argc < 5)
 		error_msg(pipex, NULL, ERR_ARGC);
 	preparate_pipex(&pipex, argv);
 	arevalidcmds(pipex, envp);
+	pipex.pipes = pipelistinitpush(pipex.cmds->n_elem - 1);
+	if (!pipex.pipes)
+		error_msg(pipex, "pipelistinitpush failed", ERR_SYS);
 	executor(pipex, envp);
 	return (0);
 }

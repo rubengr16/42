@@ -25,7 +25,8 @@
 								***/
 # include "libft.h"
 # include "get_next_line.h"
-# include "cmdslist.h"
+# include "cmdlist.h"
+# include "pipelist.h"
 
 /**************************** ERROR MANAGEMENT ****************************** */
 # define ERR_DUP2 -1
@@ -46,9 +47,9 @@ typedef struct s_pipex
 {
 	int			fdin;
 	int			fdout;
-	int			pipefd[2][2];
 	char		*limiter;
-	t_cmdslist	*cmds;
+	t_cmdlist	*cmds;
+	t_pipelist	*pipes;
 }	t_pipex;
 
 /********************************* UTILS ************************************ */

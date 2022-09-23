@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmdslist_pop.c                                     :+:      :+:    :+:   */
+/*   pipelist_pop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cmdslist.h"
+#include "pipelist.h"
 
-t_node	*cmdslistpop(t_cmdslist *list)
+t_pipe	*pipelistpop(t_pipelist *list)
 {
-	t_node	*aux;
+	t_pipe	*aux;
 
 	aux = list->head;
 	if (list->head)

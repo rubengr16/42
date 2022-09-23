@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmdslist_init.c                                    :+:      :+:    :+:   */
+/*   pipelist_del.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 10:18:45 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/21 22:14:39 by rgallego         ###   ########.fr       */
+/*   Created: 2022/09/20 11:10:37 by rgallego          #+#    #+#             */
+/*   Updated: 2022/09/21 22:14:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cmdslist.h"
+#include "pipelist.h"
 
-t_cmdslist	*cmdslistinit(void)
+void	pipelistdelone(t_pipelist *list)
 {
-	t_cmdslist	*list;
+	t_pipe	*aux;
 
-	list = malloc(sizeof(t_cmdslist));
+	if (!list->n_elem)
+		return ;
+	aux = pipelistpop(list);
+	free(aux);
+}
+
+void	pipelistdelall(t_pipelist *list)
+{
 	if (!list)
-		return (NULL);
-	list->n_elem = 0;
+		return ;
+	while (list->n_elem)
+		pipelistdelone(list);
 	list->head = NULL;
 	list->tail = NULL;
-	return (list);
+	free(list);
+	list = NULL;
 }

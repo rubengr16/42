@@ -96,7 +96,7 @@ void	preparate_pipex(t_pipex *pipex, char **argv)
 		pipex->limiter = argv[2];
 		i++;
 	}
-	pipex->cmds = cmdslistinit();
+	pipex->cmds = cmdlistinit();
 	if (!pipex->cmds)
 		error_msg(*pipex, "cmdlistinit failed", ERR_SYS);
 	while (argv[i] && argv[i + 1])
@@ -104,7 +104,7 @@ void	preparate_pipex(t_pipex *pipex, char **argv)
 		aux = ft_split(argv[i], ' ');
 		if (!aux)
 			error_msg(*pipex, "ft_split failed", ERR_SYS);
-		cmdslistpush_cmd(pipex->cmds, aux);
+		cmdlistpush_cmd(pipex->cmds, aux);
 		i++;
 	}
 	files_mngment(pipex, fin, argv[i]);
@@ -162,9 +162,9 @@ void	arevalidcmds(t_pipex pipex, char **envp)
 	cnt = pipex.cmds->n_elem;
 	while (cnt)
 	{
-		aux = cmdslistpop(pipex.cmds);
+		aux = cmdlistpop(pipex.cmds);
 		aux->cmd_flag[CMD] = try_path(pipex, set_of_paths, aux->cmd_flag[CMD]);
-		cmdslistpush(pipex.cmds, aux);
+		cmdlistpush(pipex.cmds, aux);
 		cnt--;
 	}
 	ft_free_split(set_of_paths);
