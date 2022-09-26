@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:18:45 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/23 19:02:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/26 10:58:22 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,11 @@ t_pipelist	*pipelistinitpush(int n)
 {
 	t_pipelist	*list;
 
-	list = malloc(sizeof(t_pipelist));
-	if (!list)
-		return (NULL);
-	list->n_elem = 0;
-	list->head = NULL;
-	list->tail = NULL;
-	while (list->n_elem < n)
+	list = pipelistinit();
+	while (list && list->n_elem < n)
 	{
 		if (!pipelistpush(list))
-		{
 			pipelistdelall(list);
-			return (NULL);
-		}
 	}
 	return (list);
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:45:37 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/21 22:15:17 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:10:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ t_pipe	*newpipe(void)
 	return (aux);
 }
 
+void	pipelistpush_pipe(t_pipelist *list, t_pipe *pipe)
+{
+	if (!pipe)
+		return ;
+	if (!list->n_elem)
+		list->head = pipe;
+	else
+		list->tail->next = pipe;
+	list->tail = pipe;
+	list->n_elem++;
+}
+
 t_pipelist	*pipelistpush(t_pipelist *list)
 {
 	t_pipe	*aux;
@@ -30,24 +42,6 @@ t_pipelist	*pipelistpush(t_pipelist *list)
 	aux = newpipe();
 	if (!aux)
 		return (NULL);
-	if (!list->n_elem)
-		list->head = aux;
-	else
-		list->tail->next = aux;
-	list->tail = aux;
-	list->n_elem++;
-	return (list);
-}
-
-t_pipelist	*pipelistpush_pipe(t_pipelist *list, t_pipe *pipe)
-{
-	if (!pipe)
-		return (NULL);
-	if (!list->n_elem)
-		list->head = pipe;
-	else
-		list->tail->next = pipe;
-	list->tail = pipe;
-	list->n_elem++;
+	pipelistpush_pipe(list, aux);
 	return (list);
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:06:50 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/21 22:14:48 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:02:56 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_pipe	*pipelistpop(t_pipelist *list)
 {
 	t_pipe	*aux;
 
+	if (!list)
+		return (NULL);
 	aux = list->head;
 	if (list->head)
 	{

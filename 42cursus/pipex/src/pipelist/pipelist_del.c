@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:10:37 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/21 22:14:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:01:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	pipelistdelone(t_pipelist *list)
 {
 	t_pipe	*aux;
 
-	if (!list->n_elem)
+	if (!list)
 		return ;
 	aux = pipelistpop(list);
 	free(aux);
