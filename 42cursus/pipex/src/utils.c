@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 20:09:57 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/23 19:13:25 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:43:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void	read_from_stdin(t_pipex *pipex, char *fin)
 	char			*str;
 	unsigned long	lim_len;
 
-	
 	pipex->fdin = open(fin, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (pipex->fdin >= 0)
 	{
@@ -41,12 +40,15 @@ static void	read_from_stdin(t_pipex *pipex, char *fin)
 }
 
 /*
- * manages the files openings either if there is here_doc or not.
+ * if there are 2 or more cmds, manages the files openings either if there
+ * is here_doc or not.
  * INPUT:	t_pipex *pipex, char *fin, char *fout
  * OUTPUT:	void
  */
 static void	files_mngment(t_pipex *pipex, char *fin, char *fout)
 {
+	if (pipex->cmds->n_elem < 2)
+		error_msg(*pipex, NULL, ERR_ARGC);
 	if (pipex->limiter)
 		read_from_stdin(pipex, fin);
 	pipex->fdin = open(fin, O_RDONLY);
@@ -115,10 +117,7 @@ static char	*try_path(t_pipex pipex, char **set_of_paths, char *cmd)
 		path = ft_strjoinsep(set_of_paths[cnt], cmd, "/");
 	}
 	if (!set_of_paths[cnt] || !path)
-	{
-		free(path);
 		error_msg(pipex, cmd, ERR_CMD);
-	}
 	free(cmd);
 	return (path);
 }
