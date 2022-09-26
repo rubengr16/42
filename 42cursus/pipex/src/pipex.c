@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 19:30:34 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/26 17:33:46 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:06:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ static void	middle_child(t_pipex pipex, char **envp)
 	pipe = pipex.pipes->head->next->pipe;
 	pipe_prvs = pipex.pipes->head->pipe;
 	close(pipex.fdout);
-	close(pipe_prvs[PIPE_WR]);
-	close(pipe[PIPE_RD]);
 	if (dup2(pipe_prvs[PIPE_RD], STDIN_FILENO) == ERR_DUP2)
 		error_msg(pipex, "dup2 failed", ERR_SYS);
 	close(pipe_prvs[PIPE_RD]);
