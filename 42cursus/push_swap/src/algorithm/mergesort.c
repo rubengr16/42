@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:09:01 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 20:42:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:03:07 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@ static void	make_divisions_btree_rec(t_bnode *a, t_bnode *b)
 	t_bnode	*a_right;
 	t_bnode	*b_right;
 
-	// a_left = btreeadd_left_num(a, (a->num / 2));
-	// b_right = btreeadd_right_num(b, (b->num / 2));
-	// a_right = btreeadd_right_num(a, (a->num - a_left->num));
-	// b_left = btreeadd_left_num(b, (b->num - b_right->num));
+	a_left = btreeadd_left_num(a, (a->num / 2));
+	b_right = btreeadd_right_num(b, (b->num / 2));
+	a_right = btreeadd_right_num(a, (a->num - a_left->num));
+	b_left = btreeadd_left_num(b, (b->num - b_right->num));
 
 	// a_right = btreeadd_right_num(a, (a->num / 2));
 	// b_left = btreeadd_left_num(b, (b->num / 2));
 	// a_left = btreeadd_left_num(a, (a->num - a_right->num));
 	// b_right = btreeadd_right_num(b, (b->num - b_left->num));
 
-	a_left = btreeadd_left_num(a, (a->num / 2));
-	a_right = btreeadd_right_num(a, (a->num - a_left->num));
-	b_left = btreeadd_left_num(b, (b->num / 2));
-	b_right = btreeadd_right_num(b, (b->num - b_left->num));
+	// a_left = btreeadd_left_num(a, (a->num / 2));
+	// a_right = btreeadd_right_num(a, (a->num - a_left->num));
+	// b_left = btreeadd_left_num(b, (b->num / 2));
+	// b_right = btreeadd_right_num(b, (b->num - b_left->num));
 
 	if (a_left->num < 3 && a_right->num < 3
 		&& b_left->num < 3 && b_right->num < 3)
@@ -44,7 +44,7 @@ static void	make_divisions_btree_rec(t_bnode *a, t_bnode *b)
 
 static void	make_divisions_btree(t_btree *a, t_btree *b)
 {
-	if (a->root->num > 2 && b->root->num > 2)
+	if (a->root->num > 2 || b->root->num > 2)
 		make_divisions_btree_rec(a->root, b->root);
 }
 
@@ -129,10 +129,11 @@ void	ft_mergesort(t_queue *a, t_queue *b, int half)
 	// printqueue(*b);
 	while (b->n_elem < half)
 	{
-		if (a->head->num < half)
-			push(b, a);
-		else
-			rotate(a);
+		// if (a->head->num < half)
+		// 	push(b, a);
+		// else
+		// 	rotate(a);
+		push(b, a);
 	}
 	a_btree = btreeinitnum(a->n_elem);
 	b_btree = btreeinitnum(b->n_elem);
@@ -141,10 +142,11 @@ void	ft_mergesort(t_queue *a, t_queue *b, int half)
 	// print_preorder(b_btree->root);
 	a_stack = transform_btrees_to_stack(a_btree, b_btree);
 	print_stack(a_stack);
-	// write(1, "A\n\n", 3);
-	// printqueue(*a);
-	// write(1, "B\n\n", 3);
-	// printqueue(*b);
+	write(1, "A\n\n", 3);
+	printqueue(*a);
+	write(1, "B\n\n", 3);
+	printqueue(*b);
+	// write(1, "\n\n##########################\n\n", 30);
 	the_algorithm(a, b, a_stack);
 	write(1, "A\n\n", 3);
 	printqueue(*a);
@@ -159,9 +161,9 @@ void	ft_mergesort(t_queue *a, t_queue *b, int half)
 	// stackdelall(b_stack);
 }
 
-                             50                                                            50
-              25                              25                              25                             25
-      12               13              12             13              12               13             12              13
-   6       6       6       7       6       6       6       7       6       6       6       7       6       6       6       7
- 3   3   3   3   3   3   3   4   3   3   3   3   3   3   3   4   3   3   3   3   3   3   3   4   3   3   3   3   3   3   3   4
-1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2
+//                              50                                                            50
+//               25                              25                              25                             25
+//       12               13              12             13              12               13             12              13
+//    6       6       6       7       6       6       6       7       6       6       6       7       6       6       6       7
+//  3   3   3   3   3   3   3   4   3   3   3   3   3   3   3   4   3   3   3   3   3   3   3   4   3   3   3   3   3   3   3   4
+// 1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2
