@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:27:40 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/01 10:13:50 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 15:32:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,15 @@ static int	push_queue(t_queue *dst, t_queue *src)
  * INPUT:	t_queue *dst, t_queue *src
  * OUTPUT:	void
  */
-void	push(t_queue *dst, t_queue *src)
+void	push(t_queue *dst, t_queue *src, t_list *mvnts)
 {
+	char	*mvnt_name;
+
 	if (!push_queue(dst, src))
 		return ;
-	ft_putchar_fd('p', STDOUT_FILENO);
-	ft_putchar_fd(dst->id, STDOUT_FILENO);
-	ft_putchar_fd('\n', STDOUT_FILENO);
+	mvnt_name = malloc(sizeof(char) * 3);
+	mvnt_name[0] = 'p';
+	mvnt_name[1] = dst->id;
+	mvnt_name[2] = '\0';
+	listadd_back_mvnt(mvnts, mvnt_name);
 }

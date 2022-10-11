@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 19:43:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 15:31:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,38 @@ static int	swap_queue(t_queue *queue)
  * INPUT:	t_queue *queue
  * OUTPUT:	void
  */
-void	swap(t_queue *queue)
+void	swap(t_queue *queue, t_list *mvnts)
 {
+	char	*mvnt_name;
+
 	if (!swap_queue(queue))
 		return ;
-	ft_putchar_fd('s', STDOUT_FILENO);
-	ft_putchar_fd(queue->id, STDOUT_FILENO);
-	ft_putchar_fd('\n', STDOUT_FILENO);
+	mvnt_name = malloc(sizeof(char) * 3);
+	mvnt_name[0] = 's';
+	mvnt_name[1] = queue->id;
+	mvnt_name[2] = '\0';
+	listadd_back_mvnt(mvnts, mvnt_name);
 }
 
 /*
  * function which makes the swap in the queue a and also in the queue b
- * INPUT:	t_queue *a, t_queue *b
+ * INPUT:	t_queue *a, t_queue *b, t_list *mvnts
  * OUTPUT:	void
  */
-void	swap_both(t_queue *a, t_queue *b)
+void	swap_both(t_queue *a, t_queue *b, t_list *mvnts)
 {
+	char	*mvnt_name;
+
 	if (swap_queue(a))
 	{
 		if (swap_queue(b))
-			ft_putendl_fd("ss", STDOUT_FILENO);
+		{
+			mvnt_name = malloc(sizeof(char) * 3);
+			mvnt_name[0] = 's';
+			mvnt_name[1] = 's';
+			mvnt_name[2] = '\0';
+			listadd_back_mvnt(mvnts, mvnt_name);
+		}
 		else
 			swap_queue(a);
 	}

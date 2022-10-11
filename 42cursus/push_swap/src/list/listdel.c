@@ -21,7 +21,11 @@ void	listdelone(t_list *list)
 	t_lnode	*aux;
 
 	if (list->n_elem)
-		free(listpop(list));
+	{
+		aux = listpop(list);
+		free(aux->mvnt);
+		free(aux);
+	}
 }
 
 /* function which deletes a list
