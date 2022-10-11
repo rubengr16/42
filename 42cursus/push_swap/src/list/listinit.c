@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm.h                                        :+:      :+:    :+:   */
+/*   listinit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/17 19:08:25 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/11 14:13:50 by rgallego         ###   ########.fr       */
+/*   Created: 2021/12/03 18:47:23 by rgallego          #+#    #+#             */
+/*   Updated: 2022/10/11 14:07:17 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ALGORITHM_H
-# define ALGORITHM_H
+#include "list.h"
 
-# include "queue.h"
-# include "btree.h"
-# include "stack.h"
-# include "list.h"
-# include "mvmnts.h"
-
-typedef struct s_vector
+/*
+ * reserves memory using malloc and initializes its values head and n_elem to
+ * NULL and 0 respectively, meanwhile, id is set to the given char
+ * INPUT:	void
+ * OUTPUT:	t_list *list
+ */
+t_list	*listinit(void)
 {
-	int	n_elem;
-	int	*nums;
-}	t_vector;
+	t_list	*list;
 
-int		sortbase(t_queue *queue);
-void	algorithm_prep(t_queue queue);
-void	ft_mergesort(t_queue *a, t_queue *b, int size);
-void	the_algorithm(t_queue *a, t_queue *b, t_stack *a_stck);
-
-#endif
+	list = malloc(sizeof(t_list));
+	if (!list)
+		return (NULL);
+	list->head = NULL;
+	list->n_elem = 0;
+	return (list);
+}
