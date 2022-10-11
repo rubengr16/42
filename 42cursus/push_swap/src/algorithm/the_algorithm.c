@@ -6,13 +6,12 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 09:39:43 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/07 18:09:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 12:09:17 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algorithm.h"
-#include <stdio.h>
-#include <fcntl.h>	
+
 void	think_smaller(t_queue *a, t_queue *b, int a_size, int b_size)
 {
 	if (a_size == 2 && b_size == 2 && a->head->num > a->head->next->num
@@ -28,7 +27,6 @@ void	think_bigger_a(t_queue *a, t_queue *b, int size_a, int size_b)
 {
 	while (size_a > 0 || size_b > 0)
 	{
-		printf("\na_size = %d, b_size = %d\n", size_a, size_b);
 		if (size_a <= 0 || (size_b > 0 && (a->head->num > b->head->num)))
 		{
 			push(a, b);
@@ -44,7 +42,6 @@ void	think_bigger_b(t_queue *a, t_queue *b, int size_a, int size_b)
 {
 	while (size_a > 0 || size_b > 0)
 	{
-		printf("\na_size = %d, b_size = %d\n", size_a, size_b);
 		if (size_b <= 0 || (size_a > 0 && (a->head->num < b->head->num)))
 		{
 			push(b, a);
@@ -86,22 +83,20 @@ void	the_algorithm(t_queue *a, t_queue *b, t_stack *a_stck)
 	cnt = 0;
 	while(a_stck->head)
 	{
-		// prints(a_stck);
 		aux = stackpop(a_stck);
 		a_size = aux->num;
 		free(aux);
 		aux = stackpop(a_stck);
 		b_size = aux->num;
-		printf("\na_size = %d, b_size = %d\n", a_size, b_size);
 		free(aux);
 		if ((!(cnt % 2)) && a_size < 3 && b_size < 3)
 			think_smaller(a, b, a_size, b_size);
 		else if (a_size < 3 && b_size < 3)
-			think_smaller(b, a, a_size, b_size);
+			think_smaller(a, b, a_size, b_size);
 		if (!(cnt % 2))
 			think_bigger_a(a, b, a_size, b_size);
-		else	
-			think_bigger_b(a, b, b_size, a_size);
+		else
+			think_bigger_b(a, b, a_size, b_size);
 		cnt++;
 	}
 }

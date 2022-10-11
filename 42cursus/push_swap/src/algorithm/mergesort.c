@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:09:01 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/07 18:03:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 12:23:37 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,18 +141,18 @@ void	ft_mergesort(t_queue *a, t_queue *b, int half)
 	// print_preorder(a_btree->root);
 	// print_preorder(b_btree->root);
 	a_stack = transform_btrees_to_stack(a_btree, b_btree);
-	print_stack(a_stack);
-	write(1, "A\n\n", 3);
-	printqueue(*a);
-	write(1, "B\n\n", 3);
-	printqueue(*b);
-	// write(1, "\n\n##########################\n\n", 30);
+	// printf("\n\n##########################\n\n");
+	// print_stack(a_stack);
+	// write(1, "A\n\n", 3);
+	// printqueue(*a);
+	// write(1, "B\n\n", 3);
+	// printqueue(*b);
 	the_algorithm(a, b, a_stack);
-	write(1, "A\n\n", 3);
-	printqueue(*a);
-	write(1, "B\n\n", 3);
-	printqueue(*b);
-	write(1, "\n\n", 2);
+	// write(1, "A\n\n", 3);
+	// printqueue(*a);
+	// write(1, "B\n\n", 3);
+	// printqueue(*b);
+	// write(1, "\n\n", 2);
 	// print_stack(a_stack);
 	// print_stack(b_stack);
 	btreedelall(a_btree);

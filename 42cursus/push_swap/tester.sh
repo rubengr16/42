@@ -21,7 +21,7 @@ echo "realizando pruebas..."
 
 for i in $(seq $TOTAL)
 do
-	ARG=$(seq -100 100 | sort -R | head -n 100 | tr '\n' ' ')
+	ARG=$(seq -$lenlist $lenlist | sort -R | head -n $lenlist | tr '\n' ' ')
 	#echo $ARG
 	ret=$(./push_swap $ARG | wc -l)
 	ret2=$(./push_swap $ARG | ./checker_mac $ARG )
