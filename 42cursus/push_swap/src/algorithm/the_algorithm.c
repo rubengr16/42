@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 09:39:43 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/11 20:12:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 23:49:09 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	think_bigger_b(t_push_swap push_swap, int size_a, int size_b)
 	}
 }
 
-void	the_algorithm(t_push_swap push_swap, t_stack *a_stck)
+void	the_algorithm(t_push_swap push_swap, t_stack *stack)
 {
 	t_snode	*aux;
 	int		a_size;
@@ -69,12 +69,12 @@ void	the_algorithm(t_push_swap push_swap, t_stack *a_stck)
 
 
 	cnt = 0;
-	while(a_stck->head)
+	while(stack->head)
 	{
-		aux = stackpop(a_stck);
+		aux = stackpop(stack);
 		a_size = aux->num;
 		free(aux);
-		aux = stackpop(a_stck);
+		aux = stackpop(stack);
 		b_size = aux->num;
 		free(aux);
 		if ((!(cnt % 2)) && a_size < 3 && b_size < 3)

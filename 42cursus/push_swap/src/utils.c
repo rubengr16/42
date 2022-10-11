@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/11 20:17:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 23:12:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	print_mvnts(t_mvntslist *mvnts)
 	{
 		aux = mvntslistpop(mvnts);
 		ft_putendl_fd(aux->mvnt, STDOUT_FILENO);
+		free(aux->mvnt);
 		free(aux);
 	}
 	mvntslistdelall(mvnts);
