@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   listdel.c                                         :+:      :+:    :+:   */
+/*   mvntslistdel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:32:30 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 16:38:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:23:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "mvntslist.h"
 
-/* function which deletes the first node of a list
- * INPUT: 	t_list *list
+/* function which deletes the first node of a mvntslist
+ * INPUT: 	t_mvntslist *mvntslist
  * OUTPUT:	void
  */
-void	listdelone(t_list *list)
+void	mvntslistdelone(t_mvntslist *mvntslist)
 {
 	t_lnode	*aux;
 
-	if (list->n_elem)
+	if (mvntslist->n_elem)
 	{
-		aux = listpop(list);
+		aux = mvntslistpop(mvntslist);
 		free(aux->mvnt);
 		free(aux);
 	}
 }
 
-/* function which deletes a list
- * INPUT: 	t_list **list
+/* function which deletes a mvntslist
+ * INPUT: 	t_mvntslist **mvntslist
  * OUTPUT:	void
  */
-void	listdelall(t_list *list)
+void	mvntslistdelall(t_mvntslist *mvntslist)
 {
-	if (!list)
+	if (!mvntslist)
 		return ;
-	while (list->n_elem)
-		listdelone(list);
-	list->head = NULL;
-	free(list);
-	list = NULL;
+	while (mvntslist->n_elem)
+		mvntslistdelone(mvntslist);
+	mvntslist->head = NULL;
+	free(mvntslist);
+	mvntslist = NULL;
 }

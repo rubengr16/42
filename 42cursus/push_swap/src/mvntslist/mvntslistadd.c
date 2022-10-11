@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   listadd.c                                          :+:      :+:    :+:   */
+/*   mvtslistadd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/11 15:21:24 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:31:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "mvntslist.h"
 
 /*
  * creates a new lnode and establishes its value to mvnt and its
@@ -32,73 +32,73 @@ t_lnode	*newlnode(char *mvnt)
 }
 
 /*
- * inserts a lnode received as argument at the back of the list
- * INPUT:	t_list *list, t_lnode *node
+ * inserts a lnode received as argument at the back of the mvntslist
+ * INPUT:	t_mvntslist *mvntslist, t_lnode *node
  * OUTPUT:	void
  */
-void	listadd_back(t_list *list, t_lnode *node)
+void	mvntslistadd_back(t_mvntslist *mvntslist, t_lnode *node)
 {
-	if (!list->n_elem)
-		list->head = node;
-	else if (list->n_elem == 1)
+	if (!mvntslist->n_elem)
+		mvntslist->head = node;
+	else if (mvntslist->n_elem == 1)
 	{
-		list->head->next = node;
-		list->head->prvs = node;
-		node->next = list->head;
-		node->prvs = list->head;
+		mvntslist->head->next = node;
+		mvntslist->head->prvs = node;
+		node->next = mvntslist->head;
+		node->prvs = mvntslist->head;
 	}
-	else if (list->n_elem > 1)
+	else if (mvntslist->n_elem > 1)
 	{
-		node->prvs = list->head->prvs;
-		node->next = list->head;
+		node->prvs = mvntslist->head->prvs;
+		node->next = mvntslist->head;
 		node->next->prvs = node;
 		node->prvs->next = node;
 	}
-	list->n_elem++;
+	mvntslist->n_elem++;
 }
 
 /*
  * creates a lnode with the received movement as argument and
- * inserts it at the back of a list
- * INPUT:	t_list *list, char *mvnt
+ * inserts it at the back of a mvntslist
+ * INPUT:	t_mvntslist *mvntslist, char *mvnt
  * OUTPUT:	void
  */
-t_lnode	*listadd_back_mvnt(t_list *list, char *mvnt)
+t_lnode	*mvntslistadd_back_mvnt(t_mvntslist *mvntslist, char *mvnt)
 {
 	t_lnode	*aux;
 
 	aux = newlnode(mvnt);
 	if (!aux)
 		return (NULL);
-	listadd_back(list, aux);
+	mvntslistadd_back(mvntslist, aux);
 	return (aux);
 }
 
 /*
- * inserts a lnode received as argument at the front of a list
- * INPUT:	t_list *list, t_lnode *node
+ * inserts a lnode received as argument at the front of a mvntslist
+ * INPUT:	t_mvntslist *mvntslist, t_lnode *node
  * OUTPUT:	void
  */
-void	listadd_front(t_list *list, t_lnode *node)
+void	mvntslistadd_front(t_mvntslist *mvntslist, t_lnode *node)
 {
-	listadd_back(list, node);
-	list->head = node;
+	mvntslistadd_back(mvntslist, node);
+	mvntslist->head = node;
 }
 
 /*
  * creates a lnode with the received number as argument and
- * inserts it at the front of a list
- * INPUT:	t_list *list, char *mvnt
+ * inserts it at the front of a mvntslist
+ * INPUT:	t_mvntslist *mvntslist, char *mvnt
  * OUTPUT:	void
  */
-t_lnode	*listadd_front_mvnt(t_list *list, char *mvnt)
+t_lnode	*mvntslistadd_front_mvnt(t_mvntslist *mvntslist, char *mvnt)
 {
 	t_lnode	*aux;
 
 	aux = newlnode(mvnt);
 	if (!aux)
 		return (NULL);
-	listadd_front(list, aux);
+	mvntslistadd_front(mvntslist, aux);
 	return (aux);
 }
 

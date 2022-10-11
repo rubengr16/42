@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:09:01 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/11 12:23:37 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 20:15:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ static t_stack	*transform_btrees_to_stack(t_btree *a_btree, t_btree *b_btree)
 	return (num_stack);
 }
 
-void	ft_mergesort(t_queue *a, t_queue *b, int half)
+void	ft_mergesort(t_push_swap push_swap, int half)
 {
 	t_btree	*a_btree;
 	t_btree	*b_btree;
@@ -127,16 +127,16 @@ void	ft_mergesort(t_queue *a, t_queue *b, int half)
 	// printqueue(*a);
 	// write(1, "B\n\n", 3);
 	// printqueue(*b);
-	while (b->n_elem < half)
+	while (push_swap.b->n_elem < half)
 	{
 		// if (a->head->num < half)
 		// 	push(b, a);
 		// else
 		// 	rotate(a);
-		push(b, a);
+		push(push_swap.b, push_swap.a, push_swap.mvnts);
 	}
-	a_btree = btreeinitnum(a->n_elem);
-	b_btree = btreeinitnum(b->n_elem);
+	a_btree = btreeinitnum(push_swap.a->n_elem);
+	b_btree = btreeinitnum(push_swap.b->n_elem);
 	make_divisions_btree(a_btree, b_btree);
 	// print_preorder(a_btree->root);
 	// print_preorder(b_btree->root);
@@ -147,7 +147,7 @@ void	ft_mergesort(t_queue *a, t_queue *b, int half)
 	// printqueue(*a);
 	// write(1, "B\n\n", 3);
 	// printqueue(*b);
-	the_algorithm(a, b, a_stack);
+	the_algorithm(push_swap, a_stack);
 	// write(1, "A\n\n", 3);
 	// printqueue(*a);
 	// write(1, "B\n\n", 3);

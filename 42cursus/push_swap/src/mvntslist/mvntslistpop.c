@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   listpop.c                                         :+:      :+:    :+:   */
+/*   mvntslistpop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:18:12 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 16:08:11 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:23:42 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "mvntslist.h"
 
 /*
- * deletes one node from a list and returns it
- * INPUT:	t_list *list
+ * deletes one node from a mvntslist and returns it
+ * INPUT:	t_mvntslist *mvntslist
  * OUTPUT:	t_lnode		:	deleted node with its next and previous pointers
  * 							set to NULL
  */
-t_lnode	*listpop(t_list *list)
+t_lnode	*mvntslistpop(t_mvntslist *mvntslist)
 {
 	t_lnode	*aux;
 
-	aux = list->head;
-	if (list->n_elem == 1)
-		list->head = NULL;
-	else if (list->n_elem > 1)
+	aux = mvntslist->head;
+	if (mvntslist->n_elem == 1)
+		mvntslist->head = NULL;
+	else if (mvntslist->n_elem > 1)
 	{
-		if (list->n_elem == 2)
+		if (mvntslist->n_elem == 2)
 		{
 			aux->next->prvs = NULL;
 			aux->prvs->next = NULL;
@@ -37,11 +37,11 @@ t_lnode	*listpop(t_list *list)
 			aux->next->prvs = aux->prvs;
 			aux->prvs->next = aux->next;
 		}
-		list->head = list->head->next;
+		mvntslist->head = mvntslist->head->next;
 		aux->next = NULL;
 		aux->prvs = NULL;
 	}
-	if (list->n_elem)
-		list->n_elem--;
+	if (mvntslist->n_elem)
+		mvntslist->n_elem--;
 	return (aux);
 }

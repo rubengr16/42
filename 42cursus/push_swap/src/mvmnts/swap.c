@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/11 15:31:59 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:22:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
  * function which swaps the first element of the queue with the second one.
  * Ending the first element as the second and the second element as the
- * first one in the resulting list
+ * first one in the resulting mvntslist
  * INPUT:	t_queue *queue
  * OUTPUT:	int	:	1	swap is fullfilled
  * 					0	swap has failed
@@ -47,7 +47,7 @@ static int	swap_queue(t_queue *queue)
  * INPUT:	t_queue *queue
  * OUTPUT:	void
  */
-void	swap(t_queue *queue, t_list *mvnts)
+void	swap(t_queue *queue, t_mvntslist *mvnts)
 {
 	char	*mvnt_name;
 
@@ -57,15 +57,15 @@ void	swap(t_queue *queue, t_list *mvnts)
 	mvnt_name[0] = 's';
 	mvnt_name[1] = queue->id;
 	mvnt_name[2] = '\0';
-	listadd_back_mvnt(mvnts, mvnt_name);
+	mvntslistadd_back_mvnt(mvnts, mvnt_name);
 }
 
 /*
  * function which makes the swap in the queue a and also in the queue b
- * INPUT:	t_queue *a, t_queue *b, t_list *mvnts
+ * INPUT:	t_queue *a, t_queue *b, t_mvntslist *mvnts
  * OUTPUT:	void
  */
-void	swap_both(t_queue *a, t_queue *b, t_list *mvnts)
+void	swap_both(t_queue *a, t_queue *b, t_mvntslist *mvnts)
 {
 	char	*mvnt_name;
 
@@ -77,7 +77,7 @@ void	swap_both(t_queue *a, t_queue *b, t_list *mvnts)
 			mvnt_name[0] = 's';
 			mvnt_name[1] = 's';
 			mvnt_name[2] = '\0';
-			listadd_back_mvnt(mvnts, mvnt_name);
+			mvntslistadd_back_mvnt(mvnts, mvnt_name);
 		}
 		else
 			swap_queue(a);

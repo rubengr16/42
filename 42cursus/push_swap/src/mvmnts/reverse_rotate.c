@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:17:16 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/11 15:31:24 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:22:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	reverse_rotate_queue(t_queue *queue)
 
 /*
  * function which reverse rotates the given queue
- * INPUT:	t_queue *queue, t_list *mvnts
+ * INPUT:	t_queue *queue, t_mvntslist *mvnts
  * OUTPUT:	void
  */
-void	reverse_rotate(t_queue *queue, t_list *mvnts)
+void	reverse_rotate(t_queue *queue, t_mvntslist *mvnts)
 {
 	char	*mvnt_name;
 
@@ -46,16 +46,16 @@ void	reverse_rotate(t_queue *queue, t_list *mvnts)
 	mvnt_name[1] = 'r';
 	mvnt_name[2] = queue->id;
 	mvnt_name[3] = '\0';
-	listadd_back_mvnt(mvnts, mvnt_name);
+	mvntslistadd_back_mvnt(mvnts, mvnt_name);
 
 }
 
 /*
  * function which reverse rotates the given a and b queues simultaneously
- * INPUT:	t_queue *a, t_queue *b, t_list *mvnts
+ * INPUT:	t_queue *a, t_queue *b, t_mvntslist *mvnts
  * OUTPUT:	void
  */
-void	reverse_rotate_both(t_queue *a, t_queue *b, t_list *mvnts)
+void	reverse_rotate_both(t_queue *a, t_queue *b, t_mvntslist *mvnts)
 {
 	char	*mvnt_name;
 
@@ -68,7 +68,7 @@ void	reverse_rotate_both(t_queue *a, t_queue *b, t_list *mvnts)
 			mvnt_name[1] = 'r';
 			mvnt_name[2] = 'r';
 			mvnt_name[3] = '\0';
-			listadd_back_mvnt(mvnts, mvnt_name);
+			mvntslistadd_back_mvnt(mvnts, mvnt_name);
 		}
 		else
 			rotate_queue(a);

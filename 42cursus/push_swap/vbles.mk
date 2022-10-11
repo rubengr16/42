@@ -8,9 +8,9 @@ BTREE_DIR	=		btree/
 
 STACK_DIR	=		stack/
 
-MVMNTS_DIR	=		mvmnts/
+MVNTSLIST_DIR	=	mvntslist/
 
-UTILS_DIR	=		utils/
+MVMNTS_DIR	=		mvmnts/
 
 ALGORITHM_DIR	=	algorithm/
 
@@ -42,6 +42,14 @@ STACK	=			\
 					stackdel.c \
 					)
 
+MVNTSLIST	=		\
+					$(addprefix $(MVNTSLIST_DIR), \
+					mvntslistinit.c \
+					mvntslistadd.c \
+					mvntslistpop.c \
+					mvntslistdel.c \
+					)
+
 MVMNTS	=			\
 					$(addprefix $(MVMNTS_DIR), \
 					push.c \
@@ -50,10 +58,7 @@ MVMNTS	=			\
 					swap.c \
 					)
 
-UTILS	=			\
-					$(addprefix $(UTILS_DIR), \
-					argtostack.c \
-					)
+UTILS	=			utils.c
 
 ALGORITHM	= 	    \
 					$(addprefix $(ALGORITHM_DIR), \
@@ -67,6 +72,7 @@ SRCS	= 			$(addprefix $(SRC_DIR), \
 					$(QUEUE) \
 					$(BTREE) \
 					$(STACK) \
+					$(MVNTSLIST) \
 					$(MVMNTS) \
 					$(UTILS) \
 					$(ALGORITHM) \
