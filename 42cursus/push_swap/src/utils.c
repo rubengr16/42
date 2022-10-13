@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argtostack.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 19:47:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/11 23:12:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utils.h"
 
 /*
  * receives a number and searchs if it is already inserted on the stack.
@@ -68,4 +68,31 @@ void	argtostack(t_queue *queue, char **argv)
 		ft_free_split(set);
 		cnt++;
 	}
+}
+
+void	push_swap_init(t_queue **a, t_queue **b, t_mvntslist **mvnts)
+{
+	*a = queueinit('a');
+	if (!*a)
+		ft_error("Error. Couldn't initialize a", STDOUT_FILENO, ERR_USR);
+	*b = queueinit('b');
+	if (!*b)
+		ft_error("Error. Couldn't initialize b", STDOUT_FILENO, ERR_USR);
+	*mvnts = mvntslistinit();
+	if (!*mvnts)
+		ft_error("Error. Couldn't initialize mvnts", STDOUT_FILENO, ERR_USR);
+}
+
+void	print_mvnts(t_mvntslist *mvnts)
+{
+	t_lnode	*aux;
+
+	while (mvnts->n_elem)
+	{
+		aux = mvntslistpop(mvnts);
+		ft_putendl_fd(aux->mvnt, STDOUT_FILENO);
+		free(aux->mvnt);
+		free(aux);
+	}
+	mvntslistdelall(mvnts);
 }
