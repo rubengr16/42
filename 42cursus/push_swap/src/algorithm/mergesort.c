@@ -6,12 +6,12 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:09:01 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/12 01:27:02 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/10/13 09:42:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algorithm.h"
-#include <stdio.h>
+
 static void	make_divisions_btree_rec(t_bnode *a, t_bnode *b)
 {
 	t_bnode	*a_left;
@@ -129,10 +129,3 @@ void	ft_mergesort(t_push_swap push_swap, int half)
 	btreedelall(b_btree);
 	stackdelall(stack);
 }
-
-//                              50                                                            50
-//               25                              25                              25                             25
-//       12               13              12             13              12               13             12              13
-//    6       6       6       7       6       6       6       7       6       6       6       7       6       6       6       7
-//  3   3   3   3   3   3   3   4   3   3   3   3   3   3   3   4   3   3   3   3   3   3   3   4   3   3   3   3   3   3   3   4
-// 1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2
