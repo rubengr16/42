@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 20:37:02 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 17:49:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/12/23 17:26:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 typedef struct s_snode
 {
-	int				num;
+	int				max;
+	int				min;
 	struct s_snode	*next;
 }	t_snode;
 
@@ -27,12 +28,12 @@ typedef struct s_stack
 }	t_stack;
 
 /************************** BASIC STACK FUNCTIONS *************************** */
-t_snode	*newsnode(int num);
+t_snode	*newsnode(int min, int max);
 t_stack	*stackinit(void);
 t_stack	*stackinitnode(t_snode	*snode);
-t_stack	*stackinitnum(int num);
+t_stack	*stackinitminmax(int min, int max);
 void	stackpush(t_stack *stack, t_snode *node);
-t_snode	*stackpush_num(t_stack *stack, int num);
+t_snode	*stackpush_minmax(t_stack *stack, int min, int max);
 t_snode	*stackpop(t_stack *stack);
 void	stackdelall(t_stack *stack);
 

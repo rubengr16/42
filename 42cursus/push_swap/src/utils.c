@@ -6,12 +6,12 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/11 23:12:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/12/23 17:44:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-
+#include "algorithm.h"
 /*
  * receives a number and searchs if it is already inserted on the stack.
  * INPUT:	t_queue *queue, int nb
@@ -68,18 +68,25 @@ void	argtostack(t_queue *queue, char **argv)
 		ft_free_split(set);
 		cnt++;
 	}
+	print_queue(*queue);
 }
 
-void	push_swap_init(t_queue **a, t_queue **b, t_mvntslist **mvnts)
+void	push_swap_init(t_push_swap *push_swap)
 {
-	*a = queueinit('a');
-	if (!*a)
+	push_swap->a = queueinit('a');
+	if (!push_swap->a)
 		ft_error("Error. Couldn't initialize a", STDOUT_FILENO, ERR_USR);
-	*b = queueinit('b');
-	if (!*b)
+	push_swap->b = queueinit('b');
+	if (!push_swap->b)
 		ft_error("Error. Couldn't initialize b", STDOUT_FILENO, ERR_USR);
-	*mvnts = mvntslistinit();
-	if (!*mvnts)
+	push_swap->a_means = stackinit();
+	if (!push_swap->a_means)
+		ft_error("Error. Couldn't initialize a_means", STDOUT_FILENO, ERR_USR);
+	push_swap->b_means = stackinit();
+	if (!push_swap->b_means)
+		ft_error("Error. Couldn't initialize b_means", STDOUT_FILENO, ERR_USR);
+	push_swap->mvnts = mvntslistinit();
+	if (!push_swap->mvnts)
 		ft_error("Error. Couldn't initialize mvnts", STDOUT_FILENO, ERR_USR);
 }
 

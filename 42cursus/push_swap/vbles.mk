@@ -4,8 +4,6 @@ INC_DIR	=			inc/
 
 QUEUE_DIR	=		queue/
 
-BTREE_DIR	=		btree/
-
 STACK_DIR	=		stack/
 
 MVNTSLIST_DIR	=	mvntslist/
@@ -22,16 +20,6 @@ QUEUE	=			\
 					queueadd.c \
 					queuedel.c \
 					queuepop.c \
-					)
-
-BTREE	=			\
-					$(addprefix $(BTREE_DIR), \
-					btreeinit.c \
-					btreeadd.c \
-					btreedel.c \
-					bqueueinit.c \
-					bqueueendequeue.c \
-					bqueuedel.c \
 					)
 
 STACK	=			\
@@ -63,14 +51,13 @@ UTILS	=			utils.c
 ALGORITHM	= 	    \
 					$(addprefix $(ALGORITHM_DIR), \
 					threeelems.c \
-					mergesort.c \
+					merge_mean.c \
 					algorithm_prep.c \
-					the_algorithm.c \
+					optimizer.c \
 					)
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
 					$(QUEUE) \
-					$(BTREE) \
 					$(STACK) \
 					$(MVNTSLIST) \
 					$(MVMNTS) \
