@@ -6,14 +6,14 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:17:16 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/11 18:22:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:40:25 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mvmnts.h"
 
 /*
- * function which reverse rotates a queue. This means that the last element
+ * function which reverse rotates a queue. This mdn that the last element
  * of your queue will be the first one
  * INPUT:	t_queue *queue
  * OUTPUT:	int	:	1	reverse rotate is fullfilled

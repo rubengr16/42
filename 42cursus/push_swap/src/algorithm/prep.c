@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm_prep.c                                   :+:      :+:    :+:   */
+/*   prep.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:42:43 by rgallego          #+#    #+#             */
-/*   Updated: 2022/12/23 17:29:05 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:34:22 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	algorithm_prep(t_queue queue, t_stack *stack)
 		aux->num = binary_search(vector, aux->num, 0, (vector->n_elem -1));
 		aux = aux->next;
 	}
-	stackpush_minmax(stack, 1, queue.n_elem);
+	stackpush_minmax(stack, 0, queue.n_elem - 1);
 	free(vector->nums);
 	free(vector);
 }

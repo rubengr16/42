@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 16:21:11 by rgallego          #+#    #+#             */
-/*   Updated: 2023/01/20 16:39:43 by rgallego         ###   ########.fr       */
+/*   Created: 2023/01/27 18:46:17 by rgallego          #+#    #+#             */
+/*   Updated: 2023/01/27 18:49:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "algorithm.h"
 
-#include "queue.h"
-#include "stack.h"
-#include "mvntslist.h"
-
-typedef struct s_push_swap
+int	calc_median(int min, int max)
 {
-	t_queue		*a;
-	t_queue		*b;
-	t_stack		*a_mdn;
-	t_stack		*b_mdn;
-	t_mvntslist	*mvnts;
-}	t_push_swap;
-
-#endif
+	return (((max + min) / 2) + ((max + min) % 2));
+}

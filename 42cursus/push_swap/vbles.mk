@@ -51,8 +51,9 @@ UTILS	=			utils.c
 ALGORITHM	= 	    \
 					$(addprefix $(ALGORITHM_DIR), \
 					threeelems.c \
-					merge_mean.c \
-					algorithm_prep.c \
+					merge_mdn.c \
+					prep.c \
+					utils.c \
 					optimizer.c \
 					)
 
