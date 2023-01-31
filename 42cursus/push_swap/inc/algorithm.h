@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 19:08:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/01/27 20:32:25 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:18:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	algorithm_prep(t_queue queue, t_stack *stack);
 void	fill_queue_b(t_push_swap push_swap);
 void	merge_mdn(t_push_swap push_swap);
 int		calc_median(int min, int max);
+void	optimizer(t_mvntslist *mvnts);
+
 
 // DELETE when finished
 void	print_stack(t_stack stack);

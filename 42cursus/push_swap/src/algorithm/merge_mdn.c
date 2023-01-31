@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:06:33 by rgallego          #+#    #+#             */
-/*   Updated: 2023/01/27 21:16:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:18:43 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	fill_queue_b(t_push_swap push_swap)
 			// printf("Group top. %d %d\n", mdn, aux_mdn->max);
 			stackpush_minmax(push_swap.b_mdn, mdn, aux_mdn->max);
 		}
-		printf("B. %d %d\n", aux_mdn->min, aux_mdn->max);
+		// printf("B. %d %d\n", aux_mdn->min, aux_mdn->max);
 		while (cnt)
 		{
 			if (push_swap.a->head->num <= aux_mdn->max)
@@ -47,11 +47,11 @@ void	fill_queue_b(t_push_swap push_swap)
 					// write(1, "HOLAAAAAAAAAAA", 14);
 					rotate(push_swap.b, push_swap.mvnts);
 				}
+				cnt--;
 			}
 			else
 				rotate(push_swap.a, push_swap.mvnts);
-			cnt--;
-			printf("%d\n", cnt);
+			// printf("%d\n", cnt);
 		}
 	}
 }
@@ -95,6 +95,7 @@ void	merge_mdn(t_push_swap push_swap)
 	// print_queue(*push_swap.a);
 	algorithm_prep(*push_swap.a, push_swap.a_mdn);
 	fill_queue_b(push_swap);
+	optimizer(push_swap.mvnts);
 	// print_queue(*push_swap.a);
 	// print_stack(*push_swap.a_mdn);
 }
