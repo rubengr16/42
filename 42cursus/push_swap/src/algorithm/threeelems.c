@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 20:00:20 by rgallego          #+#    #+#             */
-/*   Updated: 2022/11/18 19:33:19 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/02 17:32:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_sorted(t_queue *queue)
 	aux = queue->head->next;
 	while (aux != queue->head && aux->num > aux->prvs->num)
 		aux = aux->next;
-	if (aux->num < aux->prvs->num)
+	if (aux != queue->head )
 		return (0);
 	return (1);
 }
@@ -37,18 +37,18 @@ int	is_sorted(t_queue *queue)
  * INPUT:
  * OUTPUT:
  */
-// int	sortbase(t_queue *queue)
-// {
-// 	if (!issorted(queue))
-// 	{
-// 		if (queue->head->num < queue->head->next->num
-// 			&& queue->head->next->num > queue->head->prvs->num)
-// 			reverse_rotate(queue);
-// 		else if (queue->head->next->num < queue->head->num
-// 			&& queue->head->num > queue->head->prvs->num)
-// 			rotate(queue);
-// 		if (!issorted(queue))
-// 			swap(queue);
-// 	}
-// 	return (1);
-// }
+void	sort_base(t_queue *queue, t_mvntslist *mvnts)
+{
+	if (is_sorted(queue))
+		return ;
+	if (queue->n_elem == 3
+		&& queue->head->num < queue->head->next->num
+		&& queue->head->next->num > queue->head->prvs->num)
+		reverse_rotate(queue, mvnts);
+	else if (queue->n_elem == 3
+		&& queue->head->next->num < queue->head->num
+		&& queue->head->num > queue->head->prvs->num)
+		rotate(queue, mvnts);
+	if (!is_sorted(queue))
+		swap(queue, mvnts);
+}

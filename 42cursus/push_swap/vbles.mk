@@ -24,6 +24,7 @@ QUEUE	=			\
 
 STACK	=			\
 					$(addprefix $(STACK_DIR), \
+					snodeutils.c \
 					stackinit.c \
 					stackpush.c \
 					stackpop.c \
@@ -77,7 +78,7 @@ RM		=			-rm -f
 
 AR		=			ar rcs
 
-CFLAGS	=			-Wall -Werror -Wextra -MD
+CFLAGS	=			-Wall -Werror -Wextra -MD -fsanitize=address -g3
 
 LDFLAGS	=			$(LIBFTNAME)
 

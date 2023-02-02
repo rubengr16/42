@@ -6,53 +6,139 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:06:33 by rgallego          #+#    #+#             */
-/*   Updated: 2023/01/31 14:18:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/02 21:01:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algorithm.h"
 #include <stdio.h>
 
+t_snode	*make_new_groups(t_stack *stack2, t_snode	*group)
+{
+	int		mdn;
+
+	if (group->size > 2)
+	{
+		mdn = calc_median(group->min, group->max);
+		stackpush_minmax(stack2, group->min, mdn - 1);
+		stackpush_minmax(stack2, mdn, group->max);
+	}
+	else
+		stackpush(stack2, group);
+	return (group);
+}
+
+int	move_numbers(t_queue *q1, t_queue *q2, t_mvntslist *mvnts, t_snode group)
+{
+	if (q1->head && q1->head->num <= group.max)
+	{
+		push(q2, q1, mvnts);
+		if (q2->head && q2->head->num < group.min)
+			rotate(q2, mvnts);
+		return (1);
+	}
+	rotate(q1, mvnts);
+	return (0);
+}
+
 void	fill_queue_b(t_push_swap push_swap)
 {
-	t_snode	*aux_mdn;
-	int		mdn;
+	t_snode	*group;
 	int		cnt;
+	int		mdn;
 
 	while (push_swap.a->n_elem > 3)
 	{
-		aux_mdn = stackpop(push_swap.a_mdn);
-		// printf("%d %d\n", aux_mdn->min, aux_mdn->max);
-		mdn = calc_median(aux_mdn->min, aux_mdn->max);
-		stackpush_minmax(push_swap.a_mdn, mdn, aux_mdn->max);
-		aux_mdn->max = mdn - 1;
-		cnt = (aux_mdn->max - aux_mdn->min) + 1;
-		if (cnt > 2)
+		group = stackpop(push_swap.a_mdn);
+		mdn = calc_median(group->min, group->max);
+		stackpush_minmax(push_swap.a_mdn, mdn, group->max);
+		snode_set_max(group, mdn - 1);
+		group = make_new_groups(push_swap.b_mdn, group);
+		cnt = group->size;
+		while (cnt && push_swap.a->n_elem > 3)
+			cnt -= move_numbers(push_swap.a, push_swap.b,
+					push_swap.mvnts, *push_swap.b_mdn->head);
+	}
+}
+
+void	order(t_push_swap push_swap)
+{
+	t_snode	*group;
+	int		decision;
+	int		cnt;
+
+	printf("\n--------------------------");
+	print_stack(*push_swap.a_mdn);
+	print_stack(*push_swap.b_mdn);
+	printf("\n$$$$$$$$$$   A   $$$$$$$$$$$$$$$");
+	print_queue(*push_swap.a);
+	printf("\n$$$$$$$$$$   B   $$$$$$$$$$$$$$$");
+	print_queue(*push_swap.b);
+	if (!push_swap.a_mdn->head)
+		decision = 0;
+	else if (!push_swap.b_mdn->head)
+		decision = 1;
+	else
+		decision = push_swap.a_mdn->head->max > push_swap.b_mdn->head->max;
+	// write(1, "hola\n", 5);
+	printf("\n!!!!!!!!!!!!GROUP!!!!!!!!!!!!![%d]", decision);
+	if (decision)
+		group = stackpop(push_swap.a_mdn);
+	else
+		group = stackpop(push_swap.b_mdn);
+	cnt = group->size;
+	if (decision && group->min <= push_swap.a->head->prvs->num && push_swap.a->head->prvs->num <= group->max)
+	{
+		while(cnt)
 		{
-			mdn = calc_median(aux_mdn->min, aux_mdn->max);
-			// printf("mdn. %d\n", mdn);
-			// printf("Group bottom. %d %d\n", aux_mdn->min, mdn - 1);
-			stackpush_minmax(push_swap.b_mdn, aux_mdn->min, mdn - 1);
-			// printf("Group top. %d %d\n", mdn, aux_mdn->max);
-			stackpush_minmax(push_swap.b_mdn, mdn, aux_mdn->max);
+			reverse_rotate(push_swap.a, push_swap.mvnts);
+			cnt--;
 		}
-		// printf("B. %d %d\n", aux_mdn->min, aux_mdn->max);
+	}
+	else if (group->min <= push_swap.b->head->prvs->num && push_swap.b->head->prvs->num <= group->max)
+	{
+		while(cnt)
+		{
+			reverse_rotate(push_swap.b, push_swap.mvnts);
+			cnt--;
+		}
+	}
+	cnt = group->size;
+	if (decision && cnt == 1)
+		return ;
+	else if (cnt == 1)
+		push(push_swap.a, push_swap.b, push_swap.mvnts);
+	else if (decision && cnt == 2)
+	{
+		if (push_swap.a->head->num > push_swap.a->head->next->num)
+			swap(push_swap.a, push_swap.mvnts);
+	}
+	else if (cnt == 2)
+	{
+		push(push_swap.a, push_swap.b, push_swap.mvnts);
+		push(push_swap.a, push_swap.b, push_swap.mvnts);
+		if (push_swap.a->head->num > push_swap.a->head->next->num)
+			swap(push_swap.a, push_swap.mvnts);
+	}
+	else if (decision)
+	{
+		// write(1, "hola\n", 5);
+		group = make_new_groups(push_swap.b_mdn, group);
+		cnt = group->size;
 		while (cnt)
-		{
-			if (push_swap.a->head->num <= aux_mdn->max)
-			{
-				push(push_swap.b, push_swap.a, push_swap.mvnts);
-				if (push_swap.b->head->num < push_swap.b_mdn->head->min)
-				{
-					// write(1, "HOLAAAAAAAAAAA", 14);
-					rotate(push_swap.b, push_swap.mvnts);
-				}
-				cnt--;
-			}
-			else
-				rotate(push_swap.a, push_swap.mvnts);
-			// printf("%d\n", cnt);
-		}
+			cnt -= move_numbers(push_swap.a, push_swap.b,
+					push_swap.mvnts, *push_swap.b_mdn->head);
+	}
+	else
+	{
+		group = make_new_groups(push_swap.a_mdn, group);
+		printf("\n%d, %d\n", push_swap.a_mdn->head->min, push_swap.a_mdn->head->max);
+		if (push_swap.a_mdn->head->next)
+			printf("\n%d, %d\n", push_swap.a_mdn->head->next->min, push_swap.a_mdn->head->next->max);
+		cnt = group->size;
+		while (cnt)
+			cnt -= move_numbers(push_swap.b, push_swap.a,
+					push_swap.mvnts, *push_swap.a_mdn->head);
 	}
 }
 
@@ -62,6 +148,8 @@ void	print_queue(t_queue queue)
 	int		i;
 
 	printf("\n###### QUEUE ######");
+	if (!queue.head)
+		return ;
 	printf("\n 1: %d", queue.head->num);
 	node = queue.head->next;
 	i = 2;
@@ -79,6 +167,8 @@ void	print_stack(t_stack stack)
 	int		i;
 
 	printf("\n###### STACK ######");
+	if (!stack.head)
+		return ;
 	printf("\n 1: [%d, %d]", stack.head->min, stack.head->max);
 	node = stack.head->next;
 	i = 2;
@@ -95,6 +185,12 @@ void	merge_mdn(t_push_swap push_swap)
 	// print_queue(*push_swap.a);
 	algorithm_prep(*push_swap.a, push_swap.a_mdn);
 	fill_queue_b(push_swap);
+	sort_base(push_swap.a, push_swap.mvnts);
+	stackpop(push_swap.a_mdn);
+	// print_stack(*push_swap.a_mdn);
+	// print_stack(*push_swap.b_mdn);
+	while(push_swap.a_mdn->head || push_swap.b_mdn->head)
+		order(push_swap);
 	optimizer(push_swap.mvnts);
 	// print_queue(*push_swap.a);
 	// print_stack(*push_swap.a_mdn);
