@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:09:01 by rgallego          #+#    #+#             */
-/*   Updated: 2023/01/31 14:18:15 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/03 01:31:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@
 		return (1);
 	return (0);
  }
+
+//   static int	is_oposite_p(char *first_mvnt, char *current_mvnt)
+//  {
+// 	if (!ft_strncmp(first_mvnt, "pa", 2)
+// 		&& !ft_strncmp(current_mvnt, "pb", 2))
+// 		return (1);
+// 	if (!ft_strncmp(first_mvnt, "pb", 2)
+// 		&& !ft_strncmp(current_mvnt, "pa", 2))
+// 		return (1);
+// 	return (0);
+//  }
 
 void	optimizer(t_mvntslist *mvnts)
 {

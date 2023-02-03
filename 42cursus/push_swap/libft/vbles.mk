@@ -76,7 +76,7 @@ OBJSEXTRA	=		$(SRCSEXTRA:.c=.o)
 
 DPNDS	=			$(SRCS:.c=.d)
 
-DPNDSBONUS	=		$(SRCSBONUS:.c=.o)
+DPNDSBONUS	=		$(SRCSBONUS:.c=.d)
 
 DPNDSEXTRA	=		$(SRCSEXTRA:.c=.d)
 
