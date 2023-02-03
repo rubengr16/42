@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:09:01 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/03 01:31:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/03 01:50:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@
 	return (0);
  }
 
-//   static int	is_oposite_p(char *first_mvnt, char *current_mvnt)
-//  {
-// 	if (!ft_strncmp(first_mvnt, "pa", 2)
-// 		&& !ft_strncmp(current_mvnt, "pb", 2))
-// 		return (1);
-// 	if (!ft_strncmp(first_mvnt, "pb", 2)
-// 		&& !ft_strncmp(current_mvnt, "pa", 2))
-// 		return (1);
-// 	return (0);
-//  }
+  static int	is_oposite_p(char *first_mvnt, char *current_mvnt)
+ {
+	if (!ft_strncmp(first_mvnt, "pa", 2)
+		&& !ft_strncmp(current_mvnt, "pb", 2))
+		return (1);
+	if (!ft_strncmp(first_mvnt, "pb", 2)
+		&& !ft_strncmp(current_mvnt, "pa", 2))
+		return (1);
+	return (0);
+ }
 
 void	optimizer(t_mvntslist *mvnts)
 {
@@ -56,6 +56,35 @@ void	optimizer(t_mvntslist *mvnts)
 			first_r = first_r->next;
 			if (cnt == 1)
 				first_r = NULL;
+			mvntslistdelone(mvnts);
+			mvnts->head = mvnts->head->prvs;
+			cnt--;
+		}
+		else
+		{
+			first_r = NULL;
+			cnt = 0;
+		}
+		mvnts->head = mvnts->head->next;
+		n_iter--;
+	}
+
+	first_r = NULL;
+	cnt = 0;
+	n_iter = mvnts->n_elem;
+	while (n_iter)
+	{
+		if (!first_r && (!ft_strncmp(mvnts->head->mvnt, "pa", 2)
+			|| !ft_strncmp(mvnts->head->mvnt, "pb", 2)))
+			first_r = mvnts->head;
+		if (first_r && !ft_strncmp(mvnts->head->mvnt, first_r->mvnt, 2))
+			cnt++;
+		else if (cnt && is_oposite_p(first_r->mvnt, mvnts->head->mvnt))
+		{
+			if (cnt == 1)
+				first_r = NULL;
+			mvntslistdelone(mvnts);
+			mvnts->head = mvnts->head->prvs;
 			mvntslistdelone(mvnts);
 			mvnts->head = mvnts->head->prvs;
 			cnt--;
