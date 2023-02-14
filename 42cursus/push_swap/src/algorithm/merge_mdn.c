@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:06:33 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/03 01:14:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:59:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,19 @@ int	move_numbers(t_queue *q1, t_queue *q2, t_mvntslist *mvnts, t_snode group)
 	return (0);
 }
 
+int	reverse_move_numbers(t_queue *q1, t_queue *q2, t_mvntslist *mvnts, t_snode group)
+{
+	if (q1->head->num <= group.max)
+	{
+		push(q2, q1, mvnts);
+		if (q2->head->num < group.min)
+			rotate(q2, mvnts);
+		return (1);
+	}
+	reverse_rotate(q1, mvnts);
+	return (0);
+}
+
 void	fill_queue_b(t_push_swap push_swap)
 {
 	t_snode	*group;
@@ -67,8 +80,10 @@ void	fill_queue_b(t_push_swap push_swap)
 		group = make_new_groups(push_swap.b_mdn, group);
 		cnt = group->size;
 		while (cnt && push_swap.a->n_elem > 3)
+		{
 			cnt -= move_numbers(push_swap.a, push_swap.b,
-					push_swap.mvnts, *push_swap.b_mdn->head);
+						push_swap.mvnts, *push_swap.b_mdn->head);
+		}
 	}
 	// printf("\n$$$$$$$$$$   A   $$$$$$$$$$$$$$$");
 	// print_queue(*push_swap.a);
@@ -146,25 +161,60 @@ void	order(t_push_swap push_swap)
 		if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
 			swap(push_swap.a, push_swap.mvnts);
 	}
+	else if (decision && cnt == 3 && push_swap.a->head && group->min <= push_swap.a->head->num && push_swap.a->head->num <= group->max)
+	{
+		// printf("hola\n");
+		// if (push_swap.a->head->num < push_swap.a->head->next->num && push_swap.a->head->num > push_swap.a->head->next->num)
+		// 	return ;
+		if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
+			swap(push_swap.a, push_swap.mvnts);
+		rotate(push_swap.a, push_swap.mvnts);
+		if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
+			swap(push_swap.a, push_swap.mvnts);
+		reverse_rotate(push_swap.a, push_swap.mvnts);
+		if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
+			swap(push_swap.a, push_swap.mvnts);
+	}
+	// else if (cnt == 3 && push_swap.b->head && group->min <= push_swap.b->head->num && push_swap.b->head->num <= group->max)
+	// {
+	// 	// printf("hola\n");
+	// 	push(push_swap.a, push_swap.b, push_swap.mvnts);
+	// 	push(push_swap.a, push_swap.b, push_swap.mvnts);
+	// 	push(push_swap.a, push_swap.b, push_swap.mvnts);
+	// 	if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
+	// 		swap(push_swap.a, push_swap.mvnts);
+	// 	rotate(push_swap.a, push_swap.mvnts);
+	// 	if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
+	// 		swap(push_swap.a, push_swap.mvnts);
+	// 	reverse_rotate(push_swap.a, push_swap.mvnts);
+	// 	if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
+	// 		swap(push_swap.a, push_swap.mvnts);
+	// }
 	else if (decision && push_swap.a->head && group->min <= push_swap.a->head->num && push_swap.a->head->num <= group->max)
 	{
 		// write(1, "hola\n", 5);
-		group = make_new_groups(push_swap.b_mdn, group);
-		cnt = group->size;
-		while (cnt)
-			cnt -= move_numbers(push_swap.a, push_swap.b,
-					push_swap.mvnts, *push_swap.b_mdn->head);
+		if (!group_is_sorted(push_swap.a, *group))
+		{
+			group = make_new_groups(push_swap.b_mdn, group);
+			cnt = group->size;
+			while (cnt)
+				cnt -= move_numbers(push_swap.a, push_swap.b,
+						push_swap.mvnts, *push_swap.b_mdn->head);
+		}
 	}
 	else if (push_swap.b->head && group->min <= push_swap.b->head->num && push_swap.b->head->num <= group->max)
 	{
-		group = make_new_groups(push_swap.a_mdn, group);
-		// printf("\n%d, %d\n", push_swap.a_mdn->head->min, push_swap.a_mdn->head->max);
-		// if (push_swap.a_mdn->head->next)
-		// 	printf("\n%d, %d\n", push_swap.a_mdn->head->next->min, push_swap.a_mdn->head->next->max);
-		cnt = group->size;
-		while (cnt)
-			cnt -= move_numbers(push_swap.b, push_swap.a,
-					push_swap.mvnts, *push_swap.a_mdn->head);
+		if (!group_is_sorted(push_swap.b, *group))
+		{
+			group = make_new_groups(push_swap.a_mdn, group);
+			// printf("\n%d, %d\n", push_swap.a_mdn->head->min, push_swap.a_mdn->head->max);
+			// if (push_swap.a_mdn->head->next)
+			// 	printf("\n%d, %d\n", push_swap.a_mdn->head->next->min, push_swap.a_mdn->head->next->max);
+			cnt = group->size;
+			while (cnt)
+				cnt -= move_numbers(push_swap.b, push_swap.a,
+						push_swap.mvnts, *push_swap.a_mdn->head);
+		}
 	}
 }
 

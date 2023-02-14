@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 19:08:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/01 17:07:46 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:03:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_vector
 }	t_vector;
 
 int		is_sorted(t_queue *queue);
+int	group_is_sorted(t_queue *queue, t_snode node);
 void	sort_base(t_queue *queue, t_mvntslist *mvnts);
 void	algorithm_prep(t_queue queue, t_stack *stack);
 void	fill_queue_b(t_push_swap push_swap);

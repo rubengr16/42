@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 20:00:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/02 17:32:44 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:02:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,23 @@ int	is_sorted(t_queue *queue)
 	while (aux != queue->head && aux->num > aux->prvs->num)
 		aux = aux->next;
 	if (aux != queue->head )
+		return (0);
+	return (1);
+}
+
+int	group_is_sorted(t_queue *queue, t_snode node)
+{
+	t_qnode	*aux;
+
+	if (queue->n_elem <= 1 || node.size <= 1)
+		return (1);
+	aux = queue->head->next;
+	while (aux != queue->head && node.size && aux->num > aux->prvs->num)
+	{
+		aux = aux->next;
+		node.size--;
+	}
+	if (node.size)
 		return (0);
 	return (1);
 }
