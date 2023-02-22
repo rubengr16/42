@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    vbles.mk                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
+#    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 19:07:43 by rgallego          #+#    #+#              #
-#    Updated: 2022/08/25 18:32:01 by rgallego         ###   ########.fr        #
+#    Updated: 2023/02/02 11:18:01 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ AR		=			ar rcs
 
 CFLAGS	=			-Wall -Werror -Wextra -MD
 
-LDFLAGS	=			$(LIBFTNAME) \
+LDFLAGS	=			\
+					$(LIBFTNAME) \
 					$(GNLNAME) \
 					$(MLXNAME)
 
