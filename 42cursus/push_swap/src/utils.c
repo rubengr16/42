@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/01/27 20:32:20 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:43:42 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	argtostack(t_queue *queue, char **argv)
 		ft_free_split(set);
 		cnt++;
 	}
-	// print_queue(*queue);
 }
 
 void	push_swap_init(t_push_swap *push_swap)

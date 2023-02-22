@@ -6,29 +6,29 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:06:33 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/21 12:24:42 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 13:37:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algorithm.h"
 #include <stdio.h>
 
-t_snode	*make_new_groups(t_stack *stack2, t_snode	*group)
+t_snode	*make_new_groups(t_stack *stack, t_snode	*group)
 {
 	int		mdn;
 
 	if (group->size > 2)
 	{
 		mdn = calc_median(group->min, group->max);
-		stackpush_minmax(stack2, group->min, mdn - 1);
-		stackpush_minmax(stack2, mdn, group->max);
+		stackpush_minmax(stack, group->min, mdn - 1);
+		stackpush_minmax(stack, mdn, group->max);
 	}
 	else
-		stackpush(stack2, group);
+		stackpush_minmax(stack, group->min, group->max);
 	return (group);
 }
 
-int	move_numbers(t_queue *q1, t_queue *q2, t_mvntslist *mvnts, t_snode group)
+int	move_nbs(t_queue *q1, t_queue *q2, t_mvntslist *mvnts, t_snode group)
 {
 	if (q1->head->num <= group.max)
 	{
@@ -38,19 +38,6 @@ int	move_numbers(t_queue *q1, t_queue *q2, t_mvntslist *mvnts, t_snode group)
 		return (1);
 	}
 	rotate(q1, mvnts);
-	return (0);
-}
-
-int	reverse_move_numbers(t_queue *q1, t_queue *q2, t_mvntslist *mvnts, t_snode group)
-{
-	if (q1->head->num <= group.max)
-	{
-		push(q2, q1, mvnts);
-		if (q2->head->num < group.min)
-			rotate(q2, mvnts);
-		return (1);
-	}
-	reverse_rotate(q1, mvnts);
 	return (0);
 }
 
@@ -71,266 +58,66 @@ void	fill_queue_b(t_push_swap push_swap)
 		group = make_new_groups(push_swap.b_mdn, group);
 		cnt = group->size;
 		while (cnt && push_swap.a->n_elem > 3)
-			cnt -= move_numbers(push_swap.a, push_swap.b,
+			cnt -= move_nbs(push_swap.a, push_swap.b,
 					push_swap.mvnts, *push_swap.b_mdn->head);
+		free(group);
 	}
 }
 
-int	decide(t_stack *a_mdn, t_stack *b_mdn)
-{
-	if (!a_mdn->head)
-		return (0);
-	if (!b_mdn->head)
-		return (1);
-	return (a_mdn->head->max > b_mdn->head->max);
-}
+// void	print_queue(t_queue queue)
+// {
+// 	t_qnode	*node;
+// 	int		i;
 
-void	swap_optimizer(t_push_swap push_swap)
-{
-	if (push_swap.a->head && push_swap.a->head->num > push_swap.a->head->next->num &&
-		push_swap.b->head && push_swap.b->head->num < push_swap.b->head->next->num)
-		swap_both(push_swap.a, push_swap.b, push_swap.mvnts);
-	else if(push_swap.a->head && push_swap.a->head->num > push_swap.a->head->next->num)
-		swap(push_swap.a, push_swap.mvnts);
-	else if(push_swap.b->head && push_swap.b->head->num < push_swap.b->head->next->num)
-		swap(push_swap.b, push_swap.mvnts);
-}
+// 	printf("\n###### QUEUE ######");
+// 	if (!queue.head)
+// 		return ;
+// 	printf("\n 1: %d", queue.head->num);
+// 	node = queue.head->next;
+// 	i = 2;
+// 	while (node && node != queue.head)
+// 	{
+// 		printf("\n %d: %d", i, node->num);
+// 		node = node->next;
+// 		i++;
+// 	}
+// }
 
-void	order(t_push_swap push_swap)
-{
-	t_snode	*group;
-	int		decision;
-	int		cnt;
+// void	print_stack(t_stack stack)
+// {
+// 	t_snode	*node;
+// 	int		i;
 
-	// printf("\n--------------------------");
-	// printf("\n$$$$$$$$$$   A   $$$$$$$$$$$$$$$");
-	// print_stack(*push_swap.a_mdn);
-	// printf("\n$$$$$$$$$$   B   $$$$$$$$$$$$$$$");
-	// print_stack(*push_swap.b_mdn);
-	// print_queue(*push_swap.a);
-	// print_queue(*push_swap.b);
-	decision = decide(push_swap.a_mdn, push_swap.b_mdn);
-	// write(1, "hola\n", 5);
-	// printf("\n!!!!!!!!!!!!GROUP!!!!!!!!!!!!![%d]", decision);
-	if (decision)
-		group = stackpop(push_swap.a_mdn);
-	else
-		group = stackpop(push_swap.b_mdn);
-	// printf("======================================");
-	// printf("\n[%d, %d]\n", group->min, group->max);
-	// printf("======================================");
-	if (decision && push_swap.a->head
-		&& group->min <= push_swap.a->head->prvs->num && push_swap.a->head->prvs->num <= group->max
-		&& group->size < push_swap.a->n_elem)
-	{
-		while(group->min <= push_swap.a->head->prvs->num && push_swap.a->head->prvs->num <= group->max)
-		{
-			// if (push_swap.b_mdn->head && push_swap.b_mdn->head->min <= push_swap.b->head->prvs->num && push_swap.b->head->prvs->num <= push_swap.b_mdn->head->max && push_swap.b_mdn->head->size < push_swap.b->n_elem)
-			// 	reverse_rotate_both(push_swap.a, push_swap.b, push_swap.mvnts);
-			// else
-				reverse_rotate(push_swap.a, push_swap.mvnts);
-		}
-	}
-	else if (push_swap.b->head && group->min <= push_swap.b->head->prvs->num && push_swap.b->head->prvs->num <= group->max
-		&& group->size < push_swap.b->n_elem)
-	{
-		while(group->min <= push_swap.b->head->prvs->num && push_swap.b->head->prvs->num <= group->max)
-		{
-			// if (push_swap.a_mdn->head && push_swap.a_mdn->head->min <= push_swap.a->head->prvs->num && push_swap.a->head->prvs->num <= push_swap.a_mdn->head->max && push_swap.a_mdn->head->size < push_swap.a->n_elem)
-			// 	reverse_rotate_both(push_swap.a, push_swap.b, push_swap.mvnts);
-			// else
-				reverse_rotate(push_swap.b, push_swap.mvnts);
-		}
-	}
-	cnt = group->size;
-	if (decision && cnt == 1 && push_swap.a->head && group->min <= push_swap.a->head->num && push_swap.a->head->num <= group->max)
-	{
-		// printf("nothing\n");
-		return ;
-	}
-	else if (cnt == 1 && push_swap.b->head && group->min <= push_swap.b->head->num && push_swap.b->head->num <= group->max)
-	{
-		// printf("push B\n");
-		push(push_swap.a, push_swap.b, push_swap.mvnts);
-	}
-	else if (decision && cnt == 2 && push_swap.a->head && group->min <= push_swap.a->head->num && push_swap.a->head->num <= group->max)
-	{
-		// printf("okey\n");
-		if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num
-			&& push_swap.b->head && push_swap.b->head->num < push_swap.b->head->next->num)
-			swap_both(push_swap.a, push_swap.b, push_swap.mvnts);
-		else if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
-			swap(push_swap.a, push_swap.mvnts);
-	}
-	else if (cnt == 2 && push_swap.b->head && group->min <= push_swap.b->head->num && push_swap.b->head->num <= group->max)
-	{
-		// printf("dios\n");
-		push(push_swap.a, push_swap.b, push_swap.mvnts);
-		push(push_swap.a, push_swap.b, push_swap.mvnts);
-		if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num
-			&& push_swap.b->head && push_swap.b->head->num < push_swap.b->head->next->num)
-			swap_both(push_swap.a, push_swap.b, push_swap.mvnts);
-		else if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
-			swap(push_swap.a, push_swap.mvnts);
-	}
-	else if (decision && cnt == 3 && push_swap.a->head && group->min <= push_swap.a->head->num && push_swap.a->head->num <= group->max)
-	{
-		// printf("hola\n");
-		// if (push_swap.a->head->num < push_swap.a->head->next->num && push_swap.a->head->num > push_swap.a->head->next->num)
-		// 	return ;
-		if (group_is_sorted(push_swap.a, *group))
-		{
-			// printf("3 sorted\n");
-			return ;
-		}
-		if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num
-			&& push_swap.b->head && push_swap.b->head->num < push_swap.b->head->next->num)
-			swap_both(push_swap.a, push_swap.b, push_swap.mvnts);
-		else if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
-			swap(push_swap.a, push_swap.mvnts);
-		if (group_is_sorted(push_swap.a, *group))
-			return ;
-		rotate(push_swap.a, push_swap.mvnts);
-		if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num
-			&& push_swap.b->head && push_swap.b->head->num < push_swap.b->head->next->num)
-			swap_both(push_swap.a, push_swap.b, push_swap.mvnts);
-		else if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
-			swap(push_swap.a, push_swap.mvnts);
-		reverse_rotate(push_swap.a, push_swap.mvnts);
-		if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num
-			&& push_swap.b->head && push_swap.b->head->num < push_swap.b->head->next->num)
-			swap_both(push_swap.a, push_swap.b, push_swap.mvnts);
-		else if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
-			swap(push_swap.a, push_swap.mvnts);
-	}
-	// else if (cnt == 3 && push_swap.b->head && group->min <= push_swap.b->head->num && push_swap.b->head->num <= group->max)
-	// {
-	// 	// printf("hola\n");
-	// 	push(push_swap.a, push_swap.b, push_swap.mvnts);
-	// 	push(push_swap.a, push_swap.b, push_swap.mvnts);
-	// 	push(push_swap.a, push_swap.b, push_swap.mvnts);
-	// 	if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
-	// 		swap(push_swap.a, push_swap.mvnts);
-	// 	rotate(push_swap.a, push_swap.mvnts);
-	// 	if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
-	// 		swap(push_swap.a, push_swap.mvnts);
-	// 	reverse_rotate(push_swap.a, push_swap.mvnts);
-	// 	if (push_swap.a->head->next && push_swap.a->head->num > push_swap.a->head->next->num)
-	// 		swap(push_swap.a, push_swap.mvnts);
-	// }
-	else if (decision && push_swap.a->head && group->min <= push_swap.a->head->num && push_swap.a->head->num <= group->max && group->size == 4)
-	{
-		if (group_is_sorted(push_swap.a, *group))
-		{
-			// printf("3 sorted\n");
-			return ;
-		}
-		(void)make_new_groups(push_swap.a_mdn, group);
-		group = push_swap.a_mdn->head;
-		int needed_rra = 0;
-		int pushed = 0;
-		while (pushed < 2)
-		{
-			if (group->min <= push_swap.a->head->num && push_swap.a->head->num <= group->max)
-			{
-				rotate(push_swap.a, push_swap.mvnts);
-				needed_rra++;
-			}
-			else
-			{
-				push(push_swap.b, push_swap.a, push_swap.mvnts);
-				pushed++;
-			}
-		}
-		while(needed_rra)
-		{
-			reverse_rotate(push_swap.a, push_swap.mvnts);
-			needed_rra--;
-		}
-		swap_optimizer(push_swap);
-		push(push_swap.a, push_swap.b, push_swap.mvnts);
-		push(push_swap.a, push_swap.b, push_swap.mvnts);
-	}
-	else if (decision && push_swap.a->head && group->min <= push_swap.a->head->num && push_swap.a->head->num <= group->max)
-	{
-		// write(1, "hola\n", 5);
-		// if (group->size == 4)
-			// printf("save\n");
-		if (!group_is_sorted(push_swap.a, *group))
-		{
-			group = make_new_groups(push_swap.b_mdn, group);
-			cnt = group->size;
-			while (cnt)
-				cnt -= move_numbers(push_swap.a, push_swap.b,
-						push_swap.mvnts, *push_swap.b_mdn->head);
-		}
-	}
-	else if (push_swap.b->head && group->min <= push_swap.b->head->num && push_swap.b->head->num <= group->max)
-	{
-		if (!group_is_sorted(push_swap.b, *group))
-		{
-			group = make_new_groups(push_swap.a_mdn, group);
-			// printf("\n%d, %d\n", push_swap.a_mdn->head->min, push_swap.a_mdn->head->max);
-			// if (push_swap.a_mdn->head->next)
-			// 	printf("\n%d, %d\n", push_swap.a_mdn->head->next->min, push_swap.a_mdn->head->next->max);
-			cnt = group->size;
-			while (cnt)
-				cnt -= move_numbers(push_swap.b, push_swap.a,
-						push_swap.mvnts, *push_swap.a_mdn->head);
-		}
-	}
-}
-
-void	print_queue(t_queue queue)
-{
-	t_qnode	*node;
-	int		i;
-
-	printf("\n###### QUEUE ######");
-	if (!queue.head)
-		return ;
-	printf("\n 1: %d", queue.head->num);
-	node = queue.head->next;
-	i = 2;
-	while (node && node != queue.head)
-	{
-		printf("\n %d: %d", i, node->num);
-		node = node->next;
-		i++;
-	}
-}
-
-void	print_stack(t_stack stack)
-{
-	t_snode	*node;
-	int		i;
-
-	printf("\n###### STACK ######");
-	if (!stack.head)
-		return ;
-	printf("\n 1: [%d, %d]", stack.head->min, stack.head->max);
-	node = stack.head->next;
-	i = 2;
-	while (node)
-	{
-		printf("\n %d: [%d, %d]", i, node->min, node->max);
-		node = node->next;
-		i++;
-	}
-}
+// 	printf("\n###### STACK ######");
+// 	if (!stack.head)
+// 		return ;
+// 	printf("\n 1: [%d, %d]", stack.head->min, stack.head->max);
+// 	node = stack.head->next;
+// 	i = 2;
+// 	while (node)
+// 	{
+// 		printf("\n %d: [%d, %d]", i, node->min, node->max);
+// 		node = node->next;
+// 		i++;
+// 	}
+// }
 
 void	merge_mdn(t_push_swap push_swap)
 {
-	// print_queue(*push_swap.a);
 	algorithm_prep(*push_swap.a, push_swap.a_mdn);
 	fill_queue_b(push_swap);
 	sort_base(push_swap.a, push_swap.mvnts);
-	stackpop(push_swap.a_mdn);
-	// print_stack(*push_swap.a_mdn);
-	// print_stack(*push_swap.b_mdn);
-	while(push_swap.a_mdn->head || push_swap.b_mdn->head)
-		order(push_swap);
+	free(stackpop(push_swap.a_mdn));
+	while (push_swap.a_mdn->head || push_swap.b_mdn->head)
+	{
+		if (!push_swap.a_mdn->head)
+			order_b(push_swap, stackpop(push_swap.b_mdn));
+		else if (!push_swap.b_mdn->head)
+			order_a(push_swap, stackpop(push_swap.a_mdn));
+		else if (push_swap.a_mdn->head->max > push_swap.b_mdn->head->max)
+			order_a(push_swap, stackpop(push_swap.a_mdn));
+		else
+			order_b(push_swap, stackpop(push_swap.b_mdn));
+	}
 	optimizer(push_swap.mvnts);
-	// print_queue(*push_swap.a);
-	// print_stack(*push_swap.a_mdn);
 }

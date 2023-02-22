@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:09:01 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/03 11:16:48 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/21 13:53:43 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,8 @@ void	optimizer(t_mvntslist *mvnts)
 			first_r = NULL;
 			cnt = 0;
 		}
-		mvnts->head = mvnts->head->next;
+		if (mvnts->head)
+			mvnts->head = mvnts->head->next;
 		n_iter--;
 	}
 

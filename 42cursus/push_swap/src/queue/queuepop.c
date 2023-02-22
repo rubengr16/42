@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:18:12 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 16:08:11 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 11:12:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ t_qnode	*queuepop(t_queue *queue)
 	{
 		if (queue->n_elem == 2)
 		{
-			aux->next->prvs = NULL;
-			aux->prvs->next = NULL;
+			aux->next->prvs = aux->next;
+			aux->prvs->next = aux->prvs;
 		}
 		else
 		{

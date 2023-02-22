@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:17:16 by rgallego          #+#    #+#             */
-/*   Updated: 2023/01/20 16:40:25 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:38:31 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	reverse_rotate(t_queue *queue, t_mvntslist *mvnts)
 	mvnt_name[2] = queue->id;
 	mvnt_name[3] = '\0';
 	mvntslistadd_back_mvnt(mvnts, mvnt_name);
-
 }
 
 /*

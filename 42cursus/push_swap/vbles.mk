@@ -53,6 +53,8 @@ ALGORITHM	= 	    \
 					$(addprefix $(ALGORITHM_DIR), \
 					threeelems.c \
 					merge_mdn.c \
+					order_a.c \
+					order_b.c \
 					prep.c \
 					utils.c \
 					optimizer.c \
@@ -78,7 +80,7 @@ RM		=			-rm -f
 
 AR		=			ar rcs
 
-CFLAGS	=			-Wall -Werror -Wextra -MD -fsanitize=address -g3
+CFLAGS	=			-Wall -Werror -Wextra -MD
 
 LDFLAGS	=			$(LIBFTNAME)
 

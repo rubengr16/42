@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 20:00:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/14 22:11:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:42:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_sorted(t_queue *queue)
 	aux = queue->head->next;
 	while (aux != queue->head && aux->num > aux->prvs->num)
 		aux = aux->next;
-	if (aux != queue->head )
+	if (aux != queue->head)
 		return (0);
 	return (1);
 }
