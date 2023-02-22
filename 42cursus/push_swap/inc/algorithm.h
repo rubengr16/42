@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 19:08:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 14:46:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:36:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "queue.h"
 # include "stack.h"
 # include "mvntslist.h"
-# include "mvmnts.h"
+# include "mvnts.h"
+# include "utils.h"
 # include "push_swap.h"
 
 typedef struct s_vector
@@ -25,7 +26,6 @@ typedef struct s_vector
 	int	*nums;
 }	t_vector;
 
-int		sorted(t_queue *queue);
 int		group_sorted(t_queue *queue, t_snode node);
 void	sort_base(t_queue *queue, t_mvntslist *mvnts);
 void	algorithm_prep(t_queue queue, t_stack *stack);

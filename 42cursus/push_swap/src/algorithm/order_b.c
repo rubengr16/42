@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:50:44 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 14:13:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:29:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	order_b(t_push_swap push_swap, t_snode *group)
 {
 	if (group->size < push_swap.b->n_elem)
 		while (on_range(group->min, group->max, push_swap.b->head->prvs->num))
-			reverse_rotate(push_swap.b, push_swap.mvnts);
+			rev_rotate(push_swap.b, push_swap.mvnts);
 	if (group->size == 1)
 		push(push_swap.a, push_swap.b, push_swap.mvnts);
 	else if (group->size == 2)

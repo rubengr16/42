@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 17:33:31 by rgallego         ###   ########.fr       */
+/*   Created: 2023/02/22 15:18:24 by rgallego          #+#    #+#             */
+/*   Updated: 2023/02/22 16:48:06 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef BONUS_H
+# define BONUS_H
 
-# include "libft.h"
 # include "queue.h"
 # include "mvntslist.h"
-# include "push_swap.h"
+# include "get_next_line.h"
 
-int		sorted(t_queue *queue);
-int		nbrepeated(t_queue *queue, int nb);
-void	argtostack(t_queue *queue, char **argv);
-void	push_swap_init(t_push_swap *push_swap);
-void	print_mvnts(t_mvntslist *mvnts);
+typedef struct s_push_swap_bonus
+{
+	t_queue		*a;
+	t_queue		*b;
+}	t_push_swap_bonus;
 
 #endif

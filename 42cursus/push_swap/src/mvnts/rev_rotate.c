@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:17:16 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 12:38:31 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:30:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mvmnts.h"
+#include "mvnts.h"
 
 /*
  * function which reverse rotates a queue. This mdn that the last element
@@ -19,7 +19,7 @@
  * OUTPUT:	int	:	1	reverse rotate is fullfilled
  * 					0	reverse rotate has failed
  */
-int	reverse_rotate_queue(t_queue *queue)
+int	rev_rotate_queue(t_queue *queue)
 {
 	if (queue->n_elem > 1)
 	{
@@ -35,11 +35,11 @@ int	reverse_rotate_queue(t_queue *queue)
  * INPUT:	t_queue *queue, t_mvntslist *mvnts
  * OUTPUT:	void
  */
-void	reverse_rotate(t_queue *queue, t_mvntslist *mvnts)
+void	rev_rotate(t_queue *queue, t_mvntslist *mvnts)
 {
 	char	*mvnt_name;
 
-	if (!reverse_rotate_queue(queue))
+	if (!rev_rotate_queue(queue))
 		return ;
 	mvnt_name = malloc(sizeof(char) * 4);
 	mvnt_name[0] = 'r';
@@ -54,13 +54,13 @@ void	reverse_rotate(t_queue *queue, t_mvntslist *mvnts)
  * INPUT:	t_queue *a, t_queue *b, t_mvntslist *mvnts
  * OUTPUT:	void
  */
-void	reverse_rotate_both(t_queue *a, t_queue *b, t_mvntslist *mvnts)
+void	rev_rotate_both(t_queue *a, t_queue *b, t_mvntslist *mvnts)
 {
 	char	*mvnt_name;
 
-	if (reverse_rotate_queue(a))
+	if (rev_rotate_queue(a))
 	{
-		if (reverse_rotate_queue(b))
+		if (rev_rotate_queue(b))
 		{
 			mvnt_name = malloc(sizeof(char) * 4);
 			mvnt_name[0] = 'r';

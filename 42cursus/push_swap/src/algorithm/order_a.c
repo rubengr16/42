@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:37:19 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 14:13:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:29:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	three_elems_queue(t_queue *a, t_mvntslist *mvnts, t_snode *group)
 	if (a->head->next
 		&& a->head->num > a->head->next->num)
 		swap(a, mvnts);
-	reverse_rotate(a, mvnts);
+	rev_rotate(a, mvnts);
 	if (a->head->next
 		&& a->head->num > a->head->next->num)
 		swap(a, mvnts);
@@ -65,7 +65,7 @@ void	four_elems_queue(t_push_swap push_swap, t_snode *group)
 		}
 	}
 	while (needed_rra--)
-		reverse_rotate(push_swap.a, push_swap.mvnts);
+		rev_rotate(push_swap.a, push_swap.mvnts);
 	swap_optimizer(push_swap);
 	push(push_swap.a, push_swap.b, push_swap.mvnts);
 	push(push_swap.a, push_swap.b, push_swap.mvnts);
@@ -75,7 +75,7 @@ void	order_a(t_push_swap push_swap, t_snode *group)
 {
 	if (group->size < push_swap.a->n_elem)
 		while (on_range(group->min, group->max, push_swap.a->head->prvs->num))
-			reverse_rotate(push_swap.a, push_swap.mvnts);
+			rev_rotate(push_swap.a, push_swap.mvnts);
 	if (group->size == 1 || group_sorted(push_swap.a, *group))
 	{
 		free(group);

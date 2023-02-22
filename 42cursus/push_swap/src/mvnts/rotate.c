@@ -6,11 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:04:21 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/11 18:27:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:30:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mvmnts.h"
+#include "mvnts.h"
 
 /*
  * function which rotates a queue. This means that the first element of your
@@ -68,6 +68,6 @@ void	rotate_both(t_queue *a, t_queue *b, t_mvntslist *mvnts)
 			mvntslistadd_back_mvnt(mvnts, mvnt_name);
 		}
 		else
-			reverse_rotate_queue(a);
+			rev_rotate_queue(a);
 	}
 }

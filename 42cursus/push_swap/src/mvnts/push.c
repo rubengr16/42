@@ -6,11 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:27:40 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/11 18:22:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:10:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mvmnts.h"
+#include "mvnts.h"
 
 /*
  * function which moves the first element of src to insert it as the first one
@@ -19,7 +19,7 @@
  * OUTPUT:	int	:	1	push is fullfilled
  * 					0	push has failed
  */
-static int	push_queue(t_queue *dst, t_queue *src)
+int	push_queue(t_queue *dst, t_queue *src)
 {
 	if (src->n_elem)
 	{

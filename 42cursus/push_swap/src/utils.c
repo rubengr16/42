@@ -6,11 +6,31 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 14:35:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:33:09 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+
+/*
+ * function which receives a queue and tells if it is sorted
+ * INPUT:	t_queue *queue, int state
+ * OUTPUT:	int	:	1	sorted
+ *					0	not sorted
+ */
+int	sorted(t_queue *queue)
+{
+	t_qnode	*aux;
+
+	if (queue->n_elem <= 1)
+		return (1);
+	aux = queue->head->next;
+	while (aux != queue->head && aux->num > aux->prvs->num)
+		aux = aux->next;
+	if (aux != queue->head)
+		return (0);
+	return (1);
+}
 
 /*
  * receives a number and searchs if it is already inserted on the stack.
@@ -18,7 +38,7 @@
  * OUTPUT:	int	:	0	nb is not in the stack
  *					1	nb is already on the stack
  */
-static int	nbrepeated(t_queue *queue, int nb)
+int	nbrepeated(t_queue *queue, int nb)
 {
 	t_qnode	*aux;
 
