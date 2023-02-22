@@ -6,11 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2022/10/11 18:22:44 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:11:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mvmnts.h"
+#include "mvnts.h"
 
 /*
  * function which swaps the first element of the queue with the second one.
@@ -20,7 +20,7 @@
  * OUTPUT:	int	:	1	swap is fullfilled
  * 					0	swap has failed
  */
-static int	swap_queue(t_queue *queue)
+int	swap_queue(t_queue *queue)
 {
 	if (queue->n_elem > 1)
 	{

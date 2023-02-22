@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm_prep.c                                   :+:      :+:    :+:   */
+/*   prep.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:42:43 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/30 14:35:20 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:34:22 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static int	binary_search(t_vector *vector, int num, int i_0, int i_n)
 	return (k);
 }
 
-void	algorithm_prep(t_queue queue)
+void	algorithm_prep(t_queue queue, t_stack *stack)
 {
 	t_vector	*vector;
 	t_qnode		*aux;
@@ -107,6 +107,7 @@ void	algorithm_prep(t_queue queue)
 		aux->num = binary_search(vector, aux->num, 0, (vector->n_elem -1));
 		aux = aux->next;
 	}
+	stackpush_minmax(stack, 0, queue.n_elem - 1);
 	free(vector->nums);
 	free(vector);
 }

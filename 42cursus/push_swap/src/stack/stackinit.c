@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:14:38 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 17:41:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2022/12/23 16:41:09 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_stack	*stackinitnode(t_snode	*snode)
  * INPUT:	int		num
  * OUTPUT:	t_stack	*stack
  */
-t_stack	*stackinitnum(int num)
+t_stack	*stackinitminmax(int min, int max)
 {
 	t_stack	*stack;
 	t_snode	*snode;
@@ -59,7 +59,7 @@ t_stack	*stackinitnum(int num)
 	stack = malloc(sizeof(t_stack));
 	if (!stack)
 		return (NULL);
-	snode = newsnode(num);
+	snode = newsnode(min, max);
 	stack->head = snode;
 	return (stack);
 }

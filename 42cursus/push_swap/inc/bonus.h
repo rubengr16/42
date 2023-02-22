@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bqueuedel.c                                        :+:      :+:    :+:   */
+/*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/02 18:58:42 by rgallego          #+#    #+#             */
-/*   Updated: 2022/09/02 20:41:39 by rgallego         ###   ########.fr       */
+/*   Created: 2023/02/22 15:18:24 by rgallego          #+#    #+#             */
+/*   Updated: 2023/02/22 16:48:06 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "btree.h"
+#ifndef BONUS_H
+# define BONUS_H
 
-void	bqueuedelall(t_bqueue *bqueue)
+# include "queue.h"
+# include "mvntslist.h"
+# include "get_next_line.h"
+
+typedef struct s_push_swap_bonus
 {
-	t_bqnode	*aux;
+	t_queue		*a;
+	t_queue		*b;
+}	t_push_swap_bonus;
 
-	if (!bqueue)
-		return ;
-	aux = bqueuedequeue(bqueue);
-	while (aux)
-	{
-		free(aux->bnode);
-		free(aux);
-		aux = bqueuedequeue(bqueue);
-	}
-	bqueue->head = NULL;
-	bqueue->tail = NULL;
-	free(bqueue);
-	bqueue = NULL;
-}
+#endif

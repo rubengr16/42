@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 14:43:59 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:04:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "utils.h"
-#include "algorithm.h"
+#include "bonus.h"
+#include "utils_bonus.h"
 
 int	main(int argc, char **argv)
 {
-	t_push_swap	push_swap;
+	t_push_swap_bonus	push_swap;
+	char				*mvnt;
 
 	if (argc == 1)
-		ft_error("Error. Enter more than 1 argument.", STDERR_FILENO, ERR_USR);
-	push_swap_init(&push_swap);
-	argtostack(push_swap.a, &argv[1]);
-	if (!sorted(push_swap.a))
-		merge_mdn(push_swap);
+		ft_error("Error", STDERR_FILENO, ERR_USR);
+	push_swap_init_bonus(&push_swap);
+	argtostack_bonus(push_swap.a, &argv[1]);
+	mvnt = get_next_line(STDIN_FILENO);
+	while (mvnt)
+	{
+		if (!execute_mvnt(push_swap, mvnt, ft_strlen(mvnt) - 1))
+			ft_error("Error", STDERR_FILENO, ERR_USR);
+		free(mvnt);
+		mvnt = get_next_line(STDIN_FILENO);
+	}
+	if (sorted(push_swap.a))
+		ft_putendl_fd("OK", STDOUT_FILENO);
+	else
+		ft_putendl_fd("KO", STDOUT_FILENO);
 	queuedelall(push_swap.a);
 	queuedelall(push_swap.b);
-	stackdelall(push_swap.a_mdn);
-	stackdelall(push_swap.b_mdn);
-	print_mvnts(push_swap.mvnts);
 	return (0);
 }

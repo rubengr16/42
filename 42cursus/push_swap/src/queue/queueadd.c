@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:55 by rgallego          #+#    #+#             */
-/*   Updated: 2022/08/31 16:10:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 10:59:52 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ t_qnode	*newqnode(int num)
 void	queueadd_back(t_queue *queue, t_qnode *node)
 {
 	if (!queue->n_elem)
+	{
 		queue->head = node;
+		node->next = node;
+		node->prvs = node;
+	}
 	else if (queue->n_elem == 1)
 	{
 		queue->head->next = node;

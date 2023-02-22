@@ -39,7 +39,8 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Werror -Wextra -MD
 
-LDFLAGS	=			$(LIBFTNAME) \
+LDFLAGS	=			\
+					$(LIBFTNAME) \
 					$(GNLNAME)
 
 NAME	=			pipex

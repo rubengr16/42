@@ -66,6 +66,7 @@ SRCSEXTRA	=		\
 					ft_strtolower.c \
 					ft_error.c \
 					ft_atoi_err.c \
+					ft_atoi_just_err.c \
 					)
 
 OBJS	=			$(SRCS:.c=.o)
@@ -76,7 +77,7 @@ OBJSEXTRA	=		$(SRCSEXTRA:.c=.o)
 
 DPNDS	=			$(SRCS:.c=.d)
 
-DPNDSBONUS	=		$(SRCSBONUS:.c=.o)
+DPNDSBONUS	=		$(SRCSBONUS:.c=.d)
 
 DPNDSEXTRA	=		$(SRCSEXTRA:.c=.d)
 
