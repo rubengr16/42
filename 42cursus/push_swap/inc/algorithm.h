@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 19:08:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 14:15:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:46:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,5 @@ void	optimize_r(t_mvntslist *mvnts, t_lnode *first_r, int n_iter, int cnt);
 void	optimize_rr(t_mvntslist *mvnts, t_lnode *first_r, int n_iter, int cnt);
 t_snode	*make_new_groups(t_stack *stack, t_snode	*group);
 int		move_nbs(t_queue *q1, t_queue *q2, t_mvntslist *mvnts, t_snode group);
-
-// DELETE when finished
-void	print_stack(t_stack stack);
-void	print_queue(t_queue queue);
 
 #endif

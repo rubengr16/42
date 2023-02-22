@@ -6,14 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 14:30:20 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:43:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "push_swap.h"
 #include "utils.h"
 #include "algorithm.h"
-#include "push_swap.h"
 
 int	main(int argc, char **argv)
 {

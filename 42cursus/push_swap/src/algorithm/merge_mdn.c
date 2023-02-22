@@ -6,12 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:06:33 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 13:37:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:46:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algorithm.h"
-#include <stdio.h>
 
 t_snode	*make_new_groups(t_stack *stack, t_snode	*group)
 {
@@ -63,44 +62,6 @@ void	fill_queue_b(t_push_swap push_swap)
 		free(group);
 	}
 }
-
-// void	print_queue(t_queue queue)
-// {
-// 	t_qnode	*node;
-// 	int		i;
-
-// 	printf("\n###### QUEUE ######");
-// 	if (!queue.head)
-// 		return ;
-// 	printf("\n 1: %d", queue.head->num);
-// 	node = queue.head->next;
-// 	i = 2;
-// 	while (node && node != queue.head)
-// 	{
-// 		printf("\n %d: %d", i, node->num);
-// 		node = node->next;
-// 		i++;
-// 	}
-// }
-
-// void	print_stack(t_stack stack)
-// {
-// 	t_snode	*node;
-// 	int		i;
-
-// 	printf("\n###### STACK ######");
-// 	if (!stack.head)
-// 		return ;
-// 	printf("\n 1: [%d, %d]", stack.head->min, stack.head->max);
-// 	node = stack.head->next;
-// 	i = 2;
-// 	while (node)
-// 	{
-// 		printf("\n %d: [%d, %d]", i, node->min, node->max);
-// 		node = node->next;
-// 		i++;
-// 	}
-// }
 
 void	merge_mdn(t_push_swap push_swap)
 {

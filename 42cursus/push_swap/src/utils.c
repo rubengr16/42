@@ -6,12 +6,12 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:26:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 12:43:42 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:35:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-#include "algorithm.h"
+
 /*
  * receives a number and searchs if it is already inserted on the stack.
  * INPUT:	t_queue *queue, int nb
