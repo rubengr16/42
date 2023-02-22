@@ -51,13 +51,13 @@ UTILS	=			utils.c
 
 ALGORITHM	= 	    \
 					$(addprefix $(ALGORITHM_DIR), \
-					threeelems.c \
 					merge_mdn.c \
 					order_a.c \
 					order_b.c \
 					prep.c \
 					utils.c \
 					optimizer.c \
+					optimize_r.c \
 					)
 
 SRCS	= 			$(addprefix $(SRC_DIR), \

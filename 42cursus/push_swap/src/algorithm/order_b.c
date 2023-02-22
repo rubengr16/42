@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:50:44 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 13:28:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:13:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	order_b(t_push_swap push_swap, t_snode *group)
 			&& push_swap.a->head->num > push_swap.a->head->next->num)
 			swap(push_swap.a, push_swap.mvnts);
 	}
-	else if (!group_is_sorted(push_swap.b, *group))
+	else if (!group_sorted(push_swap.b, *group))
 	{
 		group = make_new_groups(push_swap.a_mdn, group);
 		while (group->size)
