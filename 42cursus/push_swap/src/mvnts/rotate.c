@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 19:04:21 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 17:30:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:14:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  */
 int	rotate_queue(t_queue *queue)
 {
-	if (queue->n_elem > 1)
+	if (queue->n_elem >= 1)
 	{
 		queue->head = queue->head->next;
 		return (1);

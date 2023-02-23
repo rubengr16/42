@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:42:13 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 17:11:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:14:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
  */
 int	swap_queue(t_queue *queue)
 {
-	if (queue->n_elem > 1)
+	if (queue->n_elem >= 1)
 	{
 		if (queue->n_elem == 2)
 			(void)rotate_queue(queue);
-		else
+		else if (queue->n_elem > 2)
 		{
 			queue->head->next->prvs = queue->head->prvs;
 			queue->head->prvs->next = queue->head->next;

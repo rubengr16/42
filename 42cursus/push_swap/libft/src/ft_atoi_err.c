@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 13:26:28 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 18:02:25 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:00:11 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_atoi_err(const char *s)
 	}
 	if (*s && !ft_isdigit(*s))
 		ft_error("Error. Only decimal numbers.", STDERR_FILENO, ERR_USR);
-	if ((sign == -1 && num > LLONG_MAX) || (sign == 1 && num > LLONG_MAX))
-		ft_error("Error. Number over long long range.", STDERR_FILENO, ERR_USR);
+	if ((sign == -1 && num > INT_MAX) || (sign == 1 && num >= INT_MAX))
+		ft_error("Error. Number over int range.", STDERR_FILENO, ERR_USR);
 	return (sign * num);
 }
