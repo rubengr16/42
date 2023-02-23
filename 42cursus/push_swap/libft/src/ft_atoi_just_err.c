@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:02:07 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 18:02:34 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:06:23 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_atoi_just_err(const char *s)
 	}
 	if (*s && !ft_isdigit(*s))
 		ft_error("Error", STDERR_FILENO, ERR_USR);
-	if ((sign == -1 && num > LLONG_MAX) || (sign == 1 && num > LLONG_MAX))
+	if ((sign == -1 && num > INT_MAX) || (sign == 1 && num >= INT_MAX))
 		ft_error("Error", STDERR_FILENO, ERR_USR);
 	return (sign * num);
 }

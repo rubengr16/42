@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:22:18 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 18:04:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:07:14 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	char				*mvnt;
 
 	if (argc == 1)
-		ft_error("Error", STDERR_FILENO, ERR_USR);
+		return (0);
 	push_swap_init_bonus(&push_swap);
 	argtostack_bonus(push_swap.a, &argv[1]);
 	mvnt = get_next_line(STDIN_FILENO);

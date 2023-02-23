@@ -6,13 +6,14 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:02:59 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/22 18:02:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/23 09:59:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # define LLONG_MAX 9223372036854775807
+# define INT_MAX 2147483648
 
 # include <stddef.h>
 # include <unistd.h>
@@ -102,5 +103,6 @@ char	*ft_strtolower(char *str);
 void	ft_error(char *msg, int fd, int code);
 int		ft_atoi_err(const char *s);
 int		ft_atoi_just_err(const char *s);
+
 
 #endif
