@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:02:59 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/23 09:59:00 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:22:27 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,5 @@ char	*ft_strtolower(char *str);
 void	ft_error(char *msg, int fd, int code);
 int		ft_atoi_err(const char *s);
 int		ft_atoi_just_err(const char *s);
-
 
 #endif
