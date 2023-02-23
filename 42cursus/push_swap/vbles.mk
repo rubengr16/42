@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 16:19:28 by rgallego          #+#    #+#              #
-#    Updated: 2023/02/22 17:43:22 by rgallego         ###   ########.fr        #
+#    Updated: 2023/02/22 20:45:25 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,8 +110,6 @@ DPNDSBONUS	=		$(SRCSBONUS:.c=.d)
 CC		=			gcc
 
 RM		=			-rm -f
-
-AR		=			ar rcs
 
 CFLAGS	=			-Wall -Werror -Wextra -MD
 
