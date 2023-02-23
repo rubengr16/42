@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 16:19:28 by rgallego          #+#    #+#              #
-#    Updated: 2023/02/22 20:46:38 by rgallego         ###   ########.fr        #
+#    Updated: 2023/02/23 17:32:37 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ INC_DIR	=			inc/
 PHILO	=			main.c
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
+					$(PHILO) \
 					)
 
 OBJS	=			$(SRCS:.c=.o)

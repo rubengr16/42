@@ -6,19 +6,22 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:02:09 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/23 00:14:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:31:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	t_philo	philo;
+	// t_philo	philo;
 
-	if (argc != 4 && argc != 5)
-		printf("Error. Arguments: nbr_of_philo time_to_die time_to_eat");
-		printf("time_to_sleep [nbr_of_times_each_philo_must_eat]");
+	// if (argc != 4 && argc != 5)
+	// 	printf("Error. Arguments: nbr_of_philo time_to_die time_to_eat");
+	// 	printf("time_to_sleep [nbr_of_times_each_philo_must_eat]");
+	printf("before\n");
+	usleep(5000000);
+	printf("after\n");
 }
 
 // void	argtostack(t_queue *queue, char **argv)
