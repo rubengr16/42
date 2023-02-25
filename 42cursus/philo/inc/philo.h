@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:03:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/25 23:30:50 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:37:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,8 @@ void			philo_killer(t_philo_q *queue);
 unsigned long	getutimediff(struct timeval start, struct timeval end);
 void			set_the_table(t_philo *philo);
 int				getchopstick(t_philo_n *philo, t_chopstick *chopstick);
+void			talk(t_philo_n *philo, int status, char *msg);
+void			live(t_philo_n *philo, int *chopstick, unsigned long time);
+
 
 #endif
