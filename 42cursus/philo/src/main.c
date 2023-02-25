@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:02:09 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/25 16:22:12 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/25 22:40:37 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,10 @@ int	main(int argc, char **argv)
 		printf("time_to_sleep [nbr_of_times_each_philo_must_eat]\n");
 		return (1);
 	}
-	philo = (t_philo){0, 0, {{0, 0, 0}, {EAT_MSG, SLEEP_MSG, THINK_MSG, NULL}},
+	philo = (t_philo){0, 0, {{0, 0, 0}, {THINK_MSG, EAT_MSG, SLEEP_MSG, NULL}},
 		0, philo.start_time, philo.printf_mutex, {0, NULL}};
 	if (parser(&philo, &argv[1]) < 0)
 		return (1);
-	// printf("%u, %u, %u\n", philo.v_func.time[EAT], philo.v_func.time[SLEEP], philo.v_func.time[THINK]);
 	if (philo_sire(&philo, &philo.philos, philo.n_philos) < 0)
 	{
 		philo_killer(&philo.philos);

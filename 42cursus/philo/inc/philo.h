@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:03:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/25 13:45:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/25 22:07:06 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # define S_US 1000000
 # define US_MS 1000
 
-# define EAT 0
-# define SLEEP 1
-# define THINK 2
+# define THINK 0
+# define EAT 1
+# define SLEEP 2
 # define DIE -1
 
 # define EAT_MSG "is eating"
@@ -43,6 +43,12 @@ typedef struct s_vital_functions
 	char			*status[4];
 }	t_vital_functions;
 
+typedef struct s_chopstick
+{
+	int					value;
+	pthread_mutex_t		mutex;
+}	t_chopstick;
+
 typedef struct s_philo_n
 {
 	unsigned int		id;
@@ -55,8 +61,7 @@ typedef struct s_philo_n
 	struct timeval		updated_time;
 	struct timeval		*birth_time;
 	pthread_t			thread;
-	int					chopstick;
-	pthread_mutex_t		mutex;
+	t_chopstick			chopstick;
 	pthread_mutex_t		*printf_mutex;
 	struct s_philo_n	*next;
 	struct s_philo_n	*prvs;
