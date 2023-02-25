@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 16:19:28 by rgallego          #+#    #+#              #
-#    Updated: 2023/02/23 17:32:37 by rgallego         ###   ########.fr        #
+#    Updated: 2023/02/25 12:25:51 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,9 @@ PHILO	=			main.c
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
 					$(PHILO) \
+					parser.c \
+					philo_queue.c \
+					philosophare.c \
 					)
 
 OBJS	=			$(SRCS:.c=.o)

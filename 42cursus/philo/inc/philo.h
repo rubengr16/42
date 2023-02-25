@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:03:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/23 17:31:09 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/25 13:45:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,75 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
+# include <sys/time.h>
+# include <pthread.h>
+
+# define INT_MAX 2147483648
+# define S_US 1000000
+# define US_MS 1000
+
+# define EAT 0
+# define SLEEP 1
+# define THINK 2
+# define DIE -1
+
+# define EAT_MSG "is eating"
+# define SLEEP_MSG "is sleeping"
+# define THINK_MSG "is thinking"
+# define TAKE_MSG "has taken a fork"
+# define DIE_MSG "died"
+
+# define FREE 1
+# define BUSY 0
+
+typedef struct s_vital_functions
+{
+	unsigned int	time[3];
+	char			*status[4];
+}	t_vital_functions;
+
+typedef struct s_philo_n
+{
+	unsigned int		id;
+	unsigned int		n_dines;
+	unsigned int		*needed_dines;
+	int					status;
+	char				*status_msg;
+	t_vital_functions	*v_func;
+	int					*apoptosis;
+	struct timeval		updated_time;
+	struct timeval		*birth_time;
+	pthread_t			thread;
+	int					chopstick;
+	pthread_mutex_t		mutex;
+	pthread_mutex_t		*printf_mutex;
+	struct s_philo_n	*next;
+	struct s_philo_n	*prvs;
+}	t_philo_n;
+
+typedef struct s_philo_q
+{
+	unsigned int	n_philos;
+	t_philo_n		*head;
+}	t_philo_q;
 
 typedef struct s_philo
 {
-	int	n_philos;
-	int	die_t;
-	int	eat_t;
-	int	sleep_t;
+	unsigned int		n_philos;
+	unsigned int		needed_dines;
+	t_vital_functions	v_func;
+	int					apoptosis;
+	struct timeval		start_time;
+	pthread_mutex_t		printf_mutex;
+	t_philo_q			philos;
 }	t_philo;
+
+int				parser(t_philo *philo, char **argv);
+int				philo_sire(t_philo *philo, t_philo_q *q, unsigned int n);
+void			philo_killer(t_philo_q *queue);
+unsigned long	getutimediff(struct timeval start, struct timeval end);
+void			set_the_table(t_philo *philo);
+
 
 #endif

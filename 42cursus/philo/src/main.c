@@ -6,49 +6,73 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:02:09 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/23 17:31:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:22:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(void)
-{
-	// t_philo	philo;
-
-	// if (argc != 4 && argc != 5)
-	// 	printf("Error. Arguments: nbr_of_philo time_to_die time_to_eat");
-	// 	printf("time_to_sleep [nbr_of_times_each_philo_must_eat]");
-	printf("before\n");
-	usleep(5000000);
-	printf("after\n");
-}
-
-// void	argtostack(t_queue *queue, char **argv)
+// void *myThreadFun(void *vargp)
 // {
-// 	char	**set;
-// 	int		nb;
-// 	int		cnt;
-// 	int		cnt_set;
-
-// 	if (!argv)
-// 		ft_error("Error. No argv.", STDERR_FILENO, ERR_USR);
-// 	cnt = 0;
-// 	while (argv[cnt])
-// 	{
-// 		set = ft_split(argv[cnt], ' ');
-// 		if (!set)
-// 			ft_error("Error. Split failed.", STDERR_FILENO, ERR_USR);
-// 		cnt_set = 0;
-// 		while (set[cnt_set])
-// 		{
-// 			nb = ft_atoi_err(set[cnt_set]);
-// 			if (nbrepeated(queue, nb))
-// 				ft_error("Error. Number repeated.", STDERR_FILENO, ERR_USR);
-// 			(void)queueadd_back_num(queue, nb);
-// 			cnt_set++;
-// 		}
-// 		ft_free_split(set);
-// 		cnt++;
-// 	}
+// 	int	*nb;
+//     sleep(5);
+// 	nb = (int *)vargp;
+// 	(*nb) += 2;
+//     printf("Printing Hello Ruben from Thread >>> nb = %d\n", *nb);
+//     return NULL;
 // }
+
+// void	test(void)
+// {
+// 	// USLEEP test
+// 	// printf("before\n");
+// 	// usleep(5000000);
+// 	// printf("after\n");
+
+// 	// GETTIMEOFDAY test
+// 	// struct timeval current_time;
+// 	// gettimeofday(&current_time, NULL);
+// 	// printf("seconds : %ld\nmicro seconds : %d", current_time.tv_sec, current_time.tv_usec);
+
+// 	// THREAD TEST
+//     // pthread_t	thread_id;
+// 	// int			nb;
+// 	// nb = 0;
+//     // printf("Before Thread >>> nb = %d\n", nb);
+//     // pthread_create(&thread_id, NULL, myThreadFun, &nb);
+//     // pthread_join(thread_id, NULL);
+//     // printf("After Thread >>> nb = %d\n", nb);
+
+// 	// USLEEP and GETTIMEOFDAY test
+// 	struct timeval current_time;
+// 	gettimeofday(&current_time, NULL);
+// 	printf("seconds : %ld\nmicro seconds : %d\n", current_time.tv_sec, current_time.tv_usec);
+// 	usleep(5);
+// 	gettimeofday(&current_time, NULL);
+// 	printf("seconds : %ld\nmicro seconds : %d\n", current_time.tv_sec, current_time.tv_usec);
+// }
+
+int	main(int argc, char **argv)
+{
+	t_philo			philo;
+
+	if (argc != 5 && argc != 6)
+	{
+		printf("Error. Arguments: nbr_of_philo time_to_die time_to_eat ");
+		printf("time_to_sleep [nbr_of_times_each_philo_must_eat]\n");
+		return (1);
+	}
+	philo = (t_philo){0, 0, {{0, 0, 0}, {EAT_MSG, SLEEP_MSG, THINK_MSG, NULL}},
+		0, philo.start_time, philo.printf_mutex, {0, NULL}};
+	if (parser(&philo, &argv[1]) < 0)
+		return (1);
+	// printf("%u, %u, %u\n", philo.v_func.time[EAT], philo.v_func.time[SLEEP], philo.v_func.time[THINK]);
+	if (philo_sire(&philo, &philo.philos, philo.n_philos) < 0)
+	{
+		philo_killer(&philo.philos);
+		return (1);
+	}
+	set_the_table(&philo);
+	philo_killer(&philo.philos);
+	return (0);
+}
