@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:14:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/25 13:40:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:30:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,26 @@ int	parser(t_philo *philo, char **argv)
 		if (ft_atoi(argv[cnt], &philo->needed_dines) <= 0)
 			return (-1);
 	}
-
 	return (cnt);
 }
 
 unsigned long	getutimediff(struct timeval start, struct timeval end)
 {
-	return (end.tv_sec - start.tv_sec) * S_US + (end.tv_usec - start.tv_usec);
+	return ((end.tv_sec - start.tv_sec) * S_TO_MS
+		+ (end.tv_usec - start.tv_usec) * US_TO_MS);
+}
+
+int	getchopstick(t_philo_n *philo, t_chopstick *chopstick)
+{
+	if (chopstick->value == BUSY)
+		live(philo, &chopstick->value, philo->v_func->time[THINK]);
+	if (*philo->apoptosis == DIE)
+	{
+		talk(philo, -1, DIE_MSG);
+		return (-1);
+	}
+	pthread_mutex_lock(&chopstick->mutex);
+	chopstick->value = BUSY;
+	talk(philo, -1, TAKE_MSG);
+	return (0);
 }

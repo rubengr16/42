@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:59:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/25 22:59:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:22:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	philo_sire(t_philo *philo, t_philo_q *q, unsigned int n)
 	t_philo_n	*node;
 
 	gettimeofday(&philo->start_time, NULL);
-	while(q->n_philos < n)
+	while (q->n_philos < n)
 	{
 		node = malloc(sizeof(t_philo_n));
 		if (!node || push_philo(q, node) < 0)

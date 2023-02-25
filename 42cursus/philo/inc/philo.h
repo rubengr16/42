@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:03:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/25 22:07:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:30:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <pthread.h>
 
 # define INT_MAX 2147483648
-# define S_US 1000000
-# define US_MS 1000
+# define S_TO_MS 1000
+# define US_TO_MS 1000
 
 # define THINK 0
 # define EAT 1
@@ -89,6 +89,6 @@ int				philo_sire(t_philo *philo, t_philo_q *q, unsigned int n);
 void			philo_killer(t_philo_q *queue);
 unsigned long	getutimediff(struct timeval start, struct timeval end);
 void			set_the_table(t_philo *philo);
-
+int				getchopstick(t_philo_n *philo, t_chopstick *chopstick);
 
 #endif

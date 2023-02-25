@@ -6,51 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:02:09 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/25 22:40:37 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:22:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-// void *myThreadFun(void *vargp)
-// {
-// 	int	*nb;
-//     sleep(5);
-// 	nb = (int *)vargp;
-// 	(*nb) += 2;
-//     printf("Printing Hello Ruben from Thread >>> nb = %d\n", *nb);
-//     return NULL;
-// }
-
-// void	test(void)
-// {
-// 	// USLEEP test
-// 	// printf("before\n");
-// 	// usleep(5000000);
-// 	// printf("after\n");
-
-// 	// GETTIMEOFDAY test
-// 	// struct timeval current_time;
-// 	// gettimeofday(&current_time, NULL);
-// 	// printf("seconds : %ld\nmicro seconds : %d", current_time.tv_sec, current_time.tv_usec);
-
-// 	// THREAD TEST
-//     // pthread_t	thread_id;
-// 	// int			nb;
-// 	// nb = 0;
-//     // printf("Before Thread >>> nb = %d\n", nb);
-//     // pthread_create(&thread_id, NULL, myThreadFun, &nb);
-//     // pthread_join(thread_id, NULL);
-//     // printf("After Thread >>> nb = %d\n", nb);
-
-// 	// USLEEP and GETTIMEOFDAY test
-// 	struct timeval current_time;
-// 	gettimeofday(&current_time, NULL);
-// 	printf("seconds : %ld\nmicro seconds : %d\n", current_time.tv_sec, current_time.tv_usec);
-// 	usleep(5);
-// 	gettimeofday(&current_time, NULL);
-// 	printf("seconds : %ld\nmicro seconds : %d\n", current_time.tv_sec, current_time.tv_usec);
-// }
 
 int	main(int argc, char **argv)
 {
