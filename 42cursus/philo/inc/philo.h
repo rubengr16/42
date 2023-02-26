@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:03:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/25 23:37:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/26 01:10:54 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define EAT 1
 # define SLEEP 2
 # define DIE -1
+# define ERR_SYS -2
 
 # define EAT_MSG "is eating"
 # define SLEEP_MSG "is sleeping"
@@ -86,12 +87,11 @@ typedef struct s_philo
 
 int				parser(t_philo *philo, char **argv);
 int				philo_sire(t_philo *philo, t_philo_q *q, unsigned int n);
-void			philo_killer(t_philo_q *queue);
+int				philo_killer(t_philo_q *queue);
 unsigned long	getutimediff(struct timeval start, struct timeval end);
-void			set_the_table(t_philo *philo);
+int				set_the_table(t_philo *philo);
 int				getchopstick(t_philo_n *philo, t_chopstick *chopstick);
 void			talk(t_philo_n *philo, int status, char *msg);
 void			live(t_philo_n *philo, int *chopstick, unsigned long time);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:59:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/25 23:22:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/26 01:15:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	philo_sire(t_philo *philo, t_philo_q *q, unsigned int n)
 {
 	t_philo_n	*node;
 
-	gettimeofday(&philo->start_time, NULL);
+	if (gettimeofday(&philo->start_time, NULL))
+		return (-1);
 	while (q->n_philos < n)
 	{
 		node = malloc(sizeof(t_philo_n));
@@ -95,20 +96,24 @@ t_philo_n	*philo_pop(t_philo_q *queue)
 	return (aux);
 }
 
-void	philo_killer(t_philo_q *queue)
+int	philo_killer(t_philo_q *queue)
 {
 	t_philo_n	*philo;
 
 	if (!queue)
-		return ;
-	while (queue->n_philos)
+		return (0);
+	while (queue->n_philos && *philo->apoptosis == ERR_SYS)
 	{
 		philo = philo_pop(queue);
 		if (philo)
 		{
-			pthread_mutex_destroy(&philo->chopstick.mutex);
+			if (pthread_mutex_destroy(&philo->chopstick.mutex))
+				*philo->apoptosis = ERR_SYS;
 			free(philo);
 		}
 	}
+	if (*philo->apoptosis == ERR_SYS)
+		return (ERR_SYS);
 	queue->head = NULL;
+	return (0);
 }
