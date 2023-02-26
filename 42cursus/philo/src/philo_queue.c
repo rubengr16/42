@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:59:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/25 22:59:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/26 19:36:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,10 @@ int	philo_sire(t_philo *philo, t_philo_q *q, unsigned int n)
 		node->updated_time = philo->start_time;
 		node->birth_time = &philo->start_time;
 		node->chopstick.value = FREE;
-		if (pthread_mutex_init(&node->chopstick.mutex, NULL))
+		if (pthread_mutex_init(&node->chopstick.mutex, NULL)
+			|| pthread_mutex_init(&node->chopstick.rw_lock, NULL))
 			return (-1);
-		node->printf_mutex = &philo->printf_mutex;
+		node->printf_mutex= &philo->printf_mutex;
 	}
 	return (0);
 }

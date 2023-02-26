@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:40:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/25 23:13:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/26 19:37:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,20 @@ void	talk(t_philo_n *philo, int status, char *msg)
 	pthread_mutex_unlock(philo->printf_mutex);
 }
 
-void	live(t_philo_n *philo, int *chopstick, unsigned long time)
+void	live(t_philo_n *philo, t_chopstick *chopstick, unsigned long time)
 {
 	struct timeval	now;
+	int				busy;
 
 	gettimeofday(&now, NULL);
 	if (!chopstick)
 		philo->updated_time = now;
+	else
+	{
+		pthread_mutex_lock(&chopstick->rw_lock);
+		busy = chopstick->value;
+		pthread_mutex_unlock(&chopstick->rw_lock);
+	}
 	while (*philo->apoptosis != DIE && getutimediff(philo->updated_time, now) < (time * US_MS)
 		&& (!chopstick || *chopstick == BUSY))
 		{
@@ -50,15 +57,22 @@ void	live(t_philo_n *philo, int *chopstick, unsigned long time)
 
 int	getchopstick(t_philo_n *philo, t_chopstick *chopstick)
 {
-	if (chopstick->value == BUSY)
-		live(philo, &chopstick->value, philo->v_func->time[THINK]);
+	int	busy;
+
+	pthread_mutex_lock(&chopstick->rw_lock);
+	busy = chopstick->value;
+	pthread_mutex_unlock(&chopstick->rw_lock);
+	if (busy == BUSY)
+		live(philo, &chopstick, philo->v_func->time[THINK]);
 	if (*philo->apoptosis == DIE)
 	{
 		talk(philo, -1, DIE_MSG);
 		return (-1);
 	}
 	pthread_mutex_lock(&chopstick->mutex);
+	pthread_mutex_lock(&chopstick->rw_lock);
 	chopstick->value = BUSY;
+	pthread_mutex_unlock(&chopstick->rw_lock);
 	talk(philo, -1, TAKE_MSG);
 	return (0);
 }
@@ -76,9 +90,13 @@ void	dine(t_philo_n *philo, t_chopstick *cs1, t_chopstick *cs2)
 			live(philo, NULL, philo->v_func->time[philo->status]);
 		if (philo->status == EAT)
 		{
+			pthread_mutex_lock(&cs1->rw_lock);
 			cs1->value = FREE;
+			pthread_mutex_unlock(&cs1->rw_lock);
 			pthread_mutex_unlock(&cs1->mutex);
+			pthread_mutex_lock(&cs2->rw_lock);
 			cs2->value = FREE;
+			pthread_mutex_unlock(&cs2->rw_lock);
 			pthread_mutex_unlock(&cs2->mutex);
 		}
 	}
