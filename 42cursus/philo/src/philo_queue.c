@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:59:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/25 22:59:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/26 20:27:56 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	philo_sire(t_philo *philo, t_philo_q *q, unsigned int n)
 	t_philo_n	*node;
 
 	gettimeofday(&philo->start_time, NULL);
+	pthread_mutex_init(&philo->apoptosis.rw_lock, NULL);
+	pthread_mutex_init(&philo->printf_mutex, NULL);
 	while(q->n_philos < n)
 	{
 		node = malloc(sizeof(t_philo_n));
@@ -59,10 +61,11 @@ int	philo_sire(t_philo *philo, t_philo_q *q, unsigned int n)
 		node->apoptosis = &philo->apoptosis;
 		node->updated_time = philo->start_time;
 		node->birth_time = &philo->start_time;
-		node->chopstick.value = FREE;
-		if (pthread_mutex_init(&node->chopstick.mutex, NULL))
+		node->chopstick.lock.value = FREE;
+		if (pthread_mutex_init(&node->chopstick.mutex, NULL)
+			|| pthread_mutex_init(&node->chopstick.lock.rw_lock, NULL))
 			return (-1);
-		node->printf_mutex = &philo->printf_mutex;
+		node->printf_mutex= &philo->printf_mutex;
 	}
 	return (0);
 }
@@ -106,9 +109,12 @@ void	philo_killer(t_philo_q *queue)
 		philo = philo_pop(queue);
 		if (philo)
 		{
+			pthread_mutex_destroy(&philo->chopstick.lock.rw_lock);
 			pthread_mutex_destroy(&philo->chopstick.mutex);
 			free(philo);
 		}
 	}
+	pthread_mutex_destroy(&philo->apoptosis->rw_lock);
+	pthread_mutex_destroy(philo->printf_mutex);
 	queue->head = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:40:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/26 21:12:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/26 21:18:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,46 +29,46 @@ void	talk(t_philo_n *philo, int status, char *msg)
 	pthread_mutex_unlock(philo->printf_mutex);
 }
 
-void	live(t_philo_n *philo, int *chopstick, unsigned long time)
+void	live(t_philo_n *philo, t_chopstick *chopstick, unsigned long time)
 {
 	struct timeval	now;
 
 	gettimeofday(&now, NULL);
 	if (!chopstick)
 		philo->updated_time = now;
-	while (*philo->apoptosis != DIE && getutimediff(philo->updated_time, now) < (time * US_MS)
-		&& (!chopstick || *chopstick == BUSY))
+	while (rw_value(philo->apoptosis, READ) != DIE && getutimediff(philo->updated_time, now) < (time * US_MS)
+		&& (!chopstick || rw_value(&chopstick->lock, READ) == BUSY))
 		{
 			usleep(50);
 			gettimeofday(&now, NULL);
 		}
 	if (philo->status == EAT)
 		philo->n_dines++;
-	if (chopstick && *chopstick == BUSY && getutimediff(philo->updated_time, now) > (time * US_MS))
-		*philo->apoptosis = DIE;
+	if (chopstick && getutimediff(philo->updated_time, now) > (time * US_MS))
+		(void)rw_value(philo->apoptosis, DIE);
 }
 
 int	getchopstick(t_philo_n *philo, t_chopstick *chopstick)
 {
-	if (chopstick->value == BUSY)
-		live(philo, &chopstick->value, philo->v_func->time[THINK]);
-	if (*philo->apoptosis == DIE)
+	if (rw_value(&chopstick->lock, READ) == BUSY)
+		live(philo, chopstick, philo->v_func->time[THINK]);
+	if (rw_value(philo->apoptosis, READ) == DIE)
 	{
 		talk(philo, -1, DIE_MSG);
 		return (-1);
 	}
 	pthread_mutex_lock(&chopstick->mutex);
-	chopstick->value = BUSY;
+	(void)rw_value(&chopstick->lock, BUSY);
 	talk(philo, -1, TAKE_MSG);
 	return (0);
 }
 
 void	dine(t_philo_n *philo, t_chopstick *cs1, t_chopstick *cs2)
 {
-	while (*philo->apoptosis != DIE
+	while (rw_value(philo->apoptosis, READ) != DIE
 		&& (!*philo->needed_dines ||(philo->n_dines < *philo->needed_dines))
 		&& (philo->status != THINK || (philo->status == THINK
-		&& (getchopstick(philo, cs1) >= 0 && getchopstick(philo, cs2) >= 0))))
+		&& (getchopstick(philo, cs1) == 0 && getchopstick(philo, cs2) == 0))))
 	{
 		philo->status = (philo->status + 1) % 3;
 		talk(philo, philo->status, NULL);
@@ -76,9 +76,9 @@ void	dine(t_philo_n *philo, t_chopstick *cs1, t_chopstick *cs2)
 			live(philo, NULL, philo->v_func->time[philo->status]);
 		if (philo->status == EAT)
 		{
-			cs1->value = FREE;
+			(void)rw_value(&cs1->lock, FREE);
 			pthread_mutex_unlock(&cs1->mutex);
-			cs2->value = FREE;
+			(void)rw_value(&cs2->lock, FREE);
 			pthread_mutex_unlock(&cs2->mutex);
 		}
 	}
