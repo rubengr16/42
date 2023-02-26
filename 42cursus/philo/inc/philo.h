@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:03:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/26 21:19:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/26 21:35:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <pthread.h>
 
 # define INT_MAX 2147483648
-# define S_US 1000000
-# define US_MS 1000
+# define S_TO_MS 1000
+# define US_TO_MS 1000
 
 # define THINK 0
 # define EAT 1
@@ -50,7 +50,6 @@ typedef struct s_rw_lock
 	int					value;
 	pthread_mutex_t		rw_lock;
 }	t_rw_lock;
-
 
 typedef struct s_chopstick
 {
@@ -97,8 +96,10 @@ int				parser(t_philo *philo, char **argv);
 int				philo_sire(t_philo *philo, t_philo_q *q, unsigned int n);
 void			philo_killer(t_philo_q *queue);
 unsigned long	getutimediff(struct timeval start, struct timeval end);
+void			talk(t_philo_n *philo, int status, char *msg);
+void			live(t_philo_n *philo, t_chopstick *cs, unsigned long time);
 void			set_the_table(t_philo *philo);
-int				rw_value(t_rw_lock *chopstick, int	value);
-
+int				rw_value(t_rw_lock *chopstick, int value);
+int				getchopstick(t_philo_n *philo, t_chopstick *chopstick);
 
 #endif
