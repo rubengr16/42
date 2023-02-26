@@ -17,23 +17,27 @@ void	talk(t_philo_n *philo, int status, char *msg)
 	struct timeval	now;
 	unsigned long	time;
 
-	gettimeofday(&now, NULL);
+	if (gettimeofday(&now, NULL))
+		*philo->apoptosis = ERR_SYS;
 	time = getutimediff(*philo->birth_time, now);
 	if (!msg)
 	{
 		msg = philo->v_func->status[status];
 		philo->status = status;
 	}
-	pthread_mutex_lock(philo->printf_mutex);
-	printf("%ld %u %s\n", time / US_MS, philo->id, msg);
-	pthread_mutex_unlock(philo->printf_mutex);
+	if (pthread_mutex_lock(philo->printf_mutex))
+		*philo->apoptosis = ERR_SYS;
+	printf("%ld %u %s\n", time, philo->id, msg);
+	if (pthread_mutex_unlock(philo->printf_mutex))
+		*philo->apoptosis = ERR_SYS;
 }
 
 void	live(t_philo_n *philo, t_chopstick *chopstick, unsigned long time)
 {
 	struct timeval	now;
 
-	gettimeofday(&now, NULL);
+	if (gettimeofday(&now, NULL))
+		*philo->apoptosis = ERR_SYS;
 	if (!chopstick)
 		philo->updated_time = now;
 	while (rw_value(philo->apoptosis, READ) != DIE && getutimediff(philo->updated_time, now) < (time * US_MS)
@@ -95,25 +99,29 @@ void	*philosophare(void *varg)
 		dine(philo, &philo->next->chopstick, &philo->chopstick);
 	return (NULL);
 }
-\
-void	set_the_table(t_philo *philo)
+
+int	set_the_table(t_philo *philo)
 {
 	unsigned int	cnt;
 
 	cnt = 0;
-	while(cnt < philo->n_philos)
+	while (cnt < philo->n_philos && philo->apoptosis != ERR_SYS)
 	{
-		pthread_create(&philo->philos.head->thread, NULL, philosophare,
-			philo->philos.head);
+		if (pthread_create(&philo->philos.head->thread, NULL,
+				philosophare, philo->philos.head))
+			philo->apoptosis = ERR_SYS;
 		philo->philos.head = philo->philos.head->next;
 		cnt++;
 	}
 	cnt = 0;
-	philo->philos.head = philo->philos.head->next;
-	while (cnt < philo->n_philos)
+	while (cnt < philo->n_philos && philo->apoptosis != ERR_SYS)
 	{
-		pthread_join(philo->philos.head->thread, NULL);
+		if (pthread_join(philo->philos.head->thread, NULL))
+			philo->apoptosis = ERR_SYS;
 		philo->philos.head = philo->philos.head->next;
 		cnt++;
 	}
+	if (philo->apoptosis == ERR_SYS)
+		return (ERR_SYS);
+	return (0);
 }

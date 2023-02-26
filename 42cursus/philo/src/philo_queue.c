@@ -98,13 +98,13 @@ t_philo_n	*philo_pop(t_philo_q *queue)
 	return (aux);
 }
 
-void	philo_killer(t_philo_q *queue)
+int	philo_killer(t_philo_q *queue)
 {
 	t_philo_n	*philo;
 
 	if (!queue)
-		return ;
-	while (queue->n_philos)
+		return (0);
+	while (queue->n_philos && *philo->apoptosis == ERR_SYS)
 	{
 		philo = philo_pop(queue);
 		if (philo)
@@ -117,4 +117,5 @@ void	philo_killer(t_philo_q *queue)
 	pthread_mutex_destroy(&philo->apoptosis->rw_lock);
 	pthread_mutex_destroy(philo->printf_mutex);
 	queue->head = NULL;
+	return (0);
 }

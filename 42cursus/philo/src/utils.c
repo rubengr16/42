@@ -57,13 +57,29 @@ int	parser(t_philo *philo, char **argv)
 		if (ft_atoi(argv[cnt], &philo->needed_dines) <= 0)
 			return (-1);
 	}
-
 	return (cnt);
 }
 
 unsigned long	getutimediff(struct timeval start, struct timeval end)
 {
-	return (end.tv_sec - start.tv_sec) * S_US + (end.tv_usec - start.tv_usec);
+	return ((end.tv_sec - start.tv_sec) * S_TO_MS
+		+ (end.tv_usec - start.tv_usec) * US_TO_MS);
+}
+
+int	getchopstick(t_philo_n *philo, t_chopstick *chopstick)
+{
+	if (chopstick->value == BUSY)
+		live(philo, &chopstick->value, philo->v_func->time[THINK]);
+	if (*philo->apoptosis == DIE)
+	{
+		talk(philo, -1, DIE_MSG);
+		return (-1);
+	}
+	if (pthread_mutex_lock(&chopstick->mutex) != 0)
+		*philo->apoptosis = ERR_SYS;
+	chopstick->value = BUSY;
+	talk(philo, -1, TAKE_MSG);
+	return (0);
 }
 
 int	rw_value(t_rw_lock *chopstick, int	value)

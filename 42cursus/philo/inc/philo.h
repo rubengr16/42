@@ -20,13 +20,14 @@
 # include <pthread.h>
 
 # define INT_MAX 2147483648
-# define S_US 1000000
-# define US_MS 1000
+# define S_TO_MS 1000
+# define US_TO_MS 1000
 
 # define THINK 0
 # define EAT 1
 # define SLEEP 2
 # define DIE -1
+# define ERR_SYS -2
 
 # define EAT_MSG "is eating"
 # define SLEEP_MSG "is sleeping"
@@ -95,10 +96,9 @@ typedef struct s_philo
 
 int				parser(t_philo *philo, char **argv);
 int				philo_sire(t_philo *philo, t_philo_q *q, unsigned int n);
-void			philo_killer(t_philo_q *queue);
+int				philo_killer(t_philo_q *queue);
 unsigned long	getutimediff(struct timeval start, struct timeval end);
 void			set_the_table(t_philo *philo);
 int				rw_value(t_rw_lock *chopstick, int	value);
-
 
 #endif
