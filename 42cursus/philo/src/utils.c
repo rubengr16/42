@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:14:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/26 19:38:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/26 20:24:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,14 @@ unsigned long	getutimediff(struct timeval start, struct timeval end)
 	return (end.tv_sec - start.tv_sec) * S_US + (end.tv_usec - start.tv_usec);
 }
 
-int	rw_chopstick_value(t_chopstick *chopstick, int	value)
+int	rw_value(t_rw_lock *chopstick, int	value)
 {
+	int	busy;
 
+	pthread_mutex_lock(&chopstick->rw_lock);
+	if (value != READ)
+		chopstick->value = value;
+	busy = chopstick->value;
+	pthread_mutex_unlock(&chopstick->rw_lock);
+	return (busy);
 }

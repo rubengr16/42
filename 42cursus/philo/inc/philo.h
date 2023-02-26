@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:03:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/26 19:38:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/02/26 20:24:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,25 @@
 # define FREE 1
 # define BUSY 0
 
+# define READ -2
+
 typedef struct s_vital_functions
 {
 	unsigned int	time[3];
 	char			*status[4];
 }	t_vital_functions;
 
-typedef struct s_chopstick
+typedef struct s_rw_lock
 {
 	int					value;
 	pthread_mutex_t		rw_lock;
-	pthread_mutex_t		mutex;
+}	t_rw_lock;
+
+
+typedef struct s_chopstick
+{
+	t_rw_lock		lock;
+	pthread_mutex_t	mutex;
 }	t_chopstick;
 
 typedef struct s_philo_n
@@ -58,7 +66,7 @@ typedef struct s_philo_n
 	int					status;
 	char				*status_msg;
 	t_vital_functions	*v_func;
-	int					*apoptosis;
+	t_rw_lock			*apoptosis;
 	struct timeval		updated_time;
 	struct timeval		*birth_time;
 	pthread_t			thread;
@@ -79,7 +87,7 @@ typedef struct s_philo
 	unsigned int		n_philos;
 	unsigned int		needed_dines;
 	t_vital_functions	v_func;
-	int					apoptosis;
+	t_rw_lock			apoptosis;
 	struct timeval		start_time;
 	pthread_mutex_t		printf_mutex;
 	t_philo_q			philos;
@@ -90,7 +98,7 @@ int				philo_sire(t_philo *philo, t_philo_q *q, unsigned int n);
 void			philo_killer(t_philo_q *queue);
 unsigned long	getutimediff(struct timeval start, struct timeval end);
 void			set_the_table(t_philo *philo);
-int				rw_chopstick_value(t_chopstick *chopstick, int	value);
+int				rw_value(t_rw_lock *chopstick, int	value);
 
 
 #endif
