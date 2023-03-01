@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:40:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/26 21:34:40 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/01 19:30:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	live(t_philo_n *philo, t_chopstick *cs, unsigned long time)
 	}
 	if (philo->status == EAT)
 		philo->n_dines++;
-	if (cs && getutimediff(philo->updated_time, now) > time)
+	if (cs && getutimediff(philo->updated_time, now) >= time)
 		(void)rw_value(philo->apoptosis, DIE);
 }
 

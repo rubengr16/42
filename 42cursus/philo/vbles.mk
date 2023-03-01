@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 16:19:28 by rgallego          #+#    #+#              #
-#    Updated: 2023/02/26 21:21:52 by rgallego         ###   ########.fr        #
+#    Updated: 2023/03/01 19:31:33 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CC		=			gcc
 
 RM		=			-rm -f
 
-CFLAGS	=			-Wall -Werror -Wextra -MD -fsanitize=thread -g3
+CFLAGS	=			-Wall -Werror -Wextra -MD
 
 NAME	=			philo
 
