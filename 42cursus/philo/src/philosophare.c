@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:40:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/07 19:20:13 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/07 21:05:46 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,31 @@ void	talk(t_philo_n *philo, int status, char *msg)
 	pthread_mutex_unlock(philo->printf_mutex);
 }
 
-void	live(t_philo_n *philo, t_chopstick *cs, unsigned long time)
+void	live(t_philo_n *philo, t_rw_lock *cs, unsigned long time)
 {
 	struct timeval	now;
 
 	gettimeofday(&now, NULL);
 	if (philo->status == THINK && philo->n_dines)
-		time = philo->v_func->time[THINK] - philo->v_func->time[EAT];
+		time = philo->v_func->time[THINK] - philo->v_func->time[EAT]
+			- philo->v_func->time[SLEEP];
 	while (rw_value(philo->apoptosis, READ) != DIE
 		&& getutimediff(philo->updated_time, now) < time
-		&& (!cs || rw_value(&cs->lock, READ) == BUSY))
+		&& (!cs || rw_value(&cs, READ) == BUSY))
 	{
-		usleep(50);
+		usleep(100);
 		gettimeofday(&now, NULL);
 	}
-	if (philo->status == EAT)
-		philo->n_dines++;
 	if (cs && getutimediff(philo->updated_time, now) >= time)
 	{
 		(void)rw_value(philo->apoptosis, DIE);
 		talk(philo, -1, DIE_MSG);
 	}
+	if (philo->status == EAT)
+		philo->n_dines++;
 }
 
-void	dine(t_philo_n *philo, t_chopstick *cs1, t_chopstick *cs2)
+void	dine(t_philo_n *philo, t_rw_lock *cs1, t_rw_lock *cs2)
 {
 	while (rw_value(philo->apoptosis, READ) != DIE
 		&& (!*philo->needed_dines || (philo->n_dines < *philo->needed_dines))
@@ -66,10 +67,8 @@ void	dine(t_philo_n *philo, t_chopstick *cs1, t_chopstick *cs2)
 			live(philo, NULL, philo->v_func->time[philo->status]);
 		if (philo->status == EAT)
 		{
-			(void)rw_value(&cs1->lock, FREE);
-			pthread_mutex_unlock(&cs1->mutex);
-			(void)rw_value(&cs2->lock, FREE);
-			pthread_mutex_unlock(&cs2->mutex);
+			(void)rw_value(&cs1, FREE);
+			(void)rw_value(&cs2, FREE);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:14:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/07 18:47:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/07 21:15:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,14 @@ int	rw_value(t_rw_lock *chopstick, int value)
 	return (busy);
 }
 
-int	getchopstick(t_philo_n *philo, t_chopstick *chopstick)
+int	getchopstick(t_philo_n *philo, t_rw_lock *chopstick)
 {
-	if (rw_value(&chopstick->lock, READ) == BUSY)
+	if (rw_value(&chopstick, READ) == BUSY)
 		live(philo, chopstick, philo->v_func->time[THINK]);
 	if (rw_value(philo->apoptosis, READ) == DIE)
 		return (-1);
-	pthread_mutex_lock(&chopstick->mutex);
-	(void)rw_value(&chopstick->lock, BUSY);
+	pthread_mutex_lock(&chopstick->rw_lock);
+	(void)rw_value(&chopstick, BUSY);
 	talk(philo, -1, TAKE_MSG);
 	return (0);
 }

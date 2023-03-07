@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:03:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/26 21:35:53 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/07 21:09:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,6 @@ typedef struct s_rw_lock
 	pthread_mutex_t		rw_lock;
 }	t_rw_lock;
 
-typedef struct s_chopstick
-{
-	t_rw_lock		lock;
-	pthread_mutex_t	mutex;
-}	t_chopstick;
-
 typedef struct s_philo_n
 {
 	unsigned int		id;
@@ -69,7 +63,7 @@ typedef struct s_philo_n
 	struct timeval		updated_time;
 	struct timeval		*birth_time;
 	pthread_t			thread;
-	t_chopstick			chopstick;
+	t_rw_lock			chopstick;
 	pthread_mutex_t		*printf_mutex;
 	struct s_philo_n	*next;
 	struct s_philo_n	*prvs;
@@ -97,9 +91,9 @@ int				philo_sire(t_philo *philo, t_philo_q *q, unsigned int n);
 void			philo_killer(t_philo_q *queue);
 unsigned long	getutimediff(struct timeval start, struct timeval end);
 void			talk(t_philo_n *philo, int status, char *msg);
-void			live(t_philo_n *philo, t_chopstick *cs, unsigned long time);
+void			live(t_philo_n *philo, t_rw_lock *cs, unsigned long time);
 void			set_the_table(t_philo *philo);
 int				rw_value(t_rw_lock *chopstick, int value);
-int				getchopstick(t_philo_n *philo, t_chopstick *chopstick);
+int				getchopstick(t_philo_n *philo, t_rw_lock *chopstick);
 
 #endif

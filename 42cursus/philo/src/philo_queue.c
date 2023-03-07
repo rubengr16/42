@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:59:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/26 21:32:34 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/07 21:03:14 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,8 @@ int	philo_sire(t_philo *philo, t_philo_q *q, unsigned int n)
 		node->apoptosis = &philo->apoptosis;
 		node->updated_time = philo->start_time;
 		node->birth_time = &philo->start_time;
-		node->chopstick.lock.value = FREE;
-		pthread_mutex_init(&node->chopstick.mutex, NULL);
-		pthread_mutex_init(&node->chopstick.lock.rw_lock, NULL);
+		node->chopstick.value = FREE;
+		pthread_mutex_init(&node->chopstick.rw_lock, NULL);
 		node->printf_mutex = &philo->printf_mutex;
 	}
 	return (0);
@@ -106,8 +105,7 @@ void	philo_killer(t_philo_q *queue)
 		philo = philo_pop(queue);
 		if (philo)
 		{
-			pthread_mutex_destroy(&philo->chopstick.lock.rw_lock);
-			pthread_mutex_destroy(&philo->chopstick.mutex);
+			pthread_mutex_destroy(&philo->chopstick.rw_lock);
 			free(philo);
 		}
 	}
