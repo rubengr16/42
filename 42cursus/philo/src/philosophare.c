@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:40:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/01 19:30:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:20:13 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	live(t_philo_n *philo, t_chopstick *cs, unsigned long time)
 	struct timeval	now;
 
 	gettimeofday(&now, NULL);
-	if (!cs)
-		philo->updated_time = now;
+	if (philo->status == THINK && philo->n_dines)
+		time = philo->v_func->time[THINK] - philo->v_func->time[EAT];
 	while (rw_value(philo->apoptosis, READ) != DIE
 		&& getutimediff(philo->updated_time, now) < time
 		&& (!cs || rw_value(&cs->lock, READ) == BUSY))
@@ -46,7 +46,10 @@ void	live(t_philo_n *philo, t_chopstick *cs, unsigned long time)
 	if (philo->status == EAT)
 		philo->n_dines++;
 	if (cs && getutimediff(philo->updated_time, now) >= time)
+	{
 		(void)rw_value(philo->apoptosis, DIE);
+		talk(philo, -1, DIE_MSG);
+	}
 }
 
 void	dine(t_philo_n *philo, t_chopstick *cs1, t_chopstick *cs2)
@@ -56,6 +59,7 @@ void	dine(t_philo_n *philo, t_chopstick *cs1, t_chopstick *cs2)
 		&& (philo->status != THINK || (philo->status == THINK
 				&& (!getchopstick(philo, cs1) && !getchopstick(philo, cs2)))))
 	{
+		gettimeofday(&philo->updated_time, NULL);
 		philo->status = (philo->status + 1) % 3;
 		talk(philo, philo->status, NULL);
 		if (philo->status != THINK)

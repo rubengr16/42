@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:14:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/02/26 21:35:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:47:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,7 @@ int	getchopstick(t_philo_n *philo, t_chopstick *chopstick)
 	if (rw_value(&chopstick->lock, READ) == BUSY)
 		live(philo, chopstick, philo->v_func->time[THINK]);
 	if (rw_value(philo->apoptosis, READ) == DIE)
-	{
-		talk(philo, -1, DIE_MSG);
 		return (-1);
-	}
 	pthread_mutex_lock(&chopstick->mutex);
 	(void)rw_value(&chopstick->lock, BUSY);
 	talk(philo, -1, TAKE_MSG);
