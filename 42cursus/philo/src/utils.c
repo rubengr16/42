@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:14:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/07 21:15:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/16 20:31:06 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,26 +66,38 @@ unsigned long	getutimediff(struct timeval start, struct timeval end)
 		+ (end.tv_usec - start.tv_usec) / US_TO_MS);
 }
 
-int	rw_value(t_rw_lock *chopstick, int value)
+int	is_death(t_apoptosis *apoptosis, int value)
 {
-	int	busy;
+	int	death;
 
-	pthread_mutex_lock(&chopstick->rw_lock);
+	pthread_mutex_lock(&apoptosis->mutex);
 	if (value != READ)
-		chopstick->value = value;
-	busy = chopstick->value;
-	pthread_mutex_unlock(&chopstick->rw_lock);
-	return (busy);
+		apoptosis->apoptosis = value;
+	death = apoptosis->apoptosis;
+	pthread_mutex_unlock(&apoptosis->mutex);
+	return (death);
 }
 
-int	getchopstick(t_philo_n *philo, t_rw_lock *chopstick)
+void	getchopsticks(t_philo_n *philo,
+	pthread_mutex_t *cs1, pthread_mutex_t *cs2)
 {
-	if (rw_value(&chopstick, READ) == BUSY)
-		live(philo, chopstick, philo->v_func->time[THINK]);
-	if (rw_value(philo->apoptosis, READ) == DIE)
-		return (-1);
-	pthread_mutex_lock(&chopstick->rw_lock);
-	(void)rw_value(&chopstick, BUSY);
-	talk(philo, -1, TAKE_MSG);
-	return (0);
+	if (is_death(philo->apoptosis, READ) != DIE)
+	{
+		pthread_mutex_lock(cs1);
+		if (is_death(philo->apoptosis, READ) != DIE)
+		{
+			talk(philo, -1, TAKE_MSG);
+			pthread_mutex_lock(cs2);
+			if (is_death(philo->apoptosis, READ) != DIE)
+			{
+				gettimeofday(&philo->last_sup_time, NULL);
+				philo->updated_time = philo->last_sup_time;
+				talk(philo, -1, TAKE_MSG);
+			}
+			else
+				pthread_mutex_unlock(cs2);
+		}
+		else
+			pthread_mutex_unlock(cs2);
+	}
 }

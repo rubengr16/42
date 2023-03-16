@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:59:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/07 21:03:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/16 20:12:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static int	push_philo(t_philo_q *queue, t_philo_n	*node)
 		node->next->prvs = node;
 		node->prvs->next = node;
 	}
+	queue->n_philos++;
 	return (0);
 }
 
@@ -49,18 +50,16 @@ int	philo_sire(t_philo *philo, t_philo_q *q, unsigned int n)
 		node = malloc(sizeof(t_philo_n));
 		if (!node || push_philo(q, node) < 0)
 			return (-1);
-		q->n_philos++;
 		node->id = q->n_philos;
 		node->n_dines = 0;
 		node->needed_dines = &philo->needed_dines;
 		node->status = THINK;
-		node->status_msg = NULL;
 		node->v_func = &philo->v_func;
 		node->apoptosis = &philo->apoptosis;
 		node->updated_time = philo->start_time;
+		node->last_sup_time = philo->start_time;
 		node->birth_time = &philo->start_time;
-		node->chopstick.value = FREE;
-		pthread_mutex_init(&node->chopstick.rw_lock, NULL);
+		pthread_mutex_init(&node->chopstick, NULL);
 		node->printf_mutex = &philo->printf_mutex;
 	}
 	return (0);
@@ -94,22 +93,22 @@ t_philo_n	*philo_pop(t_philo_q *queue)
 	return (aux);
 }
 
-void	philo_killer(t_philo_q *queue)
+void	philo_killer(t_philo *philo)
 {
-	t_philo_n	*philo;
+	t_philo_n	*aux;
 
-	if (!queue)
+	if (!philo)
 		return ;
-	while (queue->n_philos)
+	while (philo->philos.n_philos)
 	{
-		philo = philo_pop(queue);
-		if (philo)
+		aux = philo_pop(&philo->philos);
+		if (aux)
 		{
-			pthread_mutex_destroy(&philo->chopstick.rw_lock);
-			free(philo);
+			pthread_mutex_destroy(&aux->chopstick);
+			free(aux);
 		}
 	}
-	pthread_mutex_destroy(&philo->apoptosis->rw_lock);
-	pthread_mutex_destroy(philo->printf_mutex);
-	queue->head = NULL;
+	pthread_mutex_destroy(&philo->apoptosis.mutex);
+	pthread_mutex_destroy(&philo->printf_mutex);
+	philo->philos.head = NULL;
 }
