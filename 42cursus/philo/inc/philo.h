@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:03:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/16 20:19:59 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/17 16:11:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,21 @@ typedef struct s_v_func
 	char			*status[4];
 }	t_v_func;
 
+typedef struct s_apoptosis
+{
+	unsigned int	apoptosis;
+	pthread_mutex_t	mutex;
+}	t_apoptosis;
+
 typedef struct s_philo_n
 {
 	unsigned int		id;
+	unsigned int		*n_philos;
 	unsigned int		n_dines;
 	unsigned int		*needed_dines;
-	int					status;
+	unsigned int		status;
 	t_v_func			*v_func;
-	unsigned int		*apoptosis;
-	pthread_mutex_t		*apoptosis_mutex;
+	t_apoptosis			*apoptosis;
 	struct timeval		updated_time;
 	struct timeval		last_sup_time;
 	struct timeval		*birth_time;
@@ -69,12 +75,6 @@ typedef struct s_philo_q
 	unsigned int	n_philos;
 	t_philo_n		*head;
 }	t_philo_q;
-
-typedef struct s_apoptosis
-{
-	unsigned int	apoptosis;
-	pthread_mutex_t	mutex;
-}	t_apoptosis;
 
 typedef struct s_philo
 {
@@ -92,7 +92,7 @@ int				philo_sire(t_philo *philo, t_philo_q *q, unsigned int n);
 void			philo_killer(t_philo *philo);
 unsigned long	getutimediff(struct timeval start, struct timeval end);
 void			talk(t_philo_n *philo, int status, char *msg);
-void			live(t_philo_n *philo, t_rw_lock *cs, unsigned long time);
+void			live(t_philo_n *philo, unsigned long time);
 void			set_the_table(t_philo *philo);
 int				is_death(t_apoptosis *apoptosis, int value);
 void			getchopsticks(t_philo_n *philo,

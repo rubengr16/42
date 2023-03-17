@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:14:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/16 20:31:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/17 15:48:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,6 @@ void	getchopsticks(t_philo_n *philo,
 				pthread_mutex_unlock(cs2);
 		}
 		else
-			pthread_mutex_unlock(cs2);
+			pthread_mutex_unlock(cs1);
 	}
 }

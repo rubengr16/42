@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:40:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/16 20:30:12 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/17 16:50:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	live(t_philo_n *philo, unsigned long time)
 	struct timeval	now;
 
 	gettimeofday(&now, NULL);
-	while (rw_value(philo->apoptosis, READ) != DIE
+	while (is_death(philo->apoptosis, READ) != DIE
 		&& getutimediff(philo->updated_time, now) < time)
 	{
 		usleep(100);
@@ -44,6 +44,7 @@ void	live(t_philo_n *philo, unsigned long time)
 
 void	dine(t_philo_n *philo, pthread_mutex_t *cs1, pthread_mutex_t *cs2)
 {
+	getchopsticks(philo, cs1, cs2);
 	while (is_death(philo->apoptosis, READ) != DIE
 		&& (!*philo->needed_dines || (philo->n_dines < *philo->needed_dines)))
 	{
@@ -75,6 +76,29 @@ void	*philosophare(void *varg)
 	return (NULL);
 }
 
+void	waiter(t_philo *philo)
+{
+	t_philo_n		*aux;
+	struct timeval	now;
+	unsigned int	n_finished;
+
+	aux = philo->philos.head;
+	n_finished = 0;
+	while (is_death(&philo->apoptosis, READ) != DIE
+		&& (!philo->needed_dines || n_finished < philo->n_philos))
+	{
+		gettimeofday(&now, NULL);
+		if (getutimediff(aux->last_sup_time, now) > philo->v_func.time[THINK])
+		{
+			is_death(&philo->apoptosis, DIE);
+			talk(aux, DIE, DIE_MSG);
+		}
+		if (aux->n_dines == *aux->needed_dines)
+			n_finished++;
+		aux = aux->next;
+	}
+}
+
 void	set_the_table(t_philo *philo)
 {
 	unsigned int	cnt;
@@ -89,6 +113,7 @@ void	set_the_table(t_philo *philo)
 		philo->philos.head = philo->philos.head->next;
 		cnt++;
 	}
+	waiter(philo);
 	cnt = 0;
 	while (cnt < philo->n_philos)
 	{
