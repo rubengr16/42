@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:40:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/20 23:43:04 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/20 23:45:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	getchopsticks(t_philo_n *philo,
 	pthread_mutex_t *cs1, pthread_mutex_t *cs2)
 {
 	if (cs1 == cs2)
-		live(philo, philo->v_func->time[THINK] + 1);
+		live(philo, philo->v_func->time[THINK]);
 	if (is_death(philo->apoptosis, READ) != DIE)
 	{
 		pthread_mutex_lock(cs1);
