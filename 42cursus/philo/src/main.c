@@ -22,9 +22,9 @@ int	main(int argc, char **argv)
 		printf("time_to_sleep [nbr_of_times_each_philo_must_eat]\n");
 		return (1);
 	}
-	philo = (t_philo){0, 0, {{0, 0, 0}, {THINK_MSG, EAT_MSG, SLEEP_MSG, NULL}},
-	{0, philo.apoptosis.mutex}, philo.start_time, philo.printf_mutex,
-	{0, NULL}};
+	philo = (t_philo){};
+	philo.v_func = (t_v_func){{0, 0, 0},
+	{THINK_MSG, EAT_MSG, SLEEP_MSG, NULL}};
 	if (parser(&philo, &argv[1]) < 0)
 		return (1);
 	if (philo_sire(&philo, &philo.philos, philo.n_philos) < 0)

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:03:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/17 16:11:53 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/20 23:38:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@
 # include <pthread.h>
 
 # define INT_MAX 2147483648
+
 # define S_TO_MS 1000
 # define US_TO_MS 1000
+
+# define MIN_USLEEP 100
+# define RENDEZVOUS_TIME 400
 
 # define THINK 0
 # define EAT 1
@@ -88,14 +92,12 @@ typedef struct s_philo
 }	t_philo;
 
 int				parser(t_philo *philo, char **argv);
+unsigned long	getutimediff(struct timeval start, struct timeval end);
 int				philo_sire(t_philo *philo, t_philo_q *q, unsigned int n);
 void			philo_killer(t_philo *philo);
-unsigned long	getutimediff(struct timeval start, struct timeval end);
 void			talk(t_philo_n *philo, int status, char *msg);
-void			live(t_philo_n *philo, unsigned long time);
+void			*philosophare(void *varg);
 void			set_the_table(t_philo *philo);
 int				is_death(t_apoptosis *apoptosis, int value);
-void			getchopsticks(t_philo_n *philo,
-					pthread_mutex_t *cs1, pthread_mutex_t *cs2);
 
 #endif

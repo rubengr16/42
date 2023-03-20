@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:40:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/17 16:50:51 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/20 23:43:04 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	talk(t_philo_n *philo, int status, char *msg)
 	pthread_mutex_unlock(philo->printf_mutex);
 }
 
-void	live(t_philo_n *philo, unsigned long time)
+static void	live(t_philo_n *philo, unsigned long time)
 {
 	struct timeval	now;
 
@@ -37,12 +37,38 @@ void	live(t_philo_n *philo, unsigned long time)
 	while (is_death(philo->apoptosis, READ) != DIE
 		&& getutimediff(philo->updated_time, now) < time)
 	{
-		usleep(100);
+		usleep(MIN_USLEEP);
 		gettimeofday(&now, NULL);
 	}
 }
 
-void	dine(t_philo_n *philo, pthread_mutex_t *cs1, pthread_mutex_t *cs2)
+static void	getchopsticks(t_philo_n *philo,
+	pthread_mutex_t *cs1, pthread_mutex_t *cs2)
+{
+	if (cs1 == cs2)
+		live(philo, philo->v_func->time[THINK] + 1);
+	if (is_death(philo->apoptosis, READ) != DIE)
+	{
+		pthread_mutex_lock(cs1);
+		if (is_death(philo->apoptosis, READ) != DIE)
+		{
+			talk(philo, -1, TAKE_MSG);
+			pthread_mutex_lock(cs2);
+			if (is_death(philo->apoptosis, READ) != DIE)
+			{
+				gettimeofday(&philo->last_sup_time, NULL);
+				philo->updated_time = philo->last_sup_time;
+				talk(philo, -1, TAKE_MSG);
+			}
+			else
+				pthread_mutex_unlock(cs2);
+		}
+		else
+			pthread_mutex_unlock(cs1);
+	}
+}
+
+static void	dine(t_philo_n *philo, pthread_mutex_t *cs1, pthread_mutex_t *cs2)
 {
 	getchopsticks(philo, cs1, cs2);
 	while (is_death(philo->apoptosis, READ) != DIE
@@ -52,7 +78,10 @@ void	dine(t_philo_n *philo, pthread_mutex_t *cs1, pthread_mutex_t *cs2)
 		gettimeofday(&philo->updated_time, NULL);
 		talk(philo, philo->status, NULL);
 		if (philo->status == THINK)
+		{
+			usleep(RENDEZVOUS_TIME);
 			getchopsticks(philo, cs1, cs2);
+		}
 		else
 			live(philo, philo->v_func->time[philo->status]);
 		if (philo->status == EAT)
@@ -74,51 +103,4 @@ void	*philosophare(void *varg)
 	else
 		dine(philo, &philo->next->chopstick, &philo->chopstick);
 	return (NULL);
-}
-
-void	waiter(t_philo *philo)
-{
-	t_philo_n		*aux;
-	struct timeval	now;
-	unsigned int	n_finished;
-
-	aux = philo->philos.head;
-	n_finished = 0;
-	while (is_death(&philo->apoptosis, READ) != DIE
-		&& (!philo->needed_dines || n_finished < philo->n_philos))
-	{
-		gettimeofday(&now, NULL);
-		if (getutimediff(aux->last_sup_time, now) > philo->v_func.time[THINK])
-		{
-			is_death(&philo->apoptosis, DIE);
-			talk(aux, DIE, DIE_MSG);
-		}
-		if (aux->n_dines == *aux->needed_dines)
-			n_finished++;
-		aux = aux->next;
-	}
-}
-
-void	set_the_table(t_philo *philo)
-{
-	unsigned int	cnt;
-
-	pthread_mutex_init(&philo->apoptosis.mutex, NULL);
-	pthread_mutex_init(&philo->printf_mutex, NULL);
-	cnt = 0;
-	while (cnt < philo->n_philos)
-	{
-		pthread_create(&philo->philos.head->thread, NULL, philosophare,
-			philo->philos.head);
-		philo->philos.head = philo->philos.head->next;
-		cnt++;
-	}
-	waiter(philo);
-	cnt = 0;
-	while (cnt < philo->n_philos)
-	{
-		pthread_join(philo->philos.head->thread, NULL);
-		philo->philos.head = philo->philos.head->next;
-		cnt++;
-	}
 }

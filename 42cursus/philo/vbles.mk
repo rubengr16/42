@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 16:19:28 by rgallego          #+#    #+#              #
-#    Updated: 2023/03/07 20:35:21 by rgallego         ###   ########.fr        #
+#    Updated: 2023/03/20 23:43:17 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS	= 			$(addprefix $(SRC_DIR), \
 					$(PHILO) \
 					utils.c \
 					philo_queue.c \
+					cook.c \
 					philosophare.c \
 					)
 

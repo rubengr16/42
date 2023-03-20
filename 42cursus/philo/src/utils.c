@@ -6,13 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:14:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/17 15:48:12 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/20 23:38:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_atoi(const char *s, unsigned int *num)
+static int	ft_atoi(const char *s, unsigned int *num)
 {
 	*num = 0;
 	while (*s && (*s == '\t' || *s == '\n' || *s == '\v' || *s == '\f'
@@ -76,28 +76,4 @@ int	is_death(t_apoptosis *apoptosis, int value)
 	death = apoptosis->apoptosis;
 	pthread_mutex_unlock(&apoptosis->mutex);
 	return (death);
-}
-
-void	getchopsticks(t_philo_n *philo,
-	pthread_mutex_t *cs1, pthread_mutex_t *cs2)
-{
-	if (is_death(philo->apoptosis, READ) != DIE)
-	{
-		pthread_mutex_lock(cs1);
-		if (is_death(philo->apoptosis, READ) != DIE)
-		{
-			talk(philo, -1, TAKE_MSG);
-			pthread_mutex_lock(cs2);
-			if (is_death(philo->apoptosis, READ) != DIE)
-			{
-				gettimeofday(&philo->last_sup_time, NULL);
-				philo->updated_time = philo->last_sup_time;
-				talk(philo, -1, TAKE_MSG);
-			}
-			else
-				pthread_mutex_unlock(cs2);
-		}
-		else
-			pthread_mutex_unlock(cs1);
-	}
 }

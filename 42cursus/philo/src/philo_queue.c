@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:59:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/17 16:12:37 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/20 23:36:30 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	philo_sire(t_philo *philo, t_philo_q *q, unsigned int n)
 	return (0);
 }
 
-t_philo_n	*philo_pop(t_philo_q *queue)
+static t_philo_n	*philo_pop(t_philo_q *queue)
 {
 	t_philo_n	*aux;
 
