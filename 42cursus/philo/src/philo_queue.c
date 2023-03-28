@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:59:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/20 23:36:30 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/21 08:22:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	philo_sire(t_philo *philo, t_philo_q *q, unsigned int n)
 		if (!node || push_philo(q, node) < 0)
 			return (-1);
 		node->id = q->n_philos;
-		node->n_philos = &q->n_philos;
 		node->n_dines = 0;
 		node->needed_dines = &philo->needed_dines;
 		node->status = THINK;

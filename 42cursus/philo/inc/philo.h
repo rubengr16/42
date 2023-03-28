@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:03:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/20 23:38:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/21 08:22:27 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct s_apoptosis
 typedef struct s_philo_n
 {
 	unsigned int		id;
-	unsigned int		*n_philos;
 	unsigned int		n_dines;
 	unsigned int		*needed_dines;
 	unsigned int		status;

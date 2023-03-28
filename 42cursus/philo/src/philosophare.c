@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:40:25 by rgallego          #+#    #+#             */
-/*   Updated: 2023/03/20 23:45:00 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:27:30 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ static void	getchopsticks(t_philo_n *philo,
 				talk(philo, -1, TAKE_MSG);
 			}
 			else
+			{
+				pthread_mutex_unlock(cs1);
 				pthread_mutex_unlock(cs2);
+			}
 		}
 		else
 			pthread_mutex_unlock(cs1);
@@ -72,7 +75,7 @@ static void	dine(t_philo_n *philo, pthread_mutex_t *cs1, pthread_mutex_t *cs2)
 {
 	getchopsticks(philo, cs1, cs2);
 	while (is_death(philo->apoptosis, READ) != DIE
-		&& (!*philo->needed_dines || (philo->n_dines < *philo->needed_dines)))
+		&& (!*philo->needed_dines || philo->n_dines < *philo->needed_dines))
 	{
 		philo->status = (philo->status + 1) % 3;
 		gettimeofday(&philo->updated_time, NULL);
