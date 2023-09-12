@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/09/08 22:29:27 by rgallego         ###   ########.fr        #
+#    Updated: 2023/09/12 23:52:10 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,12 @@ SRC_DIR	=			src/
 
 INC_DIR	=			inc/
 
-EX00	=			megaphone.cpp
+EX01	=			\
+						Contact.cpp \
+						PhoneBook.cpp \
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
-						$(EX00) \
+						$(EX01) \
 					)
 
 OBJS	=			$(SRCS:.cpp=.o)
@@ -30,7 +32,7 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Wextra -Werror -std=c++98
 
-NAME	=			megaphone
+NAME	=			phonebook
 
 INC_ALL	=			\
 					$(INC_DIR)
