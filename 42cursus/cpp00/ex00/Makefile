@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:38:38 by rgallego          #+#    #+#              #
-#    Updated: 2023/09/08 22:29:46 by rgallego         ###   ########.fr        #
+#    Updated: 2023/09/12 23:55:08 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 all: $(NAME)
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
