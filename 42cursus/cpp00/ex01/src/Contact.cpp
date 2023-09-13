@@ -6,11 +6,15 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 22:47:09 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/12 23:42:15 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/09/13 23:22:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+
+Contact::Contact(void)
+{
+}
 
 Contact::Contact(std::string firstName, std::string lastName,
 	std::string nickname, std::string phone,std::string  darkestSecret)
@@ -74,3 +78,29 @@ std::string	Contact::getDarkestSecret(void) const
 {
 	return (this->_darkestSecret);
 }
+
+void	Contact::setAll(std::string firstName, std::string lastName,
+std::string nickname, std::string phone,std::string  darkestSecret)
+{
+	this->_firstName = firstName;
+	this->_lastName = lastName;
+	this->_nickname = nickname;
+	this->_phone = phone;
+	this->_darkestSecret = darkestSecret;
+}
+
+std::string	Contact::getField(std::string message)
+{
+	std::string	str;
+
+	do
+	{
+		std::cout << message;
+		std::getline(std::cin, str);
+		if (str.empty())
+			std::cout << "Empty input is not allowed. Please try again!"
+				<< std::endl;
+	} while (str.empty());
+	return (str);
+}
+

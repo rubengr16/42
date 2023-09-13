@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 22:40:34 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/13 23:03:14 by rgallego         ###   ########.fr       */
+/*   Created: 2023/09/13 23:08:05 by rgallego          #+#    #+#             */
+/*   Updated: 2023/09/13 23:43:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
-int main(int argc, char **argv)
+int	main(void)
 {
-	int	i;
-	int	j;
+	PhoneBook	phoneBook;
+	std::string	command;
 
-	i = 1;
-	while (argv[i])
+	std::cout << "Welcome to the 42 awesome phone book!!" << std::endl;
+	do
 	{
-		j = 0;
-		while (argv[i][j])
-		{
-			std::cout << (char)toupper(argv[i][j]);
-			j++;
-		}
-		i++;
-	}
-	if (argc < 2)
-		std::cout << "* LOUD AND UNBEARABLE FEED BACK NOISE *";
-	std::cout << std::endl;
+		std::cout << "Please, enter your command: ";
+		std::getline(std::cin, command);
+		if (!command.compare("ADD"))
+			phoneBook.addContact();
+		else if (!command.compare("SEARCH"))
+			phoneBook.searchContact();
+	} while (command.compare("EXIT"));
 	return (0);
 }
