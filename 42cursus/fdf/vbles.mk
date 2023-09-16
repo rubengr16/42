@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 19:07:43 by rgallego          #+#    #+#              #
-#    Updated: 2023/02/02 11:18:01 by rgallego         ###   ########.fr        #
+#    Updated: 2023/09/14 22:24:32 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,10 +58,19 @@ GNL		=			get_next_line/
 
 GNLNAME	=			$(GNL)get_next_line.a
 
-MLX		=			mlx/
+ifeq ($(shell uname), Linux)
+	MLX	= 			mlx_linux/
 
-MLXNAME	=			libmlx.dylib
+	MLXNAME	=		mlx_linux/libmlx.a
 
-FRAMEWORK	=		$(addprefix -framework , \
+	FRAMEWORK	=	-lXext -lX11 -lm
+
+else
+	MLX		=		mlx/
+
+	MLXNAME	=		libmlx.dylib
+
+	FRAMEWORK	=	$(addprefix -framework , \
 					OpenGL \
 					AppKit)
+endif

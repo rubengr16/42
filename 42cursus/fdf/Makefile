@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
+#    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 19:08:09 by rgallego          #+#    #+#              #
-#    Updated: 2022/08/25 18:32:03 by rgallego         ###   ########.fr        #
+#    Updated: 2023/09/14 21:55:51 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

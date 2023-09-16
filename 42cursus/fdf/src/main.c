@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:59:49 by rgallego          #+#    #+#             */
-/*   Updated: 2022/04/17 15:33:13 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/09/16 23:47:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	read_matrix(&fdf.map, fdin);
 	ft_mlx_init(&fdf.mlx, &fdf.win, &fdf.img);
 	draw(fdf);
-	mlx_hook(fdf.win, ON_KEYDOWN, 0, event_mngment, &fdf);
+	mlx_hook(fdf.win, ON_KEYDOWN, MASK, event_mngment, &fdf);
 	mlx_loop(fdf.mlx);
 	return (0);
 }
