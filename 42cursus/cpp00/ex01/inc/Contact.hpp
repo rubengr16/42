@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 22:17:13 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/13 23:21:47 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:28:06 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CONTACT_HPP
 
 # include <iostream>
+# include <iomanip>
 
 class	Contact
 {
@@ -43,7 +44,7 @@ class	Contact
 		void		setAll(std::string firstName, std::string lastName,
 			std::string nickname, std::string phone,
 			std::string  darkestSecret);
-		static std::string	getField(std::string message);
+		void		printContact(void);
 };
 
 #endif

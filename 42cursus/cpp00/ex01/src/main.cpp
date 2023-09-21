@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 23:08:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/13 23:43:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:55:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	main(void)
 			phoneBook.addContact();
 		else if (!command.compare("SEARCH"))
 			phoneBook.searchContact();
+		else if (command.compare("EXIT"))
+			std::cout << "Sorry, could you enter a valid command. Thank you" << std::endl;
 	} while (command.compare("EXIT"));
 	return (0);
 }

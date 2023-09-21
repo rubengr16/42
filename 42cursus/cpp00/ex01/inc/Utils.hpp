@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 22:17:16 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/20 00:06:29 by rgallego         ###   ########.fr       */
+/*   Created: 2023/09/20 00:02:02 by rgallego          #+#    #+#             */
+/*   Updated: 2023/09/21 11:02:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_HPP
-# define PGONE_BOOK_HPP
+#ifndef UTILS_HPP
+# define UTILS_HPP
 
-# include "Contact.hpp"
-# include "Utils.hpp"
+# include <iostream>
+# include <iomanip>
 
-class PhoneBook
-{
-	private:
-		Contact		_contacts[8];
-		int			_size;
-		int			_last;
-		int	const	_MAX_SIZE;
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void	addContact(void);
-		void	searchContact(void);
-};
+std::string	getField(std::string message);
+std::string	formatField(std::string field);
 
 #endif
