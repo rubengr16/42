@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/09/08 22:30:14 by rgallego         ###   ########.fr        #
+#    Updated: 2023/09/20 00:01:39 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS	= 			$(addprefix $(SRC_DIR), \
 
 OBJS	=			$(SRCS:.cpp=.o)
 
-CC		=			g++
+CC		=			c++
 
 RM		=			-rm -f
 
