@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:49:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/16 23:22:09 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/09/17 21:58:43 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	rotation_mngment(int key_code, t_fdf *fdf)
 
 int	event_mngment(int key_code, t_fdf *fdf)
 {
+	printf("keycode = %d\n", key_code);
 	if (key_code == KEY_ESC)
 		destroy(fdf->mlx, fdf->win);
 	else if (key_code == KEY_LEFT)
