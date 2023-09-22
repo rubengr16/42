@@ -6,23 +6,40 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 23:29:54 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/21 23:40:18 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/09/23 00:43:17 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Account.hpp"
 
-int	Account::_nbAccounts = 0;
-int	Account::_totalAmount;
-int	Account::_totalNbDeposits;
-int	Account::_totalNbWithdrawals;
+Account::Account(int initial_deposit)
+{
+	
+}
 
-static int	getNbAccounts( void )
+Account::~Account(void)
+{
+	
+}
+
+
+int	Account::getNbAccounts(void)
 {
 	return (_nbAccounts);
 }
 
-static int	getTotalAmount( void );
-static int	getNbDeposits( void );
-static int	getNbWithdrawals( void );
-static void	displayAccountsInfos( void );
+int	Account::getTotalAmount(void)
+{
+	return (_totalAmount);
+}
+
+int	Account::getNbDeposits(void)
+{
+	return (_totalNbDeposits);
+}
+
+int	Account::getNbWithdrawals(void)
+{
+	return (_totalNbWithdrawals);
+}
