@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/09/28 23:52:36 by rgallego         ###   ########.fr        #
+#    Updated: 2023/09/28 23:52:44 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,15 @@ SRC_DIR	=			src/
 
 INC_DIR	=			inc/
 
-EX02	=			\
-						Account.cpp \
-						tests.cpp
+EX00	=			\
+					main.cpp \
+					Zombie.hpp \
+					Zombie.cpp \
+					newZombie.cpp \
+					randomChump.cpp
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
-						$(EX02) \
+						$(EX00) \
 					)
 
 OBJS	=			$(SRCS:.cpp=.o)
