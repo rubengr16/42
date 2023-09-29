@@ -6,7 +6,29 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:00:04 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/29 18:00:05 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/09/29 19:41:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+# include "HumanB.hpp"
+
+HumanB::HumanB(std::string name)
+{
+	this->_name = name;
+}
+
+HumanB::~HumanB(void)
+{
+}
+
+void	HumanB::setWeapon(Weapon &weapon)
+{
+	this->_weapon = weapon;
+}
+
+void	HumanB::attack(void) const
+{
+	std::cout << this->_name
+		<< " attacks with their " << this->_weapon.getType()
+		<< std::endl;
+}
