@@ -1,39 +1,31 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    vbles.mk                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/09/29 17:21:55 by rgallego         ###   ########.fr        #
+#    Created: 2023/09/04 22:38:38 by rgallego          #+#    #+#              #
+#    Updated: 2023/09/12 23:55:08 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_DIR	=			src/
+-include vbles.mk
 
-INC_DIR	=			inc/
+all: $(NAME)
 
-EX01	=			\
-					main.cpp \
-					Zombie.cpp \
-					zombieHorde.cpp
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
-SRCS	= 			$(addprefix $(SRC_DIR), \
-						$(EX01) \
-					)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
-OBJS	=			$(SRCS:.cpp=.o)
+clean:
+	$(RM) $(OBJS) $(DPNDS)
 
-DPNDS	=			$(SRCS:.cpp=.d)
+fclean: clean
+	$(RM) $(NAME)
 
-CC		=			c++
+re: fclean all
 
-RM		=			-rm -f
-
-CFLAGS	=			-Wall -Wextra -Werror -std=c++98
-
-NAME	=			zombieHordes
-
-INC_ALL	=			\
-					$(INC_DIR)
+.PHONY: all clean fclean bonus re
