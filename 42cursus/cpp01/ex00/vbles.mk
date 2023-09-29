@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/09/28 23:52:44 by rgallego         ###   ########.fr        #
+#    Updated: 2023/09/29 16:05:19 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ INC_DIR	=			inc/
 
 EX00	=			\
 					main.cpp \
-					Zombie.hpp \
 					Zombie.cpp \
 					newZombie.cpp \
 					randomChump.cpp
@@ -35,7 +34,7 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Wextra -Werror -std=c++98
 
-NAME	=			global_banksters_united
+NAME	=			zombies
 
 INC_ALL	=			\
 					$(INC_DIR)

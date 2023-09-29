@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 22:17:16 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/29 15:40:51 by rgallego         ###   ########.fr       */
+/*   Created: 2023/09/29 15:32:51 by rgallego          #+#    #+#             */
+/*   Updated: 2023/09/29 15:52:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_HPP
-# define PGONE_BOOK_HPP
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-# include "Contact.hpp"
-# include "Utils.hpp"
+# include <iostream>
 
-class	PhoneBook
+class	Zombie
 {
 	private:
-		Contact		_contacts[8];
-		int			_size;
-		int			_last;
-		int	const	_MAX_SIZE;
+		std::string	name;
+
 	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void	addContact(void);
-		void	searchContact(void);
+		Zombie(void);
+		Zombie(std::string name);
+		~Zombie(void);
+		void		setName(std::string name);
+		std::string	getName(void);
+		void		announce(void);
 };
 
 #endif

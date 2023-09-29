@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   zombieGenerator.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 22:17:16 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/29 15:40:51 by rgallego         ###   ########.fr       */
+/*   Created: 2023/09/29 15:59:45 by rgallego          #+#    #+#             */
+/*   Updated: 2023/09/29 16:00:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_HPP
-# define PGONE_BOOK_HPP
+#ifndef ZOMBIEGENERATOR_HPP
+# define ZOMBIEGENERATOR_HPP
 
-# include "Contact.hpp"
-# include "Utils.hpp"
+#include "Zombie.hpp"
 
-class	PhoneBook
-{
-	private:
-		Contact		_contacts[8];
-		int			_size;
-		int			_last;
-		int	const	_MAX_SIZE;
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void	addContact(void);
-		void	searchContact(void);
-};
+void	randomChump(std::string name);
+Zombie	*newZombie(std::string name);
 
 #endif

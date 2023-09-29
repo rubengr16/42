@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 22:17:13 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/21 13:28:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:37:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class	Contact
 		std::string	_nickname;
 		std::string	_phone;
 		std::string	_darkestSecret;
-	
+
 	public:
 		Contact();
 		Contact(std::string firstName, std::string lastName,
