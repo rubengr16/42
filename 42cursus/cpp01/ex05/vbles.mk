@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/10/01 15:07:46 by rgallego         ###   ########.fr        #
+#    Updated: 2023/10/01 17:07:44 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,15 +24,11 @@ SRCS	= 			$(addprefix $(SRC_DIR), \
 
 OBJS	=			$(SRCS:.cpp=.o)
 
-DPNDS	=			$(SRCS:.cpp=.d)
-
 CC		=			c++
 
 RM		=			-rm -f
 
 CFLAGS	=			-Wall -Wextra -Werror -std=c++98
-
-REPLACE_FILES	=	*.replace
 
 NAME	=			harl
 

@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:38:38 by rgallego          #+#    #+#              #
-#    Updated: 2023/09/12 23:54:57 by rgallego         ###   ########.fr        #
+#    Updated: 2023/10/01 17:09:01 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 clean:
-	$(RM) $(OBJS) $(DPNDS)
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)

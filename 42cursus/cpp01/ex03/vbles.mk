@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/09/29 17:58:13 by rgallego         ###   ########.fr        #
+#    Updated: 2023/10/01 17:08:07 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,6 @@ SRCS	= 			$(addprefix $(SRC_DIR), \
 					)
 
 OBJS	=			$(SRCS:.cpp=.o)
-
-DPNDS	=			$(SRCS:.cpp=.d)
 
 CC		=			c++
 
