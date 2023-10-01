@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/10/01 13:56:03 by rgallego         ###   ########.fr        #
+#    Updated: 2023/10/01 14:57:53 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Wextra -Werror -std=c++98
 
-NAME	=			violence
+REPLACE_FILES	=	*.replace
+
+NAME	=			winner_sed
 
 INC_ALL	=			\
 					$(INC_DIR)

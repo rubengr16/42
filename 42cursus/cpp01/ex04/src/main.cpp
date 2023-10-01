@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 00:59:03 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/01 13:55:46 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:01:54 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int argc, char **argv)
 {
-	std::ofstream	fout;
 	std::ifstream	fin;
+	std::ofstream	fout;
 	std::string		line;
 
 
@@ -25,30 +25,15 @@ int	main(int argc, char **argv)
 			<< "Please enter 4 args:" << std::endl
 			<< "./winner_sed <filename> <str2> <str2>"
 			<< std::endl;
-		return (1);
+		return (BAD_ARGS);
 	}
-	fout.open(((std::string)argv[FILENAME]).append(".replace").c_str(),
-		std::ifstream::out);
-	if (!fout.is_open())
-	{
-		std::cout << "ERROR!! " << argv[FILENAME]
-			<< "couldn't be opened."
-			<< std::endl;
-		return (2);
-	}
-	fin.open(argv[FILENAME], std::ifstream::in);
-	if (!fin.is_open())
-	{
-		std::cout << "ERROR!! " << argv[FILENAME]
-			<< "couldn't be opened."
-			<< std::endl;
-		fout.close();
-		return (2);
-	}
+	if (!openFiles(fin, fout, argv[FILENAME],
+		((std::string)argv[FILENAME]).append(".replace").c_str()))
+		return (errno);
 	std::getline(fin, line);
 	while (!fin.eof())
 	{
-		line = ft_replace(line, argv[STR1], argv[STR2]);
+		line = ftReplace(line, argv[OLDSTR], argv[NEWSTR]);
 		fout << line
 			<< std::endl;
 		std::getline(fin, line);
