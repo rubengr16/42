@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 15:07:11 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/01 17:47:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/02 00:00:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,12 @@ void	Harl::complain(std::string level)
 	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	std::size_t	i = 0;
 
-	while (i <= levels->length() && levels[i].compare(level))
+	while ((i < (sizeof(levels) / sizeof(*levels)))
+		&& levels[i].compare(level))
 		i++;
-	if (i <= levels->length())
+	if (i < (sizeof(levels) / sizeof(*levels)))
 		(this->*harlLevels[i])();
 	else
-		std::cout << level << ": Level not found."
+		std::cout << "[ Probably complaining about insignificant problems ]"
 			<< std::endl;
 }

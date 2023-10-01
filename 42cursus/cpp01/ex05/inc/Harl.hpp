@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 15:07:09 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/01 17:23:19 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/01 23:34:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ class Harl
 		~Harl(void);
 		void	complain(std::string level);
 };
-
 
 #endif
