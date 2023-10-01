@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   sed.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 17:59:49 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/01 13:44:13 by rgallego         ###   ########.fr       */
+/*   Created: 2023/10/01 01:19:41 by rgallego          #+#    #+#             */
+/*   Updated: 2023/10/01 13:57:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "HumanA.hpp"
+#ifndef SED_HPP
+# define SED_HPP
 
-HumanA::HumanA(std::string name, Weapon &weapon): _weapon(weapon)
-{
-	this->_name = name;
-}
+# include <iostream>
+# include <fstream>
 
-HumanA::~HumanA(void)
-{
-}
+# define FILENAME 1
+# define STR1 2
+# define STR2 3
 
-void	HumanA::attack(void) const
-{
-	std::cout << this->_name
-		<< " attacks with their " << this->_weapon.getType()
-		<< std::endl;
-}
+std::string	&ft_replace(std::string &str, const std::string oldString,
+	const std::string newString);
+
+#endif
