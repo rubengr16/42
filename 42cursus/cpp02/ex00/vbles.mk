@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/10/01 17:44:58 by rgallego         ###   ########.fr        #
+#    Updated: 2023/10/02 10:21:25 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ INC_DIR	=			inc/
 
 EX06	=			\
 					main.cpp \
-					Harl.cpp
+					Fixed.cpp
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
 						$(EX06) \
