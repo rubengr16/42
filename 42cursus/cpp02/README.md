@@ -27,7 +27,7 @@ Documentation: [CPPReference - Copy Constructor](https://en.cppreference.com/w/c
 
 - Copy Assignment Operator:
 
-Documentation: [CPPReference - Copy Assignment](https://en.cppreference.com/w/cpp/language/copy_assignment), [CPPReference - Assignment Operator](https://en.cppreference.com/w/cpp/language/operators#Assignment_operator), [SO - The Rule of Three](https://stackoverflow.com/questions/4172722/what-is-the-rule-of-three), [SO - Copy and Swap Idiom](https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom), [SO - Public Friend Swap Member Function](https://stackoverflow.com/questions/5695548/public-friend-swap-member-function)
+Documentation: [CPPReference - Copy Assignment](https://en.cppreference.com/w/cpp/language/copy_assignment), [CPPReference - Assignment Operator](https://en.cppreference.com/w/cpp/language/operators#Assignment_operator), [SO - The Rule of Three](https://stackoverflow.com/questions/4172722/what-is-the-rule-of-three), [SO - Copy and Swap Idiom](https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom), [SO - Public Friend Swap Member Function](https://stackoverflow.com/questions/5695548/public-friend-swap-member-function), [CPPReference - ADL](https://en.cppreference.com/w/cpp/language/adl)
 
 - Destructor: function which is called when the end of the lifetime of an object is reached. This is due to reach the end of the scope, delete expresions, etc.  
 ``` c++

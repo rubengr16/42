@@ -6,7 +6,26 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:08 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/02 10:21:09 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:53:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FIXED_HPP
+# define FIXED_HPP
+
+class Fixed
+{
+	private:
+		int					nb;
+		const static int	point = 8;
+
+	public:
+		Fixed(void);
+		Fixed(Fixed &fixed);
+		~Fixed(void);
+		Fixed& operator=(const Fixed& fixed);
+		int getRawBits( void ) const;
+		void setRawBits( int const raw );
+};
+
+#endif
