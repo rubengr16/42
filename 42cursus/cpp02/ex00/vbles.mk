@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/10/02 10:21:25 by rgallego         ###   ########.fr        #
+#    Updated: 2023/10/06 17:52:38 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Wextra -Werror -std=c++98
 
-NAME	=			harlFilter
+NAME	=			a.out
 
 INC_ALL	=			\
 					$(INC_DIR)

@@ -6,12 +6,14 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:08 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/06 15:53:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:44:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
+
+# include <iostream>
 
 class Fixed
 {
