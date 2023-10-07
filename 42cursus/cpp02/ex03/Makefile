@@ -1,36 +1,31 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    vbles.mk                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/10/08 00:33:21 by rgallego         ###   ########.fr        #
+#    Created: 2023/09/04 22:38:38 by rgallego          #+#    #+#              #
+#    Updated: 2023/10/01 17:07:19 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_DIR	=			src/
+-include vbles.mk
 
-INC_DIR	=			inc/
+all: $(NAME)
 
-EX00	=			\
-					main.cpp \
-					Fixed.cpp
+%.o: %.cpp
+	$(CC) $(CFLAGS) $(addprefix -I, $(INC_ALL)) -c $< -o $@
 
-SRCS	= 			$(addprefix $(SRC_DIR), \
-						$(EX00) \
-					)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
-OBJS	=			$(SRCS:.cpp=.o)
+clean:
+	$(RM) $(OBJS) $(DPNDS)
 
-CC		=			c++
+fclean: clean
+	$(RM) $(NAME)
 
-RM		=			-rm -f
+re: fclean all
 
-CFLAGS	=			-Wall -Wextra -Werror -std=c++98
-
-NAME	=			a.out
-
-INC_ALL	=			\
-					$(INC_DIR)
+.PHONY: all clean fclean bonus re
