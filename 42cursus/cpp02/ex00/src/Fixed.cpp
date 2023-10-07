@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:06 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/06 17:51:13 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:40:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ Fixed& Fixed::operator=(const Fixed& fixed)
 	return (*this);
 }
 
-int Fixed::getRawBits( void ) const
+int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called"
 		<< std::endl;
 	return (this->nb);
 }
 
-void Fixed::setRawBits( int const raw )
+void Fixed::setRawBits(int const raw)
 {
 	this->nb = raw;
 }

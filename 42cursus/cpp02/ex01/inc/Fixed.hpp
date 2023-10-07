@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:08 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/07 01:04:13 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:39:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class Fixed
 
 	public:
 		Fixed(void);
-		Fixed(int const nb);
-		Fixed(float const nb);
-		Fixed(Fixed &fixed);
+		Fixed(const int nb);
+		Fixed(const float nb);
+		Fixed(const Fixed& fixed);
 		~Fixed(void);
 		Fixed&					operator=(const Fixed& fixed);
 		friend std::ostream&	operator<<(std::ostream &os,

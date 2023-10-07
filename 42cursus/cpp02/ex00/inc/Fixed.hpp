@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:08 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/06 17:44:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:40:37 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class Fixed
 		Fixed(Fixed &fixed);
 		~Fixed(void);
 		Fixed& operator=(const Fixed& fixed);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
+		int getRawBits(void) const;
+		void setRawBits(int const raw);
 };
 
 #endif
