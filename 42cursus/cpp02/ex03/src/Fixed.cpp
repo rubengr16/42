@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:06 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/08 00:50:02 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/08 22:29:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ bool	Fixed::operator!=(const Fixed& fixed) const
 	return (this->_nb != fixed.getRawBits());
 }
 
+/* ********************** LOGICAL NOT OPERATOR OVERLOAD ********************* */
+bool	Fixed::operator!(void)
+{
+	return (!this->getRawBits());
+}
 /* ********************* ARITHMETICS OPERATORS OVERLOAD ********************* */
 Fixed	Fixed::operator+(const Fixed& fixed)
 {

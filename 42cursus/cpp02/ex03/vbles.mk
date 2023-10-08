@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/10/08 00:49:15 by rgallego         ###   ########.fr        #
+#    Updated: 2023/10/08 22:30:45 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ INC_DIR	=			inc/
 EX03	=			\
 					main.cpp \
 					Fixed.cpp \
-					Point.cpp
+					Point.cpp \
+					bsp.cpp
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
 						$(EX03) \
