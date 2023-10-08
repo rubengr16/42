@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 00:40:08 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/08 01:07:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/08 23:24:04 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ Point&	Point::operator=(const Point& point)
 {
 	this->_x = point.getX();
 	this->_y = point.getY();
+	return (*this);
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
