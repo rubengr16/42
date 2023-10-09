@@ -1,51 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 18:24:33 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/09 23:23:45 by rgallego         ###   ########.fr       */
+/*   Created: 2023/10/09 23:01:45 by rgallego          #+#    #+#             */
+/*   Updated: 2023/10/09 23:32:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
 # include <iostream>
+# include "ClapTrap.hpp"
 
-class ClapTrap
+class ScavTrap: public ClapTrap
 {
-	private:
-		std::string		_name;
-		unsigned int	_hitPts;
-		unsigned int	_energyPts;
-		unsigned int	_damagePts;
-
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
-		ClapTrap(void);
-		ClapTrap(std::string name);
-		ClapTrap(const ClapTrap& clapTrap);
+		ScavTrap(void);
+		ScavTrap(std::string name);
+		ScavTrap(const ScavTrap& scavTrap);
 /* ******************************* DESTRUCTOR ******************************* */
-		~ClapTrap(void);
+		~ScavTrap(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		friend void		swap(ClapTrap& clapTrap1, ClapTrap& clapTrap2);
-		ClapTrap&		operator=(ClapTrap clapTrap);
+		ScavTrap&		operator=(ScavTrap scavTrap);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		std::string		getName(void) const;
-		void			setName(std::string name);
-		unsigned int	getHitPts(void) const;
-		void			setHitPts(unsigned int	hitPts);
-		unsigned int	getEnergyPts(void) const;
-		void			setEnergyPts(unsigned int	energyPts);
-		unsigned int	getDamagePts(void) const;
-		void			setDamagePts(unsigned int	damagePts);
 		void			attack(const std::string& target);
-		void			takeDamage(unsigned int amount);
-		void			beRepaired(unsigned int amount);
 };
 
 #endif

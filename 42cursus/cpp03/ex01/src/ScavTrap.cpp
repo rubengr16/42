@@ -1,0 +1,76 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/09 23:02:54 by rgallego          #+#    #+#             */
+/*   Updated: 2023/10/09 23:39:06 by rgallego         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap(void):
+	ClapTrap(),
+	_hitPts(100),
+	_energyPts(50),
+	_damagePts(20)
+{
+	std::cout << "[Default Constructor]: ScavTrap " << ClapTrap::_name
+		<< " has been created." << std::endl << "\t- " << this->_hitPts 
+		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
+		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
+		<< " Damage Points," << std::endl
+		<< "----------------------------------------------------" << std::endl;
+}
+
+ScavTrap::ScavTrap(std::string name):
+	ClapTrap(name),
+	_hitPts(100),
+	_energyPts(50),
+	_damagePts(20)
+{
+	std::cout << "[Constructor]: ScavTrap " << this->_name
+		<< " has been created." << std::endl << "\t- " << this->_hitPts 
+		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
+		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
+		<< " Damage Points," << std::endl
+		<< "----------------------------------------------------" << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap& scavTrap):
+	ClapTrap(scavTrap)
+{
+}
+
+/* ******************************* DESTRUCTOR ******************************* */
+ScavTrap::~ScavTrap(void)
+{
+}
+
+/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+ScavTrap&	ScavTrap::operator=(ScavTrap scavTrap)
+{
+	ClapTrap::operator=(scavTrap);
+}
+
+/* **************************** MEMBER FUNCTIONS **************************** */
+void	attack(const std::string& target)
+{
+	if (!this->_energyPts || !this->_hitPts)
+	{
+		std::cout << "[Attack]: ClapTrap" << this->_name
+			<< " has no points left. Attack aborted!!" << std::endl
+			<< "----------------------------------------------------"
+			<< std::endl;
+		return ;
+	}
+	this->_energyPts--;
+	std::cout << "[Attack]: ClapTrap " << this->_name << " attacks " << target
+		<< ", causing " << this->_damagePts << " points of damage!"
+		<< std::endl << "----------------------------------------------------"
+		<< std::endl;
+}
+

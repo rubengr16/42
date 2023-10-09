@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/09 23:23:54 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/09 23:13:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	swap(ClapTrap& clapTrap1, ClapTrap& clapTrap2)
 	std::swap(clapTrap1._hitPts, clapTrap2._hitPts);
 }
 
-ClapTrap&	ClapTrap::operator=(ClapTrap clapTrap)
+ClapTrap& ClapTrap::operator=(ClapTrap clapTrap)
 {
 	swap(*this, clapTrap);
 	std::cout << "[Copy assignment operator]: ClapTrap " << this->_name
