@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:39 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/09 22:13:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/09 22:54:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int	main(void)
 {
 	ClapTrap	blabla("blabla");
 	ClapTrap	wiwi(blabla);
-	ClapTrap	runrun = wiwi;
+	ClapTrap	runrun("runrun");
 
+	runrun = wiwi;
 	wiwi.setName("wiwi");
 	runrun.setName("runrun");
 

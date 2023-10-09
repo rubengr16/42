@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:33 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/09 19:01:58 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/09 22:57:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ class ClapTrap
 		unsigned int	_hitPts;
 		unsigned int	_energyPts;
 		unsigned int	_damagePts;
-		ClapTrap(void);
 
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
+		ClapTrap(void);
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap& clapTrap);
 /* ******************************* DESTRUCTOR ******************************* */

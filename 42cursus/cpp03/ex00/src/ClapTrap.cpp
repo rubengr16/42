@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/09 22:11:10 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/09 22:57:27 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,32 @@ void	swap(ClapTrap& clapTrap1, ClapTrap& clapTrap2)
 }
 
 /* ****************************** CONSTRUCTORS ****************************** */
+ClapTrap::ClapTrap(void):
+	_name("unnamed"),
+	_hitPts(10),
+	_energyPts(10),
+	_damagePts(0)
+{
+	std::cout << "[Default Constructor]: ClapTrap " << this->_name
+		<< " has been created." << std::endl << "\t- " << this->_hitPts 
+		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
+		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
+		<< " Damage Points," << std::endl
+		<< "----------------------------------------------------" << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name):
 	_name(name),
 	_hitPts(10),
 	_energyPts(10),
 	_damagePts(0)
 {
-	std::cout << "[Constructor]: " << this->_name << " has been created."
-		<< std::endl << "\t- " << this->_hitPts << " Hit Points,"
-		<< std::endl << "\t- " << this->_energyPts << " Energy Points,"
-		<< std::endl << "\t- " << this->_damagePts << " Damage Points,"
-		<< std::endl << "----------------------------------------------------"
-		<< std::endl;
+	std::cout << "[Constructor]: ClapTrap " << this->_name
+		<< " has been created." << std::endl << "\t- " << this->_hitPts 
+		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
+		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
+		<< " Damage Points," << std::endl
+		<< "----------------------------------------------------" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& clapTrap):
@@ -41,7 +55,7 @@ ClapTrap::ClapTrap(const ClapTrap& clapTrap):
 	_energyPts(clapTrap.getEnergyPts()),
 	_damagePts(clapTrap.getDamagePts())
 {
-	std::cout << "[Copy constructor]: ClapTrap" << this->_name 
+	std::cout << "[Copy constructor]: ClapTrap " << this->_name 
 		<< " has been created." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
@@ -52,7 +66,7 @@ ClapTrap::ClapTrap(const ClapTrap& clapTrap):
 /* ******************************* DESTRUCTOR ******************************* */
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "[Destructor]: ClapTrap" << this->_name
+	std::cout << "[Destructor]: ClapTrap " << this->_name
 		<< " has been destroyed." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
@@ -60,12 +74,13 @@ ClapTrap::~ClapTrap(void)
 ClapTrap& ClapTrap::operator=(ClapTrap clapTrap)
 {
 	swap(*this, clapTrap);
-	std::cout << "[Copy assignment operator]: ClapTrap" << this->_name
+	std::cout << "[Copy assignment operator]: ClapTrap " << this->_name
 		<< " has been copied." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts 
 		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
 		<< " Damage Points." << std::endl
 		<< "----------------------------------------------------" << std::endl;
+	return (*this);
 }
 /* **************************** MEMBER FUNCTIONS **************************** */
 std::string	ClapTrap::getName(void) const
@@ -135,9 +150,10 @@ void	ClapTrap::takeDamage(unsigned int amount)
 			<< std::endl;
 		return ;
 	}
-	this->_hitPts -= amount;
-	if (this->_hitPts < 0)
+	if (((int)this->_hitPts - (int)amount) < 0)
 		this->_hitPts = 0;
+	else
+		this->_hitPts -= amount;
 	std::cout << "[Take Damage]: ClapTrap " << this->_name << " takes "
 		<< amount << " points of damage, having " << this->_hitPts << " hit "
 		<< "points left!!"
@@ -149,7 +165,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (!this->_energyPts || !this->_hitPts)
 	{
-		std::cout << "[Be Repaired]: ClapTrap" << this->_name
+		std::cout << "[Be Repaired]: ClapTrap " << this->_name
 			<< " has no points left. Repair aborted!!" << std::endl
 			<< "----------------------------------------------------"
 			<< std::endl;
