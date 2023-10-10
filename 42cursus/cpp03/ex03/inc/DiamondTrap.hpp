@@ -14,11 +14,10 @@
 # define DIAMONDTRAP_HPP
 
 # include <iostream>
-# include "ClapTrap.hpp"
 # include "ScavTrap.hpp"
 # include "FragTrap.hpp"
 
-class DiamondTrap: public ClapTrap
+class DiamondTrap: public ScavTrap, public FragTrap
 {
 	private:
 		std::string _name;
@@ -33,7 +32,7 @@ class DiamondTrap: public ClapTrap
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		DiamondTrap&		operator=(DiamondTrap diamondTrap);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		void			guardGate(void);
+		void				WhoAmI(void);
 };
 
 #endif

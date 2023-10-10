@@ -13,11 +13,13 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap(void):
-	ClapTrap()
+	ScavTrap(), FragTrap()
 {
-	this->_hitPts = 100;
-	this->_energyPts = 50;
-	this->_damagePts = 20;
+	this->_name = "unnamed";
+	this->ClapTrap::_name = this->_name.append("_clap_name");
+	this->_hitPts = FragTrap::_hitPts;
+	this->_energyPts = ScavTrap::_energyPts;
+	this->_damagePts = FragTrap::_damagePts;
 	std::cout << "[Default Constructor]: DiamondTrap " << ClapTrap::_name
 		<< " has been created." << std::endl << "\t- " << this->_hitPts 
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
@@ -43,32 +45,34 @@ DiamondTrap::DiamondTrap(std::string name):
 DiamondTrap::DiamondTrap(const DiamondTrap& diamondTrap):
 	ClapTrap(diamondTrap)
 {
-	std::cout << "[Copy constructor]: DiamondTrap " << this->_name 
-	<< " has been created." << std::endl << "\t- " << this->_hitPts
-	<< " Hit Points," << std::endl << "\t- " << this->_energyPts
-	<< " Energy Points," << std::endl << "\t- " << this->_damagePts
-	<< " Damage Points." << std::endl
-	<< "----------------------------------------------------" << std::endl;
+	std::cout << "[Copy constructor]: DiamondTrap " << this->_name
+		<< " says hi, they is also known as " << this->ClapTrap::_name << std::endl
+		<< " has been created." << std::endl << "\t- " << this->_hitPts
+		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
+		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
+		<< " Damage Points." << std::endl
+		<< "----------------------------------------------------" << std::endl;
 }
 
 /* ******************************* DESTRUCTOR ******************************* */
 DiamondTrap::~DiamondTrap(void)
 {
 	std::cout << "[Destructor]: DiamondTrap " << this->_name
-	<< " has been destroyed." << std::endl
-	<< "----------------------------------------------------" << std::endl;
+		<< " has been destroyed." << std::endl
+		<< "----------------------------------------------------" << std::endl;
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 DiamondTrap&	DiamondTrap::operator=(DiamondTrap diamondTrap)
 {
-	return ((DiamondTrap&)ClapTrap::operator=(diamondTrap));
+	// TODO
+	return (*this);
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-void	DiamondTrap::guardGate(void)
+void	DiamondTrap::WhoAmI(void)
 {
-	std::cout << "[Guard Gate]: DiamondTrap " << this->_name
-	<< " is in gate keeper mode now." << std::endl
+	std::cout << "[Who Am I]: DiamondTrap " << this->_name
+	<< " says hi, they is also known as " << this->ClapTrap::_name << std::endl
 	<< "----------------------------------------------------" << std::endl;
 }
