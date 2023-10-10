@@ -6,27 +6,27 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:39 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/10 19:14:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/10 19:14:27 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main(void)
 {
-	ScavTrap	blabla("blabla");
-	ScavTrap	wiwi(blabla);
-	ScavTrap	runrun("runrun");
+	FragTrap	blabla("blabla");
+	FragTrap	wiwi(blabla);
+	FragTrap	runrun("runrun");
 
-	std::cout << "ALL SCAVTRAPS CREATED" << std::endl
+	std::cout << "ALL FRAGTRAPS CREATED" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	runrun = wiwi;
 	wiwi.setName("wiwi");
 	runrun.setName("runrun");
-	std::cout << "ALL SCAVTRAPS SET" << std::endl
+	std::cout << "ALL FRAGTRAPS SET" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 
-	std::cout << "SCAVTRAPS ATTACK!!!" << std::endl
+	std::cout << "FRAGTRAPS ATTACK!!!" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	wiwi.setDamagePts(3);
 	runrun.setDamagePts(5);
@@ -37,11 +37,11 @@ int	main(void)
 		blabla.takeDamage(runrun.getDamagePts());	
 	}
 
-	std::cout << "SCAVTRAP " << blabla.getName() << " IS GOING TO BE REPAIRED"
+	std::cout << "FRAGTRAP " << blabla.getName() << " IS GOING TO BE REPAIRED"
 	<< std::endl << "----------------------------------------------------"
 		<< std::endl;
 	blabla.beRepaired(50);
-	std::cout << "SCAVTRAPS ATTACK!!!" << std::endl
+	std::cout << "FRAGTRAPS ATTACK!!!" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	while (runrun.getEnergyPts() && wiwi.getHitPts())
 	{
@@ -49,18 +49,18 @@ int	main(void)
 		wiwi.takeDamage(runrun.getDamagePts());
 	}
 
-	std::cout << "SCAVTRAP " << runrun.getName() << " IS GOING TO BE REPAIRED"
+	std::cout << "FRAGTRAP " << runrun.getName() << " IS GOING TO BE REPAIRED"
 	<< " UNTIL THEIR ENERGY ENDS"
 	<< std::endl << "----------------------------------------------------"
 		<< std::endl;
 	while (runrun.getEnergyPts())
 		runrun.beRepaired(33);
 
-	std::cout << "SCAVTRAP GATE KEEPER MODE" << std::endl
+	std::cout << "FRAGTRAP HIGH FIVE EVERYONE" << std::endl
 		<< "----------------------------------------------------" << std::endl;
-	runrun.guardGate();
+	runrun.highFiveGuys();
 
-	std::cout << "SCAVTRAPS DESTRUCTION!!!" << std::endl
+	std::cout << "FRAGTRAPS DESTRUCTION!!!" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 
 	return (0);
