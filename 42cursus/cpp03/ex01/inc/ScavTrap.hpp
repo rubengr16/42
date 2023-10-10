@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:01:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/09 23:32:24 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:45:14 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class ScavTrap: public ClapTrap
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		ScavTrap&		operator=(ScavTrap scavTrap);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		void			attack(const std::string& target);
+		void			guardGate(void);
 };
 
 #endif

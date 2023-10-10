@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/10/09 23:01:26 by rgallego         ###   ########.fr        #
+#    Updated: 2023/10/10 18:58:12 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ INC_DIR	=			inc/
 
 EX01	=			\
 					main.cpp \
-					ClapTrap.cpp
+					ClapTrap.cpp \
+					ScavTrap.cpp
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
 						$(EX01) \

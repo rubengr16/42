@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:02:54 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/10 11:05:52 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:59:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ ScavTrap::ScavTrap(std::string name):
 ScavTrap::ScavTrap(const ScavTrap& scavTrap):
 	ClapTrap(scavTrap)
 {
+	std::cout << "[Copy constructor]: ScavTrap " << this->_name 
+	<< " has been created." << std::endl << "\t- " << this->_hitPts
+	<< " Hit Points," << std::endl << "\t- " << this->_energyPts
+	<< " Energy Points," << std::endl << "\t- " << this->_damagePts
+	<< " Damage Points." << std::endl
+	<< "----------------------------------------------------" << std::endl;
 }
 
 /* ******************************* DESTRUCTOR ******************************* */
@@ -56,24 +62,13 @@ ScavTrap::~ScavTrap(void)
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 ScavTrap&	ScavTrap::operator=(ScavTrap scavTrap)
 {
-	ClapTrap::operator=(scavTrap);
+	return ((ScavTrap&)ClapTrap::operator=(scavTrap));
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-void	ScavTrap::attack(const std::string& target)
+void	ScavTrap::guardGate(void)
 {
-	if (!this->_energyPts || !this->_hitPts)
-	{
-		std::cout << "[Attack]: ScavTrap" << this->_name
-			<< " has no points left. Attack aborted!!" << std::endl
-			<< "----------------------------------------------------"
-			<< std::endl;
-		return ;
-	}
-	this->_energyPts--;
-	std::cout << "[Attack]: ScavTrap " << this->_name << " attacks " << target
-		<< ", causing " << this->_damagePts << " points of damage!"
-		<< std::endl << "----------------------------------------------------"
-		<< std::endl;
+	std::cout << "[Guard Gate]: ScavTrap " << this->_name
+	<< " is in gate keeper mode now." << std::endl
+	<< "----------------------------------------------------" << std::endl;
 }
-
