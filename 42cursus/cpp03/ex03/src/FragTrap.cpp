@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:02:54 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/10 19:12:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:21:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ FragTrap::FragTrap(void):
 	this->_energyPts = 100;
 	this->_damagePts = 30;
 	std::cout << "[Default Constructor]: FragTrap " << ClapTrap::_name
-		<< " has been created." << std::endl << "\t- " << this->_hitPts 
+		<< " has been created." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
 		<< " Damage Points," << std::endl
@@ -43,7 +43,7 @@ FragTrap::FragTrap(std::string name):
 FragTrap::FragTrap(const FragTrap& fragTrap):
 	ClapTrap(fragTrap)
 {
-	std::cout << "[Copy constructor]: FragTrap " << this->_name 
+	std::cout << "[Copy constructor]: FragTrap " << this->_name
 	<< " has been created." << std::endl << "\t- " << this->_hitPts
 	<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 	<< " Energy Points," << std::endl << "\t- " << this->_damagePts
@@ -60,15 +60,30 @@ FragTrap::~FragTrap(void)
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+void	swap(FragTrap& fragTrap1, FragTrap& fragTrap2)
+{
+	std::swap(fragTrap1._name, fragTrap2._name);
+	std::swap(fragTrap1._damagePts, fragTrap2._damagePts);
+	std::swap(fragTrap1._energyPts, fragTrap2._energyPts);
+	std::swap(fragTrap1._hitPts, fragTrap2._hitPts);
+}
+
 FragTrap&	FragTrap::operator=(FragTrap fragTrap)
 {
-	return ((FragTrap&)ClapTrap::operator=(fragTrap));
+	swap(*this, fragTrap);
+	std::cout << "[Copy assignment operator]: FragTrap " << this->_name
+		<< " has been copied." << std::endl << "\t- " << this->_hitPts
+		<< " Hit Points," << std::endl << "\t- " << this->_energyPts 
+		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
+		<< " Damage Points." << std::endl
+		<< "----------------------------------------------------" << std::endl;
+	return (*this);
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
 void	FragTrap::highFiveGuys(void)
 {
 	std::cout << "[High Five Guys]: FragTrap " << this->_name
-	<< " high fives y'all! Nice to see you!!." << std::endl
-	<< "----------------------------------------------------" << std::endl;
+		<< " high fives y'all! Nice to see you!!." << std::endl
+		<< "----------------------------------------------------" << std::endl;
 }

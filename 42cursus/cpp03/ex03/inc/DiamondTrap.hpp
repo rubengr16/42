@@ -17,7 +17,7 @@
 # include "ScavTrap.hpp"
 # include "FragTrap.hpp"
 
-class DiamondTrap: public ScavTrap, public FragTrap
+class DiamondTrap: public FragTrap, public ScavTrap
 {
 	private:
 		std::string _name;
@@ -30,8 +30,12 @@ class DiamondTrap: public ScavTrap, public FragTrap
 /* ******************************* DESTRUCTOR ******************************* */
 		~DiamondTrap(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+		friend void			swap(DiamondTrap& diamondTrap1,
+			DiamondTrap& diamondTrap2);
 		DiamondTrap&		operator=(DiamondTrap diamondTrap);
 /* **************************** MEMBER FUNCTIONS **************************** */
+		std::string			getName(void) const;
+		void				setName(std::string name);
 		void				WhoAmI(void);
 };
 

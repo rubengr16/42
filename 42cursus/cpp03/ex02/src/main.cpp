@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:39 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/10 19:14:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/11 23:19:30 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(void)
 	while (runrun.getEnergyPts())
 		runrun.beRepaired(33);
 
-	std::cout << "FRAGTRAP HIGH FIVE EVERYONE" << std::endl
+	std::cout << "FRAGTRAP HIGHS FIVE EVERYONE" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	runrun.highFiveGuys();
 

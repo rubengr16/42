@@ -13,15 +13,15 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap(void):
-	ScavTrap(), FragTrap()
+	ClapTrap("unnamed_clap_name"), FragTrap(), ScavTrap()
 {
 	this->_name = "unnamed";
-	this->ClapTrap::_name = this->_name.append("_clap_name");
-	this->_hitPts = FragTrap::_hitPts;
-	this->_energyPts = ScavTrap::_energyPts;
-	this->_damagePts = FragTrap::_damagePts;
-	std::cout << "[Default Constructor]: DiamondTrap " << ClapTrap::_name
-		<< " has been created." << std::endl << "\t- " << this->_hitPts 
+	this->_hitPts = this->FragTrap::_hitPts;
+	this->_energyPts = this->ScavTrap::_energyPts;
+	this->_damagePts = this->FragTrap::_damagePts;
+	std::cout << "[Default Constructor]: DiamondTrap " << this->_name
+		<< ", known as Claptrap " << this->ClapTrap::_name
+		<< ", has been created." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
 		<< " Damage Points," << std::endl
@@ -29,13 +29,15 @@ DiamondTrap::DiamondTrap(void):
 }
 
 DiamondTrap::DiamondTrap(std::string name):
-	ClapTrap(name)
+	ClapTrap(name + "_clap_name"), FragTrap(), ScavTrap()
 {
-	this->_hitPts = 100;
-	this->_energyPts = 50;
-	this->_damagePts = 20;
+	this->_name = name;
+	this->_hitPts = this->FragTrap::_hitPts;
+	this->_energyPts = this->ScavTrap::_energyPts;
+	this->_damagePts = this->FragTrap::_damagePts;
 	std::cout << "[Constructor]: DiamondTrap " << this->_name
-		<< " has been created." << std::endl << "\t- " << this->_hitPts 
+		<< ", known as Claptrap " << this->ClapTrap::_name
+		<< ", has been created." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
 		<< " Damage Points," << std::endl
@@ -43,11 +45,15 @@ DiamondTrap::DiamondTrap(std::string name):
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& diamondTrap):
-	ClapTrap(diamondTrap)
+	ClapTrap(diamondTrap._name + "_clap_name"), FragTrap(), ScavTrap()
 {
+	this->_name = diamondTrap._name;
+	this->_hitPts = diamondTrap.FragTrap::getHitPts();
+	this->_energyPts = diamondTrap.ScavTrap::getEnergyPts();
+	this->_damagePts = diamondTrap.FragTrap::getDamagePts();
 	std::cout << "[Copy constructor]: DiamondTrap " << this->_name
-		<< " says hi, they is also known as " << this->ClapTrap::_name << std::endl
-		<< " has been created." << std::endl << "\t- " << this->_hitPts
+		<< ", known as Claptrap " << this->ClapTrap::_name
+		<< ", has been created." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
 		<< " Damage Points." << std::endl
@@ -63,13 +69,40 @@ DiamondTrap::~DiamondTrap(void)
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+void	swap(DiamondTrap& diamondTrap1, DiamondTrap& diamondTrap2)
+{
+	std::swap(diamondTrap1.ClapTrap::_name, diamondTrap2.ClapTrap::_name);
+	std::swap(diamondTrap1._name, diamondTrap2._name);
+	std::swap(diamondTrap1._damagePts, diamondTrap2._damagePts);
+	std::swap(diamondTrap1._energyPts, diamondTrap2._energyPts);
+	std::swap(diamondTrap1._hitPts, diamondTrap2._hitPts);
+}
+
 DiamondTrap&	DiamondTrap::operator=(DiamondTrap diamondTrap)
 {
-	// TODO
+	swap(*this, diamondTrap);
+	std::cout << "[Copy assignment operator]: DiamondTrap " << this->_name
+		<< ", known as Claptrap " << this->ClapTrap::_name
+		<< " has been copied." << std::endl << "\t- " << this->_hitPts
+		<< " Hit Points," << std::endl << "\t- " << this->_energyPts 
+		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
+		<< " Damage Points." << std::endl
+		<< "----------------------------------------------------" << std::endl;
 	return (*this);
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
+std::string	DiamondTrap::getName(void) const
+{
+	return (this->DiamondTrap::_name);
+}
+
+void	DiamondTrap::setName(std::string name)
+{
+	this->_name = name;
+	this->ClapTrap::_name = this->_name + "_clap_name";
+}
+
 void	DiamondTrap::WhoAmI(void)
 {
 	std::cout << "[Who Am I]: DiamondTrap " << this->_name

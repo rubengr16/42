@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:02:54 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/10 18:59:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:32:37 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ScavTrap::ScavTrap(void):
 	this->_energyPts = 50;
 	this->_damagePts = 20;
 	std::cout << "[Default Constructor]: ScavTrap " << ClapTrap::_name
-		<< " has been created." << std::endl << "\t- " << this->_hitPts 
+		<< " has been created." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
 		<< " Damage Points," << std::endl
@@ -33,7 +33,7 @@ ScavTrap::ScavTrap(std::string name):
 	this->_energyPts = 50;
 	this->_damagePts = 20;
 	std::cout << "[Constructor]: ScavTrap " << this->_name
-		<< " has been created." << std::endl << "\t- " << this->_hitPts 
+		<< " has been created." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
 		<< " Damage Points," << std::endl
@@ -43,7 +43,7 @@ ScavTrap::ScavTrap(std::string name):
 ScavTrap::ScavTrap(const ScavTrap& scavTrap):
 	ClapTrap(scavTrap)
 {
-	std::cout << "[Copy constructor]: ScavTrap " << this->_name 
+	std::cout << "[Copy constructor]: ScavTrap " << this->_name
 	<< " has been created." << std::endl << "\t- " << this->_hitPts
 	<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 	<< " Energy Points," << std::endl << "\t- " << this->_damagePts
@@ -66,6 +66,23 @@ ScavTrap&	ScavTrap::operator=(ScavTrap scavTrap)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
+void	ScavTrap::attack(const std::string& target)
+{
+	if (!this->_energyPts || !this->_hitPts)
+	{
+		std::cout << "[Attack]: ScavTrap" << this->_name
+			<< " has no points left. Attack aborted!!" << std::endl
+			<< "----------------------------------------------------"
+			<< std::endl;
+		return ;
+	}
+	this->_energyPts--;
+	std::cout << "[Attack]: ScavTrap " << this->_name << " attacks " << target
+		<< ", causing " << this->_damagePts << " points of damage!"
+		<< std::endl << "----------------------------------------------------"
+		<< std::endl;
+}
+
 void	ScavTrap::guardGate(void)
 {
 	std::cout << "[Guard Gate]: ScavTrap " << this->_name

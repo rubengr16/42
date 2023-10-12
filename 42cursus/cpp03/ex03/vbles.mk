@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/10/10 19:39:14 by rgallego         ###   ########.fr        #
+#    Updated: 2023/10/12 14:39:51 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,9 @@ CC		=			c++
 
 RM		=			-rm -f
 
-CFLAGS	=			-Wall -Wextra -Werror -std=c++98
+CFLAGS	=			-Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98
 
-NAME	=			frag_trap
+NAME	=			diamond_trap
 
 INC_ALL	=			\
 					$(INC_DIR)

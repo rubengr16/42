@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/09 23:13:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:23:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ClapTrap::ClapTrap(void):
 	_damagePts(0)
 {
 	std::cout << "[Default Constructor]: ClapTrap " << this->_name
-		<< " has been created." << std::endl << "\t- " << this->_hitPts 
+		<< " has been created." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
 		<< " Damage Points," << std::endl
@@ -34,7 +34,7 @@ ClapTrap::ClapTrap(std::string name):
 	_damagePts(0)
 {
 	std::cout << "[Constructor]: ClapTrap " << this->_name
-		<< " has been created." << std::endl << "\t- " << this->_hitPts 
+		<< " has been created." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
 		<< " Damage Points," << std::endl
@@ -47,7 +47,7 @@ ClapTrap::ClapTrap(const ClapTrap& clapTrap):
 	_energyPts(clapTrap.getEnergyPts()),
 	_damagePts(clapTrap.getDamagePts())
 {
-	std::cout << "[Copy constructor]: ClapTrap " << this->_name 
+	std::cout << "[Copy constructor]: ClapTrap " << this->_name
 		<< " has been created." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
@@ -77,7 +77,7 @@ ClapTrap& ClapTrap::operator=(ClapTrap clapTrap)
 	swap(*this, clapTrap);
 	std::cout << "[Copy assignment operator]: ClapTrap " << this->_name
 		<< " has been copied." << std::endl << "\t- " << this->_hitPts
-		<< " Hit Points," << std::endl << "\t- " << this->_energyPts 
+		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
 		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
 		<< " Damage Points." << std::endl
 		<< "----------------------------------------------------" << std::endl;
@@ -174,7 +174,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 	this->_energyPts--;
 	this->_hitPts += amount;
-	std::cout << "[Attack]: ClapTrap " << this->_name << " is repaired with "
+	std::cout << "[Be Repaired]: ClapTrap " << this->_name << " is repaired with "
 		<< amount << ". They has " << this->_hitPts << " hit points left!!"
 		<< std::endl << "----------------------------------------------------"
 		<< std::endl;
