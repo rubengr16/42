@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 22:57:56 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 17:02:18 by rgallego         ###   ########.fr       */
+/*   Created: 2023/10/14 13:10:44 by rgallego          #+#    #+#             */
+/*   Updated: 2023/10/14 16:45:46 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 # include <iostream>
 
-class Animal
+# define MAX_LENGTH 100
+
+class	Brain
 {
 	private:
-		Animal(std::string type);
-
-	protected:
-		std::string	_type;
-
+		std::string*	_ideas;
+		unsigned int	_length;
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
-		Animal(void);
-		Animal(const Animal& animal);
+		Brain(void);
+		Brain(const std::string* ideas, unsigned int length);
+		Brain(const Brain& brain);
 /* ******************************* DESTRUCTOR ******************************* */
-		~Animal(void);
+		~Brain(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Animal&			operator=(const Animal& animal);
+		Brain&				operator=(const Brain& brain);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		std::string		getType(void) const;
-		virtual void	makeSound(void) const;
+		const std::string*	getIdeas(void) const;
+		std::string			getIdea(unsigned int i) const;
+		void				setIdeas(std::string ideas[], unsigned int length);
+		void				addIdea(std::string idea);
+		unsigned int		getLength(void) const;
 };
 
 #endif

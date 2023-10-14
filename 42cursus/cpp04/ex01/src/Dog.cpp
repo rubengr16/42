@@ -6,14 +6,16 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/13 00:22:26 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 17:03:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Dog.hpp"
 
 /* ****************************** CONSTRUCTORS ****************************** */
-Dog::Dog(void)
+Dog::Dog(void):
+	Animal(),
+	_brain(new Brain)
 {
 	this->_type = "Dog";
 	std::cout << "[Default Constructor] Dog: object of type " << this->_type
@@ -22,7 +24,8 @@ Dog::Dog(void)
 }
 
 Dog::Dog(const Dog& dog):
-	Animal(dog)
+	Animal(dog),
+	_brain(new Brain(dog.getBrain()->getIdeas(), dog.getBrain()->getLength()))
 {
 	this->_type = dog._type;
 	std::cout << "[Copy Constructor] Dog: object of type " << this->_type
@@ -32,6 +35,7 @@ Dog::Dog(const Dog& dog):
 /* ******************************* DESTRUCTOR ******************************* */
 Dog::~Dog(void)
 {
+	delete this->_brain;
 	std::cout << "[Destructor]: Dog: " << this->_type
 		<< "'s type object has been destroyed." << std::endl
 		<< "----------------------------------------------------" << std::endl;
@@ -48,6 +52,11 @@ Dog&	Dog::operator=(const Dog& dog)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
+const Brain*	Dog::getBrain(void) const
+{
+	return (this->_brain);
+}
+
 void	Dog::makeSound(void) const
 {
 	std::cout << "[Make Sound] Dog: object of type "

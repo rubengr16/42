@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/10/13 11:53:56 by rgallego         ###   ########.fr        #
+#    Updated: 2023/10/14 16:46:49 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ EX01	=			\
 					Cat.cpp \
 					Dog.cpp \
 					WrongAnimal.cpp \
-					WrongCat.cpp
+					WrongCat.cpp \
+					Brain.cpp
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
 						$(EX01) \
@@ -34,7 +35,7 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
 
-NAME	=			animals
+NAME	=			smart_animals
 
 INC_ALL	=			\
 					$(INC_DIR)

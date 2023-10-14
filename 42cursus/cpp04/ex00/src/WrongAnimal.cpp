@@ -13,17 +13,17 @@
 # include "WrongAnimal.hpp"
 
 /* ****************************** CONSTRUCTORS ****************************** */
-WrongAnimal::WrongAnimal(void)
+WrongAnimal::WrongAnimal(void):
+	_type("WrongAnimal")
 {
-	this->_type = "WrongAnimal";
 	std::cout << "[Default Constructor] WrongAnimal: object of type " << this->_type
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal& wrongAnimal)
+WrongAnimal::WrongAnimal(const WrongAnimal& wrongAnimal):
+	_type(wrongAnimal.getType())
 {
-	this->_type = wrongAnimal._type;
 	std::cout << "[Copy Constructor] WrongAnimal: object of type " << this->_type
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:58:32 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/13 00:22:18 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 17:02:28 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # include <iostream>
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Cat: public Animal
 {
 /* ****************************** CONSTRUCTORS ****************************** */
 	private:
+		Brain*	_brain;
 		Cat(std::string type);
 
 	public:
@@ -30,6 +32,7 @@ class Cat: public Animal
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		Cat&			operator=(const Cat& cat);
 /* **************************** MEMBER FUNCTIONS **************************** */
+	const Brain*		getBrain(void) const;
 		virtual void	makeSound(void) const;
 };
 

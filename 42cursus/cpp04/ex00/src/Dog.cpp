@@ -6,14 +6,15 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/13 00:22:26 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:32:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Dog.hpp"
 
 /* ****************************** CONSTRUCTORS ****************************** */
-Dog::Dog(void)
+Dog::Dog(void):
+	Animal()
 {
 	this->_type = "Dog";
 	std::cout << "[Default Constructor] Dog: object of type " << this->_type

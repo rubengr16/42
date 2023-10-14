@@ -6,14 +6,15 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/13 00:22:37 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:32:48 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Cat.hpp"
 
 /* ****************************** CONSTRUCTORS ****************************** */
-Cat::Cat(void)
+Cat::Cat(void):
+	Animal()
 {
 	this->_type = "Cat";
 	std::cout << "[Default Constructor] Cat: object of type " << this->_type

@@ -6,24 +6,24 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/12 23:49:09 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:32:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Animal.hpp"
 
 /* ****************************** CONSTRUCTORS ****************************** */
-Animal::Animal(void)
+Animal::Animal(void):
+	_type("Animal")
 {
-	this->_type = "Animal";
 	std::cout << "[Default Constructor] Animal: object of type " << this->_type
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
-Animal::Animal(const Animal& animal)
+Animal::Animal(const Animal& animal):
+	_type(animal.getType())
 {
-	this->_type = animal._type;
 	std::cout << "[Copy Constructor] Animal: object of type " << this->_type
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;

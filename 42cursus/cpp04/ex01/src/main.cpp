@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 23:27:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/13 10:55:45 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:58:34 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 int	main(void)
 {
+	std::string	strarray[] = {"hola", "wowo", "quiero comer"};
+	Brain brain(strarray, 3);
 	const Animal*		animal = new Animal();
 	const Animal*		cat = new Cat();
 	const Animal*		dog = new Dog();

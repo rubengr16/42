@@ -13,7 +13,8 @@
 # include "WrongCat.hpp"
 
 /* ****************************** CONSTRUCTORS ****************************** */
-WrongCat::WrongCat(void)
+WrongCat::WrongCat(void):
+	WrongAnimal()
 {
 	this->_type = "WrongCat";
 	std::cout << "[Default Constructor] WrongCat: object of type " << this->_type
