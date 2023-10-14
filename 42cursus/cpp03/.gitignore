@@ -56,5 +56,8 @@ dkms.conf
 .vscode/
 
 # Program files and objects
-
+clap_trap
+scav_trap
+frag_trap
+diamond_trap
 

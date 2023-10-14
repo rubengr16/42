@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongWrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 22:57:56 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/13 10:40:47 by rgallego         ###   ########.fr       */
+/*   Created: 2023/10/12 22:58:32 by rgallego          #+#    #+#             */
+/*   Updated: 2023/10/13 10:45:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
 # include <iostream>
+# include "WrongAnimal.hpp"
 
-class Animal
+class WrongCat: public WrongAnimal
 {
+/* ****************************** CONSTRUCTORS ****************************** */
 	private:
-		Animal(std::string type);
-
-	protected:
-		std::string	_type;
+		WrongCat(std::string type);
 
 	public:
-/* ****************************** CONSTRUCTORS ****************************** */
-		Animal(void);
-		Animal(const Animal& animal);
+		WrongCat(void);
+		WrongCat(const WrongCat& wrongCat);
 /* ******************************* DESTRUCTOR ******************************* */
-		~Animal(void);
+		~WrongCat(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Animal&			operator=(const Animal& animal);
+		WrongCat&	operator=(const WrongCat& wrongCat);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		std::string			getType(void) const;
-		virtual void		makeSound(void) const;
+		void		makeSound(void) const;
 };
 
 #endif

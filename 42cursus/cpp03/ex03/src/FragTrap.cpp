@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:02:54 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/12 13:21:05 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:10:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,36 @@ FragTrap&	FragTrap::operator=(FragTrap fragTrap)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
+unsigned int	FragTrap::getHitPts(void) const
+{
+	return (this->_hitPts);
+}
+
+void	FragTrap::setHitPts(unsigned int	hitPts)
+{
+	this->_hitPts = hitPts;
+}
+
+unsigned int	FragTrap::getEnergyPts(void) const
+{
+	return (this->_energyPts);
+}
+
+void	FragTrap::setEnergyPts(unsigned int	energyPts)
+{
+	this->_energyPts = energyPts;
+}
+
+unsigned int	FragTrap::getDamagePts(void) const
+{
+	return (this->_damagePts);
+}
+
+void	FragTrap::setDamagePts(unsigned int	damagePts)
+{
+	this->_damagePts = damagePts;
+}
+
 void	FragTrap::highFiveGuys(void)
 {
 	std::cout << "[High Five Guys]: FragTrap " << this->_name

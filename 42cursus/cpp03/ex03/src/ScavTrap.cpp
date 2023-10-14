@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:02:54 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/12 13:21:54 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:10:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,36 @@ ScavTrap&	ScavTrap::operator=(ScavTrap scavTrap)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
+unsigned int	ScavTrap::getHitPts(void) const
+{
+	return (this->_hitPts);
+}
+
+void	ScavTrap::setHitPts(unsigned int	hitPts)
+{
+	this->_hitPts = hitPts;
+}
+
+unsigned int	ScavTrap::getEnergyPts(void) const
+{
+	return (this->_energyPts);
+}
+
+void	ScavTrap::setEnergyPts(unsigned int	energyPts)
+{
+	this->_energyPts = energyPts;
+}
+
+unsigned int	ScavTrap::getDamagePts(void) const
+{
+	return (this->_damagePts);
+}
+
+void	ScavTrap::setDamagePts(unsigned int	damagePts)
+{
+	this->_damagePts = damagePts;
+}
+
 void	ScavTrap::attack(const std::string& target)
 {
 	if (!this->_energyPts || !this->_hitPts)

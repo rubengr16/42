@@ -16,14 +16,14 @@ DiamondTrap::DiamondTrap(void):
 	ClapTrap("unnamed_clap_name"), FragTrap(), ScavTrap()
 {
 	this->_name = "unnamed";
-	this->_hitPts = this->FragTrap::_hitPts;
-	this->_energyPts = this->ScavTrap::_energyPts;
-	this->_damagePts = this->FragTrap::_damagePts;
+	this->ClapTrap::_hitPts = this->FragTrap::getHitPts();
+	this->ClapTrap::_energyPts = this->ScavTrap::getEnergyPts();
+	this->ClapTrap::_damagePts = this->FragTrap::getDamagePts();
 	std::cout << "[Default Constructor]: DiamondTrap " << this->_name
 		<< ", known as Claptrap " << this->ClapTrap::_name
-		<< ", has been created." << std::endl << "\t- " << this->_hitPts
-		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
-		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
+		<< ", has been created." << std::endl << "\t- " << this->ClapTrap::_hitPts
+		<< " Hit Points," << std::endl << "\t- " << this->ClapTrap::_energyPts
+		<< " Energy Points," << std::endl << "\t- " << this->ClapTrap::_damagePts
 		<< " Damage Points," << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
@@ -32,14 +32,14 @@ DiamondTrap::DiamondTrap(std::string name):
 	ClapTrap(name + "_clap_name"), FragTrap(), ScavTrap()
 {
 	this->_name = name;
-	this->_hitPts = this->FragTrap::_hitPts;
-	this->_energyPts = this->ScavTrap::_energyPts;
-	this->_damagePts = this->FragTrap::_damagePts;
+	this->ClapTrap::_hitPts = this->FragTrap::getHitPts();
+	this->ClapTrap::_energyPts = this->ScavTrap::getEnergyPts();
+	this->ClapTrap::_damagePts = this->FragTrap::getDamagePts();
 	std::cout << "[Constructor]: DiamondTrap " << this->_name
 		<< ", known as Claptrap " << this->ClapTrap::_name
-		<< ", has been created." << std::endl << "\t- " << this->_hitPts
-		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
-		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
+		<< ", has been created." << std::endl << "\t- " << this->ClapTrap::_hitPts
+		<< " Hit Points," << std::endl << "\t- " << this->ClapTrap::_energyPts
+		<< " Energy Points," << std::endl << "\t- " << this->ClapTrap::_damagePts
 		<< " Damage Points," << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
@@ -48,14 +48,14 @@ DiamondTrap::DiamondTrap(const DiamondTrap& diamondTrap):
 	ClapTrap(diamondTrap._name + "_clap_name"), FragTrap(), ScavTrap()
 {
 	this->_name = diamondTrap._name;
-	this->_hitPts = diamondTrap.FragTrap::getHitPts();
-	this->_energyPts = diamondTrap.ScavTrap::getEnergyPts();
-	this->_damagePts = diamondTrap.FragTrap::getDamagePts();
+	this->ClapTrap::_hitPts = diamondTrap.FragTrap::getHitPts();
+	this->ClapTrap::_energyPts = diamondTrap.ScavTrap::getEnergyPts();
+	this->ClapTrap::_damagePts = diamondTrap.FragTrap::getDamagePts();
 	std::cout << "[Copy constructor]: DiamondTrap " << this->_name
 		<< ", known as Claptrap " << this->ClapTrap::_name
-		<< ", has been created." << std::endl << "\t- " << this->_hitPts
-		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
-		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
+		<< ", has been created." << std::endl << "\t- " << this->ClapTrap::_hitPts
+		<< " Hit Points," << std::endl << "\t- " << this->ClapTrap::_energyPts
+		<< " Energy Points," << std::endl << "\t- " << this->ClapTrap::_damagePts
 		<< " Damage Points." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
@@ -73,9 +73,9 @@ void	swap(DiamondTrap& diamondTrap1, DiamondTrap& diamondTrap2)
 {
 	std::swap(diamondTrap1.ClapTrap::_name, diamondTrap2.ClapTrap::_name);
 	std::swap(diamondTrap1._name, diamondTrap2._name);
-	std::swap(diamondTrap1._damagePts, diamondTrap2._damagePts);
-	std::swap(diamondTrap1._energyPts, diamondTrap2._energyPts);
-	std::swap(diamondTrap1._hitPts, diamondTrap2._hitPts);
+	std::swap(diamondTrap1.ClapTrap::_hitPts, diamondTrap2.ClapTrap::_hitPts);
+	std::swap(diamondTrap1.ClapTrap::_energyPts, diamondTrap2.ClapTrap::_energyPts);
+	std::swap(diamondTrap1.ClapTrap::_damagePts, diamondTrap2.ClapTrap::_damagePts);
 }
 
 DiamondTrap&	DiamondTrap::operator=(DiamondTrap diamondTrap)
@@ -83,9 +83,9 @@ DiamondTrap&	DiamondTrap::operator=(DiamondTrap diamondTrap)
 	swap(*this, diamondTrap);
 	std::cout << "[Copy assignment operator]: DiamondTrap " << this->_name
 		<< ", known as Claptrap " << this->ClapTrap::_name
-		<< " has been copied." << std::endl << "\t- " << this->_hitPts
-		<< " Hit Points," << std::endl << "\t- " << this->_energyPts 
-		<< " Energy Points," << std::endl << "\t- " << this->_damagePts
+		<< " has been copied." << std::endl << "\t- " << this->ClapTrap::_hitPts
+		<< " Hit Points," << std::endl << "\t- " << this->ClapTrap::_energyPts 
+		<< " Energy Points," << std::endl << "\t- " << this->ClapTrap::_damagePts
 		<< " Damage Points." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	return (*this);
@@ -97,10 +97,45 @@ std::string	DiamondTrap::getName(void) const
 	return (this->DiamondTrap::_name);
 }
 
+std::string	DiamondTrap::getClapName(void) const
+{
+	return (this->ClapTrap::_name);
+}
+
 void	DiamondTrap::setName(std::string name)
 {
 	this->_name = name;
 	this->ClapTrap::_name = this->_name + "_clap_name";
+}
+
+unsigned int	DiamondTrap::getHitPts(void) const
+{
+	return (this->ClapTrap::_hitPts);
+}
+
+void	DiamondTrap::setHitPts(unsigned int	hitPts)
+{
+	this->ClapTrap::_hitPts = hitPts;
+}
+
+unsigned int	DiamondTrap::getEnergyPts(void) const
+{
+	return (this->ClapTrap::_energyPts);
+}
+
+void	DiamondTrap::setEnergyPts(unsigned int	energyPts)
+{
+	this->ClapTrap::_energyPts = energyPts;
+}
+
+unsigned int	DiamondTrap::getDamagePts(void) const
+{
+	return (this->ClapTrap::_damagePts);
+}
+
+void	DiamondTrap::setDamagePts(unsigned int	damagePts)
+{
+	this->ClapTrap::_damagePts = damagePts;
 }
 
 void	DiamondTrap::WhoAmI(void)

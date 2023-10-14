@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 22:57:56 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/13 10:40:47 by rgallego         ###   ########.fr       */
+/*   Created: 2023/10/12 22:58:32 by rgallego          #+#    #+#             */
+/*   Updated: 2023/10/13 00:22:18 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
 # include <iostream>
+# include "Animal.hpp"
 
-class Animal
+class Cat: public Animal
 {
+/* ****************************** CONSTRUCTORS ****************************** */
 	private:
-		Animal(std::string type);
-
-	protected:
-		std::string	_type;
+		Cat(std::string type);
 
 	public:
-/* ****************************** CONSTRUCTORS ****************************** */
-		Animal(void);
-		Animal(const Animal& animal);
+		Cat(void);
+		Cat(const Cat& cat);
 /* ******************************* DESTRUCTOR ******************************* */
-		~Animal(void);
+		~Cat(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Animal&			operator=(const Animal& animal);
+		Cat&			operator=(const Cat& cat);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		std::string			getType(void) const;
-		virtual void		makeSound(void) const;
+		virtual void	makeSound(void) const;
 };
 
 #endif

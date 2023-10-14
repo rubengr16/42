@@ -1,46 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongWrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 23:01:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/13 16:09:15 by rgallego         ###   ########.fr       */
+/*   Created: 2023/10/12 22:57:56 by rgallego          #+#    #+#             */
+/*   Updated: 2023/10/13 10:44:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 # include <iostream>
-# include "ClapTrap.hpp"
 
-class FragTrap: public virtual ClapTrap
+class WrongAnimal
 {
 	private:
-		unsigned int	_hitPts;
-		unsigned int	_energyPts;
-		unsigned int	_damagePts;
+		WrongAnimal(std::string type);
+
+	protected:
+		std::string	_type;
 
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
-		FragTrap(void);
-		FragTrap(std::string name);
-		FragTrap(const FragTrap& fragTrap);
+		WrongAnimal(void);
+		WrongAnimal(const WrongAnimal& wrongAnimal);
 /* ******************************* DESTRUCTOR ******************************* */
-		~FragTrap(void);
+		~WrongAnimal(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		friend void		swap(FragTrap& fragTrap1, FragTrap& fragTrap2);
-		FragTrap&		operator=(FragTrap fragTrap);
+		WrongAnimal&	operator=(const WrongAnimal& wrongAnimal);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		unsigned int	getHitPts(void) const;
-		void			setHitPts(unsigned int	hitPts);
-		unsigned int	getEnergyPts(void) const;
-		void			setEnergyPts(unsigned int	energyPts);
-		unsigned int	getDamagePts(void) const;
-		void			setDamagePts(unsigned int	damagePts);
-		void			highFiveGuys(void);
+		std::string		getType(void) const;
+		void			makeSound(void) const;
 };
 
 #endif

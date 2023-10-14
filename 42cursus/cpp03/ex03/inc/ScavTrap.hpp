@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:01:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/12 13:21:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:09:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 
 class ScavTrap: public virtual ClapTrap
 {
+	private:
+		unsigned int	_hitPts;
+		unsigned int	_energyPts;
+		unsigned int	_damagePts;
+
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
 		ScavTrap(void);
@@ -29,6 +34,12 @@ class ScavTrap: public virtual ClapTrap
 		friend void		swap(ScavTrap& scavTrap1, ScavTrap& scavTrap2);
 		ScavTrap&		operator=(ScavTrap scavTrap);
 /* **************************** MEMBER FUNCTIONS **************************** */
+		unsigned int	getHitPts(void) const;
+		void			setHitPts(unsigned int	hitPts);
+		unsigned int	getEnergyPts(void) const;
+		void			setEnergyPts(unsigned int	energyPts);
+		unsigned int	getDamagePts(void) const;
+		void			setDamagePts(unsigned int	damagePts);
 		void			attack(const std::string& target);
 		void			guardGate(void);
 };
