@@ -41,6 +41,8 @@ WrongCat::~WrongCat(void)
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 WrongCat&	WrongCat::operator=(const WrongCat& wrongCat)
 {
+	if (this == &wrongCat)
+		return (*this);
 	this->_type = wrongCat._type;
 	std::cout << "[Copy Assignment Operator] WrongCat: object of type "
 		<< this->_type << " has been copy assigned." << std::endl

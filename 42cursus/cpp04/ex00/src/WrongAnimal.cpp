@@ -39,6 +39,8 @@ WrongAnimal::~WrongAnimal(void)
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 WrongAnimal&	WrongAnimal::operator=(const WrongAnimal& wrongAnimal)
 {
+	if (this == &wrongAnimal)
+		return (*this);
 	this->_type = wrongAnimal._type;
 	std::cout << "[Copy Assignment Operator] WrongAnimal: object of type "
 		<< this->_type << " has been copy assigned." << std::endl

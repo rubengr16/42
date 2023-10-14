@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 17:47:34 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/15 00:36:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ Cat::~Cat(void)
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 Cat&	Cat::operator=(const Cat& cat)
 {
+	if (this == &cat)
+		return (*this);
 	this->_type = cat._type;
 	std::cout << "[Copy Assignment Operator] Cat: object of type "
 		<< this->_type << " has been copy assigned." << std::endl

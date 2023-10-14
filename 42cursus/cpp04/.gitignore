@@ -58,3 +58,5 @@ dkms.conf
 # Program files and objects
 animals
 smart_animals
+abstract_animals
+materia

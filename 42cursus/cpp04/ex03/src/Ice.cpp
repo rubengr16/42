@@ -1,55 +1,69 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AAnimal.cpp                                        :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/15 00:35:21 by rgallego         ###   ########.fr       */
+/*   Created: 2023/10/15 00:12:29 by rgallego          #+#    #+#             */
+/*   Updated: 2023/10/15 00:48:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "AAnimal.hpp"
+#include "Ice.hpp"
 
 /* ****************************** CONSTRUCTORS ****************************** */
-AAnimal::AAnimal(void):
-	_type("AAnimal")
+Ice::Ice(void):
+	AMateria("ice")
 {
-	std::cout << "[Default Constructor] AAnimal: object of type " << this->_type
+	std::cout << "[Default Constructor] Ice: object of type " << this->_type
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
-AAnimal::AAnimal(const AAnimal& animal):
-	_type(animal.getType())
+Ice::Ice(const std::string& type):
+	AMateria(type)
 {
-	std::cout << "[Copy Constructor] AAnimal: object of type " << this->_type
+	std::cout << "[ronstructor] Ice: object of type " << this->_type
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
-/* ******************************* DESTRUCTOR ******************************* */
-AAnimal::~AAnimal(void)
+
+Ice::Ice(const Ice& ice):
+	AMateria(ice.getType())
 {
-	std::cout << "[Destructor]: AAnimal: " << this->_type
-		<< "'s type object has been destroyed." << std::endl
+	std::cout << "[Copy Constructor] Ice: object of type " << this->_type
+		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-AAnimal&	AAnimal::operator=(const AAnimal& animal)
+Ice&	Ice::operator=(const Ice& ice)
 {
-	if (this == &animal)
+	if (this == &ice)
 		return (*this);
-	this->_type = animal._type;
-	std::cout << "[Copy Assignment Operator] AAnimal: object of type "
-		<< this->_type << " has been copy assigned." << std::endl
+	this->_type = ice.getType();
+	std::cout << "[Copy Assignment Operator] Ice: object of type " << this->_type
+		<< " has been copy assigned." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	return (*this);
 }
 
-/* **************************** MEMBER FUNCTIONS **************************** */
-std::string	AAnimal::getType(void) const
+/* ******************************* DESTRUCTOR ******************************* */
+Ice::~Ice(void)
 {
-	return (this->_type);
+	std::cout << "[Destructor]: Ice: " << this->_type
+		<< "'s type object has been destroyed." << std::endl
+		<< "----------------------------------------------------" << std::endl;
+}
+
+/* **************************** MEMBER FUNCTIONS **************************** */
+AMateria*	Ice::clone(void) const
+{
+	return (new Ice(this->_type));
+}
+
+void	Ice::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at " << "target" << " *" << std::endl;
 }

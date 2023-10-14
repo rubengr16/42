@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 16:32:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/15 00:36:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ Dog::~Dog(void)
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 Dog&	Dog::operator=(const Dog& dog)
 {
+	if (this == &dog)
+		return (*this);
 	this->_type = dog._type;
 	std::cout << "[Copy Assignment Operator] Dog: object of type "
 		<< this->_type << " has been copy assigned." << std::endl

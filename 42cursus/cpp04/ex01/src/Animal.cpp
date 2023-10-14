@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 17:03:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/15 00:35:34 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ Animal::~Animal(void)
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 Animal&	Animal::operator=(const Animal& animal)
 {
+	if (this == &animal)
+		return (*this);
 	this->_type = animal._type;
 	std::cout << "[Copy Assignment Operator] Animal: object of type "
 		<< this->_type << " has been copy assigned." << std::endl
