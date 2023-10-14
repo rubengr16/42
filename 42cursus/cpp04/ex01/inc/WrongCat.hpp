@@ -18,11 +18,8 @@
 
 class WrongCat: public WrongAnimal
 {
-/* ****************************** CONSTRUCTORS ****************************** */
-	private:
-		WrongCat(std::string type);
-
 	public:
+/* ****************************** CONSTRUCTORS ****************************** */
 		WrongCat(void);
 		WrongCat(const WrongCat& wrongCat);
 /* ******************************* DESTRUCTOR ******************************* */

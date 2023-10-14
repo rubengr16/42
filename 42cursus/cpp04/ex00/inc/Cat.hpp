@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:58:32 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/13 00:22:18 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 22:47:04 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 class Cat: public Animal
 {
 /* ****************************** CONSTRUCTORS ****************************** */
-	private:
-		Cat(std::string type);
-
 	public:
 		Cat(void);
 		Cat(const Cat& cat);

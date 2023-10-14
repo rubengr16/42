@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:56 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 22:46:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 23:16:06 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
 # include <iostream>
 
-class Animal
+class AAnimal
 {
+/**
+ * Calling constructors or destructors of Abstract Classes may cause undefined
+ * behaviour as they can not be instantiated. Due to this they are implemented
+ * as protected to be used only in derived classes as it is mandatory.
+*/
 	protected:
 		std::string	_type;
+/* ****************************** CONSTRUCTORS ****************************** */
+		AAnimal(void);
+		AAnimal(const AAnimal& animal);
 
 	public:
-/* ****************************** CONSTRUCTORS ****************************** */
-		Animal(void);
-		Animal(const Animal& animal);
 /* ******************************* DESTRUCTOR ******************************* */
-		~Animal(void);
+		virtual ~AAnimal(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Animal&			operator=(const Animal& animal);
+		AAnimal&			operator=(const AAnimal& animal);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		std::string			getType(void) const;
-		virtual void		makeSound(void) const;
+		std::string		getType(void) const;
+		virtual void	makeSound(void) const = 0;
 };
 
 #endif

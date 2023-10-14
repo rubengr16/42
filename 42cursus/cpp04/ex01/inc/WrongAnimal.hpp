@@ -17,9 +17,6 @@
 
 class WrongAnimal
 {
-	private:
-		WrongAnimal(std::string type);
-
 	protected:
 		std::string	_type;
 

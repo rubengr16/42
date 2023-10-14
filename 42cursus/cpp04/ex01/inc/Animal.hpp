@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:56 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 22:36:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 22:47:43 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 
 class Animal
 {
-	private:
-		Animal(std::string type);
-
 	protected:
 		std::string	_type;
 

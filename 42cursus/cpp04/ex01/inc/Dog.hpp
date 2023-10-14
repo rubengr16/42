@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:59:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 22:42:15 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 22:47:56 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class Dog: public Animal
 /* ****************************** CONSTRUCTORS ****************************** */
 	private:
 		Brain*	_brain;
-		Dog(std::string type);
 
 	public:
 		Dog(void);
