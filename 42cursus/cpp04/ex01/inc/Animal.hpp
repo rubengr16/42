@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:56 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 17:02:18 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 22:36:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Animal
 		Animal(void);
 		Animal(const Animal& animal);
 /* ******************************* DESTRUCTOR ******************************* */
-		~Animal(void);
+		virtual ~Animal(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		Animal&			operator=(const Animal& animal);
 /* **************************** MEMBER FUNCTIONS **************************** */
