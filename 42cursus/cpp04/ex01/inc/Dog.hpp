@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:59:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 17:02:22 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 17:49:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Dog: public Animal
 
 	public:
 		Dog(void);
+		Dog(const Brain brain);
 		Dog(const Dog& dog);
 /* ******************************* DESTRUCTOR ******************************* */
 		~Dog(void);

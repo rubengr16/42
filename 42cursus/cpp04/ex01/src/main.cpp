@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 23:27:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 16:58:34 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 18:05:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,20 @@
 
 int	main(void)
 {
-	std::string	strarray[] = {"hola", "wowo", "quiero comer"};
-	Brain brain(strarray, 3);
+/* ********************* CREATE A BRAIN FOR CAT AND DOG ********************* */
+	std::string	ideas[] = {"GivePaw", "Make Sound", "I want to eat"};
+	Brain				brain(ideas, sizeof(ideas) / sizeof(std::string));
+	Cat					catWithBrain = Cat(brain);
+	Dog					dogWithBrain = Dog(brain);
+/* ************************ CLASSES BAD POLYMORPHISM ************************ */
 	const Animal*		animal = new Animal();
 	const Animal*		cat = new Cat();
 	const Animal*		dog = new Dog();
 /* ********************** CLASSES WITH BAD POLYMORPHISM ********************* */
 	const WrongAnimal*	wrongAnimal = new WrongAnimal();
 	const WrongAnimal*	wrongCat = new WrongCat();
-
+/* ************************** AUXILIARY VARIABLES *************************** */
+	unsigned int		i;
 	std::cout << "DISPLAY THE TYPES OF ANIMAL'S OBJECT" << std::endl;
 	std::cout << "animal variable is of type " << animal->getType() << "."
 		<< std::endl;
@@ -36,6 +41,13 @@ int	main(void)
 		<< std::endl;
 	std::cout << "----------------------------------------------------"
 		<< std::endl;
+	std::cout << "DISPLAY THE BRAINS OF ANIMAL'S OBJECT" << std::endl;
+	std::cout << "[CAT WITH BRAIN]" << std::endl;
+	for (i = 0; i < catWithBrain.getBrain()->getLength(); i++)
+		std::cout << catWithBrain.getBrain()->getIdea(i) << std::endl;
+	std::cout << "[DOG WITH BRAIN]" << std::endl;
+	for (i = 0; i < dogWithBrain.getBrain()->getLength(); i++)
+		std::cout << dogWithBrain.getBrain()->getIdea(i) << std::endl;
 
 	std::cout << "ANIMALS MAKING SOUNDS" << std::endl;
 	animal->makeSound();

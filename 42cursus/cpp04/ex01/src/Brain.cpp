@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:10:53 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 16:53:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 20:52:23 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ Brain::Brain(void):
 }
 
 Brain::Brain(const std::string *ideas, unsigned int length):
-	_ideas(new std::string[MAX_LENGTH]),
-	_length(length)
+	_ideas(new std::string[MAX_LENGTH])
 {
 	unsigned int i;
 
-	if (length > ideas->length())
-		length = ideas->length();
+	if (length > MAX_LENGTH)
+		length = MAX_LENGTH;
+	this->_length = length;
 	for (i = 0; i < length; i++)
 		this->_ideas[i] = ideas[i];
 	std::cout << "[Constructor] Brain: of size " << this->_length
@@ -82,7 +82,7 @@ const std::string*	Brain::getIdeas(void) const
 
 std::string	Brain::getIdea(unsigned int i) const
 {
-	if (i > this->_ideas->length() || i > this->_length)
+	if (i > this->_length)
 	{
 		std::cout << "[Set Ideas] Brain: no idea with the given idex has been "
 			<< " found." << std::endl
@@ -100,8 +100,8 @@ void	Brain::setIdeas(std::string ideas[], unsigned int length)
 {
 	unsigned int i;
 
-	if (length > ideas->length())
-		length = ideas->length();
+	if (length > MAX_LENGTH)
+		length = MAX_LENGTH;
 	for (i = 0; i < length; i++)
 		this->_ideas[i] = ideas[i];
 	this->_length = length;
