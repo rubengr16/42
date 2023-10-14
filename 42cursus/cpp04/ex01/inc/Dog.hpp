@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:59:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 22:36:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/14 22:42:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ class Dog: public Animal
 		Dog(const Brain brain);
 		Dog(const Dog& dog);
 /* ******************************* DESTRUCTOR ******************************* */
-		virtual ~Dog(void);
+		~Dog(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		Dog&			operator=(const Dog& dog);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		const Brain*	getBrain(void) const;
-		virtual void	makeSound(void) const;
+		void			makeSound(void) const;
 };
 
 #endif
