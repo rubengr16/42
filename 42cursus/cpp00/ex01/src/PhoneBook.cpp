@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 23:47:22 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/21 14:57:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:48:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,17 @@ void	PhoneBook::searchContact(void)
 			<< std::endl;
 		n++;
 	}
-	do
+	std::cout << "Please, select an index to see full contact information (choose -1 to avoid it): ";
+	std::cin >> i;
+	while (!std::cin.good() || (i < -1 || i >= this->_size))
 	{
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+		std::cout << "Invalid index, please enter a valid option" << std::endl;
 		std::cout << "Please, select an index to see full contact information (choose -1 to avoid it): ";
 		std::cin >> i;
-		std::cin.ignore();
-		if (i < -1 || i >= this->_size)
-			std::cout << "Index out of bounds, please enter a valid option" << std::endl;
-	} while (i != -1 && i >= this->_size);
+	}
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 	if (i != -1)
 		this->_contacts[i].printContact();
 }
