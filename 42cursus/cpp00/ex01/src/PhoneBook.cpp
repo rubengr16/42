@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 23:47:22 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/28 15:48:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:28:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	PhoneBook::searchContact(void)
 	std::cout << std::setfill(' ') << std::setw(10) << "FIRST NAME" << '|';
 	std::cout << std::setfill(' ') << std::setw(10) << "LAST NAME" << '|';
 	std::cout << std::setfill(' ') << std::setw(10) << "NICKNAME" << std::endl;
-	first = (this->_last - this->_size + 1) % 8;
+	first = (this->_last - this->_size + 1) % this->_MAX_SIZE;
+	if (first < 0)
+		first += this->_MAX_SIZE;
 	n = 0;
 	while (n < this->_size)
 	{
@@ -81,5 +83,5 @@ void	PhoneBook::searchContact(void)
 	}
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 	if (i != -1)
-		this->_contacts[i].printContact();
+		this->_contacts[(first + i) % this->_MAX_SIZE].printContact();
 }

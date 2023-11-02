@@ -47,10 +47,10 @@ private:
 
 	static void	_displayTimestamp( void );
 
-	int				_accountIndex = 0;
-	int				_amount = 0;
-	int				_nbDeposits = 0;
-	int				_nbWithdrawals = 0;
+	int			_accountIndex;
+	int			_amount;
+	int			_nbDeposits;
+	int			_nbWithdrawals;
 
 	Account( void );
 
