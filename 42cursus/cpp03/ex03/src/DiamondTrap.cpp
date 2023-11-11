@@ -69,18 +69,15 @@ DiamondTrap::~DiamondTrap(void)
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-void	swap(DiamondTrap& diamondTrap1, DiamondTrap& diamondTrap2)
-{
-	std::swap(diamondTrap1.ClapTrap::_name, diamondTrap2.ClapTrap::_name);
-	std::swap(diamondTrap1._name, diamondTrap2._name);
-	std::swap(diamondTrap1.ClapTrap::_hitPts, diamondTrap2.ClapTrap::_hitPts);
-	std::swap(diamondTrap1.ClapTrap::_energyPts, diamondTrap2.ClapTrap::_energyPts);
-	std::swap(diamondTrap1.ClapTrap::_damagePts, diamondTrap2.ClapTrap::_damagePts);
-}
-
 DiamondTrap&	DiamondTrap::operator=(DiamondTrap diamondTrap)
 {
-	swap(*this, diamondTrap);
+	if (this == &diamondTrap)
+		return (*this);
+	this->ClapTrap::_name = diamondTrap.getName();
+	this->_name = diamondTrap.getClapName();
+	this->ClapTrap::_hitPts = diamondTrap.getHitPts();
+	this->ClapTrap::_energyPts = diamondTrap.getEnergyPts();
+	this->ClapTrap::_damagePts = diamondTrap.getDamagePts();
 	std::cout << "[Copy assignment operator]: DiamondTrap " << this->_name
 		<< ", known as Claptrap " << this->ClapTrap::_name
 		<< " has been copied." << std::endl << "\t- " << this->ClapTrap::_hitPts

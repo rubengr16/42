@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:02:54 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/13 16:10:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:44:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,14 @@ FragTrap::~FragTrap(void)
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-void	swap(FragTrap& fragTrap1, FragTrap& fragTrap2)
-{
-	std::swap(fragTrap1._name, fragTrap2._name);
-	std::swap(fragTrap1._damagePts, fragTrap2._damagePts);
-	std::swap(fragTrap1._energyPts, fragTrap2._energyPts);
-	std::swap(fragTrap1._hitPts, fragTrap2._hitPts);
-}
-
 FragTrap&	FragTrap::operator=(FragTrap fragTrap)
 {
-	swap(*this, fragTrap);
+	if (this == &fragTrap)
+		return (*this);
+	this->_name = fragTrap.getName();
+	this->_hitPts = fragTrap.getHitPts();
+	this->_energyPts = fragTrap.getEnergyPts();
+	this->_damagePts = fragTrap.getDamagePts();
 	std::cout << "[Copy assignment operator]: FragTrap " << this->_name
 		<< " has been copied." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts 

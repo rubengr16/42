@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:02:54 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/13 16:10:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:43:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,14 @@ ScavTrap::~ScavTrap(void)
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-void	swap(ScavTrap& scavTrap1, ScavTrap& scavTrap2)
-{
-	std::swap(scavTrap1._name, scavTrap2._name);
-	std::swap(scavTrap1._damagePts, scavTrap2._damagePts);
-	std::swap(scavTrap1._energyPts, scavTrap2._energyPts);
-	std::swap(scavTrap1._hitPts, scavTrap2._hitPts);
-}
-
 ScavTrap&	ScavTrap::operator=(ScavTrap scavTrap)
 {
-	swap(*this, scavTrap);
+	if (this == &scavTrap)
+		return (*this);
+	this->_name = scavTrap.getName();
+	this->_hitPts = scavTrap.getHitPts();
+	this->_energyPts = scavTrap.getEnergyPts();
+	this->_damagePts = scavTrap.getDamagePts();
 	std::cout << "[Copy assignment operator]: ScavTrap " << this->_name
 		<< " has been copied." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
