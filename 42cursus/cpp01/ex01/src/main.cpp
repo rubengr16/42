@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:25:53 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/03 13:15:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/11 11:36:10 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int	main(void)
 {
 	Zombie		*zHorde;
+	std::string	names[] = {"One", "Two", "Three", "Four", "Five", "Six"};
 	int			i;
 	
 	zHorde = zombieHorde(SIZE, "AZombieHorde");
@@ -26,8 +27,8 @@ int	main(void)
 	std::cout << "Let's git a different name for each zombie!!" << std::endl
 		<< "Their index will be their name!"
 		<< std::endl;
-	for (i = 0; i < SIZE; i++)g
-		zHorde[i].setName(std::itoa(i));
+	for (i = 0; i < SIZE; i++)
+		zHorde[i].setName(names[i]);
 	delete []zHorde;
 	return (0);
 }

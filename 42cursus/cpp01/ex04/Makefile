@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:38:38 by rgallego          #+#    #+#              #
-#    Updated: 2023/10/01 17:07:59 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/11 12:05:10 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ $(NAME): $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
-	$(RM) $(REPLACE_FILES)
 
 fclean: clean
 	$(RM) $(NAME)
