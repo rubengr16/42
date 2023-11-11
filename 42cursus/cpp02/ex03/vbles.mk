@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/10/08 22:30:45 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/11 12:25:25 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Wextra -Werror -std=c++98
 
-NAME	=			a.out
+NAME	=			bsp
 
 INC_ALL	=			\
 					$(INC_DIR)
