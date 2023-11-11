@@ -1,41 +1,35 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    vbles.mk                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/18 19:07:41 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/08 14:48:44 by rgallego         ###   ########.fr        #
+#    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
+#    Updated: 2023/11/11 16:33:02 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
--include vbles.mk
+SRC_DIR	=			src/
 
-all: $(NAME)
+INC_DIR	=			inc/
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(addprefix -I, $(INC_ALL)) -c $< -o $@
+EX00	=			\
 
-$(LIBFTNAME):
-	$(MAKE) -C $(LIBFT)
 
-$(GNLNAME):
-	$(MAKE) -C $(GNL)
+SRCS	= 			$(addprefix $(SRC_DIR), \
+						$(EX00) \
+					)
 
-$(NAME): $(OBJS) $(LDFLAGS)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
+OBJS	=			$(SRCS:.cpp=.o)
 
-bonus: $(NAME)
+CC		=			c++
 
-clean:
-	$(RM) $(OBJS) $(DPNDS)
-	$(MAKE) -C $(LIBFT) fclean
-	$(MAKE) -C $(GNL) fclean
+RM		=			-rm -f
 
-fclean: clean
-	$(RM) $(NAME)
+CFLAGS	=			-Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
 
-re: fclean all
+NAME	=			bureaucrat
 
-.PHONY: all clean fclean re
+INC_ALL	=			\
+					$(INC_DIR)

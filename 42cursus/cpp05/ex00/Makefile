@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/18 19:07:41 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/08 14:48:44 by rgallego         ###   ########.fr        #
+#    Created: 2023/09/04 22:38:38 by rgallego          #+#    #+#              #
+#    Updated: 2023/11/11 16:32:47 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,24 +14,14 @@
 
 all: $(NAME)
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) $(addprefix -I, $(INC_ALL)) -c $< -o $@
 
-$(LIBFTNAME):
-	$(MAKE) -C $(LIBFT)
-
-$(GNLNAME):
-	$(MAKE) -C $(GNL)
-
-$(NAME): $(OBJS) $(LDFLAGS)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
-
-bonus: $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 clean:
 	$(RM) $(OBJS) $(DPNDS)
-	$(MAKE) -C $(LIBFT) fclean
-	$(MAKE) -C $(GNL) fclean
 
 fclean: clean
 	$(RM) $(NAME)
