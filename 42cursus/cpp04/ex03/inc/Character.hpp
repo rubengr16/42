@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:52:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/12 01:04:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/12 14:36:18 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class Character: public ICharacter
 		~Character(void);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		std::string const&	getName() const;
+		const AMateria*		getInventoryMateria(int idx) const;
 		void				equip(AMateria* m);
 		void				unequip(int idx);
 		void				use(int idx, ICharacter& target);

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:52:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/12 01:51:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/12 14:39:16 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ Character::Character(void):
 	_unequipped(NULL),
 	_unequippedSize(0)
 {
+	int	i;
+
 	std::cout << "[Default Constructor] Character: named as" << this->_name
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
-	int	i;
 	for (i = 0; i < MAX_INVENTORY; i++)
 		this->_inventory[i] = NULL;
 }
@@ -30,10 +31,11 @@ Character::Character(const std::string& name):
 	_unequipped(NULL),
 	_unequippedSize(0)
 {
+	int	i;
+
 	std::cout << "[Constructor] Character: named as " << this->_name
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
-	int	i;
 	for (i = 0; i < MAX_INVENTORY; i++)
 		this->_inventory[i] = NULL;
 }
@@ -43,30 +45,41 @@ Character::Character(const Character& character):
 	_unequipped(NULL),
 	_unequippedSize(0)
 {
+	const AMateria*	aux;
+	int	i;
+
 	std::cout << "[Copy Constructor] Character: named as " << this->_name
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
-	int	i;
 	for (i = 0; i < MAX_INVENTORY; i++)
-		this->_inventory[i] = NULL;
+	{
+		aux = character.getInventoryMateria(i);
+		if (aux)
+			this->_inventory[i] = aux->clone();
+		else
+			this->_inventory[i] = NULL;
+	}
 }
 
 Character&	Character::operator=(const Character& character)
 {
+	const AMateria*	aux;
+	int	i;
+
 	this->_name = character.getName();
 	this->_unequipped = NULL;
 	this->_unequippedSize = 0;
 	std::cout << "[Copy Assignment Operator] Character: named as "
 		<< this->_name << " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
-	int	i;
 	for (i = 0; i < MAX_INVENTORY; i++)
-		this->_inventory[i] = NULL;
-}
-
-std::string const&	Character::getName() const
-{
-	return (this->_name);
+	{
+		aux = character.getInventoryMateria(i);
+		if (aux)
+			this->_inventory[i] = aux->clone();
+		else
+			this->_inventory[i] = NULL;
+	}
 }
 
 Character::~Character(void)
@@ -80,6 +93,23 @@ Character::~Character(void)
 		delete this->_unequipped[i];
 	delete[] this->_unequipped;
 }
+
+std::string const&	Character::getName() const
+{
+	return (this->_name);
+}
+
+const AMateria*	Character::getInventoryMateria(int idx) const
+{
+	if (idx < 0 || idx >= MAX_INVENTORY)
+	{
+		std::cout << "[Get Inventory Materia] Character: index out of range!!"
+			<< std::endl;
+		return ;
+	}
+	return (this->_inventory[idx]);
+}
+
 
 void	Character::equip(AMateria* m)
 {
