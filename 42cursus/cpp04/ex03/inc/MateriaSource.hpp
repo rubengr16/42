@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 00:02:42 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/12 22:19:01 by rgallego         ###   ########.fr       */
+/*   Created: 2023/11/12 22:09:04 by rgallego          #+#    #+#             */
+/*   Updated: 2023/11/12 22:20:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
-# define CURE_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-# include <iostream>
-# include "AMateria.hpp"
+# include "IMateriaSource.hpp"
 
-class	Cure: public AMateria
+# define MAX_MATERIA 4
+
+class MateriaSource: IMateriaSource
 {
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
-		Cure(void);
-		Cure(const std::string& type);
-		Cure(const Cure& cure);
+		MateriaSource(void);
+		MateriaSource(const std::string& type);
+		MateriaSource(const MateriaSource& materiaSource);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Cure&				operator=(const Cure& Cure);
+		MateriaSource&	operator=(const MateriaSource& materiaSource);
 /* ******************************* DESTRUCTOR ******************************* */
-		~Cure(void);
+		~MateriaSource(void);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		virtual AMateria*	clone(void) const;
-		virtual void		use(ICharacter& target);
+
 };
 
 #endif

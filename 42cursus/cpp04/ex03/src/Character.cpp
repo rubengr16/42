@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:52:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/12 14:39:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/12 21:49:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ Character::Character(const Character& character):
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	for (i = 0; i < MAX_INVENTORY; i++)
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+	for (i = 0; i < MAX_INVENTORY; i++)
 	{
 		aux = character.getInventoryMateria(i);
 		if (aux)
@@ -72,6 +75,9 @@ Character&	Character::operator=(const Character& character)
 	std::cout << "[Copy Assignment Operator] Character: named as "
 		<< this->_name << " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
+	for (i = 0; i < MAX_INVENTORY; i++)
+		if (this->_inventory[i])
+			delete this->_inventory[i];
 	for (i = 0; i < MAX_INVENTORY; i++)
 	{
 		aux = character.getInventoryMateria(i);
@@ -99,7 +105,7 @@ std::string const&	Character::getName() const
 	return (this->_name);
 }
 
-const AMateria*	Character::getInventoryMateria(int idx) const
+AMateria*	Character::getInventoryMateria(int idx) const
 {
 	if (idx < 0 || idx >= MAX_INVENTORY)
 	{
@@ -107,7 +113,9 @@ const AMateria*	Character::getInventoryMateria(int idx) const
 			<< std::endl;
 		return ;
 	}
-	return (this->_inventory[idx]);
+	if (this->_inventory[idx])
+		return (NULL);
+	return (this->_inventory[idx]->clone());
 }
 
 
