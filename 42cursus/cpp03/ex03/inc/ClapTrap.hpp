@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:33 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/11 20:38:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 00:07:10 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ class ClapTrap
 /* ******************************* DESTRUCTOR ******************************* */
 		~ClapTrap(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		ClapTrap&		operator=(ClapTrap clapTrap);
+		ClapTrap&			operator=(ClapTrap clapTrap);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		std::string		getName(void) const;
-		void			setName(std::string name);
-		unsigned int	getHitPts(void) const;
-		void			setHitPts(unsigned int	hitPts);
-		unsigned int	getEnergyPts(void) const;
-		void			setEnergyPts(unsigned int	energyPts);
-		unsigned int	getDamagePts(void) const;
-		void			setDamagePts(unsigned int	damagePts);
-		void			attack(const std::string& target);
-		void			takeDamage(unsigned int amount);
-		void			beRepaired(unsigned int amount);
+		const std::string&	getName(void) const;
+		void				setName(std::string name);
+		unsigned int		getHitPts(void) const;
+		void				setHitPts(unsigned int	hitPts);
+		unsigned int		getEnergyPts(void) const;
+		void				setEnergyPts(unsigned int	energyPts);
+		unsigned int		getDamagePts(void) const;
+		void				setDamagePts(unsigned int	damagePts);
+		void				attack(const std::string& target);
+		void				takeDamage(unsigned int amount);
+		void				beRepaired(unsigned int amount);
 };
 
 #endif

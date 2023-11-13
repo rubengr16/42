@@ -44,8 +44,8 @@ class DiamondTrap: public FragTrap, public ScavTrap
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		DiamondTrap&		operator=(DiamondTrap diamondTrap);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		std::string			getName(void) const;
-		std::string			getClapName(void) const;
+		const std::string&	getName(void) const;
+		const std::string&	getClapName(void) const;
 		void				setName(std::string name);
 		unsigned int		getHitPts(void) const;
 		void				setHitPts(unsigned int	hitPts);

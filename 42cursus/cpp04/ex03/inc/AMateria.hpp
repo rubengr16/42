@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 23:19:31 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 01:36:56 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 00:22:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class	AMateria
 /* ******************************* DESTRUCTOR ******************************* */
 		virtual ~AMateria(void);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		const std::string&	getType(void) const;
+		const std::string&			getType(void) const;
 		void				setType(const std::string& type);
 		virtual AMateria*	clone(void) const = 0;
 		virtual void		use(ICharacter& target) = 0;

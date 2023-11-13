@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:56 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 22:46:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 00:05:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ class Animal
 /* ******************************* DESTRUCTOR ******************************* */
 		~Animal(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Animal&			operator=(const Animal& animal);
+		Animal&				operator=(const Animal& animal);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		std::string			getType(void) const;
+		const std::string&	getType(void) const;
 		virtual void		makeSound(void) const;
 };
 

@@ -49,7 +49,7 @@ WrongAnimal&	WrongAnimal::operator=(const WrongAnimal& wrongAnimal)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-std::string	WrongAnimal::getType(void) const
+const std::string&	WrongAnimal::getType(void) const
 {
 	return (this->_type);
 }

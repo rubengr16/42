@@ -27,10 +27,10 @@ class WrongAnimal
 /* ******************************* DESTRUCTOR ******************************* */
 		~WrongAnimal(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		WrongAnimal&	operator=(const WrongAnimal& wrongAnimal);
+		WrongAnimal&		operator=(const WrongAnimal& wrongAnimal);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		std::string		getType(void) const;
-		void			makeSound(void) const;
+		const std::string&	getType(void) const;
+		void				makeSound(void) const;
 };
 
 #endif

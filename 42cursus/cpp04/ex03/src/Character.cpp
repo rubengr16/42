@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:52:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 10:25:45 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 23:36:04 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ Character::~Character(void)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-std::string const&	Character::getName() const
+const std::string&	Character::getName() const
 {
 	return (this->_name);
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/11 20:35:37 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 00:02:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ ClapTrap&	ClapTrap::operator=(ClapTrap clapTrap)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-std::string	ClapTrap::getName(void) const
+const std::string&	ClapTrap::getName(void) const
 {
 	return (this->_name);
 }

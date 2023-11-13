@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:32:51 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/29 19:07:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 23:56:54 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class	Zombie
 		Zombie(void);
 		Zombie(std::string name);
 		~Zombie(void);
-		void		setName(std::string name);
-		std::string	getName(void) const;
-		void		announce(void) const;
+		void				setName(std::string name);
+		const std::string&	getName(void) const;
+		void				announce(void) const;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/15 00:35:34 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 00:09:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ Animal&	Animal::operator=(const Animal& animal)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-std::string	Animal::getType(void) const
+const std::string&	Animal::getType(void) const
 {
 	return (this->_type);
 }

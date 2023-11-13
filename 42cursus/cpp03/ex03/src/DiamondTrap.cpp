@@ -89,12 +89,12 @@ DiamondTrap&	DiamondTrap::operator=(DiamondTrap diamondTrap)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-std::string	DiamondTrap::getName(void) const
+const std::string&	DiamondTrap::getName(void) const
 {
 	return (this->DiamondTrap::_name);
 }
 
-std::string	DiamondTrap::getClapName(void) const
+const std::string&	DiamondTrap::getClapName(void) const
 {
 	return (this->ClapTrap::_name);
 }

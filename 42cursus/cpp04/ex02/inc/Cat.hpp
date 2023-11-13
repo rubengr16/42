@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:58:32 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 22:53:41 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 00:12:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Cat: public AAnimal
 		Cat&			operator=(const Cat& cat);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		const Brain*	getBrain(void) const;
-		void		makeSound(void) const;
+		void			makeSound(void) const;
 };
 
 #endif

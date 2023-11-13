@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:32:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/29 19:07:45 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 23:58:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	Zombie::setName(std::string name)
 	this->_name = name;
 }
 
-std::string	Zombie::getName(void) const
+const std::string&	Zombie::getName(void) const
 {
 	return (this->_name);
 }

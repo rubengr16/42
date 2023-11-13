@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 23:24:13 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 10:25:59 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 00:22:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ AMateria::~AMateria(void)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-std::string const& AMateria::getType(void) const
+const std::string& AMateria::getType(void) const
 {
 	return (this->_type);
 }
