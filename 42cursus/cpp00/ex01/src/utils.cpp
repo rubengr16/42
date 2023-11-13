@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 00:02:04 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/01 16:07:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:32:10 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ std::string	getField(std::string message)
 
 std::string	formatField(std::string field)
 {
-	if (10 <= field.length())
-	{
-		field[9] = '.';
-		field[10] = '\0';
-	}
+	if (field.length() > 10)
+		return (field.substr(0, 9) + '.');
 	return (field);
 }

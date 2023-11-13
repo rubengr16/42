@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:02:42 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/15 00:47:44 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:19:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 class	Cure: public AMateria
 {
-
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
 		Cure(void);

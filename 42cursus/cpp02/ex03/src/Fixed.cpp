@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:06 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/08 22:29:19 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:04:48 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int	Fixed::getRawBits(void) const
 	return (this->_nb);
 }
 
-void	Fixed::setRawBits(int const raw)
+void	Fixed::setRawBits(const int raw)
 {
 	this->_nb = raw;
 }

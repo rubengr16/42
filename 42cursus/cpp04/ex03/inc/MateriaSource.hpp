@@ -1,47 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.hpp                                      :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 00:52:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 01:34:37 by rgallego         ###   ########.fr       */
+/*   Created: 2023/11/12 22:09:04 by rgallego          #+#    #+#             */
+/*   Updated: 2023/11/13 01:34:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHARACTER_HPP
-# define CHARACTER_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-# include <iostream>
-# include "ICharacter.hpp"
+# include "IMateriaSource.hpp"
 
-# define MAX_INVENTORY 4
+# define MAX_MATERIA 4
 
-class	Character: public ICharacter
+class	MateriaSource: public IMateriaSource
 {
 	private:
-		std::string		_name;
-		AMateria*		_inventory[MAX_INVENTORY];
-		AMateria**		_unequipped;
-		unsigned int	_unequippedSize;
+		AMateria*	_materias[MAX_MATERIA];
 
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
-		Character(void);
-		Character(const std::string& name);
-		Character(const Character& character);
+		MateriaSource(void);
+		MateriaSource(const MateriaSource& materiaSource);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Character&			operator=(const Character& character);
+		MateriaSource&	operator=(const MateriaSource& materiaSource);
 /* ******************************* DESTRUCTOR ******************************* */
-		~Character(void);
+		~MateriaSource(void);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		std::string const&	getName() const;
-		AMateria*			getInventoryMateria(int idx) const;
-		void				equip(AMateria* m);
-		void				unequip(int idx);
-		void				use(int idx, ICharacter& target);
+		AMateria*		getMateria(int idx) const;
+		void			learnMateria(AMateria* m);
+		AMateria*		createMateria(const std::string& type);
 };
-
 
 #endif

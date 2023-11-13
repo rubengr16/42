@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:10 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/08 00:06:20 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:02:45 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void)
 {
 	Fixed		a;
-	Fixed const	b(Fixed(5.05f) * Fixed(2));
+	const Fixed	b(Fixed(5.05f) * Fixed(2));
 
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;

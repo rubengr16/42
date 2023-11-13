@@ -42,8 +42,6 @@ class DiamondTrap: public FragTrap, public ScavTrap
 /* ******************************* DESTRUCTOR ******************************* */
 		~DiamondTrap(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		friend void			swap(DiamondTrap& diamondTrap1,
-			DiamondTrap& diamondTrap2);
 		DiamondTrap&		operator=(DiamondTrap diamondTrap);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		std::string			getName(void) const;

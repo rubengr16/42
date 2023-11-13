@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 22:47:09 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/21 14:17:59 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:51:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,10 @@ std::string nickname, std::string phone,std::string  darkestSecret)
 
 void	Contact::printContact(void)
 {
-	std::cout << "CONTACT" << std::endl;
+	std::cout << "FIRST NAME: " << this->_firstName << std::endl;
+	std::cout << "LAST NAME: " << this->_lastName << std::endl;
+	std::cout << "NICKNAME: " << this->_firstName << std::endl;
+	std::cout << "FIRST NAME: " << this->_nickname << std::endl;
+	std::cout << "PHONE: " << this->_phone << std::endl;
+	std::cout << "DARKEST SECRET: " << this->_darkestSecret << std::endl;
 }

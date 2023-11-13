@@ -1,20 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bsp.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/08 21:16:09 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 15:03:04 by rgallego         ###   ########.fr       */
+/*   Created: 2023/11/11 16:33:12 by rgallego          #+#    #+#             */
+/*   Updated: 2023/11/11 16:34:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BSP_H
-# define BSP_H
+#include "Bureaucrat.hpp"
 
-# include "Point.hpp"
 
-bool	bsp(const Point a, const Point b, const Point c, const Point point);
-
-#endif

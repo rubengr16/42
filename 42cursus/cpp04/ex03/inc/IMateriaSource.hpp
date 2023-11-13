@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bsp.hpp                                            :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/08 21:16:09 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 15:03:04 by rgallego         ###   ########.fr       */
+/*   Created: 2023/11/12 22:07:04 by rgallego          #+#    #+#             */
+/*   Updated: 2023/11/13 01:34:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BSP_H
-# define BSP_H
+#ifndef IMATERIASOURCE_HPP
+# define IMATERIASOURCE_HPP
 
-# include "Point.hpp"
+# include "AMateria.hpp"
 
-bool	bsp(const Point a, const Point b, const Point c, const Point point);
+class	IMateriaSource
+{
+	public:
+		virtual ~IMateriaSource() {}
+		virtual void learnMateria(AMateria* materia) = 0;
+		virtual AMateria* createMateria(std::string const & type) = 0;
+};
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 17:59:27 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/01 01:12:34 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/11 11:54:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int	main(void)
 		club.setType("some other type of club");
 		jim.attack();
 	}
-return (0);
+	return (0);
 }

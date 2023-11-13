@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 19:07:41 by rgallego          #+#    #+#              #
-#    Updated: 2022/09/21 17:12:04 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/08 14:48:44 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ $(GNLNAME):
 
 $(NAME): $(OBJS) $(LDFLAGS)
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
+
+bonus: $(NAME)
 
 clean:
 	$(RM) $(OBJS) $(DPNDS)

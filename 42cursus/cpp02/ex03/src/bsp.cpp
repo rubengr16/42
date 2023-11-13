@@ -6,13 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:16:41 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/09 00:14:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:04:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsp.hpp"
 
-static float	_area(Point const p1, Point const p2, Point const p3)
+static float	_area(const Point p1, const Point p2, const Point p3)
 {
 	float	area = 
 		((p1.getY().toFloat() * (p2.getX().toFloat() - p3.getX().toFloat()))
@@ -24,7 +24,7 @@ static float	_area(Point const p1, Point const p2, Point const p3)
 	return (area);
 }
 
-bool	bsp(Point const a, Point const b, Point const c, Point const point)
+bool	bsp(const Point a, const Point b, const Point c, const Point point)
 {
 	float	triangleArea = _area(a, b, c);
 	float	areaABPoint = _area(a, b, point);

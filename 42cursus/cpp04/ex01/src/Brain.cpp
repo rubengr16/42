@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:10:53 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/14 20:52:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:55:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ std::string	Brain::getIdea(unsigned int i) const
 {
 	if (i > this->_length)
 	{
-		std::cout << "[Set Ideas] Brain: no idea with the given idex has been "
+		std::cout << "[Get Ideas] Brain: no idea with the given idex has been "
 			<< " found." << std::endl
 			<< "----------------------------------------------------" << std::endl;
 		return (NULL);
 	}
-	std::cout << "[Set Ideas] Brain: idea: " << this->_ideas[i]
+	std::cout << "[Get Ideas] Brain: idea: " << this->_ideas[i]
 		<< " is going to be returned." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	return (this->_ideas[i]);

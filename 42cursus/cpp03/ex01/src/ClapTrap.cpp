@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/12 13:23:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:35:37 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,14 @@ ClapTrap::~ClapTrap(void)
 		<< "----------------------------------------------------" << std::endl;
 }
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-
-void	swap(ClapTrap& clapTrap1, ClapTrap& clapTrap2)
+ClapTrap&	ClapTrap::operator=(ClapTrap clapTrap)
 {
-	std::swap(clapTrap1._name, clapTrap2._name);
-	std::swap(clapTrap1._damagePts, clapTrap2._damagePts);
-	std::swap(clapTrap1._energyPts, clapTrap2._energyPts);
-	std::swap(clapTrap1._hitPts, clapTrap2._hitPts);
-}
-
-ClapTrap& ClapTrap::operator=(ClapTrap clapTrap)
-{
-	swap(*this, clapTrap);
+	if (this == &clapTrap)
+		return (*this);
+	this->_name = clapTrap.getName();
+	this->_hitPts = clapTrap.getHitPts();
+	this->_energyPts = clapTrap.getEnergyPts();
+	this->_damagePts = clapTrap.getDamagePts();
 	std::cout << "[Copy assignment operator]: ClapTrap " << this->_name
 		<< " has been copied." << std::endl << "\t- " << this->_hitPts
 		<< " Hit Points," << std::endl << "\t- " << this->_energyPts
@@ -83,6 +79,7 @@ ClapTrap& ClapTrap::operator=(ClapTrap clapTrap)
 		<< "----------------------------------------------------" << std::endl;
 	return (*this);
 }
+
 /* **************************** MEMBER FUNCTIONS **************************** */
 std::string	ClapTrap::getName(void) const
 {

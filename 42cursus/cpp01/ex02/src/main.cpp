@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 17:17:20 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/29 19:18:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/11 11:44:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	main(void)
 {
-	std::string	message = "HI THIS IS BRAIN";
-	std::string	*stringPTR = &message;
-	std::string	&stringREF = message;
+	std::string		message = "HI THIS IS BRAIN";
+	std::string*	stringPTR = &message;
+	std::string&	stringREF = message;
 
 	std::cout << "Address of message: " << &message
 		<< std::endl;

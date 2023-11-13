@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 23:19:31 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/15 00:53:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 01:36:56 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <iostream>
 # include "ICharacter.hpp"
+
+class	ICharacter;
 
 class	AMateria
 {

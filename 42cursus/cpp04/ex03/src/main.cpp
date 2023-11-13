@@ -5,30 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 15:25:53 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/11 11:36:10 by rgallego         ###   ########.fr       */
+/*   Created: 2023/11/13 01:11:30 by rgallego          #+#    #+#             */
+/*   Updated: 2023/11/13 01:17:48 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#include "zombieHorde.hpp"
+#include "AMateria.hpp"
+#include "MateriaSource.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
+#include "Character.hpp"
 
 int	main(void)
 {
-	Zombie		*zHorde;
-	std::string	names[] = {"One", "Two", "Three", "Four", "Five", "Six"};
-	int			i;
-	
-	zHorde = zombieHorde(SIZE, "AZombieHorde");
-	if (!zHorde)
-		return (1);
-	for (i = 0; i < SIZE; i++)
-		zHorde[i].announce();
-	std::cout << "Let's git a different name for each zombie!!" << std::endl
-		<< "Their index will be their name!"
-		<< std::endl;
-	for (i = 0; i < SIZE; i++)
-		zHorde[i].setName(names[i]);
-	delete []zHorde;
+	IMateriaSource* src = new MateriaSource();
+
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+	ICharacter* bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
+
 	return (0);
 }

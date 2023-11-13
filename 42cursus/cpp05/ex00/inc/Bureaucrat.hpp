@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bsp.hpp                                            :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/08 21:16:09 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 15:03:04 by rgallego         ###   ########.fr       */
+/*   Created: 2023/11/11 16:33:45 by rgallego          #+#    #+#             */
+/*   Updated: 2023/11/11 16:37:06 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BSP_H
-# define BSP_H
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
-# include "Point.hpp"
-
-bool	bsp(const Point a, const Point b, const Point c, const Point point);
+class Bureaucrat
+{
+	
+};
 
 #endif

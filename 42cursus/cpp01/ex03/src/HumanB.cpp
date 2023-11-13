@@ -6,16 +6,16 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:00:04 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/01 13:44:17 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/11 11:51:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "HumanB.hpp"
 
-HumanB::HumanB(std::string name)
+HumanB::HumanB(std::string name):
+	_name(name),
+	_weapon(NULL)
 {
-	this->_name = name;
-	this->_weapon = NULL;
 }
 
 HumanB::~HumanB(void)

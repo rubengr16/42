@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/10/14 23:46:38 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/13 01:09:51 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,11 @@ SRC_DIR	=			src/
 INC_DIR	=			inc/
 
 EX03	=			\
+					AMateria.cpp \
+					Character.cpp \
+					Cure.cpp \
+					Ice.cpp \
+					MateriaSource.cpp \
 					main.cpp 
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
