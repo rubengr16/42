@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:08 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/08 00:22:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:01:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Fixed
 		Fixed&	operator=(const Fixed& fixed);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
+		void	setRawBits(const int raw);
 		float	toFloat(void) const;
 		int		toInt(void) const;
 };

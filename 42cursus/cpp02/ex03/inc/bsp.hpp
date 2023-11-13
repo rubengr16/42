@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:16:09 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/08 23:06:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:03:04 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "Point.hpp"
 
-bool	bsp(Point const a, Point const b, Point const c, Point const point);
+bool	bsp(const Point a, const Point b, const Point c, const Point point);
 
 #endif
