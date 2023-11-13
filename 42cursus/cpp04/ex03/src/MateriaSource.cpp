@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 23:35:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 01:39:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 01:51:11 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,26 @@ AMateria*	MateriaSource::getMateria(int idx) const
 	if (idx < 0 || idx >= MAX_MATERIA)
 	{
 		std::cout << "[Get Materia] Materia Source: index out of range!!"
+ 			<< std::endl
+			<< "----------------------------------------------------"
 			<< std::endl;
 		return (NULL);
 	}
 	if (!this->_materias[idx])
 	{
 		std::cout << "[Get Materia] Materia Source: is returning NULL as its "
-			<< " materia at index"	<< idx << std::endl;
+			<< " materia at index"	<< idx  << std::endl
+			<< "----------------------------------------------------"
+			<< std::endl;
 		return (NULL);
 	}
 	else
 	{
 		std::cout << "[Get Materia] Materia Source: is returning "
 			<< this->_materias[idx]->getType() << " as its  materia at index"
-			<< idx << std::endl;
+			<< idx  << std::endl
+			<< "----------------------------------------------------"
+			<< std::endl;
 	}
 	return (this->_materias[idx]);
 }
@@ -93,18 +99,24 @@ void	MateriaSource::learnMateria(AMateria* m)
 	if (i == MAX_MATERIA)
 	{
 		std::cout << "[Learn Materia] Materia Source: materias are full!!"
+			<< std::endl
+			<< "----------------------------------------------------"
 			<< std::endl;
 		return ;
 	}
 	if (!m)
 	{
 		std::cout << "[Learn Materia] Materia Source: setting materia at"
-			<< " index " << i << " as NULL" << std::endl;
+			<< " index " << i << " as NULL" << std::endl
+			<< "----------------------------------------------------"
+			<< std::endl;
 	}
 	else
 	{
 		std::cout << "[Learn Materia] Materia Source: setting materia at"
-			<< " index " << i << " as " << m->getType() << std::endl;
+			<< " index " << i << " as " << m->getType() << std::endl
+			<< "----------------------------------------------------"
+			<< std::endl;
 	}
 	this->_materias[i] = m;
 }
@@ -120,10 +132,12 @@ AMateria*	MateriaSource::createMateria(const std::string& type)
 	if (i == MAX_MATERIA || !this->_materias[i])
 	{
 		std::cout << "[Create Materia] Materia Source: no materia with "
-			<< type << " as type found!!" << std::endl;
+			<< type << " as type found!!" << std::endl
+		<< "----------------------------------------------------" << std::endl;
 		return (0);
 	}
 	std::cout << "[Create Materia] Materia Source: materia with "<< type
-		<< " as type found!!" << std::endl;
+		<< " as type found!!" << std::endl
+		<< "----------------------------------------------------" << std::endl;
 	return (this->_materias[i]->clone());
 }

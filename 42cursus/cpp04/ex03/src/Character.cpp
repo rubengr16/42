@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:52:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 01:40:15 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 01:47:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,19 +120,24 @@ AMateria*	Character::getInventoryMateria(int idx) const
 	if (idx < 0 || idx >= MAX_INVENTORY)
 	{
 		std::cout << "[Get Inventory Materia] Character: named as "
-			<< this->_name << " says 'index out of range'!!" << std::endl;
+			<< this->_name << " says 'index out of range'!!" << std::endl
+			<< "----------------------------------------------------"
+			<< std::endl;
 		return (NULL);
 	}
 	if (!this->_inventory[idx])
 	{
 		std::cout << "[Get Inventory Materia] Character: named as "
 			<< this->_name << "is returning NULL as their materia at index"
-			<< idx << std::endl;
+			<< idx << std::endl
+			<< "----------------------------------------------------"
+			<< std::endl;
 		return (NULL);
 	}
 	std::cout << "[Get Inventory Materia] Character: named as "
 		<< this->_name << "is returning " << this->_inventory[idx]->getType()
-		<< " as their materia at index" << idx << std::endl;
+		<< " as their materia at index" << idx << std::endl
+		<< "----------------------------------------------------" << std::endl;
 	return (this->_inventory[idx]->clone());
 }
 
@@ -146,12 +151,14 @@ void	Character::equip(AMateria* m)
 		i++;
 	if (i == MAX_INVENTORY)
 	{
-		std::cout << "[Equip] Character: inventory is full!!" << std::endl;
+		std::cout << "[Equip] Character: inventory is full!!" << std::endl
+		<< "----------------------------------------------------" << std::endl;
 		return ;
 	}
 	this->_inventory[i] = m;
 	std::cout << "[Equip] Character: materia " << m->getType() << " equipped"
-		<< std::endl;
+ 		<< std::endl
+		<< "----------------------------------------------------" << std::endl;
 }
 
 void	Character::unequip(int idx)
@@ -161,7 +168,9 @@ void	Character::unequip(int idx)
 
 	if (idx < 0 || idx >= MAX_INVENTORY)
 	{
-		std::cout << "[Unequip] Character: index out of range!!" << std::endl;
+		std::cout << "[Unequip] Character: index out of range!!" << std::endl
+			<< "----------------------------------------------------"
+			<< std::endl;
 		return ;
 	}
 	aux = this->_unequipped;
@@ -173,7 +182,8 @@ void	Character::unequip(int idx)
 	this->_unequipped[this->_unequippedSize - 1] = this->_inventory[idx];
 	std::cout << "[Unequip] Character: unequip "
 		<< this->_inventory[idx]->getType() << " at index " << idx
-		<< std::endl;
+ 		<< std::endl
+		<< "----------------------------------------------------" << std::endl;
 	this->_inventory[idx] = NULL;
 	delete[] aux;
 }
@@ -182,11 +192,13 @@ void	Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx >= MAX_INVENTORY)
 	{
-		std::cout << "[Use] Character: index out of range!!" << std::endl;
+		std::cout << "[Use] Character: index out of range!!" << std::endl
+		<< "----------------------------------------------------" << std::endl;
 		return ;
 	}
 	std::cout << "[Use] Character: using use of "
 		<< this->_inventory[idx]->getType() << " in index "
-		<< idx << std::endl;
+		<< idx << std::endl
+		<< "----------------------------------------------------" << std::endl;
 	this->_inventory[idx]->use(target);
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:12:29 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 01:35:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 01:42:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Ice::Ice(void):
 Ice::Ice(const std::string& type):
 	AMateria(type)
 {
-	std::cout << "[ronstructor] Ice: object of type " << this->_type
+	std::cout << "[Constructor] Ice: object of type " << this->_type
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }

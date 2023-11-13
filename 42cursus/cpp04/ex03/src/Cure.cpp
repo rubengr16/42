@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:12:29 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 01:35:12 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 01:42:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Cure::Cure(void):
 Cure::Cure(const std::string& type):
 	AMateria(type)
 {
-	std::cout << "[ronstructor] Cure: object of type " << this->_type
+	std::cout << "[Constructor] Cure: object of type " << this->_type
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
