@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:52:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 01:47:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:25:45 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Character::Character(void):
 	unsigned int	i;
 
 	std::cout << "[Default Constructor] Character: named as" << this->_name
-		<< " has been created." << std::endl
+		<< " has been created" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	for (i = 0; i < MAX_INVENTORY; i++)
 		this->_inventory[i] = NULL;
@@ -35,7 +35,7 @@ Character::Character(const std::string& name):
 	unsigned int	i;
 
 	std::cout << "[Constructor] Character: named as " << this->_name
-		<< " has been created." << std::endl
+		<< " has been created" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	for (i = 0; i < MAX_INVENTORY; i++)
 		this->_inventory[i] = NULL;
@@ -50,7 +50,7 @@ Character::Character(const Character& character):
 	unsigned int	i;
 
 	std::cout << "[Copy Constructor] Character: named as " << this->_name
-		<< " has been copy created." << std::endl
+		<< " has been copy created" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	for (i = 0; i < MAX_INVENTORY; i++)
 		if (this->_inventory[i])
@@ -77,7 +77,7 @@ Character&	Character::operator=(const Character& character)
 	this->_unequipped = NULL;
 	this->_unequippedSize = 0;
 	std::cout << "[Copy Assignment Operator] Character: named as "
-		<< this->_name << " has been copy assigned." << std::endl
+		<< this->_name << " has been copy assigned" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	for (i = 0; i < MAX_INVENTORY; i++)
 		if (this->_inventory[i])
@@ -99,7 +99,7 @@ Character::~Character(void)
 	unsigned int	i;
 
 	std::cout << "[Destructor] Character: named as " << this->_name
-		<< " is being destructed." << std::endl
+		<< " is being destructed" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	for (i = 0; i < MAX_INVENTORY; i++)
 		if (this->_inventory[i])

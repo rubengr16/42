@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 23:35:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 01:51:11 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:24:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ MateriaSource::MateriaSource(void)
 {
 	unsigned int	i;
 
-	std::cout << "[Default Constructor] Materia Source: has been created."
+	std::cout << "[Default Constructor] Materia Source: has been created"
 		<< std::endl
 		<< "----------------------------------------------------" << std::endl;
 	for (i = 0; i < MAX_MATERIA; i++)
@@ -28,7 +28,7 @@ MateriaSource::MateriaSource(const MateriaSource& materiaSource)
 {
 	unsigned int	i;
 
-	std::cout << "[Copy Constructor] Materia Source: has been copy created."
+	std::cout << "[Copy Constructor] Materia Source: has been copy created"
 		<< std::endl
 		<< "----------------------------------------------------" << std::endl;
 	for (i = 0; i < MAX_MATERIA; i++)
@@ -54,7 +54,7 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& materiaSource)
 /* ******************************* DESTRUCTOR ******************************* */
 MateriaSource::~MateriaSource(void)
 {
-	std::cout << "[Destructor] Materia Source: is being destructed."
+	std::cout << "[Destructor] Materia Source: is being destructed"
 		<< std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
@@ -137,7 +137,7 @@ AMateria*	MateriaSource::createMateria(const std::string& type)
 		return (0);
 	}
 	std::cout << "[Create Materia] Materia Source: materia with "<< type
-		<< " as type found!!" << std::endl
+		<< " as type found" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	return (this->_materias[i]->clone());
 }

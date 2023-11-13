@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:12:29 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 01:42:51 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:24:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Ice::Ice(void):
 	AMateria("ice")
 {
 	std::cout << "[Default Constructor] Ice: object of type " << this->_type
-		<< " has been created." << std::endl
+		<< " has been created" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
@@ -25,7 +25,7 @@ Ice::Ice(const std::string& type):
 	AMateria(type)
 {
 	std::cout << "[Constructor] Ice: object of type " << this->_type
-		<< " has been created." << std::endl
+		<< " has been created" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
@@ -33,7 +33,7 @@ Ice::Ice(const Ice& ice):
 	AMateria(ice.getType())
 {
 	std::cout << "[Copy Constructor] Ice: object of type " << this->_type
-		<< " has been copy created." << std::endl
+		<< " has been copy created" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
@@ -44,7 +44,7 @@ Ice&	Ice::operator=(const Ice& ice)
 		return (*this);
 	this->_type = ice.getType();
 	std::cout << "[Copy Assignment Operator] Ice: object of type " << this->_type
-		<< " has been copy assigned." << std::endl
+		<< " has been copy assigned" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	return (*this);
 }
@@ -53,7 +53,7 @@ Ice&	Ice::operator=(const Ice& ice)
 Ice::~Ice(void)
 {
 	std::cout << "[Destructor]: Ice: " << this->_type
-		<< "'s type object has been destroyed." << std::endl
+		<< "'s type object has been destroyed" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
@@ -61,7 +61,7 @@ Ice::~Ice(void)
 AMateria*	Ice::clone(void) const
 {
 	std::cout << "[Clone]: Ice: " << this->_type
-		<< "'s type object is being cloned." << std::endl
+		<< "'s type object is being cloned" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	return (new Ice(this->_type));
 }
