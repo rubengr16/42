@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:52:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/12 21:42:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 01:34:37 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define MAX_INVENTORY 4
 
-class Character: public ICharacter
+class	Character: public ICharacter
 {
 	private:
 		std::string		_name;

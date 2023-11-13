@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:12:29 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/15 00:49:44 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/13 01:35:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Cure::Cure(const Cure& cure):
 	AMateria(cure.getType())
 {
 	std::cout << "[Copy Constructor] Cure: object of type " << this->_type
-		<< " has been created." << std::endl
+		<< " has been copy created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
@@ -60,10 +60,13 @@ Cure::~Cure(void)
 /* **************************** MEMBER FUNCTIONS **************************** */
 AMateria*	Cure::clone(void) const
 {
+	std::cout << "[Clone]: Cure: " << this->_type
+		<< "'s type object is being cloned." << std::endl
+		<< "----------------------------------------------------" << std::endl;
 	return (new Cure(this->_type));
 }
 
 void	Cure::use(ICharacter& target)
 {
-	std::cout << "* heals " << "target" << "’s wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }
