@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:06 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 15:02:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 22:36:18 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Fixed::Fixed(const float nb): _nb(roundf(nb * (1 << this->_point)))
 		<< std::endl;
 }
 
-Fixed::Fixed(const Fixed& fixedObj): _nb(fixedObj.getRawBits())
+Fixed::Fixed(const Fixed& fixed): _nb(fixed.getRawBits())
 {
 	std::cout << "Copy constructor called"
 		<< std::endl;
@@ -45,19 +45,12 @@ Fixed::~Fixed(void)
 }
 
 /* ******************************* DESTRUCTOR ******************************* */
-Fixed&	Fixed::operator=(const Fixed& fixedObj)
+Fixed&	Fixed::operator=(const Fixed& fixed)
 {
-	this->_nb = fixedObj.getRawBits();
+	this->_nb = fixed.getRawBits();
 	std::cout << "Copy assignment operator called"
 		<< std::endl;
 	return (*this);
-}
-
-/* ************************ OUTPUT OPERATOR OVERLOAD ************************ */
-std::ostream&	operator<<(std::ostream& os, const Fixed& fixedObj)
-{
-	os << fixedObj.toFloat();
-	return os;
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
@@ -83,3 +76,9 @@ int	Fixed::toInt(void) const
 	return (this->_nb >> this->_point);
 }
 
+/* ************************ INPUT OPERATOR OVERLOAD ************************ */
+std::ostream&	operator<<(std::ostream& os, const Fixed& fixed)
+{
+	os << fixed.toFloat();
+	return os;
+}

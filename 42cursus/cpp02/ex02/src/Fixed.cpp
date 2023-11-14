@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:06 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 15:02:31 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 22:36:42 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,6 @@ Fixed&	Fixed::operator=(const Fixed& fixed)
 {
 	this->_nb = fixed.getRawBits();
 	return (*this);
-}
-
-/* ********************** COMPARISON OPERATORS OVERLOAD ********************* */
-std::ostream&	operator<<(std::ostream& os, const Fixed& fixed)
-{
-	os << fixed.toFloat();
-	return os;
 }
 
 /* ********************** COMPARISON OPERATORS OVERLOAD ********************* */
@@ -175,4 +168,11 @@ const Fixed&	Fixed::max(const Fixed& fixed1, const Fixed& fixed2)
 	if (fixed2.getRawBits() > fixed1.getRawBits())
 		return (fixed2);
 	return (fixed1);
+}
+
+/* ************************ INPUT OPERATOR OVERLOAD ************************ */
+std::ostream&	operator<<(std::ostream& os, const Fixed& fixed)
+{
+	os << fixed.toFloat();
+	return os;
 }

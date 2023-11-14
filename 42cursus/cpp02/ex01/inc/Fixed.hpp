@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:08 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 15:01:53 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 22:31:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Fixed
 		int		toInt(void) const;
 };
 
-/* ************************ OUTPUT OPERATOR OVERLOAD ************************ */
-std::ostream&	operator<<(std::ostream& os, const Fixed& fixedObj);
+/* ************************* INPUT OPERATOR OVERLOAD ************************ */
+std::ostream&	operator<<(std::ostream& os, const Fixed& fixed);
 
 #endif

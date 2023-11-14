@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:08 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 15:02:18 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 22:32:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ class Fixed
 		const static Fixed&	max(const Fixed& fixed1, const Fixed& fixed2);
 };
 
-/* ************************ OUTPUT OPERATOR OVERLOAD ************************ */
+/* ************************* INPUT OPERATOR OVERLOAD ************************ */
 std::ostream&				operator<<(std::ostream& os, const Fixed& fixed);
 
 #endif

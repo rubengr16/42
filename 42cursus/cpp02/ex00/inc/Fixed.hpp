@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:08 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 15:00:54 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 22:29:34 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ class Fixed
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
 		Fixed(void);
-		Fixed(const Fixed &fixedObj);
+		Fixed(const Fixed &fixed);
 /* ******************************* DESTRUCTOR ******************************* */
 		~Fixed(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Fixed& operator=(const Fixed& fixedObj);
+		Fixed& operator=(const Fixed& fixed);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		int getRawBits(void) const;
 		void setRawBits(const int raw);

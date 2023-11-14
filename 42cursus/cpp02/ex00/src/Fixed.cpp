@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:06 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 15:01:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 22:30:10 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Fixed::Fixed(void): _nb(0)
 		<< std::endl;
 }
 
-Fixed::Fixed(const Fixed &fixedObj): _nb(fixedObj.getRawBits())
+Fixed::Fixed(const Fixed &fixed): _nb(fixed.getRawBits())
 {
 	std::cout << "Copy constructor called"
 		<< std::endl;
@@ -33,11 +33,11 @@ Fixed::~Fixed(void)
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-Fixed& Fixed::operator=(const Fixed& fixedObj)
+Fixed& Fixed::operator=(const Fixed& fixed)
 {
 	std::cout << "Copy assignment operator called"
 		<< std::endl;
-	this->_nb = fixedObj.getRawBits();
+	this->_nb = fixed.getRawBits();
 	return (*this);
 }
 
