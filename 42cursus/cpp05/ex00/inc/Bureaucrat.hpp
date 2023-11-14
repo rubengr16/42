@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 23:29:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/14 23:25:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,25 @@ class Bureaucrat
 /* ******************************* DESTRUCTOR ******************************* */
 		~Bureaucrat(void);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		std::string	getName() const;
-		int				getGrade() const;
+		const std::string&	getName(void) const;
+		unsigned int		getGrade(void) const;
+		void				setGrade(unsigned int grade);
+		void				incrementGrade(void);
+		void				decrementGrade(void);
+/* ******************************* EXCEPTIONS ******************************* */
+	class GradeTooHighException: public std::exception
+	{
+		public:
+			virtual const char*	what(void) const throw();
+	};
+	class GradeTooLowException: public std::exception
+	{
+		public:
+			virtual const char*	what(void) const throw();
+	};
 };
+
+/* ************************ OUTPUT OPERATOR OVERLOAD ************************ */
+std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif

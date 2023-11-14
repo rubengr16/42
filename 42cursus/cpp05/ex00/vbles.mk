@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/11 16:33:02 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/14 23:34:36 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ SRC_DIR	=			src/
 INC_DIR	=			inc/
 
 EX00	=			\
+					Bureaucrat.cpp \
+					main.cpp
 
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
