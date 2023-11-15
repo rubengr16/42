@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:11:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 15:07:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:33:24 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FORM_HPP
 
 # include <iostream>
+# include "Bureaucrat.hpp"
 
 # define MAX_GRADE 1
 # define MIN_GRADE 150
@@ -25,6 +26,8 @@ class	Form
 		bool				_signed;
 		const unsigned int	_gradeSign;
 		const unsigned int	_gradeExecute;
+
+		const unsigned int	checkGrade(unsigned int grade);
 
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
@@ -41,6 +44,7 @@ class	Form
 		bool				getSigned(void) const;
 		const unsigned int	getGradeSign(void) const;
 		const unsigned int	getGradeExecute(void) const;
+		void				beSigned(const Bureaucrat& bureaucrat);
 /* ******************************* EXCEPTIONS ******************************* */
 	class GradeTooHighException: public std::exception
 	{
@@ -54,7 +58,7 @@ class	Form
 	};
 };
 
-/* ************************ OUTPUT OPERATOR OVERLOAD ************************ */
+/* ************************* INPUT OPERATOR OVERLOAD ************************ */
 std::ostream&	operator<<(std::ostream& os, const Form& form);
 
 #endif

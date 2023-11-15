@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 00:19:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:33:14 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ class	Bureaucrat
 	};
 };
 
-/* ************************ OUTPUT OPERATOR OVERLOAD ************************ */
+/* ************************* INPUT OPERATOR OVERLOAD ************************ */
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif

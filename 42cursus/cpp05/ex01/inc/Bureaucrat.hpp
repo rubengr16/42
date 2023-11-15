@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 00:19:15 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:39:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
+# include "Form.hpp"
 
 # define MAX_GRADE 1
 # define MIN_GRADE 150
@@ -39,6 +40,7 @@ class	Bureaucrat
 		void				setGrade(unsigned int grade);
 		void				incrementGrade(void);
 		void				decrementGrade(void);
+		void				signForm(Form& form);
 
 /* ******************************* EXCEPTIONS ******************************* */
 	class GradeTooHighException: public std::exception
@@ -53,7 +55,7 @@ class	Bureaucrat
 	};
 };
 
-/* ************************ OUTPUT OPERATOR OVERLOAD ************************ */
+/* ************************* INPUT OPERATOR OVERLOAD ************************ */
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif

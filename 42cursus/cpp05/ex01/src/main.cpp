@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:12 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 00:09:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:49:45 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,99 @@
 int	main(void)
 {
 /* ******************************** EXAMPLE 1 ******************************* */
-	Bureaucrat	bureaucrat;
+	Form	form;
 
-	std::cout << "Bureaucrat created:" << std::endl;
-	std::cout << bureaucrat << std::endl;
-	std::cout << "THIS IS GOING TO FAIL: GRADE TOO LOW" << std::endl
-		<< "----------------------------------------------------" << std::endl;
-	try
-	{
-		bureaucrat.decrementGrade();
-	}
-	catch(const Bureaucrat::GradeTooLowException& e)
-	{
-		std::cerr << e.what() << std::endl
-			<< "----------------------------------------------------"
-			<< std::endl;
-	}
-
-	std::cout << "THIS IS GOING TO FAIL: GRADE TOO HIGH" << std::endl
-		<< "----------------------------------------------------" << std::endl;
-	try
-	{
-		bureaucrat.setGrade(0);
-	}
-	catch(const Bureaucrat::GradeTooHighException& e)
-	{
-		std::cerr << e.what() << std::endl
-			<< "----------------------------------------------------"
-			<< std::endl;
-	}
+	std::cout << "Form created:" << std::endl;
+	std::cout << form << std::endl;
 /* ******************************** EXAMPLE 2 ******************************* */
 	{
-		Bureaucrat bureaucrat2(bureaucrat);
+		std::cout << "THIS IS GOING TO FAIL: GRADE TOO LOW" << std::endl
+			<< "----------------------------------------------------" << std::endl;
+		try
+		{
+			Form lowForm("lowForm", 151, 4);
+		}
+		catch(const Form::GradeTooLowException& e)
+		{
+			std::cerr << e.what() << std::endl
+				<< "----------------------------------------------------"
+				<< std::endl;
+		}
+	}
+	{
+		std::cout << "THIS IS GOING TO FAIL: GRADE TOO LOW" << std::endl
+			<< "----------------------------------------------------" << std::endl;
+		try
+		{
+			Form lowForm("lowForm", 4, 151);
+		}
+		catch(const Form::GradeTooLowException& e)
+		{
+			std::cerr << e.what() << std::endl
+				<< "----------------------------------------------------"
+				<< std::endl;
+		}
+	}
+	{
+		std::cout << "THIS IS GOING TO FAIL: GRADE TOO LOW" << std::endl
+			<< "----------------------------------------------------" << std::endl;
+		try
+		{
+			Form lowForm("lowForm", 151, 151);
+		}
+		catch(const Form::GradeTooLowException& e)
+		{
+			std::cerr << e.what() << std::endl
+				<< "----------------------------------------------------"
+				<< std::endl;
+		}
+	}
+/* ******************************** EXAMPLE 3 ******************************* */
+	{
+		std::cout << "THIS IS GOING TO FAIL: GRADE TOO HIGH" << std::endl
+			<< "----------------------------------------------------" << std::endl;
+		try
+		{
+			Form highForm("highForm", 0, 4);
+		}
+		catch(const Form::GradeTooHighException& e)
+		{
+			std::cerr << e.what() << std::endl
+				<< "----------------------------------------------------"
+				<< std::endl;
+		}
+	}
+	{
+		std::cout << "THIS IS GOING TO FAIL: GRADE TOO HIGH" << std::endl
+			<< "----------------------------------------------------" << std::endl;
+		try
+		{
+			Form highForm("highForm", 4, 0);
+		}
+		catch(const Form::GradeTooHighException& e)
+		{
+			std::cerr << e.what() << std::endl
+				<< "----------------------------------------------------"
+				<< std::endl;
+		}
+	}
+	{
+		std::cout << "THIS IS GOING TO FAIL: GRADE TOO HIGH" << std::endl
+			<< "----------------------------------------------------" << std::endl;
+		try
+		{
+			Form highForm("highForm", 0, 0);
+		}
+		catch(const Form::GradeTooHighException& e)
+		{
+			std::cerr << e.what() << std::endl
+				<< "----------------------------------------------------"
+				<< std::endl;
+		}
+	}
+/* ******************************** EXAMPLE 4 ******************************* */
+	{
+		Form bureaucrat2(bureaucrat);
 
 		std::cout << "COPY CONSTRUCTED BUREAUCRAT:" << std::endl
 			<< "NAME: " << bureaucrat2.getName() << std::endl

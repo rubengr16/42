@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:12:07 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 15:10:54 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:38:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ Form::Form(void):
 	_gradeExecute(MIN_GRADE)
 {
 	std::cout << "[Default Constructor] Form: named as " << this->_name
-		<< ", " << this->_signed << " has been created" << std::endl
+		<< " has been created. It is " << (this->_signed ? "" : "not ")
+		<< "signed and requires " << this->_gradeSign << " to be signed and "
+		<< this->_gradeExecute << " to be executed" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
@@ -28,10 +30,14 @@ Form::Form(std::string name, unsigned int gradeSign,
 	unsigned int gradeExecute):
 	_name(name),
 	_signed(false),
-	_gradeSign(gradeSign),
-	_gradeExecute(gradeExecute)
+	_gradeSign(checkGrade(gradeSign)),
+	_gradeExecute(checkGrade(gradeExecute))
 {
-	
+	std::cout << "[Constructor] Form: named as " << this->_name
+		<< " has been created. It is " << (this->_signed ? "" : "not ")
+		<< "signed and requires " << this->_gradeSign << " to be signed and "
+		<< this->_gradeExecute << " to be executed" << std::endl
+		<< "----------------------------------------------------" << std::endl;
 }
 
 Form::Form(const Form& form):
@@ -40,7 +46,11 @@ Form::Form(const Form& form):
 	_gradeSign(form.getGradeSign()),
 	_gradeExecute(form.getGradeExecute())
 {
-
+	std::cout << "[Copy Constructor] Form: named as " << this->_name
+		<< " has been created. It is " << (this->_signed ? "" : "not ")
+		<< "signed and requires " << this->_gradeSign << " to be signed and "
+		<< this->_gradeExecute << " to be executed" << std::endl
+		<< "----------------------------------------------------" << std::endl;
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
@@ -49,16 +59,32 @@ Form&	Form::operator=(const Form& form)
 	if (this == &form)
 		return (*this);
 	this->_signed = form.getSigned();
+	std::cout << "[Copy Assignment Operator] Form: named as " << this->_name
+		<< " has been created. It is " << (this->_signed ? "" : "not ")
+		<< "signed and requires " << this->_gradeSign << " to be signed and "
+		<< this->_gradeExecute << " to be executed" << std::endl
+		<< "----------------------------------------------------" << std::endl;
 	return (*this);
 }
 
 /* ******************************* DESTRUCTOR ******************************* */
 Form::~Form(void)
 {
-
+	std::cout << "[Copy Assignment Operator] Form: named as " << this->_name
+		<< " is being deleted" << std::endl
+		<< "----------------------------------------------------" << std::endl;
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
+const unsigned int	Form::checkGrade(unsigned int grade)
+{
+	if (grade < MAX_GRADE)
+		throw GradeTooHighException();
+	if (grade > MIN_GRADE)
+		throw GradeTooLowException();
+	return (grade);
+}
+
 const std::string&	Form::getName(void) const
 {
 	return (this->_name);
@@ -77,6 +103,23 @@ const unsigned int	Form::getGradeSign(void) const
 const unsigned int	Form::getGradeExecute(void) const
 {
 	return (this->_gradeExecute);
+}
+
+void	Form::beSigned(const Bureaucrat& bureaucrat)
+{
+	if (bureaucrat.getGrade() > this->_gradeSign)
+		throw GradeTooLowException();
+	this->_signed = true;
+}
+
+/* ************************* INPUT OPERATOR OVERLOAD ************************ */
+std::ostream&	operator<<(std::ostream& os, const Form& form)
+{
+	os << form.getName() << " is " << (form.getSigned() ? "" : "not ")
+		<< "signed and requires " << form.getGradeSign()
+		<< " to be signed and " << form.getGradeExecute() << " to be executed."
+		<< std::endl;
+	return os;
 }
 
 /* ******************************* EXCEPTIONS ******************************* */

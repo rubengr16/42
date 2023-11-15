@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:32 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/14 23:44:11 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:42:31 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,22 @@ void	Bureaucrat::decrementGrade(void)
 	this->_grade++;
 }
 
-/* ************************ OUTPUT OPERATOR OVERLOAD ************************ */
+void	Bureaucrat::signForm(Form& form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << this->_name << " signed " << form.getName() << std::endl;
+	}
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cout << this->_name << " could'n sign " << form.getName()
+			<< " because " << e.what() << std::endl;
+	}
+}
+
+
+/* ************************* INPUT OPERATOR OVERLOAD ************************ */
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
 {
 	os << bureaucrat.getName() << ", bureaucrat grade "
