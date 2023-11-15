@@ -1,38 +1,31 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    vbles.mk                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/15 23:20:00 by rgallego         ###   ########.fr        #
+#    Created: 2023/09/04 22:38:38 by rgallego          #+#    #+#              #
+#    Updated: 2023/11/11 16:32:47 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_DIR	=			src/
+-include vbles.mk
 
-INC_DIR	=			inc/
+all: $(NAME)
 
-EX01	=			\
-					Bureaucrat.cpp \
-					Form.cpp \
-					main.cpp
+%.o: %.cpp
+	$(CC) $(CFLAGS) $(addprefix -I, $(INC_ALL)) -c $< -o $@
 
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
-SRCS	= 			$(addprefix $(SRC_DIR), \
-						$(EX01) \
-					)
+clean:
+	$(RM) $(OBJS) $(DPNDS)
 
-OBJS	=			$(SRCS:.cpp=.o)
+fclean: clean
+	$(RM) $(NAME)
 
-CC		=			c++
+re: fclean all
 
-RM		=			-rm -f
-
-CFLAGS	=			-Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
-
-NAME	=			form
-
-INC_ALL	=			\
-					$(INC_DIR)
+.PHONY: all clean fclean re

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:11:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 23:38:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/15 23:55:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class	Bureaucrat;
 # define MAX_GRADE 1
 # define MIN_GRADE 150
 
-class	Form
+class	AForm
 {
 	private:
 		const std::string	_name;
@@ -29,24 +29,25 @@ class	Form
 		const unsigned int	_gradeSign;
 		const unsigned int	_gradeExecute;
 
-		unsigned int	checkGrade(unsigned int grade);
+		unsigned int		checkGrade(unsigned int grade);
 
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
-		Form(void);
-		Form(std::string name, unsigned int gradeSign,
+		AForm(void);
+		AForm(std::string name, unsigned int gradeSign,
 			unsigned int gradeExecute);
-		Form(const Form& form);
+		AForm(const AForm& form);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Form&				operator=(const Form& form);
+		AForm&				operator=(const AForm& form);
 /* ******************************* DESTRUCTOR ******************************* */
-		~Form(void);
+		virtual ~AForm(void);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		const std::string&	getName(void) const;
 		bool				getSigned(void) const;
 		unsigned int		getGradeSign(void) const;
 		unsigned int		getGradeExecute(void) const;
 		void				beSigned(const Bureaucrat& bureaucrat);
+		virtual void		execute(const Bureaucrat& bureaucrat) const = 0;
 /* ******************************* EXCEPTIONS ******************************* */
 	class GradeTooHighException: public std::exception
 	{
@@ -58,9 +59,14 @@ class	Form
 		public:
 			virtual const char*	what(void) const throw();
 	};
+	class NotSignedException: public std::exception
+	{
+		public:
+			virtual const char*	what(void) const throw();
+	};
 };
 
 /* ************************* INPUT OPERATOR OVERLOAD ************************ */
-std::ostream&	operator<<(std::ostream& os, const Form& form);
+std::ostream&	operator<<(std::ostream& os, const AForm& form);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/15 23:20:00 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/15 23:20:16 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,14 @@ SRC_DIR	=			src/
 
 INC_DIR	=			inc/
 
-EX01	=			\
+EX00	=			\
 					Bureaucrat.cpp \
-					Form.cpp \
+					AForm.cpp \
 					main.cpp
 
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
-						$(EX01) \
+						$(EX00) \
 					)
 
 OBJS	=			$(SRCS:.cpp=.o)

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 17:33:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/15 23:38:18 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class	Bureaucrat
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat& bureaucrat);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Bureaucrat&	operator=(const Bureaucrat& bureaucrat);
+		Bureaucrat&			operator=(const Bureaucrat& bureaucrat);
 /* ******************************* DESTRUCTOR ******************************* */
 		~Bureaucrat(void);
 /* **************************** MEMBER FUNCTIONS **************************** */

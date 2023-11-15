@@ -1,52 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 00:11:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 23:38:43 by rgallego         ###   ########.fr       */
+/*   Created: 2023/11/11 16:33:45 by rgallego          #+#    #+#             */
+/*   Updated: 2023/11/15 23:38:52 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 # include <iostream>
-# include "Bureaucrat.hpp"
-
-class	Bureaucrat;
+# include "Form.hpp"
 
 # define MAX_GRADE 1
 # define MIN_GRADE 150
 
-class	Form
+class	AForm;
+
+
+class	Bureaucrat
 {
 	private:
 		const std::string	_name;
-		bool				_signed;
-		const unsigned int	_gradeSign;
-		const unsigned int	_gradeExecute;
-
-		unsigned int	checkGrade(unsigned int grade);
+		unsigned int		_grade;
 
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
-		Form(void);
-		Form(std::string name, unsigned int gradeSign,
-			unsigned int gradeExecute);
-		Form(const Form& form);
+		Bureaucrat(void);
+		Bureaucrat(std::string name, int grade);
+		Bureaucrat(const Bureaucrat& bureaucrat);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Form&				operator=(const Form& form);
+		Bureaucrat&			operator=(const Bureaucrat& bureaucrat);
 /* ******************************* DESTRUCTOR ******************************* */
-		~Form(void);
+		~Bureaucrat(void);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		const std::string&	getName(void) const;
-		bool				getSigned(void) const;
-		unsigned int		getGradeSign(void) const;
-		unsigned int		getGradeExecute(void) const;
-		void				beSigned(const Bureaucrat& bureaucrat);
+		unsigned int		getGrade(void) const;
+		void				setGrade(unsigned int grade);
+		void				incrementGrade(void);
+		void				decrementGrade(void);
+		void				signForm(AForm& form);
+
 /* ******************************* EXCEPTIONS ******************************* */
 	class GradeTooHighException: public std::exception
 	{
@@ -61,6 +59,6 @@ class	Form
 };
 
 /* ************************* INPUT OPERATOR OVERLOAD ************************ */
-std::ostream&	operator<<(std::ostream& os, const Form& form);
+std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif
