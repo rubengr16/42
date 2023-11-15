@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:12 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 00:09:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/15 23:17:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,16 @@ int	main(void)
 				<< "----------------------------------------------------"
 				<< std::endl;
 		}
+	}
+/* ******************************** EXAMPLE 4 ******************************* */
+	{
+		Bureaucrat bureaucrat7 = bureaucrat;
+
+		std::cout << "COPY ASSIGNED BUREAUCRAT:" << std::endl
+			<< "NAME: " << bureaucrat7.getName() << std::endl
+			<< "GRADE: " << bureaucrat7.getGrade() << std::endl
+			<< "----------------------------------------------------"
+			<< std::endl;
 	}
 	return (0);
 }

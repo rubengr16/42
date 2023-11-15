@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:12:07 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 17:38:33 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:55:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ Form::~Form(void)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-const unsigned int	Form::checkGrade(unsigned int grade)
+unsigned int	Form::checkGrade(unsigned int grade)
 {
 	if (grade < MAX_GRADE)
 		throw GradeTooHighException();
@@ -95,12 +95,12 @@ bool	Form::getSigned(void) const
 	return (this->_signed);
 }
 
-const unsigned int	Form::getGradeSign(void) const
+unsigned int	Form::getGradeSign(void) const
 {
 	return (this->_gradeSign);
 }
 
-const unsigned int	Form::getGradeExecute(void) const
+unsigned int	Form::getGradeExecute(void) const
 {
 	return (this->_gradeExecute);
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 17:39:44 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:58:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 # define MAX_GRADE 1
 # define MIN_GRADE 150
+
+class	Form;
+
 
 class	Bureaucrat
 {
