@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:11:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 23:55:40 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:44:31 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,20 @@ class	Bureaucrat;
 class	AForm
 {
 	private:
+		unsigned int	checkGrade(unsigned int grade);
+
+	protected:
 		const std::string	_name;
 		bool				_signed;
 		const unsigned int	_gradeSign;
 		const unsigned int	_gradeExecute;
-
-		unsigned int		checkGrade(unsigned int grade);
-
-	public:
 /* ****************************** CONSTRUCTORS ****************************** */
 		AForm(void);
 		AForm(std::string name, unsigned int gradeSign,
 			unsigned int gradeExecute);
 		AForm(const AForm& form);
+
+	public:
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		AForm&				operator=(const AForm& form);
 /* ******************************* DESTRUCTOR ******************************* */

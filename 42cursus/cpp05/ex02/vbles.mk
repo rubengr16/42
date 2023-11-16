@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/15 23:20:16 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/16 14:38:53 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,9 @@ INC_DIR	=			inc/
 EX00	=			\
 					Bureaucrat.cpp \
 					AForm.cpp \
+					ShrubberyCreationForm.cpp \
+					PresidentialPardonForm.cpp \
+					RobotomyRequestForm.cpp \
 					main.cpp
 
 
