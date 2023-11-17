@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/16 22:34:24 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/17 15:42:23 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,24 @@ PresidentialPardonForm::PresidentialPardonForm(
 /* ******************************* DESTRUCTOR ******************************* */
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-
+	std::cout << "[Destructor] PresidentialPardonForm: named as "
+		<< this->_name << " has been created. It is "
+		<< (this->_signed ? "" : "not ") << "signed and requires "
+		<< this->_gradeSign << " to be signed and " << this->_gradeExecute
+		<< " is being destructed" << std::endl
+		<< "----------------------------------------------------" << std::endl;
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 PresidentialPardonForm&	PresidentialPardonForm::operator=(
 	const PresidentialPardonForm& pPForm)
 {
-
+	std::cout << "[Copy Assignment Operator] PresidentialPardonForm: named as "
+		<< this->_name << " has been created. It is "
+		<< (this->_signed ? "" : "not ") << "signed and requires "
+		<< this->_gradeSign << " to be signed and " << this->_gradeExecute
+		<< " is being destructed" << std::endl
+		<< "----------------------------------------------------" << std::endl;
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */

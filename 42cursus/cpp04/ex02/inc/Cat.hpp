@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:58:32 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/14 00:12:24 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/17 15:30:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Cat: public AAnimal
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
 		Cat(void);
-		Cat(const Brain brain);
+		Cat(const Brain& brain);
 		Cat(const Cat& cat);
 /* ******************************* DESTRUCTOR ******************************* */
 		~Cat(void);

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/16 22:24:40 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/17 15:29:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Dog::Dog(void):
 		<< "----------------------------------------------------" << std::endl;
 }
 
-Dog::Dog(const Brain brain):
+Dog::Dog(const Brain& brain):
 	Animal(),
 	_brain(new Brain(brain))
 {
