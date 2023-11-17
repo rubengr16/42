@@ -6,32 +6,39 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/17 18:14:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/18 00:42:25 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERRYCREATIONFORM_HPP
 # define SHRUBBERRYCREATIONFORM_HPP
 
+# include <fstream>
 # include "AForm.hpp"
 
-# define SIGN_GRADE 145
-# define EXECUTE_GRADE 137
+# define SCF_SIGN_GRADE 145
+# define SCF_EXECUTE_GRADE 137
 
 class ShrubberyCreationForm: public AForm
 {
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
 		ShrubberyCreationForm(void);
-		ShrubberyCreationForm(
-			const ShrubberyCreationForm& sCForm);
+		ShrubberyCreationForm(const std::string& target);
+		ShrubberyCreationForm(const ShrubberyCreationForm& sCForm);
 /* ******************************* DESTRUCTOR ******************************* */
 		~ShrubberyCreationForm();
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		ShrubberyCreationForm&	operator=(
 			const ShrubberyCreationForm& sCForm);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		void					execute(void);
+		void					execute(void) const;
+/* ******************************* EXCEPTIONS ******************************* */
+	class FailedOpenException: public std::exception
+	{
+		public:
+			virtual const char*	what(void) const throw();
+	};
 };
 
 #endif

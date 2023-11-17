@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:12:07 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/17 18:04:54 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/18 00:24:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ Form&	Form::operator=(const Form& form)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-unsigned int	Form::checkGrade(unsigned int grade)
+unsigned int	Form::checkGrade(unsigned int grade) const
 {
 	if (grade < MAX_GRADE)
 		throw GradeTooHighException();

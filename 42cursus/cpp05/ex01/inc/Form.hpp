@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:11:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/17 18:02:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/18 00:24:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class	Form
 		const unsigned int	_gradeSign;
 		const unsigned int	_gradeExecute;
 
-		unsigned int	checkGrade(unsigned int grade);
+		unsigned int	checkGrade(unsigned int grade) const;
 
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */

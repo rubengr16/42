@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:11:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/17 18:01:17 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/18 00:27:38 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class	Bureaucrat;
 class	AForm
 {
 	private:
-		unsigned int	checkGrade(unsigned int grade);
+		unsigned int	checkGrade(unsigned int grade) const;
 
 	protected:
 		const std::string	_name;
@@ -37,6 +37,7 @@ class	AForm
 		AForm(const std::string& name, unsigned int gradeSign,
 			unsigned int gradeExecute, const std::string& target);
 		AForm(const AForm& form);
+		void				checkSigned(void) const;
 
 	public:
 /* ******************************* DESTRUCTOR ******************************* */
@@ -49,9 +50,9 @@ class	AForm
 		unsigned int		getGradeSign(void) const;
 		unsigned int		getGradeExecute(void) const;
 		void				setTarget(const std::string& target);
-		std::string			getTarget(void);
+		const std::string&	getTarget(void) const;
 		void				beSigned(const Bureaucrat& bureaucrat);
-		virtual void		execute(const Bureaucrat& bureaucrat) const = 0;
+		virtual void		execute(void) const = 0;
 /* ******************************* EXCEPTIONS ******************************* */
 	class GradeTooHighException: public std::exception
 	{

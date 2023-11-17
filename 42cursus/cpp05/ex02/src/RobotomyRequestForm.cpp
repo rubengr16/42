@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/17 18:15:46 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/18 00:39:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,23 @@
 
 /* ****************************** CONSTRUCTORS ****************************** */
 RobotomyRequestForm::RobotomyRequestForm(void):
-	AForm("RobotomyRequestForm", SIGN_GRADE, EXECUTE_GRADE,
+	AForm("RobotomyRequestForm", RRF_SIGN_GRADE, RRF_EXECUTE_GRADE,
 		"RobotomyRequestForm")
 {
 	srand(time(NULL));
 	std::cout << "[Default Constructor] RobotomyRequestForm: named as "
+		<< this->_name << " has been created. It is "
+		<< (this->_signed ? "" : "not ") << "signed and requires "
+		<< this->_gradeSign << " to be signed and " << this->_gradeExecute
+		<< " to be executed, which targets " << this->_target << std::endl
+		<< "----------------------------------------------------" << std::endl;
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target):
+	AForm("RobotomyRequestForm", RRF_SIGN_GRADE, RRF_EXECUTE_GRADE,
+		target)
+{
+	std::cout << "[Constructor] RobotomyRequestForm: named as "
 		<< this->_name << " has been created. It is "
 		<< (this->_signed ? "" : "not ") << "signed and requires "
 		<< this->_gradeSign << " to be signed and " << this->_gradeExecute
@@ -51,17 +63,21 @@ RobotomyRequestForm::~RobotomyRequestForm()
 RobotomyRequestForm&	RobotomyRequestForm::operator=(
 	const RobotomyRequestForm& rRForm)
 {
+	this->_signed = rRForm.getSigned();
+	this->_target = rRForm.getTarget();
 	std::cout << "[Copy Assignment Operator] RobotomyRequestForm: named as "
 		<< this->_name << " has been copy assigned. It is "
 		<< (this->_signed ? "" : "not ") << "signed and requires "
 		<< this->_gradeSign << " to be signed and " << this->_gradeExecute
 		<< " to be executed, which targets " << this->_target << std::endl
 		<< "----------------------------------------------------" << std::endl;
+	return (*this);
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-void	RobotomyRequestForm::execute(void)
+void	RobotomyRequestForm::execute(void) const
 {
+	this->checkSigned();
 	std::cout << "Beep, beeep, bruum, bruuum..." << std::endl;
 	if (rand() % 2)
 		std::cout << this->getTarget() << " has been successfully robotomized"

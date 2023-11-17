@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/17 15:43:34 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/18 00:23:07 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
 
-NAME	=			form
+NAME	=			many_forms
 
 INC_ALL	=			\
 					$(INC_DIR)
