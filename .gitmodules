@@ -1,0 +1,8 @@
+[submodule "42cursus/cub3d"]
+	path = 42cursus/cub3d
+	url = git@github.com:BlueFlare011/Cub3d.git
+	branch = main
+[submodule "42cursus/minishell"]
+	path = 42cursus/minishell
+	url = git@github.com:rubengr16/minishell.git
+	branch = main
