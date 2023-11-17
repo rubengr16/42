@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:12:07 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 22:55:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:04:54 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Form::Form(void):
 		<< "----------------------------------------------------" << std::endl;
 }
 
-Form::Form(std::string name, unsigned int gradeSign,
+Form::Form(const std::string& name, unsigned int gradeSign,
 	unsigned int gradeExecute):
 	_name(name),
 	_signed(false),
@@ -53,6 +53,14 @@ Form::Form(const Form& form):
 		<< "----------------------------------------------------" << std::endl;
 }
 
+/* ******************************* DESTRUCTOR ******************************* */
+Form::~Form(void)
+{
+	std::cout << "[Copy Assignment Operator] Form: named as " << this->_name
+		<< " is being deleted" << std::endl
+		<< "----------------------------------------------------" << std::endl;
+}
+
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 Form&	Form::operator=(const Form& form)
 {
@@ -60,19 +68,11 @@ Form&	Form::operator=(const Form& form)
 		return (*this);
 	this->_signed = form.getSigned();
 	std::cout << "[Copy Assignment Operator] Form: named as " << this->_name
-		<< " has been created. It is " << (this->_signed ? "" : "not ")
+		<< " has been copy assigned. It is " << (this->_signed ? "" : "not ")
 		<< "signed and requires " << this->_gradeSign << " to be signed and "
 		<< this->_gradeExecute << " to be executed" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	return (*this);
-}
-
-/* ******************************* DESTRUCTOR ******************************* */
-Form::~Form(void)
-{
-	std::cout << "[Copy Assignment Operator] Form: named as " << this->_name
-		<< " is being deleted" << std::endl
-		<< "----------------------------------------------------" << std::endl;
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:11:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 23:38:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:02:23 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ class	Form
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
 		Form(void);
-		Form(std::string name, unsigned int gradeSign,
+		Form(const std::string& name, unsigned int gradeSign,
 			unsigned int gradeExecute);
 		Form(const Form& form);
-/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Form&				operator=(const Form& form);
 /* ******************************* DESTRUCTOR ******************************* */
 		~Form(void);
+/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+		Form&				operator=(const Form& form);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		const std::string&	getName(void) const;
 		bool				getSigned(void) const;

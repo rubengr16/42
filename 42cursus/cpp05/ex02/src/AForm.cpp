@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:12:07 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/17 15:42:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:00:51 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,30 @@ AForm::AForm(void):
 	_name("DefaultAForm"),
 	_signed(false),
 	_gradeSign(MIN_GRADE),
-	_gradeExecute(MIN_GRADE)
+	_gradeExecute(MIN_GRADE),
+	_target("AFormTarget")
 {
 	std::cout << "[Default Constructor] AForm: named as " << this->_name
 		<< " has been created. It is " << (this->_signed ? "" : "not ")
 		<< "signed and requires " << this->_gradeSign << " to be signed and "
-		<< this->_gradeExecute << " to be executed" << std::endl
+		<< this->_gradeExecute << " to be executed, which targets "
+		<< this->_target << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
-AForm::AForm(std::string name, unsigned int gradeSign,
-	unsigned int gradeExecute):
+AForm::AForm(const std::string& name, unsigned int gradeSign,
+	unsigned int gradeExecute, const std::string& target):
 	_name(name),
 	_signed(false),
 	_gradeSign(checkGrade(gradeSign)),
-	_gradeExecute(checkGrade(gradeExecute))
+	_gradeExecute(checkGrade(gradeExecute)),
+	_target(target)
 {
 	std::cout << "[Constructor] AForm: named as " << this->_name
 		<< " has been created. It is " << (this->_signed ? "" : "not ")
 		<< "signed and requires " << this->_gradeSign << " to be signed and "
-		<< this->_gradeExecute << " to be executed" << std::endl
+		<< this->_gradeExecute << " to be executed, which targets "
+		<< this->_target << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
@@ -44,12 +48,22 @@ AForm::AForm(const AForm& form):
 	_name(form.getName()),
 	_signed(form.getSigned()),
 	_gradeSign(form.getGradeSign()),
-	_gradeExecute(form.getGradeExecute())
+	_gradeExecute(form.getGradeExecute()),
+	_target(this->getTarget())
 {
 	std::cout << "[Copy Constructor] AForm: named as " << this->_name
 		<< " has been created. It is " << (this->_signed ? "" : "not ")
 		<< "signed and requires " << this->_gradeSign << " to be signed and "
-		<< this->_gradeExecute << " to be executed" << std::endl
+		<< this->_gradeExecute << " to be executed, which targets "
+		<< this->_target << std::endl
+		<< "----------------------------------------------------" << std::endl;
+}
+
+/* ******************************* DESTRUCTOR ******************************* */
+AForm::~AForm(void)
+{
+	std::cout << "[Copy Assignment Operator] AForm: named as " << this->_name
+		<< " is being deleted" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
 
@@ -60,19 +74,12 @@ AForm&	AForm::operator=(const AForm& form)
 		return (*this);
 	this->_signed = form.getSigned();
 	std::cout << "[Copy Assignment Operator] AForm: named as " << this->_name
-		<< " has been created. It is " << (this->_signed ? "" : "not ")
+		<< " has been copy assigned. It is " << (this->_signed ? "" : "not ")
 		<< "signed and requires " << this->_gradeSign << " to be signed and "
-		<< this->_gradeExecute << " to be executed" << std::endl
+		<< this->_gradeExecute << " to be executed. And targets "
+		<< this->_target << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	return (*this);
-}
-
-/* ******************************* DESTRUCTOR ******************************* */
-AForm::~AForm(void)
-{
-	std::cout << "[Copy Assignment Operator] AForm: named as " << this->_name
-		<< " is being deleted" << std::endl
-		<< "----------------------------------------------------" << std::endl;
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
@@ -103,6 +110,16 @@ unsigned int	AForm::getGradeSign(void) const
 unsigned int	AForm::getGradeExecute(void) const
 {
 	return (this->_gradeExecute);
+}
+
+std::string	AForm::getTarget(void)
+{
+	return (this->_target);
+}
+
+void	AForm::setTarget(const std::string& target)
+{
+	this->_target = target;
 }
 
 void	AForm::beSigned(const Bureaucrat& bureaucrat)

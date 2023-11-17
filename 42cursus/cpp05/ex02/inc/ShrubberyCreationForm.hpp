@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/16 14:39:00 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:14:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ class ShrubberyCreationForm: public AForm
 		ShrubberyCreationForm&	operator=(
 			const ShrubberyCreationForm& sCForm);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		void					execute(const Bureaucrat& bureaucrat);
+		void					execute(void);
 };
-
-
 
 #endif

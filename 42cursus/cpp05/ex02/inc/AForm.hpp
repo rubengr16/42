@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:11:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/17 15:41:52 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:01:17 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,25 @@ class	AForm
 		bool				_signed;
 		const unsigned int	_gradeSign;
 		const unsigned int	_gradeExecute;
+		std::string			_target;
 /* ****************************** CONSTRUCTORS ****************************** */
 		AForm(void);
-		AForm(std::string name, unsigned int gradeSign,
-			unsigned int gradeExecute);
+		AForm(const std::string& name, unsigned int gradeSign,
+			unsigned int gradeExecute, const std::string& target);
 		AForm(const AForm& form);
 
 	public:
-/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		AForm&				operator=(const AForm& form);
 /* ******************************* DESTRUCTOR ******************************* */
 		virtual ~AForm(void);
+/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+		AForm&				operator=(const AForm& form);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		const std::string&	getName(void) const;
 		bool				getSigned(void) const;
 		unsigned int		getGradeSign(void) const;
 		unsigned int		getGradeExecute(void) const;
+		void				setTarget(const std::string& target);
+		std::string			getTarget(void);
 		void				beSigned(const Bureaucrat& bureaucrat);
 		virtual void		execute(const Bureaucrat& bureaucrat) const = 0;
 /* ******************************* EXCEPTIONS ******************************* */

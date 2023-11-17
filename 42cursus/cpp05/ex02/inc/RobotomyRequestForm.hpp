@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/16 14:36:51 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:14:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ class RobotomyRequestForm: public AForm
 		RobotomyRequestForm&	operator=(
 			const RobotomyRequestForm& rRForm);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		void					execute(const Bureaucrat& bureaucrat);
+		void					execute(void);
 };
-
-
 
 #endif

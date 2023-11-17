@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 23:38:18 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:02:47 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ class	Bureaucrat
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
 		Bureaucrat(void);
-		Bureaucrat(std::string name, int grade);
+		Bureaucrat(const std::string& name, int grade);
 		Bureaucrat(const Bureaucrat& bureaucrat);
-/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Bureaucrat&			operator=(const Bureaucrat& bureaucrat);
 /* ******************************* DESTRUCTOR ******************************* */
 		~Bureaucrat(void);
+/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+		Bureaucrat&			operator=(const Bureaucrat& bureaucrat);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		const std::string&	getName(void) const;
 		unsigned int		getGrade(void) const;

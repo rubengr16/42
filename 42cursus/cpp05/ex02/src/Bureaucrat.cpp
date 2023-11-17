@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:32 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 23:56:56 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:00:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Bureaucrat::Bureaucrat(void):
 		<< "----------------------------------------------------" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade):
+Bureaucrat::Bureaucrat(const std::string& name, int grade):
 	_name(name)
 {
 	if (grade < MAX_GRADE)
@@ -44,6 +44,14 @@ Bureaucrat::Bureaucrat(const Bureaucrat& bureaucrat):
 		<< "----------------------------------------------------" << std::endl;
 }
 
+/* ******************************* DESTRUCTOR ******************************* */
+Bureaucrat::~Bureaucrat(void)
+{
+	std::cout << "[Destructor] Bureaucrat: named as " << this->_name
+		<< " and grade " << this->_grade << " is being destroyed" << std::endl
+		<< "----------------------------------------------------" << std::endl;
+}
+
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& bureaucrat)
 {
@@ -51,18 +59,10 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& bureaucrat)
 		return (*this);
 	this->_grade = bureaucrat.getGrade();
 	std::cout << "[Copy Assignment Operator] Bureaucrat: named as "
-		<< this->_name << " and grade " << this->_grade << " has been created"
-		<< std::endl
+		<< this->_name << " and grade " << this->_grade << " has been copy "
+		<< "assigned" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	return (*this);
-}
-
-/* ******************************* DESTRUCTOR ******************************* */
-Bureaucrat::~Bureaucrat(void)
-{
-	std::cout << "[Destructor] Bureaucrat: named as " << this->_name
-		<< " and grade " << this->_grade << " is being destroyed" << std::endl
-		<< "----------------------------------------------------" << std::endl;
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
@@ -106,7 +106,7 @@ void	Bureaucrat::signForm(AForm& form)
 		form.beSigned(*this);
 		std::cout << this->_name << " signed " << form.getName() << std::endl;
 	}
-	catch (const Form::GradeTooLowException& e)
+	catch (const AForm::GradeTooLowException& e)
 	{
 		std::cout << this->_name << " could'n sign " << form.getName()
 			<< " because " << e.what() << std::endl;
