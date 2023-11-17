@@ -3,7 +3,9 @@
 	path = 42cursus/minishell
 	url = https://github.com/rubengr16/minishell.git
 	branch = main
+	update = merge
 [submodule "42cursus/cub3d"]
 	path = 42cursus/cub3d
 	url = https://github.com/BlueFlare011/Cub3d.git
 	branch = main
+	update = merge
