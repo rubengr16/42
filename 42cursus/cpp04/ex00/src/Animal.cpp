@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/14 00:07:30 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/16 22:25:30 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Animal::Animal(void):
 Animal::Animal(const Animal& animal):
 	_type(animal.getType())
 {
-	std::cout << "[Copy Constructor] Animal: object of type " << this->_type
+	std::cout << "[Constructor] Animal: object of type " << this->_type
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }

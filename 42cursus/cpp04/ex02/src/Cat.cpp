@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/15 00:36:11 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/16 22:25:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Cat::Cat(const Brain brain):
 	_brain(new Brain(brain))
 {
 	this->_type = "Cat";
-	std::cout << "[Default Constructor] Cat: object of type " << this->_type
+	std::cout << "[Constructor] Cat: object of type " << this->_type
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }

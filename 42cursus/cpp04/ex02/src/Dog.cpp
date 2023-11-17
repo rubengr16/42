@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:57:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/15 00:36:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/16 22:26:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ Dog::Dog(const Brain brain):
 	AAnimal(),
 	_brain(new Brain(brain))
 {
-	this->_type = "CaDogt";
-	std::cout << "[Default Constructor] Cat: object of type " << this->_type
+	this->_type = "Dog";
+	std::cout << "[Constructor] Cat: object of type " << this->_type
 		<< " has been created." << std::endl
 		<< "----------------------------------------------------" << std::endl;
 }
