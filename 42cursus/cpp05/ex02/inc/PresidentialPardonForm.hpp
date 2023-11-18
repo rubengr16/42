@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 00:40:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/18 12:43:48 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "AForm.hpp"
 
+# define PPF_NAME "PresidentialPardonForm"
 # define PPF_SIGN_GRADE 145
 # define PPF_EXECUTE_GRADE 137
 

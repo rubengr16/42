@@ -1,45 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 12:45:28 by rgallego         ###   ########.fr       */
+/*   Created: 2023/11/18 12:46:53 by rgallego          #+#    #+#             */
+/*   Updated: 2023/11/18 13:01:14 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERRYCREATIONFORM_HPP
-# define SHRUBBERRYCREATIONFORM_HPP
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
-# include <fstream>
-# include "AForm.hpp"
+# include <iostream>
+# include "PresidentialPardonForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "ShrubberyCreationForm.hpp"
 
-# define SCF_NAME "ShrubberyCreationForm"
-# define SCF_SIGN_GRADE 145
-# define SCF_EXECUTE_GRADE 137
-
-class ShrubberyCreationForm: public AForm
+class Intern
 {
-	public:
+	private:
 /* ****************************** CONSTRUCTORS ****************************** */
-		ShrubberyCreationForm(void);
-		ShrubberyCreationForm(const std::string& target);
-		ShrubberyCreationForm(const ShrubberyCreationForm& sCForm);
+		Intern(const Intern& intern);
+
+	public:
+		Intern(void);
 /* ******************************* DESTRUCTOR ******************************* */
-		~ShrubberyCreationForm();
+		~Intern();
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		ShrubberyCreationForm&	operator=(
-			const ShrubberyCreationForm& sCForm);
+		Intern&	operator=(const Intern& intern);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		void					execute(void) const;
-/* ******************************* EXCEPTIONS ******************************* */
-	class FailedOpenException: public std::exception
-	{
-		public:
-			virtual const char*	what(void) const throw();
-	};
+		void	makeForm(const std::string& formName,
+			const std::string& formTarget);
 };
+
 
 #endif

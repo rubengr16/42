@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/18 12:46:25 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/18 12:47:35 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,17 +14,18 @@ SRC_DIR	=			src/
 
 INC_DIR	=			inc/
 
-EX02	=			\
+EX03	=			\
 					Bureaucrat.cpp \
 					AForm.cpp \
 					PresidentialPardonForm.cpp \
 					RobotomyRequestForm.cpp \
 					ShrubberyCreationForm.cpp \
+					Intern.cpp \
 					main.cpp
 
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
-						$(EX02) \
+						$(EX03) \
 					)
 
 OBJS	=			$(SRCS:.cpp=.o)
@@ -35,7 +36,7 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
 
-NAME	=			many_forms
+NAME	=			intern
 
 INC_ALL	=			\
 					$(INC_DIR)

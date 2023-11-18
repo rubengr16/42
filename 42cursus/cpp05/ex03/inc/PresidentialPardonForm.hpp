@@ -1,45 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 12:45:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/18 12:56:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERRYCREATIONFORM_HPP
-# define SHRUBBERRYCREATIONFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
-# include <fstream>
 # include "AForm.hpp"
 
-# define SCF_NAME "ShrubberyCreationForm"
-# define SCF_SIGN_GRADE 145
-# define SCF_EXECUTE_GRADE 137
+# define PPF_NAME "PresidentialPardonForm"
+# define PPF_SIGN_GRADE 145
+# define PPF_EXECUTE_GRADE 137
 
-class ShrubberyCreationForm: public AForm
+class PresidentialPardonForm: public AForm
 {
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
-		ShrubberyCreationForm(void);
-		ShrubberyCreationForm(const std::string& target);
-		ShrubberyCreationForm(const ShrubberyCreationForm& sCForm);
+		PresidentialPardonForm(void);
+		PresidentialPardonForm(const std::string& target);
+		PresidentialPardonForm(const PresidentialPardonForm& pPForm);
 /* ******************************* DESTRUCTOR ******************************* */
-		~ShrubberyCreationForm();
+		~PresidentialPardonForm();
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		ShrubberyCreationForm&	operator=(
-			const ShrubberyCreationForm& sCForm);
+		PresidentialPardonForm&	operator=(
+			const PresidentialPardonForm& pPForm);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		void					execute(void) const;
-/* ******************************* EXCEPTIONS ******************************* */
-	class FailedOpenException: public std::exception
-	{
-		public:
-			virtual const char*	what(void) const throw();
-	};
 };
 
 #endif
