@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 12:45:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/18 14:43:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
+AForm*	RobotomyRequestForm::factory(const std::string& target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
 void	RobotomyRequestForm::execute(void) const
 {
 	this->checkSigned();

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:46:53 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 13:01:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/18 14:53:37 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@
 # include "RobotomyRequestForm.hpp"
 # include "ShrubberyCreationForm.hpp"
 
+typedef	AForm* (*t_factoryPtr)(const std::string& target);
+
 class Intern
 {
 	private:
+		const static t_factoryPtr	_formOptions[];
 /* ****************************** CONSTRUCTORS ****************************** */
 		Intern(const Intern& intern);
 
@@ -31,8 +34,14 @@ class Intern
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		Intern&	operator=(const Intern& intern);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		void	makeForm(const std::string& formName,
-			const std::string& formTarget);
+		AForm*	makeForm(const std::string& name,
+			const std::string& target);
+/* ******************************* EXCEPTIONS ******************************* */
+	class FormNotFoundException: public std::exception
+	{
+		public:
+			virtual const char*	what(void) const throw();
+	};
 };
 
 

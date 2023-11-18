@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 12:44:59 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/18 14:43:31 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
+AForm*	PresidentialPardonForm::factory(const std::string& target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
 void	PresidentialPardonForm::execute(void) const
 {
 	this->checkSigned();

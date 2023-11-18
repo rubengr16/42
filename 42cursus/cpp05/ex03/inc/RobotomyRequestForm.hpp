@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 12:44:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/18 14:22:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class RobotomyRequestForm: public AForm
 		RobotomyRequestForm&	operator=(
 			const RobotomyRequestForm& rRForm);
 /* **************************** MEMBER FUNCTIONS **************************** */
+		static AForm*			factory(const std::string& target);
 		void					execute(void) const;
 };
 

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 12:46:02 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/18 14:43:45 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
+AForm*	ShrubberyCreationForm::factory(const std::string& target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
 void	ShrubberyCreationForm::execute(void) const
 {
 	std::ofstream	fout;
