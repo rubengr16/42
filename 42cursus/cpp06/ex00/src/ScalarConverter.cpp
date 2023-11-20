@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 23:41:21 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/20 01:07:53 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 10:14:07 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ScalarConverter::conversion(std::string& input)
 	{
 		dbl = getDouble(input);
 		toInt(input, dbl);
-		toFloat(input, static_cast<double>(dbl));
+		toFloat(input, dbl);
 		toDouble(input, dbl);
 	}
 }

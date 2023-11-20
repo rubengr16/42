@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:01:15 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/20 01:03:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 10:14:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@ void	ScalarConverter::toInt(const std::string& input, int nb)
 		std::cout << nb << std::endl;
 }
 
+void	ScalarConverter::toInt(const std::string& input, float flt)
+{
+	std::cout << "int: ";
+	if(!input.compare(NANF42) || !input.compare(INFF) || !input.compare(NINFF))
+		std::cout << "impossible" << std::endl;
+	else if (flt < std::numeric_limits<int>::min())
+		std::cout << UNDERFLOW << std::endl;
+	else if (flt > std::numeric_limits<int>::max())
+		std::cout << OVERFLOW << std::endl;
+	else
+		std::cout << static_cast<int>(flt) << std::endl;
+}
 
 void	ScalarConverter::toInt(const std::string& input, double dbl)
 {

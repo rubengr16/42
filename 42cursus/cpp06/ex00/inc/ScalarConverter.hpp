@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 23:41:15 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/20 01:05:34 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 10:12:12 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ class ScalarConverter
 /* *********************************** INT ********************************** */
 		static int			getInt(std::string& input);
 		static void			toInt(const std::string& input, int nb);
+		static void			toInt(const std::string& input, float flt);
 		static void			toInt(const std::string& input, double nb);
 /* ********************************** FLOAT ********************************* */
 		static float		getFloat(std::string& input);
