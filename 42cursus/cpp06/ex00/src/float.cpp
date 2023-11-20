@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:02:28 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/20 22:57:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 23:15:09 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ float	ScalarConverter::getFloat(std::string& input)
 
 void	ScalarConverter::toFloat(const std::string& input, float flt)
 {
-	std::cout << "ffloat: ";
+	std::cout << "float: ";
 	if (!input.compare(UNDERFLOW) || !input.compare(OVERFLOW))
 		std::cout << input << std::endl;
 	else if(!input.compare(NANF42) || !input.compare(INFF)

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 23:41:21 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/20 23:11:00 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 23:15:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ e_scalarType		ScalarConverter::getScalarType(const std::string& input)
 		|| !input.compare(NANF42) || !input.compare(INFF)
 		|| !input.compare(NINFF))
 		return (FLOAT);
-	if ( point <= 1 || !input.compare(NAN42) || !input.compare(INF)
-		|| !input.compare(NINF))
+	if ((i == len && point <= 1) || !input.compare(NAN42)
+		|| !input.compare(INF) || !input.compare(NINF))
 		return (DOUBLE);
 	return (IMPOSSIBLE);
 }
@@ -113,5 +113,12 @@ void	ScalarConverter::conversion(std::string& input)
 		toInt(input, dbl);
 		toFloat(input, dbl);
 		toDouble(input, dbl);
+	}
+	else
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
 	}
 }
