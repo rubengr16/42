@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:02:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/20 01:09:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 21:53:43 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ double	ScalarConverter::getDouble(std::string& input)
 	if ((errno == ERANGE && dbl == -HUGE_VAL))
 	{
 		input = UNDERFLOW;
-		return (std::numeric_limits<double>::min());
+		return (-std::numeric_limits<double>::max());
 	}
 	else if ((errno == ERANGE && dbl == HUGE_VAL))
 	{

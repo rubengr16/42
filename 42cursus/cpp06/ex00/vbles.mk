@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/20 00:20:23 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/20 21:37:26 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRC_DIR	=			src/
 INC_DIR	=			inc/
 
 EX00	=			\
+					char.cpp \
 					int.cpp \
 					float.cpp \
 					double.cpp \

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 23:41:15 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/20 10:12:12 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 21:39:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ class ScalarConverter
 /* **************************** MEMBER FUNCTIONS **************************** */
 		static e_scalarType	getScalarType(const std::string& input);
 /* ********************************** CHAR ********************************** */
-		static void	toChar(const std::string& input, char c);
-		static void	toChar(const std::string& input, double dbl);
+		static void			toChar(char c);
+		static void			toChar(int nb);
+		static void			toChar(const std::string& input, float flt);
+		static void			toChar(const std::string& input, double dbl);
 /* *********************************** INT ********************************** */
 		static int			getInt(std::string& input);
 		static void			toInt(const std::string& input, int nb);

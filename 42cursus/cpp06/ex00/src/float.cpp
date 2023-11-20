@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:02:28 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/20 10:13:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:57:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ float	ScalarConverter::getFloat(std::string& input)
 	double dbl = strtod(input.c_str(), &endptr);
 
 	if ((errno == ERANGE && dbl == -HUGE_VAL)
-		|| dbl < std::numeric_limits<float>::min())
+		|| dbl < -std::numeric_limits<float>::max())
 	{
 		input = UNDERFLOW;
-		return (std::numeric_limits<float>::min());
+		return (-std::numeric_limits<float>::max());
 	}
 	else if ((errno == ERANGE && dbl == HUGE_VAL)
 		|| dbl > std::numeric_limits<float>::max())
@@ -35,8 +35,11 @@ float	ScalarConverter::getFloat(std::string& input)
 
 void	ScalarConverter::toFloat(const std::string& input, float flt)
 {
-	std::cout << "float: ";
-	if(!input.compare(NANF42) || !input.compare(INFF) || !input.compare(NINFF))
+	std::cout << "ffloat: ";
+	if (!input.compare(UNDERFLOW) || !input.compare(OVERFLOW))
+		std::cout << input << std::endl;
+	else if(!input.compare(NANF42) || !input.compare(INFF)
+		|| !input.compare(NINFF))
 		std::cout << input << std::endl;
 	else if (!input.compare(NAN42) || !input.compare(INF)
 		|| !input.compare(NINF))
@@ -52,7 +55,7 @@ void	ScalarConverter::toFloat(const std::string& input, double dbl)
 	if (!input.compare(NAN42) || !input.compare(INF)
 		|| !input.compare(NINF))
 		std::cout << input << "f" << std::endl;
-	else if (dbl < std::numeric_limits<float>::min())
+	else if (dbl < -std::numeric_limits<float>::max())
 		std::cout << UNDERFLOW << std::endl;
 	else if (dbl > std::numeric_limits<float>::max())
 		std::cout << OVERFLOW << std::endl;

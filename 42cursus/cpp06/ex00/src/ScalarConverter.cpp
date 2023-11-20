@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 23:41:21 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/20 10:14:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 23:11:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,36 +76,40 @@ e_scalarType		ScalarConverter::getScalarType(const std::string& input)
 
 void	ScalarConverter::conversion(std::string& input)
 {
-	e_scalarType			type = getScalarType(input);
-	char					c;
-	int						nb;
+	e_scalarType	type = getScalarType(input);
+	char			c;
+	int				nb;
 	float			flt;
 	double			dbl;
 
 	if (type == CHAR)
 	{
 		c = input[0];
+		toChar(c);
 		toInt(input, c);
 		toFloat(input, static_cast<float>(c));
 		toDouble(input, c);
 	}
-	if (type == INT)
+	else if (type == INT)
 	{
 		nb = getInt(input);
+		toChar(nb);
 		toInt(input, nb);
 		toFloat(input, static_cast<float>(nb));
 		toDouble(input, nb);
 	}
-	if (type == FLOAT)
+	else if (type == FLOAT)
 	{
 		flt = getFloat(input);
+		toChar(input, flt);
 		toInt(input, flt);
 		toFloat(input, flt);
 		toDouble(input, flt);
 	}
-	if (type == DOUBLE)
+	else if (type == DOUBLE)
 	{
 		dbl = getDouble(input);
+		toChar(input, dbl);
 		toInt(input, dbl);
 		toFloat(input, dbl);
 		toDouble(input, dbl);
