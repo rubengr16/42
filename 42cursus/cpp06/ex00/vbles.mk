@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/20 21:37:26 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/20 23:18:34 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ CC		=			c++
 
 RM		=			-rm -f
 
-CFLAGS	=			-Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
+CFLAGS	=			-Wall -Wextra -Werror -std=c++98
 
 NAME	=			scalar_converter
 

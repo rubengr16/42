@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/18 23:38:01 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/20 23:34:10 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRC_DIR	=			src/
 INC_DIR	=			inc/
 
 EX00	=			\
+					Serializer.cpp \
 					main.cpp
 
 
@@ -28,9 +29,9 @@ CC		=			c++
 
 RM		=			-rm -f
 
-CFLAGS	=			-Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
+CFLAGS	=			-Wall -Wextra -Werror -std=c++98
 
-NAME	=			bureaucrat
+NAME	=			data
 
 INC_ALL	=			\
 					$(INC_DIR)
