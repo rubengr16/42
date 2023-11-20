@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 23:41:21 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/19 18:03:00 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 01:07:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ ScalarConverter&	ScalarConverter::operator=(
 	std::cout << "[Copy Assignment Operator] ScalarConverter: shall never be "
 	" used" << std::endl
 	<< "----------------------------------------------------" << std::endl;
+	return (*this);
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
@@ -64,16 +65,49 @@ e_scalarType		ScalarConverter::getScalarType(const std::string& input)
 	if (i == len && !point)
 		return (INT);
 	if ((i == (len - 1) && input[i] == 'f' && point <= 1)
-		|| !input.compare(NANF) || !input.compare(INFF)
+		|| !input.compare(NANF42) || !input.compare(INFF)
 		|| !input.compare(NINFF))
 		return (FLOAT);
-	if ( point <= 1 || !input.compare(NAN) || !input.compare(INF)
+	if ( point <= 1 || !input.compare(NAN42) || !input.compare(INF)
 		|| !input.compare(NINF))
 		return (DOUBLE);
 	return (IMPOSSIBLE);
 }
 
-void	ScalarConverter::conversion(const std::string& input)
+void	ScalarConverter::conversion(std::string& input)
 {
-	e_scalarType	type = getScalarType(input);
+	e_scalarType			type = getScalarType(input);
+	char					c;
+	int						nb;
+	float			flt;
+	double			dbl;
+
+	if (type == CHAR)
+	{
+		c = input[0];
+		toInt(input, c);
+		toFloat(input, static_cast<float>(c));
+		toDouble(input, c);
+	}
+	if (type == INT)
+	{
+		nb = getInt(input);
+		toInt(input, nb);
+		toFloat(input, static_cast<float>(nb));
+		toDouble(input, nb);
+	}
+	if (type == FLOAT)
+	{
+		flt = getFloat(input);
+		toInt(input, flt);
+		toFloat(input, flt);
+		toDouble(input, flt);
+	}
+	if (type == DOUBLE)
+	{
+		dbl = getDouble(input);
+		toInt(input, dbl);
+		toFloat(input, static_cast<double>(dbl));
+		toDouble(input, dbl);
+	}
 }

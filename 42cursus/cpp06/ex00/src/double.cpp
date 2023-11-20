@@ -6,35 +6,40 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:02:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/19 18:20:52 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 01:09:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 /* ********************************* DOUBLE ********************************* */
-void	ScalarConverter::toDouble(char c)
+double	ScalarConverter::getDouble(std::string& input)
 {
-	std::cout << "double: " << static_cast<double>(c);
+	char	*endptr = NULL;
+	double dbl = strtod(input.c_str(), &endptr);
+
+	if ((errno == ERANGE && dbl == -HUGE_VAL))
+	{
+		input = UNDERFLOW;
+		return (std::numeric_limits<double>::min());
+	}
+	else if ((errno == ERANGE && dbl == HUGE_VAL))
+	{
+		input = OVERFLOW;
+		return (std::numeric_limits<double>::max());
+	}
+	return (dbl);
 }
-
-// double	ScalarConverter::toDouble(const std::string& input, int nb)
-// {
-// 	return (nb);
-// }
-
-// double	ScalarConverter::toDouble(const std::string& input, float flt)
-// {
-// 	return (flt);
-// }
 
 void	ScalarConverter::toDouble(const std::string& input, double dbl)
 {
 	std::cout << "double: ";
-	if (!input.compare(NAN) || !input.compare(INF) || !input.compare(NINF)
-		|| !input.compare(NANF) || !input.compare(INFF)
-		|| !input.compare(NINFF))
+	if (!input.compare(NAN42) || !input.compare(INF) || !input.compare(NINF))
 		std::cout << input << std::endl;
+	else if(!input.compare(NANF42) || !input.compare(INFF)
+		|| !input.compare(NINFF))
+		std::cout << input.substr(0, input.length() - 1) << std::endl;
 	else
-		std::cout << dbl;
+		std::cout << std::setprecision(PRECISION) << std::fixed
+			<< dbl << std::endl;
 }

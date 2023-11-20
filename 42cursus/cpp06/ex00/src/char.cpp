@@ -6,29 +6,18 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:01:56 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/19 18:02:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 01:10:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 /* ********************************** CHAR ********************************** */
-char	ScalarConverter::toChar(const std::string& input, char c)
+void	ScalarConverter::toChar(const std::string& input, double dbl)
 {
-	return (c);
-}
-
-char	ScalarConverter::toChar(const std::string& input, int nb)
-{
-	
-}
-
-char	ScalarConverter::toChar(const std::string& input, float flt)
-{
-
-}
-
-char	ScalarConverter::toChar(const std::string& input, double dbl)
-{
-
+	std::cout << "char: ";
+	if (!input.compare(NAN42) || !input.compare(INF) || !input.compare(NINF)
+		|| !input.compare(NANF42) || !input.compare(INFF)
+		|| !input.compare(NINFF))
+		std::cout << "impossible" << std::endl;
 }

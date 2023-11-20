@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 23:41:15 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/19 18:16:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 01:05:34 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,21 @@
 # define SCALARCONVERTER_HPP
 
 # include <iostream>
+# include <string>
+# include <iomanip> 
+# include <cerrno>
+# include <cmath> 
+# include <limits> 
 
-# define NAN "nan"
+# define PRECISION 2
+# define NAN42 "nan"
 # define INF "+inf"
 # define NINF "+inf"
-# define NANF "nanf"
+# define NANF42 "nanf"
 # define INFF "+inff"
 # define NINFF "-inff"
+# define UNDERFLOW "underflow"
+# define OVERFLOW "overflow"
 
 enum e_scalarType
 {
@@ -45,27 +53,21 @@ class ScalarConverter
 		static e_scalarType	getScalarType(const std::string& input);
 /* ********************************** CHAR ********************************** */
 		static void	toChar(const std::string& input, char c);
-		static void	toChar(const std::string& input, int nb);
-		static void	toChar(const std::string& input, float flt);
 		static void	toChar(const std::string& input, double dbl);
 /* *********************************** INT ********************************** */
-		static void	toInt(const std::string& input, char c);
-		static void	toInt(const std::string& input, int nb);
-		static void	toInt(const std::string& input, float flt);
-		static void	toInt(const std::string& input, double dbl);
+		static int			getInt(std::string& input);
+		static void			toInt(const std::string& input, int nb);
+		static void			toInt(const std::string& input, double nb);
 /* ********************************** FLOAT ********************************* */
-		static void	toFloat(const std::string& input, char c);
-		static void	toFloat(const std::string& input, int nb);
-		static void	toFloat(const std::string& input, float flt);
-		static void	toFloat(const std::string& input, double dbl);
+		static float		getFloat(std::string& input);
+		static void			toFloat(const std::string& input, float flt);
+		static void			toFloat(const std::string& input, double dbl);
 /* ********************************* DOUBLE ********************************* */
-		static void	toDouble(char c);
-		// static double	toDouble(const std::string& input, int nb);
-		// static double	toDouble(const std::string& input, float flt);
-		static void	toDouble(const std::string& input, double dbl);
+		static double		getDouble(std::string& input);
+		static void			toDouble(const std::string& input, double dbl);
 
 	public:
-		static void			conversion(const std::string& input);
+		static void			conversion(std::string& input);
 };
 
 #endif

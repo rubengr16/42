@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/19 11:25:43 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/20 00:20:23 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,10 @@ SRC_DIR	=			src/
 INC_DIR	=			inc/
 
 EX00	=			\
-					ScalarConverter \
+					int.cpp \
+					float.cpp \
+					double.cpp \
+					ScalarConverter.cpp \
 					main.cpp
 
 

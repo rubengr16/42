@@ -6,29 +6,57 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:02:28 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/19 18:02:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/20 01:06:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 /* ********************************** FLOAT ********************************* */
-float	ScalarConverter::toFloat(const std::string& input, char c)
+float	ScalarConverter::getFloat(std::string& input)
 {
+	char	*endptr = NULL;
+	double dbl = strtod(input.c_str(), &endptr);
 
+	if ((errno == ERANGE && dbl == -HUGE_VAL)
+		|| dbl < std::numeric_limits<float>::min())
+	{
+		input = UNDERFLOW;
+		return (std::numeric_limits<float>::min());
+	}
+	else if ((errno == ERANGE && dbl == HUGE_VAL)
+		|| dbl > std::numeric_limits<float>::max())
+	{
+		input = OVERFLOW;
+		return (std::numeric_limits<float>::max());
+	}
+	return (static_cast<float>(dbl));
 }
 
-float	ScalarConverter::toFloat(const std::string& input, int nb)
+void	ScalarConverter::toFloat(const std::string& input, float flt)
 {
-
+	std::cout << "float: ";
+	if(!input.compare(NANF42) || !input.compare(INFF) || !input.compare(NINFF))
+		std::cout << input << std::endl;
+	else if (!input.compare(NAN42) || !input.compare(INF)
+		|| !input.compare(NINF))
+		std::cout << input << "f" << std::endl;
+	else
+		std::cout << std::setprecision(PRECISION) << std::fixed
+			<< flt << "f" << std::endl;
 }
 
-float	ScalarConverter::toFloat(const std::string& input, float flt)
+void	ScalarConverter::toFloat(const std::string& input, double dbl)
 {
-
-}
-
-float	ScalarConverter::toFloat(const std::string& input, double dbl)
-{
-	
+	std::cout << "float: ";
+	if (!input.compare(NAN42) || !input.compare(INF)
+		|| !input.compare(NINF))
+		std::cout << input << "f" << std::endl;
+	else if (dbl < std::numeric_limits<float>::min())
+		std::cout << UNDERFLOW << std::endl;
+	else if (dbl > std::numeric_limits<float>::max())
+		std::cout << OVERFLOW << std::endl;
+	else
+		std::cout << std::setprecision(PRECISION) << std::fixed
+			<< static_cast<float>(dbl) << "f" << std::endl;
 }
