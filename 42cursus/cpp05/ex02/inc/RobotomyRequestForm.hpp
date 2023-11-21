@@ -6,14 +6,15 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 12:44:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:18:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
-# include <stdlib.h>
+# include <ctime>
+# include <cstdlib>
 # include "AForm.hpp"
 
 # define RRF_NAME "RobotomyRequestForm"

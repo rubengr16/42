@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/18 12:47:35 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/21 15:00:59 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ CC		=			c++
 
 RM		=			-rm -f
 
-CFLAGS	=			-Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
+CFLAGS	=			-Wall -Wextra -Werror -std=c++98
 
 NAME	=			intern
 

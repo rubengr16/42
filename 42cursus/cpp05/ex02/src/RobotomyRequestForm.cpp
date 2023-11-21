@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 12:45:06 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:19:48 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 RobotomyRequestForm::RobotomyRequestForm(void):
 	AForm(RRF_NAME, RRF_SIGN_GRADE, RRF_EXECUTE_GRADE, "RobotomyRequestTarget")
 {
-	srand(time(NULL));
+	std::srand(std::time(NULL));
 	std::cout << "[Default Constructor] RobotomyRequestForm: named as "
 		<< this->_name << " has been created. It is "
 		<< (this->_signed ? "" : "not ") << "signed and requires "
@@ -77,7 +77,7 @@ void	RobotomyRequestForm::execute(void) const
 {
 	this->checkSigned();
 	std::cout << "Beep, beeep, bruum, bruuum..." << std::endl;
-	if (rand() % 2)
+	if (std::rand() % 2)
 		std::cout << this->getTarget() << " has been successfully robotomized"
 			<< std::endl;
 	else

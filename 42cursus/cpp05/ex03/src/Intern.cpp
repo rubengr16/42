@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:47:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 14:54:52 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:22:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ AForm*	Intern::makeForm(const std::string& name, const std::string& target)
 {
 	unsigned int	i;
 
+	i = 0;
 	while (i < 3 && name.compare(PPF_NAME) && name.compare(RRF_NAME)
 		&& name.compare(SCF_NAME))
 		i++;
