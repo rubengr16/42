@@ -1,25 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 21:34:28 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/21 22:25:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/21 23:49:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-# define ITER_HPP
+#ifndef ARRAY_HPP
+# define ARRAY_HPP
 
 template <typename T>
-void	iter(T* array, unsigned int len, void (*f)(T*))
+class Array
 {
-	unsigned int	i;
+	private:
+		T*				_array[];
+		unsigned int	_size;
 
-	for (i = 0; i < len; i++)
-		f(&array[i]);
-}
+	public:
+		Array(void):
+			_array(),
+			_size(0)
+		{
+			
+		}
+
+		Array(unsigned int size)
+			_array(new T[size]),
+			_size(size)
+		{
+			
+		}
+
+		~Array(void)
+		{
+		}
+};
 
 #endif

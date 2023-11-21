@@ -6,12 +6,12 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 21:34:28 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/21 21:52:44 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/21 22:24:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_CPP
-# define WHATEVER_CPP
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
 template <typename T>
 void	swap(T& a, T& b)

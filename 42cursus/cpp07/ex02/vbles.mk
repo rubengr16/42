@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/21 22:24:00 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/21 22:20:08 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Wextra -Werror -std=c++98
 
-NAME	=			array
+NAME	=			iter
 
 INC_ALL	=			\
 					$(INC_DIR)
