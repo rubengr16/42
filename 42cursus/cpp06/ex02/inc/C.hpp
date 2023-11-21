@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 12:22:38 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/21 17:54:25 by rgallego         ###   ########.fr       */
+/*   Created: 2023/11/21 12:23:10 by rgallego          #+#    #+#             */
+/*   Updated: 2023/11/21 17:55:34 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-# define BASE_HPP
+#ifndef C_HPP
+# define C_HPP
 
-# include <iostream>
+# include "Base.hpp"
 
-class Base
+class C: public Base
 {
-	public:
-		virtual ~Base();
 };
 
 #endif

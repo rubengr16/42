@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:25:13 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/21 14:58:36 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:54:10 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,7 @@
 
 Base::~Base()
 {
+	std::cout << "[Destructor] Base: is being destroyed"
+	<< std::endl << "----------------------------------------------------"
+	<< std::endl;
 }
