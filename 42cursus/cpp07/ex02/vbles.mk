@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/21 22:20:08 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/22 17:47:21 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,12 @@ SRC_DIR	=			src/
 
 INC_DIR	=			inc/
 
-EX01	=			\
+EX02	=			\
 					main.cpp \
 
 
 SRCS	= 			$(addprefix $(SRC_DIR), \
-						$(EX01) \
+						$(EX02) \
 					)
 
 OBJS	=			$(SRCS:.cpp=.o)
@@ -30,7 +30,7 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Wextra -Werror -std=c++98
 
-NAME	=			iter
+NAME	=			array
 
 INC_ALL	=			\
 					$(INC_DIR)

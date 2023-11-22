@@ -5,61 +5,64 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 21:45:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/21 22:19:28 by rgallego         ###   ########.fr       */
+/*   Created: 2023/11/22 17:13:14 by rgallego          #+#    #+#             */
+/*   Updated: 2023/11/22 17:45:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+# include <ctime>
+# include <cstdlib>
 #include <iostream>
-#include "iter.hpp"
+#include "Array.hpp"
 
-void	pow(int* nb)
+#define MAX_VAL 750
+
+int main(int, char **)
 {
-	*nb = *nb * *nb;
-}
+	Array<int>	numbers(MAX_VAL);
+	int			*mirror = new int[MAX_VAL];
 
-void	print(int* nb)
-{
-	std::cout << *nb << std::endl;
-}
-
-void	print(std::string* str)
-{
-	std::cout << *str << std::endl;
-}
-
-void	oneWord(std::string* str)
-{
-	*str = str->substr(0, str->find(" "));
-}
-
-int	main( void )
-{
-	int	nbArray[] = {1, 2, 3, 4, 5, 6, 7, 8};
-
-	std::cout << "NUMBER ARRAY:" << std::endl;
-	::iter(nbArray, sizeof(nbArray) / sizeof(int), print);
-	std::cout << "POWERED NUMBER ARRAY:" << std::endl;
-	::iter(nbArray, sizeof(nbArray) / sizeof(int), pow);
-	::iter(nbArray,  sizeof(nbArray) / sizeof(int), print);
-
-	std::cout << "----------------------------------------------------" 
-		<< std::endl << "----------------------------------------------------"
-		<< std::endl;
-
-	std::string strArray[] =
+	std::srand(time(NULL));
+	for (int i = 0; i < MAX_VAL; i++)
 	{
-		"hello world",
-		"I am learning how templates work",
-		"I hope you are learning too",
-		"have a great time",
-		"byeeeee"
-	};
-	std::cout << "STRING ARRAY:" << std::endl;
-	::iter(strArray, sizeof(strArray) / sizeof(std::string), print);
-	std::cout << "ONEWORDED STRING ARRAY:" << std::endl;
-	::iter(strArray, sizeof(strArray) / sizeof(std::string), oneWord);
-	::iter(strArray,  sizeof(strArray) / sizeof(std::string), print);
+		const int	value = rand();
+		numbers[i] = value;
+		mirror[i] = value;
+	}
+	// SCOPE
+	{
+		Array<int> tmp = numbers;
+		Array<int> test(tmp);
+	}
 
-	return (0);
+	for (int i = 0; i < MAX_VAL; i++)
+	{
+		if (mirror[i] != numbers[i])
+		{
+			std::cerr << "didn't save the same value!!" << std::endl;
+			return 1;
+		}
+	}
+	try
+	{
+		numbers[-2] = 0;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		numbers[MAX_VAL] = 0;
+	}
+	catch (const std::exception &e)
+	{
+	std::cerr << e.what() << '\n';
+	}
+	for (int i = 0; i < MAX_VAL; i++)
+	{
+		numbers[i] = rand();
+	}
+	delete[] mirror;
+	return 0;
 }
