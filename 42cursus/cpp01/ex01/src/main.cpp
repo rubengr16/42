@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:25:53 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/11 11:36:10 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:36:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	main(void)
 		<< std::endl;
 	for (i = 0; i < SIZE; i++)
 		zHorde[i].setName(names[i]);
-	delete []zHorde;
+	delete [] zHorde;
 	return (0);
 }

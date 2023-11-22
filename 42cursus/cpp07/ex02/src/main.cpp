@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:13:14 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/22 17:45:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:48:45 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ int main(int, char **)
 		numbers[i] = value;
 		mirror[i] = value;
 	}
-	// SCOPE
 	{
 		Array<int> tmp = numbers;
 		Array<int> test(tmp);
+		std::cout << "Copy Assignment and Assignment Operator" << std::endl;
 	}
-
+	std::cout << "Copy Assignment and Assignment Operator" << std::endl;
 	for (int i = 0; i < MAX_VAL; i++)
 	{
 		if (mirror[i] != numbers[i])
 		{
 			std::cerr << "didn't save the same value!!" << std::endl;
-			return 1;
+			return (1);
 		}
 	}
 	try
@@ -57,7 +57,7 @@ int main(int, char **)
 	}
 	catch (const std::exception &e)
 	{
-	std::cerr << e.what() << '\n';
+		std::cerr << e.what() << '\n';
 	}
 	for (int i = 0; i < MAX_VAL; i++)
 	{

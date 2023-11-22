@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 21:34:28 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/22 17:50:23 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:47:29 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Array
 		}
 
 		Array(unsigned int size):
-			_array(new T[size]()),
+			_array(new T[size]),
 			_size(size)
 		{
 			std::cout << "[Constructor]: Array<>: has been created with size "
@@ -41,7 +41,7 @@ class Array
 		}
 
 		Array(const Array<T>& array):
-			_array(new T[array.size()]()),
+			_array(new T[array.size()]),
 			_size(array.size())
 		{
 			unsigned int	i;
@@ -57,8 +57,7 @@ class Array
 		{
 			std::cout << "[Destructor]: Array<>: with size " << this->_size
 				<< " is being destroyed" << std::endl;
-			if (this->_array)
-				delete this->_array;
+			delete [] this->_array;
 		}
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
@@ -66,28 +65,32 @@ class Array
 		{
 			unsigned int	i;
 
-			if (this->_array)
-				delete this->_array;
-			this->_array = new T[array.size()];
+			if (this == &array)
+				return (*this);
+			delete [] this->_array;
 			this->_size = array.size();
+			this->_array = new T[this->_size];
 			for (i = 0; i < this->_size; i++)
 				this->_array[i] = array[i];
-			std::cout << "[Copy Constructor]: Array<>: has been created with "
+			std::cout << "[Copy Assignment Operator]: Array<>: has been created with "
 				<< "size " << this->_size << std::endl;
+			return (*this);
 		}
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-		int	size(void)
+		unsigned int	size(void) const
 		{
 			return (this->_size);
 		}
 
-		T&	operator[](int i) const
+		T&	operator[](unsigned int i) const
 		{
-			if (i < 0 || i > this->size)
+			std::cout << i << std::endl;
+			if (i >= this->_size)
 				throw IndexOutOfBoundsException();
 			return (this->_array[i]);
 		}
+
 /* ******************************* EXCEPTIONS ******************************* */
 	class IndexOutOfBoundsException: public std::exception
 	{
