@@ -58,4 +58,4 @@ dkms.conf
 # Program files and objects
 scalar_converter
 data
-which_base
+array
