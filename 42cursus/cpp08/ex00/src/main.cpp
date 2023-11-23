@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 22:17:16 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/23 17:50:59 by rgallego         ###   ########.fr       */
+/*   Created: 2023/11/23 18:28:30 by rgallego          #+#    #+#             */
+/*   Updated: 2023/11/23 20:25:09 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_HPP
-# define PHONE_BOOK_HPP
+#include <vector>
+#include <deque>
+#include <forward_list>
+#include <list>
+#include "test.hpp"
 
-# include "Contact.hpp"
-# include "utils.hpp"
-
-class	PhoneBook
+int	main(void)
 {
-	private:
-		Contact		_contacts[8];
-		int			_size;
-		int			_last;
-		const int	_MAX_SIZE;
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void	addContact(void);
-		void	searchContact(void);
-};
+	std::vector<int> vector;
+	std::deque<int> deque;
+	std::list<int> list;
 
-#endif
+	std::cout << "4 containers created (vector, deque, forward list and list)"
+		<< std::endl;
+	test(vector, "vector");
+	test(deque, "deque");
+	test(list, "list");
+	return (0);
+}

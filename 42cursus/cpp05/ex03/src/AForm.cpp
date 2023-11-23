@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:12:07 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 00:26:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:17:30 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,16 @@ AForm&	AForm::operator=(const AForm& form)
 unsigned int	AForm::checkGrade(unsigned int grade) const
 {
 	if (grade < MAX_GRADE)
-		throw GradeTooHighException();
+		throw (GradeTooHighException());
 	if (grade > MIN_GRADE)
-		throw GradeTooLowException();
+		throw (GradeTooLowException());
 	return (grade);
 }
 
 void	AForm::checkSigned(void) const
 {
 	if (!this->_signed)
-		throw NotSignedException();
+		throw (NotSignedException());
 }
 
 const std::string&	AForm::getName(void) const
@@ -131,7 +131,7 @@ void	AForm::setTarget(const std::string& target)
 void	AForm::beSigned(const Bureaucrat& bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->_gradeSign)
-		throw GradeTooLowException();
+		throw (GradeTooLowException());
 	this->_signed = true;
 }
 

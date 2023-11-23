@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/22 17:47:21 by rgallego         ###   ########.fr        #
+#    Updated: 2023/11/23 18:29:29 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRC_DIR	=			src/
 INC_DIR	=			inc/
 
 EX02	=			\
-					main.cpp \
+					main.cpp
 
 
 SRCS	= 			$(addprefix $(SRC_DIR), \

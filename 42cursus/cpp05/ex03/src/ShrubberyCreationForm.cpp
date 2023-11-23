@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 14:43:45 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:15:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ShrubberyCreationForm::execute(void) const
 	this->checkSigned();
 	fout.open((this->getTarget() + "_shrubbery").c_str(), std::ifstream::out);
 	if (!fout.is_open())
-		throw FailedOpenException();
+		throw (FailedOpenException());
 	fout << "           /'/'  //'/  '//'      //''/" << std::endl;
 	fout << "        /'/    //   ///   /    ''/    /'" << std::endl;
 	fout << "      /     O   / O   /   // /         //" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 21:34:28 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/22 22:06:48 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:14:56 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ class Array
 		T&	operator[](unsigned int i) const
 		{
 			if (i >= this->_size)
-				throw IndexOutOfBoundsException();
+				throw (IndexOutOfBoundsException());
 			return (this->_array[i]);
 		}
 

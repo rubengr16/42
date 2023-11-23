@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:32 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/17 18:03:40 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:13:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade):
 	_name(name)
 {
 	if (grade < MAX_GRADE)
-		throw GradeTooHighException();
+		throw (GradeTooHighException());
 	if (grade > MIN_GRADE)
-		throw GradeTooLowException();
+		throw (GradeTooLowException());
 	this->_grade = grade;
 	std::cout << "[Constructor] Bureaucrat: named as " << this->_name
 		<< " and grade " << this->_grade << " has been created" << std::endl
@@ -79,23 +79,23 @@ unsigned int	Bureaucrat::getGrade(void) const
 void	Bureaucrat::setGrade(unsigned int grade)
 {
 	if (grade < MAX_GRADE)
-		throw GradeTooHighException();
+		throw (GradeTooHighException());
 	if (grade > MIN_GRADE)
-		throw GradeTooLowException();
+		throw (GradeTooLowException());
 	this->_grade = grade;
 }
 
 void	Bureaucrat::incrementGrade(void)
 {
 	if (this->_grade <= MAX_GRADE)
-		throw GradeTooHighException();
+		throw (GradeTooHighException());
 	this->_grade--;
 }
 
 void	Bureaucrat::decrementGrade(void)
 {
 	if (this->_grade >= MIN_GRADE)
-		throw GradeTooLowException();
+		throw (GradeTooLowException());
 	this->_grade++;
 }
 

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:12:07 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 00:24:59 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:16:46 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ Form&	Form::operator=(const Form& form)
 unsigned int	Form::checkGrade(unsigned int grade) const
 {
 	if (grade < MAX_GRADE)
-		throw GradeTooHighException();
+		throw (GradeTooHighException());
 	if (grade > MIN_GRADE)
-		throw GradeTooLowException();
+		throw (GradeTooLowException());
 	return (grade);
 }
 
@@ -108,7 +108,7 @@ unsigned int	Form::getGradeExecute(void) const
 void	Form::beSigned(const Bureaucrat& bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->_gradeSign)
-		throw GradeTooLowException();
+		throw (GradeTooLowException());
 	this->_signed = true;
 }
 

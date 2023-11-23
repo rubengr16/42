@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 23:29:54 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/02 19:53:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:53:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 			<< std::endl;
 		return (false);
 	}
-	std::cout << withdrawal;
+	std::cout << withdrawal << ";";
 	this->_amount -= withdrawal;
 	this->_nbWithdrawals++;
 	_totalAmount -= withdrawal;
