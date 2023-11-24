@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/23 22:24:42 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/24 23:32:30 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,14 @@ class Span
 		Span(const Span& span);
 /* ******************************* DESTRUCTOR ******************************* */
 		~Span(void);
+/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+		Span&					operator=(const Span& span);
+/* **************************** MEMBER FUNCTIONS **************************** */
+		void					addNumber(int nb);
+		unsigned int			getSize(void) const;
+		const std::vector<int>&	getVector(void) const;
 /* ******************************* EXCEPTIONS ******************************* */
-	class ElemNotFoundException: public std::exception
+	class VectorIsFullException: public std::exception
 	{
 		public:
 			virtual const char*	what(void) const throw();
