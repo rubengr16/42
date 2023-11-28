@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 22:16:15 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/24 23:33:19 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:48:46 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,33 @@ Span&	Span::operator=(const Span& span)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
+int	Span::longestSpan(void)
+{
+	if (this->_vector.size() < 2)
+		throw (NoEnoughElemsException());
+	return (*std::max_element(this->_vector.begin(), this->_vector.end())
+		- *std::min_element(this->_vector.begin(), this->_vector.end()));
+}
+
+/**
+ * it1: iterates over the vector
+ * it2: iterates from it1 elem until the end to calculate each span
+*/
+int	Span::shortestSpan(void)
+{
+	std::vector<int>::iterator	it1;
+	std::vector<int>::iterator	it2;
+	int							minSpan = std::numeric_limits<int>::max();
+
+	if (this->_vector.size() < 2)
+		throw (NoEnoughElemsException());
+	for (it1 = this->_vector.begin(); it1 != this->_vector.end(); ++it1)
+		for (it2 = it1 + 1; it2 != this->_vector.end(); ++it2)
+			if (abs(*it1 - *it2) < minSpan)
+				minSpan = abs(*it1 - *it2);
+	return (minSpan);
+}
+
 void	Span::addNumber(int nb)
 {
 	if (this->_vector.size() >= this->_size)
@@ -73,5 +100,10 @@ const std::vector<int>&	Span::getVector(void) const
 const char*	Span::VectorIsFullException::what(void) const throw()
 {
 	return ("[What] Span: Error! Vector is full");
+}
+
+const char*	Span::NoEnoughElemsException::what(void) const throw()
+{
+	return ("[What] Span: Error! Vector does not have enough elems for span");
 }
 
