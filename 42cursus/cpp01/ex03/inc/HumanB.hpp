@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:01:06 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/01 00:27:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/30 19:08:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class HumanB
 		HumanB(std::string name);
 		~HumanB(void);
 		void			setWeapon(Weapon &weapon);
-		void	attack(void) const;
+		void			attack(void) const;
 };
 
 #endif
