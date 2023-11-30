@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:19:38 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/01 14:55:47 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/11/30 20:58:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,18 @@ std::string	&ftReplace(std::string &str, const std::string oldString,
 {
 	std::size_t		pos;
 	pos = str.find(oldString);
+	if (str.empty() || oldString.empty())
+		return str;
 	while (pos != std::string::npos)
 	{
-		str = str.substr(0, pos)
-			.append(newString)
-			.append(&str[pos + oldString.length()]);
-		pos = str.find(oldString);
+		// str = str.substr(0, pos)
+		// 	.append(newString)
+		// 	.append(&str[pos + oldString.length()]);
+		str.erase(pos, oldString.length());
+		str.insert(pos, newString);
+		pos = str.find(oldString, pos + newString.length());
+		// pos = pos + newString.length() + 1;
+		// std::cout << str << std::endl;
 	}
 	return str;
 }
