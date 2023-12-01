@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/14 00:02:52 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/01 18:28:20 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 			<< std::endl;
 		return ;
 	}
-	if (((int)this->_hitPts - (int)amount) < 0)
+	if (this->_hitPts < amount)
 		this->_hitPts = 0;
 	else
 		this->_hitPts -= amount;
