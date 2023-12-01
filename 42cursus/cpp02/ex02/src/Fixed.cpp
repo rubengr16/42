@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:06 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/14 22:36:42 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/01 20:12:43 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,22 +73,22 @@ bool	Fixed::operator!=(const Fixed& fixed) const
 }
 
 /* ********************* ARITHMETICS OPERATORS OVERLOAD ********************* */
-Fixed	Fixed::operator+(const Fixed& fixed)
+Fixed	Fixed::operator+(const Fixed& fixed) const
 {
-	return (Fixed(this->_nb + fixed.getRawBits()));
+	return (Fixed(this->toFloat() + fixed.toFloat()));
 }
 
-Fixed	Fixed::operator-(const Fixed& fixed)
+Fixed	Fixed::operator-(const Fixed& fixed) const
 {
-	return (Fixed(this->_nb - fixed.getRawBits()));
+	return (Fixed(this->toFloat() - fixed.toFloat()));
 }
 
-Fixed	Fixed::operator*(const Fixed& fixed)
+Fixed	Fixed::operator*(const Fixed& fixed) const
 {
 	return (Fixed(this->toFloat() * fixed.toFloat()));
 }
 
-Fixed	Fixed::operator/(const Fixed& fixed)
+Fixed	Fixed::operator/(const Fixed& fixed) const
 {
 	return (Fixed(this->toFloat() / fixed.toFloat()));
 }

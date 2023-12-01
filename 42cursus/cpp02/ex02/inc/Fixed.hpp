@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:21:08 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/14 22:32:24 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/01 20:00:52 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ class Fixed
 		bool				operator==(const Fixed& fixed) const;
 		bool				operator!=(const Fixed& fixed) const;
 /* ********************* ARITHMETICS OPERATORS OVERLOAD ********************* */
-		Fixed				operator+(const Fixed& fixed);
-		Fixed				operator-(const Fixed& fixed);
-		Fixed				operator*(const Fixed& fixed);
-		Fixed				operator/(const Fixed& fixed);
+		Fixed				operator+(const Fixed& fixed) const;
+		Fixed				operator-(const Fixed& fixed) const;
+		Fixed				operator*(const Fixed& fixed) const;
+		Fixed				operator/(const Fixed& fixed) const;
 /* ******************** {IN/DE}CREMENT OPERATORS OVERLOAD ******************* */
 		Fixed				operator++(int);
 		Fixed&				operator++(void);
