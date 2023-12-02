@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:02:54 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/11 20:43:35 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 15:26:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ ScavTrap::~ScavTrap(void)
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-ScavTrap&	ScavTrap::operator=(ScavTrap scavTrap)
+ScavTrap&	ScavTrap::operator=(const ScavTrap& scavTrap)
 {
 	if (this == &scavTrap)
 		return (*this);

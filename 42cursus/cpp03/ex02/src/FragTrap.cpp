@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:02:54 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/12 13:18:54 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 15:24:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ FragTrap::~FragTrap(void)
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-FragTrap&	FragTrap::operator=(FragTrap fragTrap)
+FragTrap&	FragTrap::operator=(const FragTrap& fragTrap)
 {
 	return ((FragTrap&)ClapTrap::operator=(fragTrap));
 }

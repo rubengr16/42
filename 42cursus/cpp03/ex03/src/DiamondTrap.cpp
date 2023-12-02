@@ -69,7 +69,7 @@ DiamondTrap::~DiamondTrap(void)
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-DiamondTrap&	DiamondTrap::operator=(DiamondTrap diamondTrap)
+DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& diamondTrap)
 {
 	if (this == &diamondTrap)
 		return (*this);

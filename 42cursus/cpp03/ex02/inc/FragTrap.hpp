@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:01:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/10 19:10:40 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 15:23:52 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class FragTrap: public ClapTrap
 /* ******************************* DESTRUCTOR ******************************* */
 		~FragTrap(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		FragTrap&		operator=(FragTrap fragTrap);
+		FragTrap&		operator=(const FragTrap& fragTrap);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		void			highFiveGuys(void);
 };

@@ -21,18 +21,18 @@ class DiamondTrap: public FragTrap, public ScavTrap
 {
 	private:
 		std::string	_name;
-		using ScavTrap::getHitPts;
-		using ScavTrap::setHitPts;
-		using ScavTrap::getEnergyPts;
-		using ScavTrap::setEnergyPts;
-		using ScavTrap::getDamagePts;
-		using ScavTrap::setDamagePts;
-		using FragTrap::getHitPts;
-		using FragTrap::setHitPts;
-		using FragTrap::getEnergyPts;
-		using FragTrap::setEnergyPts;
-		using FragTrap::getDamagePts;
-		using FragTrap::setDamagePts;
+		// using ScavTrap::getHitPts;
+		// using ScavTrap::setHitPts;
+		// using ScavTrap::getEnergyPts;
+		// using ScavTrap::setEnergyPts;
+		// using ScavTrap::getDamagePts;
+		// using ScavTrap::setDamagePts;
+		// using FragTrap::getHitPts;
+		// using FragTrap::setHitPts;
+		// using FragTrap::getEnergyPts;
+		// using FragTrap::setEnergyPts;
+		// using FragTrap::getDamagePts;
+		// using FragTrap::setDamagePts;
 
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
@@ -42,7 +42,7 @@ class DiamondTrap: public FragTrap, public ScavTrap
 /* ******************************* DESTRUCTOR ******************************* */
 		~DiamondTrap(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		DiamondTrap&		operator=(DiamondTrap diamondTrap);
+		DiamondTrap&		operator=(const DiamondTrap& diamondTrap);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		const std::string&	getName(void) const;
 		const std::string&	getClapName(void) const;

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:33 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/14 00:06:42 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 15:23:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class ClapTrap
 /* ******************************* DESTRUCTOR ******************************* */
 		~ClapTrap(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		ClapTrap&			operator=(ClapTrap clapTrap);
+		ClapTrap&			operator=(const ClapTrap& clapTrap);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		const std::string&	getName(void) const;
 		void				setName(std::string name);

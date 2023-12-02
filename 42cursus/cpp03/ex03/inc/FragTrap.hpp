@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 23:01:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/11 20:40:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 15:25:58 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class FragTrap: public virtual ClapTrap
 /* ******************************* DESTRUCTOR ******************************* */
 		~FragTrap(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		FragTrap&		operator=(FragTrap fragTrap);
+		FragTrap&		operator=(const FragTrap& fragTrap);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		unsigned int	getHitPts(void) const;
 		void			setHitPts(unsigned int	hitPts);

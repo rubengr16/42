@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:24:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/12/01 18:28:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 15:24:43 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ ClapTrap::~ClapTrap(void)
 		<< "----------------------------------------------------" << std::endl;
 }
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-ClapTrap&	ClapTrap::operator=(ClapTrap clapTrap)
+ClapTrap&	ClapTrap::operator=(const ClapTrap& clapTrap)
 {
 	if (this == &clapTrap)
 		return (*this);
