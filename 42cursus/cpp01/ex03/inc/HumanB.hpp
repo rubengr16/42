@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:01:06 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/30 19:08:44 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 18:25:13 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ class HumanB
 {
 	private:
 		std::string	_name;
-		Weapon		*_weapon;
+		Weapon*		_weapon;
 	
 	public:
 		HumanB(std::string name);
 		~HumanB(void);
-		void			setWeapon(Weapon &weapon);
+		void			setWeapon(Weapon& weapon);
 		void			attack(void) const;
 };
 
