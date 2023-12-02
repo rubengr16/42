@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 23:35:36 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 10:24:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 14:00:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ MateriaSource::MateriaSource(const MateriaSource& materiaSource)
 		this->_materias[i] = materiaSource.getMateria(i);
 }
 
+/* ******************************* DESTRUCTOR ******************************* */
+MateriaSource::~MateriaSource(void)
+{
+	std::cout << "[Destructor] Materia Source: is being destructed"
+		<< std::endl
+		<< "----------------------------------------------------" << std::endl;
+}
+
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 MateriaSource&	MateriaSource::operator=(const MateriaSource& materiaSource)
 {
@@ -42,21 +50,13 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& materiaSource)
 
 	if (this == &materiaSource)
 		return (*this);
+	for (i = 0; i < MAX_MATERIA; i++)
+		this->_materias[i] = materiaSource.getMateria(i);
 	std::cout << "[Copy Assignment Operator] Materia Source: has been copy "
 		<< "assigned."
 		<< std::endl
 		<< "----------------------------------------------------" << std::endl;
-	for (i = 0; i < MAX_MATERIA; i++)
-		this->_materias[i] = materiaSource.getMateria(i);
 	return (*this);
-}
-
-/* ******************************* DESTRUCTOR ******************************* */
-MateriaSource::~MateriaSource(void)
-{
-	std::cout << "[Destructor] Materia Source: is being destructed"
-		<< std::endl
-		<< "----------------------------------------------------" << std::endl;
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */

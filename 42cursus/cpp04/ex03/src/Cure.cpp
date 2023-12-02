@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:12:29 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 10:25:13 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 13:59:46 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,15 @@ Cure::Cure(const Cure& cure):
 		<< "----------------------------------------------------" << std::endl;
 }
 
+/* ******************************* DESTRUCTOR ******************************* */
+Cure::~Cure(void)
+{
+	std::cout << "[Destructor]: Cure: " << this->_type
+		<< "'s type object has been destroyed" << std::endl
+		<< "----------------------------------------------------" << std::endl;
+}
+
+
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 Cure&	Cure::operator=(const Cure& cure)
 {
@@ -47,14 +56,6 @@ Cure&	Cure::operator=(const Cure& cure)
 		<< " has been copy assigned" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	return (*this);
-}
-
-/* ******************************* DESTRUCTOR ******************************* */
-Cure::~Cure(void)
-{
-	std::cout << "[Destructor]: Cure: " << this->_type
-		<< "'s type object has been destroyed" << std::endl
-		<< "----------------------------------------------------" << std::endl;
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */

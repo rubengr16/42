@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:52:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 23:36:04 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 13:58:49 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,6 @@ Character&	Character::operator=(const Character& character)
 	this->_name = character.getName();
 	this->_unequipped = NULL;
 	this->_unequippedSize = 0;
-	std::cout << "[Copy Assignment Operator] Character: named as "
-		<< this->_name << " has been copy assigned" << std::endl
-		<< "----------------------------------------------------" << std::endl;
 	for (i = 0; i < MAX_INVENTORY; i++)
 		if (this->_inventory[i])
 			delete this->_inventory[i];
@@ -90,6 +87,9 @@ Character&	Character::operator=(const Character& character)
 		else
 			this->_inventory[i] = NULL;
 	}
+	std::cout << "[Copy Assignment Operator] Character: named as "
+		<< this->_name << " has been copy assigned" << std::endl
+		<< "----------------------------------------------------" << std::endl;
 	return (*this);
 }
 

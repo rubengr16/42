@@ -6,10 +6,11 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 23:27:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/17 15:31:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 13:53:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Brain.hpp"
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"

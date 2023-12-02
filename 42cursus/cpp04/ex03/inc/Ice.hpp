@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:02:42 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/12 22:19:04 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 13:59:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ class	Ice: public AMateria
 		Ice(void);
 		Ice(const std::string& type);
 		Ice(const Ice& ice);
-/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		Ice&				operator=(const Ice& ice);
 /* ******************************* DESTRUCTOR ******************************* */
 		~Ice(void);
+/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+		Ice&				operator=(const Ice& ice);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		virtual AMateria*	clone(void) const;
 		virtual void		use(ICharacter& target);

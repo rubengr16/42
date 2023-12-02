@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:12:29 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 10:24:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 14:00:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ Ice::Ice(const Ice& ice):
 		<< "----------------------------------------------------" << std::endl;
 }
 
+/* ******************************* DESTRUCTOR ******************************* */
+Ice::~Ice(void)
+{
+	std::cout << "[Destructor]: Ice: " << this->_type
+		<< "'s type object has been destroyed" << std::endl
+		<< "----------------------------------------------------" << std::endl;
+}
+
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 Ice&	Ice::operator=(const Ice& ice)
 {
@@ -47,14 +55,6 @@ Ice&	Ice::operator=(const Ice& ice)
 		<< " has been copy assigned" << std::endl
 		<< "----------------------------------------------------" << std::endl;
 	return (*this);
-}
-
-/* ******************************* DESTRUCTOR ******************************* */
-Ice::~Ice(void)
-{
-	std::cout << "[Destructor]: Ice: " << this->_type
-		<< "'s type object has been destroyed" << std::endl
-		<< "----------------------------------------------------" << std::endl;
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */

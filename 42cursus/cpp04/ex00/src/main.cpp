@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 23:27:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/10/13 10:55:45 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 13:49:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ int	main(void)
 	wrongCat->makeSound();
 
 	std::cout << "SAD DESTRUCTION FOR EVERY ANIMAL" << std::endl;
-	animal->~Animal();
-	cat->~Animal();
-	dog->~Animal();
-	wrongAnimal->~WrongAnimal();
-	wrongCat->~WrongAnimal();
+	delete animal;
+	delete cat;
+	delete dog;
+	delete wrongAnimal;
+	delete wrongCat;
 
 	return (0);
 }

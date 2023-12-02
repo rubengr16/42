@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 22:09:04 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 01:34:50 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 14:00:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ class	MateriaSource: public IMateriaSource
 /* ****************************** CONSTRUCTORS ****************************** */
 		MateriaSource(void);
 		MateriaSource(const MateriaSource& materiaSource);
-/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		MateriaSource&	operator=(const MateriaSource& materiaSource);
 /* ******************************* DESTRUCTOR ******************************* */
 		~MateriaSource(void);
+/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+		MateriaSource&	operator=(const MateriaSource& materiaSource);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		AMateria*		getMateria(int idx) const;
 		void			learnMateria(AMateria* m);
