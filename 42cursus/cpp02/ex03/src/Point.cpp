@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 00:40:08 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/14 00:00:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/02 13:43:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ Point::~Point(void)
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 Point&	Point::operator=(const Point& point)
 {
+	if (this == &point)
+		return (*this);
 	this->_x = point.getX();
 	this->_y = point.getY();
 	return (*this);
