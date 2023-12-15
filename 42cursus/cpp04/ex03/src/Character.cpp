@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:52:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/12/02 13:58:49 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:42:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,8 @@ void	Character::equip(AMateria* m)
 	unsigned int	i;
 
 	i = 0;
+	if (!m)
+		return ;
 	while (i < MAX_INVENTORY && this->_inventory[i])
 		i++;
 	if (i == MAX_INVENTORY)
@@ -194,6 +196,13 @@ void	Character::use(int idx, ICharacter& target)
 	{
 		std::cout << "[Use] Character: index out of range!!" << std::endl
 		<< "----------------------------------------------------" << std::endl;
+		return ;
+	}
+	if (!this->_inventory[idx])
+	{
+		std::cout << "[Use] Character: null materia can't be used!!"
+		<< std::endl << "----------------------------------------------------"
+		<< std::endl;
 		return ;
 	}
 	std::cout << "[Use] Character: using use of "

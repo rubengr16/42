@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 01:11:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/12/02 14:01:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/15 17:43:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(void)
 	ICharacter* me = new Character("me");
 	AMateria* tmp;
 
-	tmp = src->createMateria("ice");
+	tmp = NULL;
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
@@ -38,6 +38,7 @@ int	main(void)
 	me->use(0, *bob);
 	me->use(1, *bob);
 
+	me->unequip(0);
 	delete bob;
 	delete me;
 	delete src;
