@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 00:52:05 by rgallego          #+#    #+#             */
-/*   Updated: 2023/12/15 17:42:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:57:55 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ Character::~Character(void)
 		if (this->_inventory[i])
 			delete this->_inventory[i];
 	for (i = 0; i < this->_unequippedSize; i++)
-		delete this->_unequipped[i];
+		if (this->_unequipped[i])
+			delete this->_unequipped[i];
 	delete[] this->_unequipped;
 }
 
@@ -175,6 +176,8 @@ void	Character::unequip(int idx)
 			<< std::endl;
 		return ;
 	}
+	if (!this->_inventory[idx])
+		return ;
 	aux = this->_unequipped;
 	this->_unequippedSize++;
 	this->_unequipped = new AMateria*[this->_unequippedSize];
@@ -184,7 +187,7 @@ void	Character::unequip(int idx)
 	this->_unequipped[this->_unequippedSize - 1] = this->_inventory[idx];
 	std::cout << "[Unequip] Character: unequip "
 		<< this->_inventory[idx]->getType() << " at index " << idx
- 		<< std::endl
+		<< std::endl
 		<< "----------------------------------------------------" << std::endl;
 	this->_inventory[idx] = NULL;
 	delete[] aux;
