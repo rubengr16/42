@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/11/23 22:16:06 by rgallego         ###   ########.fr        #
+#    Updated: 2023/12/22 19:07:19 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ INC_DIR	=			inc/
 
 EX01	=			\
 					Span.cpp \
+					utils.cpp \
 					main.cpp
 
 
