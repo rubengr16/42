@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2023/12/14 21:20:59 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/27 00:17:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,24 @@
 # include <limits>
 # include <vector>
 # include <algorithm>
+
+struct	Generator
+{
+	int	i;
+	int	(*f)(int);
+
+	Generator(int (*f)(int)):
+		i(0),
+		f(f)
+	{
+	}
+
+	int operator()(void)
+	{
+		i = f(i);
+		return (i);
+	}
+};
 
 class Span
 {
@@ -35,6 +53,8 @@ class Span
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		Span&					operator=(const Span& span);
 /* **************************** MEMBER FUNCTIONS **************************** */
+		unsigned int			getSize(void) const;
+		const std::vector<int>&	getVector(void) const;
 		int						longestSpan(void);
 		int						shortestSpan(void);
 		void					addNumber(int nb);

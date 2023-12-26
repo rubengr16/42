@@ -5,43 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 01:11:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/12/15 17:43:03 by rgallego         ###   ########.fr       */
+/*   Created: 2023/12/22 22:17:38 by rgallego          #+#    #+#             */
+/*   Updated: 2023/12/22 22:51:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
-#include "IMateriaSource.hpp"
-#include "MateriaSource.hpp"
-#include "Cure.hpp"
-#include "Ice.hpp"
-#include "ICharacter.hpp"
-#include "Character.hpp"
+#include "MutantStack.hpp"
 
 int	main(void)
 {
-	IMateriaSource* src = new MateriaSource();
-
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-
-	ICharacter* me = new Character("me");
-	AMateria* tmp;
-
-	tmp = NULL;
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
-
-	ICharacter* bob = new Character("bob");
-
-	me->use(0, *bob);
-	me->use(1, *bob);
-
-	me->unequip(0);
-	delete bob;
-	delete me;
-	delete src;
-
+	MutantStack<int> mstack;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << mstack.size() << std::endl;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	//[...]
+	mstack.push(0);
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
+	while (it != ite)
+	{
+	std::cout << *it << std::endl;
+	++it;
+	}
+	std::stack<int> s(mstack);
 	return (0);
 }

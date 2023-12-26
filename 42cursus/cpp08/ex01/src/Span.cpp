@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 22:16:15 by rgallego          #+#    #+#             */
-/*   Updated: 2023/12/27 00:16:17 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/27 00:18:44 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,20 @@ Span&	Span::operator=(const Span& span)
 		<< " is being copy assigned" << std::endl;
 	this->_maxSize = span.getMaxSize();
 	this->_vector = span.getVector();
+	return (*this);
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
+unsigned int	Span::getMaxSize(void)const 
+{
+	return (this->_maxSize);
+}
+
+const std::vector<int>&	Span::getVector(void) const
+{
+	return (this->_vector);
+}
+
 int	Span::longestSpan(void)
 {
 	if (this->_vector.size() < 2)
@@ -86,14 +97,33 @@ void	Span::addNumber(int nb)
 	this->_vector.push_back(nb);
 }
 
-unsigned int	Span::getMaxSize(void)const 
+void	Span::addNumber(int size, Generator generator)
 {
-	return (this->_maxSize);
+	unsigned int				final_size;
+	std::vector<int>::iterator	start_add;
+
+	final_size = this->_vector.size() + size;
+	if (this->_size < final_size)
+		throw (VectorIsFullException());
+	this->_vector.reserve(final_size);
+	start_add = this->_vector.end();
+	this->_vector.resize(final_size);
+	std::generate(start_add, this->_vector.end(), generator);
 }
 
-const std::vector<int>&	Span::getVector(void) const
+void	Span::print(void)
 {
-	return (this->_vector);
+	std::vector<int>::iterator	it = this->_vector.begin();
+
+	std::cout << "[ ";
+	while (it != this->_vector.end())
+	{
+		std::cout << *it;
+		++it;
+		if (it != this->_vector.end())
+			std::cout << ", ";
+	}
+	std::cout << "]" << std::endl;
 }
 
 /* ******************************* EXCEPTIONS ******************************* */
