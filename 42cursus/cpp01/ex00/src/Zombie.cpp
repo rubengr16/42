@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:32:24 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/13 23:57:08 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/14 21:15:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 Zombie::Zombie(void)
 {
-	std::cout << "unnamedZombie" << ": I have been born."
+	this->_name = "unnamedZombie";
+	std::cout << this->_name << ": I have been born."
 		<< std::endl;
 }
 

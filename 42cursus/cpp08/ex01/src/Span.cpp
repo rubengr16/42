@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 22:16:15 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/28 12:48:46 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/27 00:16:17 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,40 @@
 
 /* ****************************** CONSTRUCTORS ****************************** */
 Span::Span(void):
-	_size(0)
+	_maxSize(0)
 {
-	std::cout << "[Default Constructor] Span: with size " << this->_size
+	std::cout << "[Default Constructor] Span: with size " << this->_maxSize
 		<< " has been created" << std::endl;
 }
 
 Span::Span(unsigned int size):
-	_size(size)
+	_maxSize(size)
 {
-	std::cout << "[Constructor] Span: with size " << this->_size
+	std::cout << "[Constructor] Span: with size " << this->_maxSize
 		<< " has been created" << std::endl;
 }
 
 Span::Span(const Span& span):
-	_size(span.getSize()),
+	_maxSize(span.getMaxSize()),
 	_vector(span.getVector())
 {
-	std::cout << "[Constructor] Span: with size " << this->_size
+	std::cout << "[Constructor] Span: with size " << this->_maxSize
 		<< " has been created" << std::endl;
 }
 
 /* ******************************* DESTRUCTOR ******************************* */
 Span::~Span(void)
 {
-	std::cout << "[Constructor] Span: with size " << this->_size
+	std::cout << "[Constructor] Span: with size " << this->_maxSize
 		<< " is being destructed" << std::endl;
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 Span&	Span::operator=(const Span& span)
 {
-	std::cout << "[Copy Assignment Operator] Span: with size " << this->_size
+	std::cout << "[Copy Assignment Operator] Span: with size " << this->_maxSize
 		<< " is being copy assigned" << std::endl;
-	this->_size = span.getSize();
+	this->_maxSize = span.getMaxSize();
 	this->_vector = span.getVector();
 }
 
@@ -81,14 +81,14 @@ int	Span::shortestSpan(void)
 
 void	Span::addNumber(int nb)
 {
-	if (this->_vector.size() >= this->_size)
+	if (this->_vector.size() >= this->_maxSize)
 		throw (VectorIsFullException());
 	this->_vector.push_back(nb);
 }
 
-unsigned int	Span::getSize(void)const 
+unsigned int	Span::getMaxSize(void)const 
 {
-	return (this->_size);
+	return (this->_maxSize);
 }
 
 const std::vector<int>&	Span::getVector(void) const

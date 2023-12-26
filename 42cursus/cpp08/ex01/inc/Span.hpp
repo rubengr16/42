@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/28 12:46:32 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/14 21:20:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 class Span
 {
 	private:
-		unsigned int		_size;
+		unsigned int		_maxSize;
 		std::vector<int>	_vector;
 
 	public:
@@ -38,7 +38,7 @@ class Span
 		int						longestSpan(void);
 		int						shortestSpan(void);
 		void					addNumber(int nb);
-		unsigned int			getSize(void) const;
+		unsigned int			getMaxSize(void) const;
 		const std::vector<int>&	getVector(void) const;
 /* ******************************* EXCEPTIONS ******************************* */
 	class VectorIsFullException: public std::exception
