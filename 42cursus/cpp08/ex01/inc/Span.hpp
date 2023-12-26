@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2023/12/27 00:17:53 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/27 00:21:56 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ class Span
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		Span&					operator=(const Span& span);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		unsigned int			getSize(void) const;
+		unsigned int			getMaxSize(void) const;
 		const std::vector<int>&	getVector(void) const;
 		int						longestSpan(void);
 		int						shortestSpan(void);
 		void					addNumber(int nb);
-		unsigned int			getMaxSize(void) const;
-		const std::vector<int>&	getVector(void) const;
+		void					addNumber(int size, Generator generator);
+		void					print(void);
 /* ******************************* EXCEPTIONS ******************************* */
 	class VectorIsFullException: public std::exception
 	{
