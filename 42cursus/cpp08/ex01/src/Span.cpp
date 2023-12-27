@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 22:16:15 by rgallego          #+#    #+#             */
-/*   Updated: 2023/12/27 00:22:07 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/27 00:32:14 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ Span::~Span(void)
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 Span&	Span::operator=(const Span& span)
 {
+	if (this == &span)
+		return (*this);
 	std::cout << "[Copy Assignment Operator] Span: with size " << this->_maxSize
 		<< " is being copy assigned" << std::endl;
 	this->_maxSize = span.getMaxSize();

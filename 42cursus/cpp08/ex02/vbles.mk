@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/12/22 22:17:13 by rgallego         ###   ########.fr        #
+#    Updated: 2023/12/27 00:47:23 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@ SRC_DIR	=			src/
 INC_DIR	=			inc/
 
 EX02	=			\
-					Span.cpp \
-					utils.cpp \
 					main.cpp
 
 
@@ -32,7 +30,7 @@ RM		=			-rm -f
 
 CFLAGS	=			-Wall -Wextra -Werror -std=c++98
 
-NAME	=			span
+NAME	=			mutant_stack
 
 INC_ALL	=			\
 					$(INC_DIR)
