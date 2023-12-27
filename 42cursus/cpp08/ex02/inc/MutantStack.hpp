@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 22:17:53 by rgallego          #+#    #+#             */
-/*   Updated: 2023/12/27 01:27:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2023/12/27 21:32:04 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class MutantStack: public std::stack<T, Container>
 		{
 			if (this == &mutantStack)
 				return (*this);
-			*this = mutantStack;
+			*this->c = mutantStack.c;
 			std::cout << "[Copy Constructor]: MutantStack<>: has been created"
 				<< std::endl;
 			return (*this);
