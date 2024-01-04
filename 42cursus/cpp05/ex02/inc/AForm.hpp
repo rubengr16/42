@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:11:55 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 00:27:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/04 12:36:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ class	AForm
 		void				beSigned(const Bureaucrat& bureaucrat);
 		virtual void		execute(void) const = 0;
 /* ******************************* EXCEPTIONS ******************************* */
-	class GradeTooHighException: public std::exception
+	class	GradeTooHighException: public std::exception
 	{
 		public:
 			virtual const char*	what(void) const throw();
 	};
-	class GradeTooLowException: public std::exception
+	class	GradeTooLowException: public std::exception
 	{
 		public:
 			virtual const char*	what(void) const throw();
 	};
-	class NotSignedException: public std::exception
+	class	NotSignedException: public std::exception
 	{
 		public:
 			virtual const char*	what(void) const throw();

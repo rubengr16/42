@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2023/12/27 00:21:56 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/04 12:36:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ class Span
 		void					addNumber(int size, Generator generator);
 		void					print(void);
 /* ******************************* EXCEPTIONS ******************************* */
-	class VectorIsFullException: public std::exception
+	class	VectorIsFullException: public std::exception
 	{
 		public:
 			virtual const char*	what(void) const throw();
 	};
 
-	class NoEnoughElemsException: public std::exception
+	class	NoEnoughElemsException: public std::exception
 	{
 		public:
 			virtual const char*	what(void) const throw();

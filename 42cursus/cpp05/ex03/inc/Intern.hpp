@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:46:53 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 14:53:37 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/04 12:36:32 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class Intern
 		AForm*	makeForm(const std::string& name,
 			const std::string& target);
 /* ******************************* EXCEPTIONS ******************************* */
-	class FormNotFoundException: public std::exception
+	class	FormNotFoundException: public std::exception
 	{
 		public:
 			virtual const char*	what(void) const throw();

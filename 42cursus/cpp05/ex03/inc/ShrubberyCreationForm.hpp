@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 14:30:54 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/04 12:36:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class ShrubberyCreationForm: public AForm
 		static AForm*			factory(const std::string& target);
 		void					execute(void) const;
 /* ******************************* EXCEPTIONS ******************************* */
-	class FailedOpenException: public std::exception
+	class	FailedOpenException: public std::exception
 	{
 		public:
 			virtual const char*	what(void) const throw();

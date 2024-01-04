@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 21:34:28 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/23 19:14:56 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/04 12:36:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ class Array
 		}
 
 /* ******************************* EXCEPTIONS ******************************* */
-	class IndexOutOfBoundsException: public std::exception
+	class	IndexOutOfBoundsException: public std::exception
 	{
 		public:
 			virtual const char*	what(void) const throw()

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 12:45:28 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/04 12:36:11 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class ShrubberyCreationForm: public AForm
 /* **************************** MEMBER FUNCTIONS **************************** */
 		void					execute(void) const;
 /* ******************************* EXCEPTIONS ******************************* */
-	class FailedOpenException: public std::exception
+	class	FailedOpenException: public std::exception
 	{
 		public:
 			virtual const char*	what(void) const throw();

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/17 18:02:47 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/04 12:35:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ class	Bureaucrat
 		void				decrementGrade(void);
 
 /* ******************************* EXCEPTIONS ******************************* */
-	class GradeTooHighException: public std::exception
+	class	GradeTooHighException: public std::exception
 	{
 		public:
 			virtual const char*	what(void) const throw();
 	};
-	class GradeTooLowException: public std::exception
+	class	GradeTooLowException: public std::exception
 	{
 		public:
 			virtual const char*	what(void) const throw();
