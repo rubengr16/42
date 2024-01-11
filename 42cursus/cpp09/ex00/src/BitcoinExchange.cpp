@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/11 20:41:03 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/11 21:53:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,45 @@ void	BitcoinExchange::checkDate(std::string& str)
 {
 	std::stringstream	stream(str);
 	std::tm				datetime;
-	
+	char				sep;
 
 	if (str.length() != 10)
 		throw (BitcoinExchange::WrongLineFormatException());
 	stream >> datetime.tm_year;
+	if (datetime.tm_year < -999 || 9999 < datetime.tm_year)
+		throw (BitcoinExchange::WrongLineFormatException());
+	stream >> sep;
+	if (sep != '-')
+		throw (BitcoinExchange::WrongLineFormatException());
 	stream >> datetime.tm_mon;
+	if (datetime.tm_mon < 1 || 12 < datetime.tm_mon)
+		throw (BitcoinExchange::WrongLineFormatException());
+	stream >> sep;
+	if (sep != '-')
+		throw (BitcoinExchange::WrongLineFormatException());
 	stream >> datetime.tm_mday;
-	
+	/*
+	JUST TO BE THINKED
+		if (day < 1 || day > 31)
+        return false;
+
+      // Check for specific month-day combinations that are invalid
+      if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+        return false;
+
+      if (month == 2) {
+        // Check for leap year
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+          if (day > 29)
+            return false;
+        } else {
+          if (day > 28)
+            return false;
+        }
+      }
+	*/
+	if (datetime.tm_mday < 1 || 31 < datetime.tm_mday)
+		throw (BitcoinExchange::WrongLineFormatException());
 }
 
 void	BitcoinExchange::readFormattedLine(std::string& line, std::string& sep,
