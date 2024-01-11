@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/04 16:55:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/11 20:39:57 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <iostream>
-# include <fstream>
-# include <sstream>
+# include <fstream>	// ifstream
+# include <ctime>	// tm
+# include <sstream>	// stringstream
 # include <map>
 
 # define DB_FILENAME "data.csv"
@@ -27,6 +28,7 @@ class BitcoinExchange
 		void	setBtcEvolution(void);
 		void	readFormattedLine(std::string& line, std::string& sep,
 			std::string& date, float& value);
+		void	checkDate(std::string& str);
 
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */

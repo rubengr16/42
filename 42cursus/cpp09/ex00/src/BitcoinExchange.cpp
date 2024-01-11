@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/04 16:59:50 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/11 20:41:03 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,20 @@ void	BitcoinExchange::setBtcEvolution(void)
 	{
 		
 	}
+}
+
+void	BitcoinExchange::checkDate(std::string& str)
+{
+	std::stringstream	stream(str);
+	std::tm				datetime;
+	
+
+	if (str.length() != 10)
+		throw (BitcoinExchange::WrongLineFormatException());
+	stream >> datetime.tm_year;
+	stream >> datetime.tm_mon;
+	stream >> datetime.tm_mday;
+	
 }
 
 void	BitcoinExchange::readFormattedLine(std::string& line, std::string& sep,
