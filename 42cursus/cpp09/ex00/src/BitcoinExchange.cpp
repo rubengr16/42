@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/11 21:53:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:50:39 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,31 @@ void	BitcoinExchange::setBtcEvolution(void)
 void	BitcoinExchange::checkDate(std::string& str)
 {
 	std::stringstream	stream(str);
-	std::tm				datetime;
+	std::tm				dt;
 	char				sep;
 
 	if (str.length() != 10)
 		throw (BitcoinExchange::WrongLineFormatException());
-	stream >> datetime.tm_year;
-	if (datetime.tm_year < -999 || 9999 < datetime.tm_year)
+	stream >> dt.tm_year;
+	if (dt.tm_year < -999 || 9999 < dt.tm_year)
 		throw (BitcoinExchange::WrongLineFormatException());
 	stream >> sep;
 	if (sep != '-')
 		throw (BitcoinExchange::WrongLineFormatException());
-	stream >> datetime.tm_mon;
-	if (datetime.tm_mon < 1 || 12 < datetime.tm_mon)
+	stream >> dt.tm_mon;
+	if (dt.tm_mon < 1 || 12 < dt.tm_mon)
 		throw (BitcoinExchange::WrongLineFormatException());
 	stream >> sep;
 	if (sep != '-')
 		throw (BitcoinExchange::WrongLineFormatException());
-	stream >> datetime.tm_mday;
+	stream >> dt.tm_mday;
+	if (!stream.eof() || dt.tm_mday < 1 || 31 < dt.tm_mday
+		|| ((dt.tm_mon == 4 || dt.tm_mon == 6 || dt.tm_mon == 9 || dt.tm_mon == 11)
+			&& (30 < dt.tm_mday))
+		|| (dt.tm_mon == 2 && 29 < dt.tm_mday)
+		|| (dt.tm_mon == 2 (dt.year))
+		)
+		throw (BitcoinExchange::WrongLineFormatException());
 	/*
 	JUST TO BE THINKED
 		if (day < 1 || day > 31)
