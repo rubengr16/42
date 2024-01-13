@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/12 16:50:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/13 23:23:31 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 /* ****************************** CONSTRUCTORS ****************************** */
 BitcoinExchange::BitcoinExchange(void)
 {
+	this->setBtcEvolution(CSV_HEADER);
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &rhs)
 {
+	this->_btcEvolution = rhs.getBtcEvolution();
 }
 
 /* ******************************* DESTRUCTOR ******************************* */
@@ -29,11 +31,19 @@ BitcoinExchange::~BitcoinExchange(void)
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs)
 {
+	if (this == &rhs)
+		return (*this);
+	this->_btcEvolution = rhs.getBtcEvolution();
 	return (*this);
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-void	BitcoinExchange::setBtcEvolution(void)
+std::map<std::string, float>	BitcoinExchange::getBtcEvolution(void) const
+{
+	return this->_btcEvolution;
+}
+
+void	BitcoinExchange::setBtcEvolution(std::string header)
 {
 	std::ifstream	fin;
 	std::string		line;
@@ -44,9 +54,12 @@ void	BitcoinExchange::setBtcEvolution(void)
 	if (!fin.is_open())
 		throw (BitcoinExchange::FileOpeningException());
 	std::getline(fin, line);
-	while(!fin.eof() && std::getline(fin, line)) // TODO: REVISAR
+	if (line != header)
+		throw(BitcoinExchange::WrongLineFormatException());
+	while(!fin.eof() && std::getline(fin, line))
 	{
-		
+		this->readFormattedLine(line, CSV_SEP, date, value);
+		this->_btcEvolution.insert(std::pair<std::string, float>(date, value));
 	}
 }
 
@@ -75,42 +88,34 @@ void	BitcoinExchange::checkDate(std::string& str)
 		|| ((dt.tm_mon == 4 || dt.tm_mon == 6 || dt.tm_mon == 9 || dt.tm_mon == 11)
 			&& (30 < dt.tm_mday))
 		|| (dt.tm_mon == 2 && 29 < dt.tm_mday)
-		|| (dt.tm_mon == 2 (dt.year))
-		)
-		throw (BitcoinExchange::WrongLineFormatException());
-	/*
-	JUST TO BE THINKED
-		if (day < 1 || day > 31)
-        return false;
-
-      // Check for specific month-day combinations that are invalid
-      if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
-        return false;
-
-      if (month == 2) {
-        // Check for leap year
-        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-          if (day > 29)
-            return false;
-        } else {
-          if (day > 28)
-            return false;
-        }
-      }
-	*/
-	if (datetime.tm_mday < 1 || 31 < datetime.tm_mday)
+		|| (dt.tm_mon == 2 && dt.tm_year % 4 && 28 < dt.tm_mday))
 		throw (BitcoinExchange::WrongLineFormatException());
 }
 
-void	BitcoinExchange::readFormattedLine(std::string& line, std::string& sep,
-	std::string& date, float& value)
+void	BitcoinExchange::readFormattedLine(std::string& line, std::string sep,
+	std::string& date, float value)
 {
 	size_t	pos = line.find(sep);
 	std::string	value = line.substr(pos + sep.length());
 	date = line.substr(0, pos);
+	this->checkDate(date);
+}
+
+void	BitcoinExchange::displayInputFile(const char* filename) const
+{
+	std::ifstream	fin;
+	std::string		line;
+	std::string		date;
+	float			value;
+
+	fin.open(filename, std::ifstream::in);
+	if (!fin.is_open())
+		throw (BitcoinExchange::FileOpeningException());
+	std::getline(fin, line);
+	if (line != header)
+		throw(BitcoinExchange::WrongLineFormatException());
+	fin.open(fin, std::ifstream::in);
 	
-	// std::stringstream	s(line);
-	// std::getline(s, date, sep);
 }
 
 /* ******************************* EXCEPTIONS ******************************* */

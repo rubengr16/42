@@ -6,13 +6,13 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 22:40:34 by rgallego          #+#    #+#             */
-/*   Updated: 2023/09/13 23:03:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:53:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int	i;
 	int	j;

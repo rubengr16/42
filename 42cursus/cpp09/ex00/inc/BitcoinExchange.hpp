@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/11 20:39:57 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/13 23:23:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,20 @@
 # include <map>
 
 # define DB_FILENAME "data.csv"
+# define CSV_HEADER "date,exchange_rate"
+# define CSV_SEP ","
+# define PIPED_CSV 1
+# define PIPED_CSV_HEADER "date | value"
+# define PIPED_CSV_SEP " | "
 
 class BitcoinExchange
 {
 	private:
 		std::map<std::string, float>	_btcEvolution;
-		void	setBtcEvolution(void);
-		void	readFormattedLine(std::string& line, std::string& sep,
-			std::string& date, float& value);
-		void	checkDate(std::string& str);
+		void						checkDate(std::string& str);
+		void						readFormattedLine(std::string& line,
+			std::string sep, std::string& date, float value);
+		void						setBtcEvolution(std::string header);
 
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
@@ -37,8 +42,11 @@ class BitcoinExchange
 /* ******************************* DESTRUCTOR ******************************* */
 		~BitcoinExchange(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		BitcoinExchange& operator=(const BitcoinExchange& rhs);
+		BitcoinExchange&				 operator=(const BitcoinExchange& rhs);
 /* **************************** MEMBER FUNCTIONS **************************** */
+		std::map<std::string, float>	getBtcEvolution(void) const;
+		void							displayInputFile(const char* filename)
+			const;
 /* ******************************* EXCEPTIONS ******************************* */
 	class	FileOpeningException: public std::exception
 	{
