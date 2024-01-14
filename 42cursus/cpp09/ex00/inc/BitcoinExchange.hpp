@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/13 23:23:26 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/14 15:24:21 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <map>
 
 # define DB_FILENAME "data.csv"
+# define MIN_VALUE 0.0
+# define MAX_VALUE 1000.0
 # define CSV_HEADER "date,exchange_rate"
 # define CSV_SEP ","
 # define PIPED_CSV 1
@@ -30,10 +32,11 @@ class BitcoinExchange
 {
 	private:
 		std::map<std::string, float>	_btcEvolution;
-		void						checkDate(std::string& str);
+		float						checkValue(const std::string& str) const;
+		void						checkDate(const std::string& str) const;
 		void						readFormattedLine(std::string& line,
 			std::string sep, std::string& date, float value);
-		void						setBtcEvolution(std::string header);
+		void						setBtcEvolution(void);
 
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
@@ -45,16 +48,39 @@ class BitcoinExchange
 		BitcoinExchange&				 operator=(const BitcoinExchange& rhs);
 /* **************************** MEMBER FUNCTIONS **************************** */
 		std::map<std::string, float>	getBtcEvolution(void) const;
-		void							displayInputFile(const char* filename)
-			const;
+		void							displayInputFile(const char* filename);
 /* ******************************* EXCEPTIONS ******************************* */
-	class	FileOpeningException: public std::exception
+	class	ABitcoinExchangeException: public std::exception
+	{
+		public:
+			virtual const char*	what(void) const throw() = 0;
+	};
+	
+	class	FileOpeningException: public ABitcoinExchangeException
 	{
 		public:
 			virtual const char*	what(void) const throw();
 	};
 
-	class	WrongLineFormatException: public std::exception
+	class	WrongHeaderFormatException: public ABitcoinExchangeException
+	{
+		public:
+			virtual const char*	what(void) const throw();
+	};
+
+	class	WrongDateException: public ABitcoinExchangeException
+	{
+		public:
+			virtual const char*	what(void) const throw();
+	};
+
+	class	TooLargeNumberException: public ABitcoinExchangeException
+	{
+		public:
+			virtual const char*	what(void) const throw();
+	};
+
+	class	NotPositiveNumberException: public ABitcoinExchangeException
 	{
 		public:
 			virtual const char*	what(void) const throw();
