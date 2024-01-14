@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/14 15:24:21 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/14 23:46:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ class BitcoinExchange
 		float						checkValue(const std::string& str) const;
 		void						checkDate(const std::string& str) const;
 		void						readFormattedLine(std::string& line,
-			std::string sep, std::string& date, float value);
+			std::string sep, std::string& date, float& value);
+		void						displayFormatted(std::string& date,
+			float value, float exchange) const;
 		void						setBtcEvolution(void);
 
 	public:
@@ -62,7 +64,7 @@ class BitcoinExchange
 			virtual const char*	what(void) const throw();
 	};
 
-	class	WrongHeaderFormatException: public ABitcoinExchangeException
+	class	WrongLineFormatException: public ABitcoinExchangeException
 	{
 		public:
 			virtual const char*	what(void) const throw();

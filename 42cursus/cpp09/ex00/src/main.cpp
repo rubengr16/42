@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:30 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/14 15:25:24 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/14 23:36:25 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,7 @@ int	main(int argc, char **argv)
 	try
 	{
 		BitcoinExchange btcExchange;
-		btcExchange;
-	}
-	catch(const BitcoinExchange::WrongDateException& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return (1);
+		btcExchange.displayInputFile(argv[PIPED_CSV]);
 	}
 	catch(const BitcoinExchange::ABitcoinExchangeException& e)
 	{
