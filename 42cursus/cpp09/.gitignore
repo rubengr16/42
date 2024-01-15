@@ -56,6 +56,6 @@ dkms.conf
 .vscode/
 
 # Program files and objects
-easy_find
-span
+btc
+RPN
 mutant_stack
