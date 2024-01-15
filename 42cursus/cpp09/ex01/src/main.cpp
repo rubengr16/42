@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:30 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/15 17:22:26 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/15 22:11:18 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	}
 	try
 	{
-		RPN::calculate(argv[1]);
+		std::cout << RPN::calculate(argv[1]) << std::endl;
 	}
 	catch (const RPN::ARPNException& e)
 	{

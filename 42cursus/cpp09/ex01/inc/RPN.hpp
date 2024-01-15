@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/15 17:18:15 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/15 22:42:15 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 class RPN
 {
 	private:
-		
 /* ****************************** CONSTRUCTORS ****************************** */
 		RPN(void);
 		RPN(const RPN& rhs);
@@ -33,6 +32,7 @@ class RPN
 		~RPN(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		RPN&			operator=(const RPN& rhs);
+
 	public:
 /* **************************** MEMBER FUNCTIONS **************************** */
 		static float	calculate(std::string str);

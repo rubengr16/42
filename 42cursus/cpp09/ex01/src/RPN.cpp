@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 22:16:15 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/15 17:19:29 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/15 22:47:43 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ RPN::RPN(void)
 
 RPN::RPN(const RPN& rhs)
 {
+	(void)rhs;
 }
 
 /* ******************************* DESTRUCTOR ******************************* */
@@ -29,6 +30,8 @@ RPN::~RPN(void)
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 RPN&	RPN::operator=(const RPN& rhs)
 {
+	(void)rhs;
+	return (*this);
 }
 /* **************************** MEMBER FUNCTIONS **************************** */
 static void	checkInputChars(std::string& str)
@@ -73,13 +76,15 @@ static void	operate(std::stack<float>& stackRPN, size_t pos)
 
 	if (stackRPN.size() < 2)
 		throw (RPN::NotEnoughNumbersException());
-	lhs = stackRPN.top();
-	stackRPN.pop();
 	rhs = stackRPN.top();
 	stackRPN.pop();
+	lhs = stackRPN.top();
+	stackRPN.pop();
 	result = operations[pos](lhs, rhs);
-	if (std::numeric_limits<float>::max() < result
-		|| result < std::numeric_limits<float>::min())
+	if (result != -std::numeric_limits<float>::infinity()
+		&& result != std::numeric_limits<float>::infinity()
+		&& (result < -std::numeric_limits<float>::max()
+		|| std::numeric_limits<float>::max() < result))
 		throw (RPN::OutOfRangeResultException());
 	stackRPN.push(static_cast<float>(result));
 }
@@ -97,7 +102,9 @@ static void	manageElem(std::stack<float>& stackRPN, std::string elem)
 	std::stringstream stream(elem);
 	long long int number;
 
-	pos = elem.find(OPERANDS);
+	if (elem.length() != 1)
+		throw (RPN::InvalidCharactersException());
+	pos = std::string(OPERANDS).find(elem);
 	if (pos != std::string::npos)
 		operate(stackRPN, pos);
 	else
@@ -135,19 +142,9 @@ const char*	RPN::NotEnoughNumbersException::what(void) const throw()
 	return ("Error: not enough numbers in the operation were provided.");
 }
 
-const char*	RPN::NotEnoughNumbersException::what(void) const throw()
-{
-	return ("Error: not enough numbers in the operation were provided.");
-}
-
 const char*	RPN::NotEnoughOperandsException::what(void) const throw()
 {
 	return ("Error: not enough operands in the operation were provided.");
-}
-
-const char*	RPN::OutOfRangeResultException::what(void) const throw()
-{
-	return ("Error: could not represent the result number.");
 }
 
 const char*	RPN::OutOfRangeResultException::what(void) const throw()
