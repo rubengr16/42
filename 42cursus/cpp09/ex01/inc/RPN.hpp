@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:28:41 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/15 22:42:15 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/16 23:26:11 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sstream>
 # include <limits>
 # include <stack>
+# include <cmath>
 
 # define ALLOWED_CHARS "0123456789 +-*/"
 # define OPERANDS "+-*/"

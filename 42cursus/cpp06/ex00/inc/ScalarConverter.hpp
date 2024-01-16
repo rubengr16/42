@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 23:41:15 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/20 23:13:11 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/16 23:25:27 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include <iostream>
 # include <string>
-# include <iomanip> 
+# include <iomanip>
 # include <cerrno>
-# include <cmath> 
-# include <limits> 
+# include <cmath>
+# include <limits>
 
 # define PRECISION 2
 # define NAN42 "nan"

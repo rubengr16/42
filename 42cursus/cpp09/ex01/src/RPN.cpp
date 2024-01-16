@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 22:16:15 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/15 22:47:43 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/16 23:25:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static double	multiplication(double lhs, double rhs)
 
 static double	division(double lhs, double rhs)
 {
-	// What happens with 0 / 0, N / 0??
 	return (lhs / rhs);
 }
 
@@ -84,7 +83,8 @@ static void	operate(std::stack<float>& stackRPN, size_t pos)
 	if (result != -std::numeric_limits<float>::infinity()
 		&& result != std::numeric_limits<float>::infinity()
 		&& (result < -std::numeric_limits<float>::max()
-		|| std::numeric_limits<float>::max() < result))
+		|| std::numeric_limits<float>::max() < result 
+		|| (errno == ERANGE && (result == -HUGE_VAL))))
 		throw (RPN::OutOfRangeResultException());
 	stackRPN.push(static_cast<float>(result));
 }

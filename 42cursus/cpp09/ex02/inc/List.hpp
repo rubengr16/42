@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:51:01 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/16 11:15:00 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/16 23:53:05 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 # define LIST
 
 # include <list>
+# include <stdexcept>	// std::out_of_range
+# include <AContainer.hpp>
 
-class List: public std::list<unsigned int>
+class	List: public AContainer<std::list<unsigned int> >
 {
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
 		List(void);
-		List(void);
+		List(const List& rhs);
 /* ******************************* DESTRUCTOR ******************************* */
 		~List(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		List&	operator=(const List& rhs);
-
-		List&	operator[](unsigned int i) const;
+		List&			operator=(const List& rhs);
+/* **************************** MEMBER FUNCTIONS **************************** */
+		unsigned int&	at(size_t n);
 
 };
 

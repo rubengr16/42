@@ -1,41 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AAnimal.hpp                                        :+:      :+:    :+:   */
+/*   AContainer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 22:57:56 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/16 21:54:51 by rgallego         ###   ########.fr       */
+/*   Created: 2024/01/16 21:39:15 by rgallego          #+#    #+#             */
+/*   Updated: 2024/01/16 23:54:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AANIMAL_HPP
-# define AANIMAL_HPP
+#ifndef ACONTAINER_HPP
+# define ACONTAINER_HPP
 
-# include <iostream>
+# include <sstream>
+# include <cerrno>
+# include <cmath>
+# include <limits>
 
-class AAnimal
+template <typename T<unsigned int> >
+class AContainer
 {
-/**
- * Calling constructors or destructors of Abstract Classes may cause undefined
- * behaviour as they can not be instantiated. Due to this they are implemented
- * as protected to be used only in derived classes as it is mandatory.
-*/
 	protected:
-		std::string	_type;
 /* ****************************** CONSTRUCTORS ****************************** */
-		AAnimal(void);
-		AAnimal(const AAnimal& animal);
+		AContainer(void);
+		AContainer(char** values);
+		AContainer(const AContainer& rhs);
+/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+		AContainer&				operator=(const AContainer& rhs);
 
 	public:
 /* ******************************* DESTRUCTOR ******************************* */
-		virtual ~AAnimal(void);
-/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		AAnimal&			operator=(const AAnimal& animal);
+		virtual ~AContainer(void);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		const std::string&	getType(void) const;
-		virtual void		makeSound(void) const = 0;
+		virtual unsigned int&	at(size_t n) = 0;
+/* ******************************* EXCEPTIONS ******************************* */
+	class	OutOfRangeResultException
+	{
+		public:
+			virtual const char*	what(void) const throw();
+	};
 };
 
 #endif

@@ -35,9 +35,17 @@ List&	List::operator=(const List& rhs)
 	return (*this);
 }
 
-List&	List::operator[](unsigned int i) const
+unsigned int&	List::at(size_t n)
 {
-	// if (i >= this->_size)
-	// 	throw (IndexOutOfBoundsException());
-	// return (this->_array[i]);
+	std::list<unsigned int>::iterator it;
+
+	if (n < 0 || n >= this->size())
+		throw (std::out_of_range::exception());
+	it = this->begin();
+	while (n)
+	{
+		it++;
+		n--;
+	}
+	return (*it);
 }
