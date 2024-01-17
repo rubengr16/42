@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:39:15 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/17 14:41:55 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/17 21:47:36 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@
 # include <cmath>
 # include <limits>
 
+# define VALUES_START 1
+
 class AContainer
 {
 	protected:
 /* ****************************** CONSTRUCTORS ****************************** */
 		AContainer(void);
-		AContainer(char** values);
 		AContainer(const AContainer& rhs);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		AContainer&				operator=(const AContainer& rhs);
@@ -32,16 +33,16 @@ class AContainer
 /* ******************************* DESTRUCTOR ******************************* */
 		virtual ~AContainer(void);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		virtual void			push_back(const unsigned int& val) = 0;
-		virtual unsigned int&	at(size_t n) = 0;
+		unsigned int	get_number(char *str);
+		virtual unsigned int&	get(size_t n) = 0;
 /* ******************************* EXCEPTIONS ******************************* */
-	class	OutOfRangeNumberException
+	class	WrongNumberException
 	{
 		public:
 			virtual const char*	what(void) const throw();
 	};
 
-	class	InvalidNumberException
+	class	TooMuchNumbersException
 	{
 		public:
 			virtual const char*	what(void) const throw();

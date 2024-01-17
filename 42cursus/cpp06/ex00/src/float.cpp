@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:02:28 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/20 23:15:09 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:43:01 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ float	ScalarConverter::getFloat(std::string& input)
 	char	*endptr = NULL;
 	double dbl = strtod(input.c_str(), &endptr);
 
-	if ((errno == ERANGE && dbl == -HUGE_VAL)
+	if ((errno == ERANGE && dbl == -HUGE_VALF)
 		|| dbl < -std::numeric_limits<float>::max())
 	{
 		input = UNDERFLOW;
 		return (-std::numeric_limits<float>::max());
 	}
-	else if ((errno == ERANGE && dbl == HUGE_VAL)
+	else if ((errno == ERANGE && dbl == HUGE_VALF)
 		|| dbl > std::numeric_limits<float>::max())
 	{
 		input = OVERFLOW;
@@ -36,7 +36,7 @@ float	ScalarConverter::getFloat(std::string& input)
 void	ScalarConverter::toFloat(const std::string& input, float flt)
 {
 	std::cout << "float: ";
-	if (!input.compare(UNDERFLOW) || !input.compare(OVERFLOW))
+	if (!input.compare(FT_UNDERFLOW) || !input.compare(FT_OVERFLOW))
 		std::cout << input << std::endl;
 	else if(!input.compare(NANF42) || !input.compare(INFF)
 		|| !input.compare(NINFF))
@@ -56,9 +56,9 @@ void	ScalarConverter::toFloat(const std::string& input, double dbl)
 		|| !input.compare(NINF))
 		std::cout << input << "f" << std::endl;
 	else if (dbl < -std::numeric_limits<float>::max())
-		std::cout << UNDERFLOW << std::endl;
+		std::cout << FT_UNDERFLOW << std::endl;
 	else if (dbl > std::numeric_limits<float>::max())
-		std::cout << OVERFLOW << std::endl;
+		std::cout << FT_OVERFLOW << std::endl;
 	else
 		std::cout << std::setprecision(PRECISION) << std::fixed
 			<< static_cast<float>(dbl) << "f" << std::endl;

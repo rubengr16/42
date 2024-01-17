@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   List.cpp                                :+:      :+:    :+:   */
+/*   IntegerList.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,55 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "List.hpp"
-
+#include "IntegerList.hpp"
+#include <iostream>
 /* ****************************** CONSTRUCTORS ****************************** */
-List::List(void):
-	std::list<unsigned int>()
+IntegerList::IntegerList(void):
+	std::list<unsigned int>(),
+	AContainer()
 {
 }
 
-List::List(const List& rhs):
-	std::list<unsigned int>(rhs)
+IntegerList::IntegerList(size_t n):
+	std::list<unsigned int>(n),
+	AContainer()
+{
+}
+
+IntegerList::IntegerList(char** values):
+	std::list<unsigned int>(),
+	AContainer()
+{
+	size_t	i = 0;
+
+	while (values[i] && i < std::numeric_limits<size_t>::max())
+	{
+		push_back(this->get_number(values[i]));
+		i++;
+	}
+	if (i == std::numeric_limits<size_t>::max())
+		throw (TooMuchNumbersException());
+}
+
+IntegerList::IntegerList(const IntegerList& rhs):
+	std::list<unsigned int>(rhs),
+	AContainer()
 {
 }
 
 /* ******************************* DESTRUCTOR ******************************* */
-List::~List(void)
+IntegerList::~IntegerList(void)
 {
 }
 
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-List&	List::operator=(const List& rhs)
+IntegerList&	IntegerList::operator=(const IntegerList& rhs)
 {
 	std::list<unsigned int>::operator=(rhs);
 	return (*this);
 }
 
-unsigned int&	List::at(size_t n)
+unsigned int&	IntegerList::get(size_t n)
 {
 	std::list<unsigned int>::iterator it;
 

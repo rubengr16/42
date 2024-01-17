@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
+/*   IntegerList.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 22:17:53 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/17 21:42:14 by rgallego         ###   ########.fr       */
+/*   Created: 2024/01/16 10:51:01 by rgallego          #+#    #+#             */
+/*   Updated: 2024/01/17 19:00:43 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PMERGEME_HPP
-# define PMERGEME_HPP
+#ifndef INTEGERVECTOR
+# define INTEGERVECTOR
 
-# include "IntegerList.hpp"
-# include "IntegerVector.hpp"
+# include <vector>
+# include <sstream>
+# include <cerrno>		// ERANGE
+# include <cmath>		// HUGE_VALL
+# include <limits>		// std::numeric_limits
+# include <stdexcept>	// std::out_of_range
+# include "AContainer.hpp"
 
-class	PmergeMe
+class	IntegerVector: public std::vector<unsigned int>, public AContainer
 {
-	private:
-/* ****************************** CONSTRUCTORS ****************************** */
-		PmergeMe(void);
-		PmergeMe(const PmergeMe& rhs);
-/* ******************************* DESTRUCTOR ******************************* */
-		~PmergeMe(void);
-/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-		PmergeMe&	operator=(const PmergeMe& rhs);
 	public:
+/* ****************************** CONSTRUCTORS ****************************** */
+		IntegerVector(void);
+		IntegerVector(size_t n);
+		IntegerVector(char** values);
+		IntegerVector(const IntegerVector& rhs);
+/* ******************************* DESTRUCTOR ******************************* */
+		~IntegerVector(void);
+/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+		IntegerVector&	operator=(const IntegerVector& rhs);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		static  void		mergesort(IntegerList& integerList);
-		static  void		mergesort(IntegerVector& integerList);
+		unsigned int&	get(size_t n);
 };
 
-#endif
+# endif

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 23:41:15 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/16 23:25:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:42:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # define NANF42 "nanf"
 # define INFF "+inff"
 # define NINFF "-inff"
-# define UNDERFLOW "underflow"
-# define OVERFLOW "overflow"
+# define FT_UNDERFLOW "underflow"
+# define FT_OVERFLOW "overflow"
 
 enum e_scalarType
 {

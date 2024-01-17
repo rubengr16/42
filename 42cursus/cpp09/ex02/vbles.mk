@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2023/12/27 23:04:38 by rgallego         ###   ########.fr        #
+#    Updated: 2024/01/17 20:57:35 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,9 @@ SRC_DIR	=			src/
 INC_DIR	=			inc/
 
 EX02	=			\
+					AContainer.cpp \
+					IntegerList.cpp \
+					IntegerVector.cpp \
 					PmergeMe.cpp \
 					main.cpp
 
