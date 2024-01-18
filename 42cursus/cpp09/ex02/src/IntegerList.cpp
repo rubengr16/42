@@ -14,35 +14,12 @@
 #include <iostream>
 /* ****************************** CONSTRUCTORS ****************************** */
 IntegerList::IntegerList(void):
-	std::list<unsigned int>(),
-	AContainer()
+	std::list<unsigned int>()
 {
-}
-
-IntegerList::IntegerList(size_t n):
-	std::list<unsigned int>(n),
-	AContainer()
-{
-}
-
-IntegerList::IntegerList(char** values):
-	std::list<unsigned int>(),
-	AContainer()
-{
-	size_t	i = 0;
-
-	while (values[i] && i < std::numeric_limits<size_t>::max())
-	{
-		push_back(this->get_number(values[i]));
-		i++;
-	}
-	if (i == std::numeric_limits<size_t>::max())
-		throw (TooMuchNumbersException());
 }
 
 IntegerList::IntegerList(const IntegerList& rhs):
-	std::list<unsigned int>(rhs),
-	AContainer()
+	std::list<unsigned int>(rhs)
 {
 }
 
@@ -58,7 +35,7 @@ IntegerList&	IntegerList::operator=(const IntegerList& rhs)
 	return (*this);
 }
 
-unsigned int&	IntegerList::get(size_t n)
+unsigned int&	IntegerList::at(size_t n)
 {
 	std::list<unsigned int>::iterator it;
 

@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 22:49:11 by rgallego          #+#    #+#              #
-#    Updated: 2024/01/17 20:57:35 by rgallego         ###   ########.fr        #
+#    Updated: 2024/01/18 14:34:50 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ INC_DIR	=			inc/
 EX02	=			\
 					AContainer.cpp \
 					IntegerList.cpp \
-					IntegerVector.cpp \
 					PmergeMe.cpp \
 					main.cpp
 

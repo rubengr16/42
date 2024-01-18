@@ -19,22 +19,19 @@
 # include <cmath>		// HUGE_VALL
 # include <limits>		// std::numeric_limits
 # include <stdexcept>	// std::out_of_range
-# include "AContainer.hpp"
 
-class	IntegerList: public std::list<unsigned int>, public AContainer
+class	IntegerList: public std::list<unsigned int>
 {
 	public:
 /* ****************************** CONSTRUCTORS ****************************** */
 		IntegerList(void);
-		IntegerList(size_t n);
-		IntegerList(char** values);
 		IntegerList(const IntegerList& rhs);
 /* ******************************* DESTRUCTOR ******************************* */
 		~IntegerList(void);
 /* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
 		IntegerList&	operator=(const IntegerList& rhs);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		unsigned int&	get(size_t n);
+		unsigned int&	at(size_t n);
 };
 
 # endif
