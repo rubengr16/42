@@ -6,58 +6,20 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 23:03:48 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/18 14:32:38 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:39:26 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-/* ****************************** CONSTRUCTORS ****************************** */
-PmergeMe::PmergeMe(void):
-	_list(IntegerList()),
-	_vector(std::vector<unsigned int>())
-{
-}
-
-PmergeMe::PmergeMe(char** values, int size)
-{
-	size_t	i;
-
-	if (size < 0 || size == std::numeric_limits<size_t>::max())
-		throw (WrongNumberOfArgumentsException());
-	fill(this->_list, values, static_cast<size_t>(size));
-	fill(this->_vector, values, static_cast<size_t>(size));
-}
-
-PmergeMe::PmergeMe(const PmergeMe& rhs):
-	_list(rhs.getList()),
-	_vector(rhs.getVector())
-{
-}
-
-/* ******************************* DESTRUCTOR ******************************* */
-PmergeMe::~PmergeMe(void)
-{
-}
-
-/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
-PmergeMe&	PmergeMe::operator=(const PmergeMe& rhs)
-{
-	(void)rhs;
-	return (*this);
-}
-
 /* *************************** AUXILIARY FUNCTIONS ************************** */
-template <typename Container>
-void	fill(Container& container, char** values, size_t size)
+static double	get_time_diff(struct timespec start, struct timespec end)
 {
-	size_t i;
-
-	for(i = 0; i < size && values[i]; i++)
-		container.push_back(this->get_number(values[i]));
+	return ((end.tv_sec - start.tv_sec) * 1e3
+		+ (end.tv_nsec - start.tv_nsec) * 1e-6);
 }
 
-unsigned int	get_number(char *str)
+static unsigned int	get_number(char *str)
 {
 	std::stringstream	stream (str);
 	long long int		value;
@@ -73,47 +35,127 @@ unsigned int	get_number(char *str)
 	return (static_cast<unsigned int>(value));
 }
 
-template <typename T>
-static void	merge(T& integerList, size_t start, size_t middle,
+template <typename Container>
+static void	fill_container(Container& container, char** values, size_t size)
+{
+	size_t i;
+
+	for(i = 0; i < size && values[i]; i++)
+		container.push_back(get_number(values[i]));
+}
+
+
+template <typename Container>
+static void	merge(Container& container, size_t start, size_t middle,
 	size_t end)
 {
-	IntegerList				aux;
-	IntegerList::iterator	it;
-	size_t					i = start;
-	size_t					j = middle + 1;
+	Container						aux;
+	typename Container::iterator	it;
+	size_t							i = start;
+	size_t							j = middle + 1;
 
 	while (i <= middle && j <= end)
 	{
-		if (integerList.get(i) < integerList.get(j))
+		if (container.at(i) < container.at(j))
 		{
-			aux.push_back(integerList.get(i));
+			aux.push_back(container.at(i));
 			i++;
 		}
 		else
 		{
-			aux.push_back(integerList.get(j));
+			aux.push_back(container.at(j));
 			j++;
 		}
 	}
 	for (; i <= middle; i++)
-		aux.push_back(integerList.get(i));
+		aux.push_back(container.at(i));
 	for (; j <= end; j++)
-		aux.push_back(integerList.get(j));
+		aux.push_back(container.at(j));
 	for (it = aux.begin(), i = start; i <= end; it++, i++)
-		integerList.get(i) = *it;
+		container.at(i) = *it;
 }
 
-template <typename T>
-static void	mergesort(T& integerList, size_t start, size_t end)
+template <typename Container>
+static void	mergesort(Container& container, size_t start, size_t end)
 {
 	size_t	middle;
 
 	if (start >= end)
 		return ;
 	middle = (start + end) / 2;
-	mergesortAux(integerList, start, middle);
-	mergesortAux(integerList, middle + 1, end);
-	merge(integerList, start, middle, end);
+	mergesort(container, start, middle);
+	mergesort(container, middle + 1, end);
+	merge(container, start, middle, end);
+}
+template <typename Container>
+static void	print_numbers(Container& container, std::string str)
+{
+	typename Container::iterator	it;
+
+	std::cout << str;
+	for (it = container.begin(); it != container.end(); it++)
+		std::cout << " " << *it;
+	std::cout << std::endl;
+}
+
+static void	print_time(size_t size, double time, std::string container)
+{
+	std:: cout << "Time to process a range of " << size
+		<< " elements with std::" << container << " : "
+		<< std::setprecision(PRECISION) << std::fixed << time << " ms"
+		<< std::endl;
+}
+
+/* ****************************** CONSTRUCTORS ****************************** */
+PmergeMe::PmergeMe(void)
+{
+}
+
+PmergeMe::PmergeMe(char** values, int size)
+{
+	IntegerList::iterator	it;
+	struct timespec			start;
+	struct timespec			end;
+
+	if (size < 0)
+		throw (WrongNumberOfArgumentsException());
+	clock_gettime(CLOCK_MONOTONIC, &start);
+	fill_container(this->_list, values, static_cast<size_t>(size));
+	clock_gettime(CLOCK_MONOTONIC, &end);
+	this->_listTime = get_time_diff(start, end);
+	clock_gettime(CLOCK_MONOTONIC, &start);
+	fill_container(this->_vector, values, static_cast<size_t>(size));
+	clock_gettime(CLOCK_MONOTONIC, &end);
+	this->_vectorTime = get_time_diff(start, end);
+	print_numbers(this->_list, BEFORE);
+	clock_gettime(CLOCK_MONOTONIC, &start);
+	mergesortList(this->_list);
+	clock_gettime(CLOCK_MONOTONIC, &end);
+	this->_listTime += get_time_diff(start, end);
+	clock_gettime(CLOCK_MONOTONIC, &start);
+	mergesortList(this->_list);
+	clock_gettime(CLOCK_MONOTONIC, &end);
+	this->_vectorTime += get_time_diff(start, end);
+	print_numbers(this->_list, AFTER);
+	print_time(size, this->_listTime, "list");
+	print_time(size, this->_vectorTime, "vector");
+}
+
+PmergeMe::PmergeMe(const PmergeMe& rhs)
+{
+	(void)rhs;
+}
+
+/* ******************************* DESTRUCTOR ******************************* */
+PmergeMe::~PmergeMe(void)
+{
+}
+
+/* ******************** COPY ASSIGNMENT OPERATOR OVERLOAD ******************* */
+PmergeMe&	PmergeMe::operator=(const PmergeMe& rhs)
+{
+	(void)rhs;
+	return (*this);
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
@@ -127,20 +169,20 @@ const std::vector<unsigned int>&	PmergeMe::getVector(void) const
 	return (this->_vector);
 }
 
-void	PmergeMe::mergesortList(void)
+void	PmergeMe::mergesortList(IntegerList& list)
 {
-	mergesort(this->_vector, 0, this->_vector.size() - 1);
+	mergesort(list, 0, list.size() - 1);
 }
 
-void	PmergeMe::mergesortVector(void)
+void	PmergeMe::mergesortVector(std::vector<unsigned int> vector)
 {
-	mergesort(this->_vector, 0, this->_vector.size() - 1);
+	mergesort(vector, 0, vector.size() - 1);
 }
 
 /* ******************************* EXCEPTIONS ******************************* */
 const char*	PmergeMe::WrongNumberException::what(void) const throw()
 {
-	return ("Error: the given number is not a positive integer.");
+	return ("Error: the given number is not a valid integer.");
 }
 
 const char*	PmergeMe::WrongNumberOfArgumentsException::what(void) const throw()

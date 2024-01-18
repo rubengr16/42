@@ -14,10 +14,6 @@
 # define INTEGERLIST
 
 # include <list>
-# include <sstream>
-# include <cerrno>		// ERANGE
-# include <cmath>		// HUGE_VALL
-# include <limits>		// std::numeric_limits
 # include <stdexcept>	// std::out_of_range
 
 class	IntegerList: public std::list<unsigned int>
