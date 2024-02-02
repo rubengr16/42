@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 19:15:13 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/14 17:50:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/02/02 21:13:52 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ int	ft_putnbr_base(unsigned long long nb, char *base, int len_base)
 		return ((int)write(1, &base[nb], 1));
 	else
 		return (ft_putnbr_base(nb / len_base, base, len_base)
-			+ (int)write(1, &base[nb % len_base], 1));
+			+ (int)write(1, &base[nb], 1));
 }
