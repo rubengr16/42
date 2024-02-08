@@ -8,6 +8,7 @@ In some systems the docker daemon starts automatically. To start it manually use
 | -- | -- |
 | Build image from Dockerfile | ```docker build [{-f \| --file} <name>.Dockerfile] <path_context>``` |
 | List images | ```docker image ls```|
+| Inspect image | ```docker inspect <id>``` |
 | See run history | ```docker history``` |
 
 ## Dockerfile
@@ -29,6 +30,8 @@ Docker Compose is a tool for defining and running multi-container applications. 
 
 Compose simplifies the control of your entire application stack, making it easy to manage services, networks, and volumes in a single, comprehensible YAML configuration file. Then, with a single command, you create and start all the services from your configuration file.
 
+The default path for a Compose file is **compose.yaml** (preferred) or compose.yml that is placed in the working directory. Compose also supports docker-compose.yaml and docker-compose.yml for backwards compatibility of earlier versions. If both files exist, Compose prefers the canonical compose.yaml.
+
 ## URLs
 
 * [Docker glossary](https://docs.docker.com/glossary/#base-image)
@@ -36,4 +39,5 @@ Compose simplifies the control of your entire application stack, making it easy 
 * [Introduction to Dockerfile](https://docs.docker.com/build/building/packaging/)  
 * [ADD or COPY](https://docs.docker.com/develop/develop-images/instructions/#add-or-copy)  
 * [RUN --mount](https://docs.docker.com/engine/reference/builder/#run---mount)  
+* [Hello docker-compose.yaml](https://docs.docker.com/compose/gettingstarted/)
 * [docker build showing commands output](https://stackoverflow.com/questions/64804749/why-is-docker-build-not-showing-any-output-from-commands/64805337#64805337)
