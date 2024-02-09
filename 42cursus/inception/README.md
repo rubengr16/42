@@ -75,10 +75,10 @@ It is important to note the distinction between ```host_port``` and ```container
 
 ```mermaid
 graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+	A-->B;
+	A-->C;
+	B-->D;
+	C-->D;
 ```
 
 ## Resources
