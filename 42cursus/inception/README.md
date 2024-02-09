@@ -73,13 +73,7 @@ ports:
 ```
 It is important to note the distinction between ```host_port``` and ```container_port```. Networked service-to-service communication uses the ```container_port```. When ```host_port``` is defined, the service is accessible outside the swarm as well.
 
-```mermaid
-graph TD;
-	A --> B;
-	A-->C;
-	B-->D;
-	C<--D;
-```
+![Contact ](./imgs/networking.png)
 
 ## Resources
 
