@@ -68,12 +68,43 @@ By default Compose sets up a single network for your app. Each container for a s
 Your app's network is given a name based on the ```project_name``` -the network will be called ```<project_name>.default```, which is based on the name of the directory it lives in.  
 
 ```
-ports:
-	- "<host_port>:<container_port>"
+<service>:
+	networks:
+		- <network_name>
+	ports:
+		- "<host_port>:<container_port>"
+
+networks:
+	[<network_name>:
+		[[driver: <driver_name>]
+		[driver_opts:
+			[<opt1>: "<define_opt1>"]*]]]
 ```
+
 It is important to note the distinction between ```host_port``` and ```container_port```. Networked service-to-service communication uses the ```container_port```. When ```host_port``` is defined, the service is accessible outside the swarm as well.
 
-![Contact ](./imgs/networking.png)
+![Interaction with ports](./imgs/networking.png)
+
+**Reference containers by name**, not IP, whenever possible. Otherwise you’ll need to constantly update the IP address you use.  
+
+#### Compose for Production
+
+Consider defining an additional Compose file, for example ```production.yml```, which specifies production-appropriate configuration. This configuration file only needs to include the changes you want to make from the original Compose file. The additional Compose file is then applied over the original ```compose.yml``` to create a new configuration.  
+
+Once you have a second configuration file, you can use it with the -f option:
+
+```
+docker compose -f compose.yml -f production.yml up -d
+```
+
+#### Deploying changes
+When you make changes to your app code, remember to rebuild your image and recreate your app's containers:
+
+```
+docker compose build <modified_container_name>
+docker compose up --no-deps -d <modified_container_name>
+```
+This first command rebuilds the image for ```<modified_container_name>``` and then stops, destroys, and recreates just the ```<modified_container_name>``` service. The --no-deps flag prevents Compose from also recreating any services which ```<modified_container_name>``` depends on.
 
 ## Resources
 
