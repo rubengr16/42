@@ -62,6 +62,25 @@ The ```.env``` file is the default method for setting environment variables in y
 **Be cautious about including sensitive data in environment variables**. Consider using [Secrets](https://docs.docker.com/compose/use-secrets/) for managing sensitive information.
 
 
+#### Networking in Compose
+
+By default Compose sets up a single network for your app. Each container for a service joins the default network and is both reachable by other containers on that network, and discoverable by the service's name.  
+Your app's network is given a name based on the ```project_name``` -the network will be called ```<project_name>.default```, which is based on the name of the directory it lives in.  
+
+```
+ports:
+	- "<host_port>:<container_port>"
+```
+It is important to note the distinction between ```host_port``` and ```container_port```. Networked service-to-service communication uses the ```container_port```. When ```host_port``` is defined, the service is accessible outside the swarm as well.
+
+```plantuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+   
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: Another authentication Response
+```
+
 ## Resources
 
 * [Docker glossary](https://docs.docker.com/glossary/)
