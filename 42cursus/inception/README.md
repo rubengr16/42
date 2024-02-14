@@ -1,14 +1,14 @@
 # Inception
 
 ## Table of Contents
-* [Docker Commands](#docker-commands)
+* [Docker commands](#docker-commands)
 * [Dockerfile](#dockerfile)
 * [Docker Compose](#docker-compose)
-* [Docker Compose Commands](#docker-compose-commands)
-* [Docker Compose File](#docker-compose-file)
+* [Docker Compose commands](#docker-compose-commands)
+* [Docker Compose file](#docker-compose-file)
 * [Resources](#resources)
 
-## Docker Commands
+## Docker commands
 
 In some systems the docker daemon starts automatically. To start it manually use: ```sudo systemctl start docker```
 
@@ -34,7 +34,7 @@ Docker builds images by reading the instructions from a ```Dockerfile```. A ```D
 
 ## Docker Compose
 
-### Docker Compose Commands
+### Docker Compose commands
 
 | Command | Action |
 | -- | -- |
@@ -45,7 +45,7 @@ Docker builds images by reading the instructions from a ```Dockerfile```. A ```D
 | ```docker compose ps``` | Lists containers for a Compose project, with current status and exposed ports. |
 | ```docker compose config``` | Renders the actual data model to be applied on the Docker Engine. It merges the Compose files set by -f flags, resolves variables in the Compose file, and expands short-notation into the canonical format. |
 
-### Docker Compose File
+### Docker Compose file
 
 Docker Compose is a tool for defining and running multi-container applications. It is the key to unlocking a streamlined and efficient development and deployment experience.
 
@@ -53,7 +53,7 @@ Compose simplifies the control of your entire application stack, making it easy 
 
 The default path for a Compose file is **```compose.yaml```** (preferred) or ```compose.yml``` that is placed in the working directory. Compose also supports ```docker-compose.yaml``` and ```docker-compose.yml``` for backwards compatibility of earlier versions. If both files exist, Compose prefers the canonical ```compose.yaml```.
 
-#### .env File
+#### .env file
 
 An ```.env``` file in Docker Compose is a text file used to define environment variables that should be made available to Docker containers when running ```docker compose up```. This file typically contains key-value pairs of environment variables -values can be optionally single/double quoted-, and it allows you to centralize and manage configuration in one place. The ```.env``` file is useful if you have multiple environment variables you need to store.  
 
@@ -87,7 +87,7 @@ It is important to note the distinction between ```host_port``` and ```container
 
 **Reference containers by name**, not IP, whenever possible. Otherwise you’ll need to constantly update the IP address you use.  
 
-#### Compose for Production
+#### Compose for production
 
 Consider defining an additional Compose file, for example ```production.yml```, which specifies production-appropriate configuration. This configuration file only needs to include the changes you want to make from the original Compose file. The additional Compose file is then applied over the original ```compose.yml``` to create a new configuration.  
 
@@ -106,6 +106,18 @@ docker compose up --no-deps -d <modified_container_name>
 ```
 This first command rebuilds the image for ```<modified_container_name>``` and then stops, destroys, and recreates just the ```<modified_container_name>``` service. The --no-deps flag prevents Compose from also recreating any services which ```<modified_container_name>``` depends on.
 
+#### Services top-level elements
+
+A service is an abstract definition of a computing resource within an application which can be scaled or replaced independently from other components. Services are backed by a set of containers, run by the platform according to replication requirements and placement constraints. As services are backed by containers, they are defined by a Docker image and set of runtime arguments. All containers within a service are identically created with these arguments.  
+
+A Compose file must declare a ```services``` top-level element as a map whose keys are string representations of service names, and whose values are service definitions. A service definition contains the configuration that is applied to each service container.  
+
+Each service may also include a ```build``` section, which defines how to create the Docker image for the service. Compose supports building docker images using this service definition. If not used, the build section is ignored and the Compose file is still considered valid.  
+
+Each service defines runtime constraints and requirements to run its containers. The ```deploy``` section groups these constraints and allows the platform to adjust the deployment strategy to best match containers' needs with available resources. If not implemented the ```deploy``` section is ignored and the Compose file is still considered valid.  
+
+
+
 ## Resources
 
 * [Docker glossary](https://docs.docker.com/glossary/)
@@ -115,4 +127,5 @@ This first command rebuilds the image for ```<modified_container_name>``` and th
 * [Introduction to Dockerfile](https://docs.docker.com/build/building/packaging/)  
 * [RUN --mount](https://docs.docker.com/engine/reference/builder/#run---mount)  
 * [ADD or COPY](https://docs.docker.com/develop/develop-images/instructions/#add-or-copy)  
-* [Hello docker-compose.yaml](https://docs.docker.com/compose/gettingstarted/)
+* [Hello docker-compose.yaml](https://docs.docker.com/compose/gettingstarted/)  
+* [Docker Compose file reference](https://docs.docker.com/compose/compose-file/)
