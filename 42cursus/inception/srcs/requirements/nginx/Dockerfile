@@ -8,4 +8,6 @@ RUN openssl req \
 	-out /etc/ssl/certificate.cert \
 	-subj "/O=42Madrid/OU=Student/CN=rgallego/C=ES/ST=MD"
 
-COPY ./conf/nginx.conf /
+COPY conf/nginx.conf /etc/nginx/nginx.conf
+
+ENTRYPOINT nginx

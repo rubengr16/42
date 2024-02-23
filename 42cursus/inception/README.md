@@ -15,12 +15,12 @@ In some systems the docker daemon starts automatically. To start it manually use
 | Command | Action |
 | -- | -- |
 | ```docker build [{-f \| --file} <name>.Dockerfile] <path_context>``` | Build image from Dockerfile. |
-| ```docker run [-it] <image> <command>``` | Run the chosen image -downloads it if is not present in the system- and executes the command. You can interact through terminal with ```-it``` flags. |
+| ```docker run [-it] <image_id> <command>``` | Run the chosen image -downloads it if is not present in the system- and executes the command. You can interact through terminal with ```-it``` flags. |
 | ```docker exec [-it] <container_id> <command>``` | Run the command inside the specified container. As in ```docker run```, you can interact through terminal with ```-it``` flags. |
 | ```docker ps``` | List running docker processes. |
 | ```docker image ls``` | List images. |
-| ```docker image tag <id> <image_repository>[:<tag>]``` | Set the given name to the image with the selected id, tag is optional to indicate the version. |
-| ```docker inspect <id>``` | Inspect image. |
+| ```docker image tag <image_id> <image_repository>[:<tag>]``` | Set the given name to the image with the selected id, tag is optional to indicate the version. |
+| ```docker inspect <image_id>``` | Inspect image. |
 | ```docker history``` | See run history. |
 
 ## Dockerfile
