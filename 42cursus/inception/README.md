@@ -116,8 +116,6 @@ Each service may also include a ```build``` section, which defines how to create
 
 Each service defines runtime constraints and requirements to run its containers. The ```deploy``` section groups these constraints and allows the platform to adjust the deployment strategy to best match containers' needs with available resources. If not implemented the ```deploy``` section is ignored and the Compose file is still considered valid.  
 
-
-
 ## Resources
 
 * [Docker glossary](https://docs.docker.com/glossary/)
@@ -131,3 +129,5 @@ Each service defines runtime constraints and requirements to run its containers.
 * [Docker Compose file reference](https://docs.docker.com/compose/compose-file/)
 
 * [NGINX Docs](https://nginx.org/en/docs/)
+* [Certificate Attributes](https://docs.oracle.com/cd/E24191_01/common/tutorials/authz_cert_attributes.html)
+* [SSL Country Codes](https://www.ssl.com/country-codes/)https://www.ssl.com/country-codes/
