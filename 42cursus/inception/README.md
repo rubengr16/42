@@ -14,10 +14,14 @@ In some systems the docker daemon starts automatically. To start it manually use
 
 | Command | Action |
 | -- | -- |
-| ```docker build [{-f \| --file} <name>.Dockerfile] <path_context>``` | Build image from Dockerfile |
-| ```docker image ls``` | List images |
-| ```docker inspect <id>``` | Inspect image |
-| ```docker history``` | See run history |
+| ```docker build [{-f \| --file} <name>.Dockerfile] <path_context>``` | Build image from Dockerfile. |
+| ```docker run [-it] <image> <command>``` | Run the chosen image -downloads it if is not present in the system- and executes the command. You can interact through terminal with ```-it``` flags. |
+| ```docker exec [-it] <container_id> <command>``` | Run the command inside the specified container. As in ```docker run```, you can interact through terminal with ```-it``` flags. |
+| ```docker ps``` | List running docker processes. |
+| ```docker image ls``` | List images. |
+| ```docker image tag <id> <image_repository>[:<tag>]``` | Set the given name to the image with the selected id, tag is optional to indicate the version. |
+| ```docker inspect <id>``` | Inspect image. |
+| ```docker history``` | See run history. |
 
 ## Dockerfile
 
@@ -26,8 +30,8 @@ Docker builds images by reading the instructions from a ```Dockerfile```. A ```D
 | Instruction | Description |
 | -- | -- |
 | ``` FROM <image> ``` | Defines a **base for your image**. |
-| ``` RUN <command> ``` | Executes any commands in a new layer on top of the current image and commits the result. RUN also has a shell form for running commands. Use  ``` RUN --mount=type=bind ``` if you need to **add files from the build context to the container temporarily** to execute a RUN instruction. |
-| ``` WORKDIR <directory> ``` | **Sets the working directory** for any RUN, CMD, ENTRYPOINT, COPY, and ADD instructions that follow it in the Dockerfile. If the WORKDIR **doesn't exist, it will be created** even if it's not used in any subsequent Dockerfile instruction. |
+| ``` RUN <command> ``` | Executes any commands in a new layer on top of the current image and commits the result. ```RUN``` also has a shell form for running commands. Use  ``` RUN --mount=type=bind ``` if you need to **add files from the build context to the container temporarily** to execute a RUN instruction. Remind to set any default option as the ```Dockerfile``` cannot have human interaction. |
+| ``` WORKDIR <directory> ``` | **Sets the working directory** for any ```RUN```, ```CMD```, ```ENTRYPOINT```, ```COPY```, and ```ADD``` instructions that follow it in the Dockerfile. If the ```WORKDIR``` **doesn't exist, it will be created** even if it's not used in any subsequent Dockerfile instruction. |
 | ``` COPY <src> <dest> ``` | Copies **new files or directories** from \<src> and adds them to the filesystem of the container at the path \<dest>. |
 | ``` ADD <src> <dest> ``` | Copies new files, directories or remote file URLs from \<src> and adds them to the filesystem of the image at the path \<dest>. Note: better use ``` COPY ``` to copy files and directories and **only use ``` ADD ``` to access remote file URLS** -do not use a tool such as wget or tar- |
 | ``` CMD <command> ``` | Lets you define the default program that is run once you start the container based on this image. **Each Dockerfile only has one CMD, and only the last CMD instance is respected when multiple exist**. |
