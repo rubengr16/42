@@ -1,4 +1,6 @@
 FROM alpine:3.19.1
+# FROM debian:buster
+# RUN apt-get update && apt-get install -y nginx && apt-get install -y openssl
 
 RUN apk update && apk add nginx && apk add openssl
 
@@ -8,6 +10,15 @@ RUN openssl req \
 	-out /etc/ssl/certificate.crt \
 	-subj "/O=42Madrid/OU=Student/CN=rgallego/C=ES/ST=MD"
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf
 
-ENTRYPOINT nginx
+# EXPOSE 80
+
+COPY conf/nginx.conf /etc/nginx/nginx.d/
+
+COPY tools/index.html /var/www/html/
+
+RUN mkdir -p /run/nginx
+EXPOSE 443
+
+# ENTRYPOINT nginx
+CMD ["nginx", "-g", "daemon off;"]
