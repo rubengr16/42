@@ -17,8 +17,6 @@ COPY conf/nginx.conf /etc/nginx/nginx.d/
 
 COPY tools/index.html /var/www/html/
 
-RUN mkdir -p /run/nginx
-EXPOSE 443
+EXPOSE 4242
 
-# ENTRYPOINT nginx
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT nginx -g "daemon off;"
