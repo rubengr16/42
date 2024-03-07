@@ -10,13 +10,8 @@ RUN openssl req \
 	-out /etc/ssl/certificate.crt \
 	-subj "/O=42Madrid/OU=Student/CN=rgallego/C=ES/ST=MD"
 
-
-# EXPOSE 80
-
-COPY conf/nginx.conf /etc/nginx/nginx.d/
+COPY conf/nginx.conf /etc/nginx/
 
 COPY tools/index.html /var/www/html/
 
-EXPOSE 4242
-
-ENTRYPOINT nginx -g "daemon off;"
+ENTRYPOINT nginx

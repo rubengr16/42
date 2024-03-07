@@ -22,6 +22,8 @@ In some systems the docker daemon starts automatically. To start it manually use
 | ```docker image tag <image_id> <image_repository>[:<tag>]``` | Set the given name to the image with the selected id, tag is optional to indicate the version. |
 | ```docker inspect <image_id>``` | Inspect image. |
 | ```docker history``` | See run history. |
+| ```docker cp f07b0b5d6ee7:/etc/nginx/nginx.conf default``` |  |
+| ```docker run --publish 4242:4242 nginx``` |  |
 
 ## Dockerfile
 
