@@ -1,6 +1,16 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/07 21:29:25 by rgallego          #+#    #+#              #
+#    Updated: 2024/03/07 21:35:59 by rgallego         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 FROM alpine:3.19.1
-# FROM debian:buster
-# RUN apt-get update && apt-get install -y nginx && apt-get install -y openssl
 
 RUN apk update && apk add nginx && apk add openssl
 
@@ -13,5 +23,7 @@ RUN openssl req \
 COPY conf/nginx.conf /etc/nginx/
 
 COPY tools/index.html /var/www/html/
+
+EXPOSE 443
 
 ENTRYPOINT nginx

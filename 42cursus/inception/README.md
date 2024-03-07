@@ -15,15 +15,14 @@ In some systems the docker daemon starts automatically. To start it manually use
 | Command | Action |
 | -- | -- |
 | ```docker build [{-f \| --file} <name>.Dockerfile] <path_context>``` | Build image from Dockerfile. |
-| ```docker run [-it] <image_id> <command>``` | Run the chosen image -downloads it if is not present in the system- and executes the command. You can interact through terminal with ```-it``` flags. |
+| ```docker run [-it] [-p host_port:container_port] <image_id> [<command>]``` | Run the chosen image -downloads it if is not present in the system- and optionally executes the chosen command. You can interact through terminal with ```-it``` flags. By using the ```{-p \[Dockerfile](#dockerfile)| --publish}``` flags you can set the port bindings and expose ports from the container -it is recommended to read ```EXPOSE``` on [Dockerfile](#dockerfile)-. |
 | ```docker exec [-it] <container_id> <command>``` | Run the command inside the specified container. As in ```docker run```, you can interact through terminal with ```-it``` flags. |
 | ```docker ps``` | List running docker processes. |
 | ```docker image ls``` | List images. |
 | ```docker image tag <image_id> <image_repository>[:<tag>]``` | Set the given name to the image with the selected id, tag is optional to indicate the version. |
 | ```docker inspect <image_id>``` | Inspect image. |
 | ```docker history``` | See run history. |
-| ```docker cp f07b0b5d6ee7:/etc/nginx/nginx.conf default``` |  |
-| ```docker run --publish 4242:4242 nginx``` |  |
+| ```docker cp <container_id>:<host_file_path> <local_path>``` | Copies the ```<host_file_path>``` from the ```<container_id>``` to the``` <local_path>```, useful to extract container's files into the local host |
 
 ## Dockerfile
 
@@ -37,6 +36,7 @@ Docker builds images by reading the instructions from a ```Dockerfile```. A ```D
 | ``` COPY <src> <dest> ``` | Copies **new files or directories** from \<src> and adds them to the filesystem of the container at the path \<dest>. |
 | ``` ADD <src> <dest> ``` | Copies new files, directories or remote file URLs from \<src> and adds them to the filesystem of the image at the path \<dest>. Note: better use ``` COPY ``` to copy files and directories and **only use ``` ADD ``` to access remote file URLS** -do not use a tool such as wget or tar- |
 | ``` CMD <command> ``` | Lets you define the default program that is run once you start the container based on this image. **Each Dockerfile only has one CMD, and only the last CMD instance is respected when multiple exist**. |
+| ```EXPOSE <port>``` | The ```EXPOSE``` instruction **informs** Docker that the container listens on the specified network ports at runtime, it just informs, **does not carry out any binding neither expose the ports**. |
 
 ## Docker Compose
 
