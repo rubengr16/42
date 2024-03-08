@@ -6,6 +6,7 @@
 * [Docker Compose](#docker-compose)
 * [Docker Compose commands](#docker-compose-commands)
 * [Docker Compose file](#docker-compose-file)
+* [NGINX](#nginx)
 * [Resources](#resources)
 
 ## Docker commands
@@ -14,7 +15,7 @@ In some systems the docker daemon starts automatically. To start it manually use
 
 | Command | Action |
 | -- | -- |
-| ```docker build [{-f \| --file} <name>.Dockerfile] <path_context>``` | Build image from Dockerfile. |
+| ```docker build [{-f \| --file} <name>.Dockerfile] <path_context> [-t <image_name>]``` | Build image from Dockerfile. |
 | ```docker run [-it] [-p host_port:container_port] <image_id> [<command>]``` | Run the chosen image -downloads it if is not present in the system- and optionally executes the chosen command. You can interact through terminal with ```-it``` flags. By using the ```{-p \[Dockerfile](#dockerfile)| --publish}``` flags you can set the port bindings and expose ports from the container -it is recommended to read ```EXPOSE``` on [Dockerfile](#dockerfile)-. |
 | ```docker exec [-it] <container_id> <command>``` | Run the command inside the specified container. As in ```docker run```, you can interact through terminal with ```-it``` flags. |
 | ```docker ps``` | List running docker processes. |
@@ -116,11 +117,39 @@ This first command rebuilds the image for ```<modified_container_name>``` and th
 
 A service is an abstract definition of a computing resource within an application which can be scaled or replaced independently from other components. Services are backed by a set of containers, run by the platform according to replication requirements and placement constraints. As services are backed by containers, they are defined by a Docker image and set of runtime arguments. All containers within a service are identically created with these arguments.  
 
+---
+##### ```services```
 A Compose file must declare a ```services``` top-level element as a map whose keys are string representations of service names, and whose values are service definitions. A service definition contains the configuration that is applied to each service container.  
 
-Each service may also include a ```build``` section, which defines how to create the Docker image for the service. Compose supports building docker images using this service definition. If not used, the build section is ignored and the Compose file is still considered valid.  
+----
+##### ```build```
+Each service may also include a ```build``` section, which defines how to create the Docker image for the service. Compose supports building docker images using this service definition. If not used, the build section is ignored and the Compose file is still considered valid -it will search by default for the ```Dockerfile``` in the directory where the ```docker-compose.yml``` is located-. Inside the ```build``` section can be defined the context -relative or absolute path to the location of the ```Dockerfile```, better to use a relative path- and a ```dockerfile``` attribute to specify the ```Dockerfile```'s name if it is not the cannonical.  
 
+---
+##### ```depends_on```
+
+Expresses startup and shutdown dependencies between services.  
+
+The short syntax receives a list -set by a ```-```- of the needed service's names to be started before the dependent service, on shutdown the dependent service is the first to be removed.  
+
+The long one defines the needed services without a list. Inside each dependency service can be defined fields such as: ```restart``` when set to ```true``` it restarts after an update of the dependency service; ```condition``` which needs to be satisfied, can be chosen from ```service_started``` -equivalent to the short syntax behaviour-, ```service_healthy``` -a dependency needs to be "healthy" before starting the dependent service- or ```service_completed_successfully``` -a dependency is expected to run to successful completion before starting a dependent service-; finally, ```required``` set to ```false``` only warns when the dependency service is not started or available -by default is set to ```true```-.  
+
+---
+
+
+
+---
+##### ```deploy```
 Each service defines runtime constraints and requirements to run its containers. The ```deploy``` section groups these constraints and allows the platform to adjust the deployment strategy to best match containers' needs with available resources. If not implemented the ```deploy``` section is ignored and the Compose file is still considered valid.  
+
+## NGINX
+
+## MariaDB
+\> mariadb-install-db --no-defaults --skip-test-db --user=mysql 
+\> mysqld_safe --datadir=/data # Levanta la base de datos en el datadir indicado
+Revisar la config en:
+/etc/my.cnf.d/mariadb-server.cnf
+Comentar el skip-networking y descomentar el bind a la dirección de broadcasting
 
 ## Resources
 
@@ -134,6 +163,12 @@ Each service defines runtime constraints and requirements to run its containers.
 * [Hello docker-compose.yaml](https://docs.docker.com/compose/gettingstarted/)  
 * [Docker Compose file reference](https://docs.docker.com/compose/compose-file/)
 
+* [Alpine NGINX installation](https://wiki.alpinelinux.org/wiki/Nginx)
 * [NGINX Docs](https://nginx.org/en/docs/)
+* [Creating NGINX Plus and NGINX Configuration Files](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/#:~:text=By%20default%20the%20file%20is,local%2Fetc%2Fnginx)
+* [Nginx SSL Certificate Self-Signed](https://tech.sadaalomma.com/nginx/nginx-ssl-certificate-self-signed/)
 * [Certificate Attributes](https://docs.oracle.com/cd/E24191_01/common/tutorials/authz_cert_attributes.html)
-* [SSL Country Codes](https://www.ssl.com/country-codes/)https://www.ssl.com/country-codes/
+* [SSL Country Codes](https://www.ssl.com/country-codes/)
+* [Generating a self-signed certificate using OpenSSL](https://www.ibm.com/docs/en/api-connect/2018.x?topic=overview-generating-self-signed-certificate-using-openssl)
+
+* [Alpine MariaDB installation](https://wiki.alpinelinux.org/wiki/MariaDB)

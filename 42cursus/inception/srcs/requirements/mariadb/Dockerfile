@@ -5,25 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/22 21:29:25 by rgallego          #+#    #+#              #
-#    Updated: 2024/03/08 18:06:21 by rgallego         ###   ########.fr        #
+#    Created: 2024/03/08 17:52:14 by rgallego          #+#    #+#              #
+#    Updated: 2024/03/08 20:23:21 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.19.1
 
-RUN apk update && apk add nginx openssl
+RUN apk update && apk add mysql mysql-client openrc
 
-RUN openssl req \
-	-newkey rsa:2048 -nodes -x509 -days 365 \
-	-keyout /etc/ssl/private/certificate.key \
-	-out /etc/ssl/certificate.crt \
-	-subj "/O=42Madrid/OU=Student/CN=rgallego/C=ES/ST=MD"
+ADD 
 
-COPY conf/nginx.conf /etc/nginx/
+RUN mysql-database 
+RUN mysqld ; mariadb drop user ... 
 
-COPY tools/index.html /var/www/html/
 
-EXPOSE 443
 
-ENTRYPOINT nginx
+CMD mysqld --database-dir=/data
