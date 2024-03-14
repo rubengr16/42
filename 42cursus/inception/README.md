@@ -147,7 +147,8 @@ Each service defines runtime constraints and requirements to run its containers.
 ## MariaDB
 
 \> mariadb-install-db --no-defaults --skip-test-db --user=mysql 
-\> mysqld_safe --datadir=/data # Levanta la base de datos en el datadir indicado
+\> mariadbd-safe --datadir=/data --init-file=/init.sql # Levanta la base de datos en el datadir indicado
+init file necesita la ruta ABSOLUTA
 Revisar la config en:
 /etc/my.cnf.d/mariadb-server.cnf
 Comentar el skip-networking y descomentar el bind a la dirección de broadcasting
