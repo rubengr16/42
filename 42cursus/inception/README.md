@@ -145,11 +145,16 @@ Each service defines runtime constraints and requirements to run its containers.
 ## NGINX
 
 ## MariaDB
+
 \> mariadb-install-db --no-defaults --skip-test-db --user=mysql 
 \> mysqld_safe --datadir=/data # Levanta la base de datos en el datadir indicado
 Revisar la config en:
 /etc/my.cnf.d/mariadb-server.cnf
 Comentar el skip-networking y descomentar el bind a la dirección de broadcasting
+
+---  
+
+For the configuration 
 
 ## Resources
 
@@ -172,3 +177,11 @@ Comentar el skip-networking y descomentar el bind a la dirección de broadcastin
 * [Generating a self-signed certificate using OpenSSL](https://www.ibm.com/docs/en/api-connect/2018.x?topic=overview-generating-self-signed-certificate-using-openssl)
 
 * [Alpine MariaDB installation](https://wiki.alpinelinux.org/wiki/MariaDB)
+* [Sed options](https://www.gnu.org/software/sed/manual/sed.html#Command_002dLine-Options)
+* [Starting and stopping MariDB automatically](https://mariadb.com/kb/en/starting-and-stopping-mariadb-automatically/)
+* [mariadb-safe](https://mariadb.com/kb/en/mariadbd-safe/)
+* [mysqld_safe](https://mariadb.com/kb/en/mysqld_safe/)
+* [mariadbd](https://mariadb.com/kb/en/mariadbd-options/)
+* [mariadbd --init_file](https://mariadb.com/kb/en/server-system-variables/#init_file)
+
+* [Alpine WordPress Installation](https://wiki.alpinelinux.org/wiki/WordPress)

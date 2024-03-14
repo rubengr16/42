@@ -5,20 +5,11 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/08 17:52:14 by rgallego          #+#    #+#              #
-#    Updated: 2024/03/11 21:58:58 by rgallego         ###   ########.fr        #
+#    Created: 2024/03/11 21:58:47 by rgallego          #+#    #+#              #
+#    Updated: 2024/03/11 21:59:25 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.19.1
 
-RUN apk update && apk add mysql mysql-client
-
-# ADD 
-
-# RUN mysql-database 
-# RUN mysqld ; mariadb drop user ... 
-
-
-
-# CMD mysqld --database-dir=/data
+RUN apk update && apk add 
