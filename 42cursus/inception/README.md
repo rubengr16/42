@@ -153,6 +153,12 @@ Revisar la config en:
 /etc/my.cnf.d/mariadb-server.cnf
 Comentar el skip-networking y descomentar el bind a la dirección de broadcasting
 
+mariadb --help
+Default options are read from the following files in the given order:  
+/etc/my.cnf /etc/mysql/my.cnf ~/.my.cnf 
+
+## Wordpress + PHP-fpm
+
 ---  
 
 For the configuration 
@@ -192,3 +198,7 @@ THE KEY
 
 
 https://test-dockerrr.readthedocs.io/en/latest/userguide/containers/dockervolumes/#mount-a-host-file-as-a-data-volume
+
+
+[Alpine WordPress installation](https://wiki.alpinelinux.org/wiki/Apache_with_php-fpm)
+[PHP packages](https://pkgs.alpinelinux.org/packages?name=php83*&branch=v3.19&repo=&arch=&maintainer=)
