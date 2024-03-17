@@ -186,3 +186,9 @@ For the configuration
 * [mariadbd --init_file](https://mariadb.com/kb/en/server-system-variables/#init_file)
 
 * [Alpine WordPress Installation](https://wiki.alpinelinux.org/wiki/WordPress)
+
+THE KEY
+* [mariadb-install-db --extra-file](https://man.archlinux.org/man/extra/mariadb/mariadb-install-db.1.en)
+
+
+https://test-dockerrr.readthedocs.io/en/latest/userguide/containers/dockervolumes/#mount-a-host-file-as-a-data-volume
