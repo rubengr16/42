@@ -6,22 +6,27 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 17:52:14 by rgallego          #+#    #+#              #
-#    Updated: 2024/03/14 21:07:26 by rgallego         ###   ########.fr        #
+#    Updated: 2024/03/17 19:05:22 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.19.1
 
-ARG DB_NAME=hola_juan
+ENV DB_NAME="hola_juan"
 
 RUN apk update && apk add mysql mysql-client
 
-RUN mariadb-install-db --no-defaults --skip-test-db --user=mysql
+# COPY ./tools/testing.sql .
 
-COPY ./tools/testing.sql .
+# RUN sed -i "s/\${DB_NAME}/${DB_NAME}/" testing.sql
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
-#ENTRYPOINT mariadbd-safe --init-file=testing.sql --datadir=/data 
+# --mount=type=bind,source=./tools/testing.sql,target=/tmp/requirements.txt
+
+RUN --mount=type=bind,source=/tools,target=/tmp,rw\
+	sh /tmp/substitute.sh &&\
+	mariadb-install-db --no-defaults --extra-file=/tmp/testing.sql --skip-test-db --user=mysql
+
+ENTRYPOINT mariadbd-safe --datadir=/data
 # ADD 
 
 # RUN mysql-database 

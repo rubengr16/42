@@ -6,13 +6,13 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/11 21:58:47 by rgallego          #+#    #+#              #
-#    Updated: 2024/03/21 14:30:20 by rgallego         ###   ########.fr        #
+#    Updated: 2024/03/21 14:32:10 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.19.1
 
-# RUN apk update && apk add 
+RUN apk update && apk upgrade && apk add php83 php83-fpm
 
 WORKDIR /usr/share/webapps/
 
