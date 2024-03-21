@@ -186,3 +186,6 @@ For the configuration
 * [mariadbd --init_file](https://mariadb.com/kb/en/server-system-variables/#init_file)
 
 * [Alpine WordPress Installation](https://wiki.alpinelinux.org/wiki/WordPress)
+* [Wordpress download releases](https://wordpress.org/download/releases/)
+* [How to install WordPress](https://developer.wordpress.org/advanced-administration/before-install/howto-install/)
+* [Editing wp-config.php](https://developer.wordpress.org/advanced-administration/wordpress/wp-config/)
