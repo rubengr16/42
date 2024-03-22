@@ -123,7 +123,9 @@ A Compose file must declare a ```services``` top-level element as a map whose ke
 
 ----
 ##### ```build```
-Each service may also include a ```build``` section, which defines how to create the Docker image for the service. Compose supports building docker images using this service definition. If not used, the build section is ignored and the Compose file is still considered valid -it will search by default for the ```Dockerfile``` in the directory where the ```docker-compose.yml``` is located-. Inside the ```build``` section can be defined the context -relative or absolute path to the location of the ```Dockerfile```, better to use a relative path- and a ```dockerfile``` attribute to specify the ```Dockerfile```'s name if it is not the cannonical.  
+Each service may also include a ```build``` section, which defines how to create the Docker image for the service. Compose supports building docker images using this service definition. If not used, the build section is ignored and the Compose file is still considered valid -it will search by default for the ```Dockerfile``` in the directory where the ```docker-compose.yml``` is located-. Inside the ```build``` section can be defined the ```context``` -relative or absolute path to the location of the ```Dockerfile```, better to use a relative path- and a ```dockerfile``` attribute to specify the ```Dockerfile```'s name if it is not the cannonical.  
+
+Also the ```args``` can be set here, those ```args``` will be used later in the ```Dockerfile``` by the ```ARG``` reference.
 
 ---
 ##### ```depends_on```
@@ -133,6 +135,13 @@ Expresses startup and shutdown dependencies between services.
 The short syntax receives a list -set by a ```-```- of the needed service's names to be started before the dependent service, on shutdown the dependent service is the first to be removed.  
 
 The long one defines the needed services without a list. Inside each dependency service can be defined fields such as: ```restart``` when set to ```true``` it restarts after an update of the dependency service; ```condition``` which needs to be satisfied, can be chosen from ```service_started``` -equivalent to the short syntax behaviour-, ```service_healthy``` -a dependency needs to be "healthy" before starting the dependent service- or ```service_completed_successfully``` -a dependency is expected to run to successful completion before starting a dependent service-; finally, ```required``` set to ```false``` only warns when the dependency service is not started or available -by default is set to ```true```-.  
+```
+<service_name>:
+	build:
+		context: <path_to_dockerfile>
+		args:
+			<arg_name>: {value | ${env_vble_name}}
+```
 
 ---
 
@@ -174,6 +183,7 @@ For the configuration
 * [ADD or COPY](https://docs.docker.com/develop/develop-images/instructions/#add-or-copy)  
 * [Hello docker-compose.yaml](https://docs.docker.com/compose/gettingstarted/)  
 * [Docker Compose file reference](https://docs.docker.com/compose/compose-file/)
+* [args](https://docs.docker.com/compose/compose-file/build/#args)
 
 * [Alpine NGINX installation](https://wiki.alpinelinux.org/wiki/Nginx)
 * [NGINX Docs](https://nginx.org/en/docs/)

@@ -1,14 +1,42 @@
 version: "3.8"
 
 services:
-  nginx-container:
+  nginx:
     build:
       context: ./requirements/nginx
+      args:
+        FAST_CGI_DST_HOST: wordpress
     hostname: nginx-container
     ports:
       - 443:443
     networks:
       - net
+  mariadb:
+    build:
+      context: ./requirements/mariadb
+      args:
+        DB_NAME: ${DB_NAME}
+        DB_USER: ${DB_USER}
+        DB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 3306:3306
+    networks:
+      - net
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+      args:
+        DB_NAME: ${DB_NAME}
+        DB_USER: ${DB_USER}
+        DB_PASSWORD: ${DB_PASSWORD}
+        DB_HOST: mariadb
+        FAST_CGI_SRC_HOST: nginx
+    ports:
+      - 9000:9000
+    networks:
+      - net
+      
+
 networks:
   net:
     name: net

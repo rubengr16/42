@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 21:29:25 by rgallego          #+#    #+#              #
-#    Updated: 2024/03/08 18:06:21 by rgallego         ###   ########.fr        #
+#    Updated: 2024/03/22 21:15:27 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ RUN openssl req \
 	-subj "/O=42Madrid/OU=Student/CN=rgallego/C=ES/ST=MD"
 
 COPY conf/nginx.conf /etc/nginx/
+
+RUN sed -i "s/FAST_CGI_DST_HOST/$FAST_CGI_DST_HOST/" /etc/nginx/nginx.conf
 
 COPY tools/index.html /var/www/html/
 
