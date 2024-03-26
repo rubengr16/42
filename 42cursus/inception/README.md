@@ -205,7 +205,11 @@ For the configuration
 
 THE KEY
 * [mariadb-install-db --extra-file](https://man.archlinux.org/man/extra/mariadb/mariadb-install-db.1.en)
-
+* [CREATE USER](https://dev.mysql.com/doc/refman/8.3/en/create-user.html)
+* [CREATE DATABASE](https://dev.mysql.com/doc/refman/8.3/en/create-database.html)
+* [CREATE ROLE](https://dev.mysql.com/doc/refman/8.0/en/create-role.html)
+* [GRANT](https://dev.mysql.com/doc/refman/8.0/en/grant.html)
+* [FLUSH](https://dev.mysql.com/doc/refman/8.0/en/flush.html)
 
 https://test-dockerrr.readthedocs.io/en/latest/userguide/containers/dockervolumes/#mount-a-host-file-as-a-data-volume
 
