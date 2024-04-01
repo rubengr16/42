@@ -210,6 +210,8 @@ THE KEY
 * [CREATE ROLE](https://dev.mysql.com/doc/refman/8.0/en/create-role.html)
 * [GRANT](https://dev.mysql.com/doc/refman/8.0/en/grant.html)
 * [FLUSH](https://dev.mysql.com/doc/refman/8.0/en/flush.html)
+* [DROP USER](https://dev.mysql.com/doc/refman/8.0/en/drop-user.html)
+* [How to Reset the Root Password](https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html)
 
 https://test-dockerrr.readthedocs.io/en/latest/userguide/containers/dockervolumes/#mount-a-host-file-as-a-data-volume
 
