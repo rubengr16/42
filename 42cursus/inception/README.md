@@ -204,6 +204,7 @@ For the configuration
 * [Alpine WordPress Installation](https://wiki.alpinelinux.org/wiki/WordPress)
 
 THE KEY
+* [bootstrap](https://dev.mysql.com/doc/refman/5.7/en/server-options.html#option_mysqld_bootstrap)
 * [mariadb-install-db --extra-file](https://man.archlinux.org/man/extra/mariadb/mariadb-install-db.1.en)
 * [CREATE USER](https://dev.mysql.com/doc/refman/8.3/en/create-user.html)
 * [CREATE DATABASE](https://dev.mysql.com/doc/refman/8.3/en/create-database.html)
