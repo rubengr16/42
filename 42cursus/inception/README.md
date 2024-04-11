@@ -213,6 +213,7 @@ THE KEY
 * [FLUSH](https://dev.mysql.com/doc/refman/8.0/en/flush.html)
 * [DROP USER](https://dev.mysql.com/doc/refman/8.0/en/drop-user.html)
 * [How to Reset the Root Password](https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html)
+* [What is the difference between the Bash operators \[\[ vs \[ vs ( vs ((?](https://unix.stackexchange.com/a/306115)
 
 https://test-dockerrr.readthedocs.io/en/latest/userguide/containers/dockervolumes/#mount-a-host-file-as-a-data-volume
 
