@@ -25,7 +25,7 @@ cat << EOF > /etc/my.cnf.d/mariadb-server.cnf
 	#
 	# Allow server to accept connections on all interfaces.
 	#
-	bind-address=$(WP_NETWORK)
+	bind-address=${WP_NETWORK}
 	#
 	# Optional setting
 	#wsrep_slave_threads=1
