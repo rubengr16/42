@@ -6,13 +6,17 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/11 21:58:47 by rgallego          #+#    #+#              #
-#    Updated: 2024/03/22 21:23:15 by rgallego         ###   ########.fr        #
+#    Updated: 2024/04/22 22:15:55 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM alpine:3.19.1
 
-ARG DB_NAME DB_USER DB_PASSWORD DB_HOST FAST_CGI_ORIGIN_HOST
+ARG DB_NAME\
+	DB_USER\
+	DB_PASSWORD\
+	DB_HOST\
+	FAST_CGI_ORIGIN_HOST
 
 RUN apk update && apk upgrade && apk add php83 php83-fpm
 
@@ -35,7 +39,7 @@ RUN mv wp-config-sample.php wp-config.php &&\
 # Doubts on how to manage the user, if I need to change them
 RUN sed -i "s/127.0.0.1/$FAST_CGI_SRC_HOST/" /etc/php83/php-fpm.d/www.conf
 
-EXPOSE 9000
+# EXPOSE 9000
 
 # Fails, to be tested with the docker compose
 ENTRYPOINT php-fpm83 --nodaemonize

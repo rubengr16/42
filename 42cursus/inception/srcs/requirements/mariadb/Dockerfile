@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 17:52:14 by rgallego          #+#    #+#              #
-#    Updated: 2024/04/14 16:07:48 by rgallego         ###   ########.fr        #
+#    Updated: 2024/04/22 22:20:07 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,6 @@ COPY /tools /tmp
 
 RUN sh /tmp/create-config.sh && sh /tmp/init.sh
 
-EXPOSE 3306
+# EXPOSE 3306
 
 ENTRYPOINT mariadbd-safe
