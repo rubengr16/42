@@ -18,8 +18,9 @@ services:
         DB_NAME: ${DB_NAME}
         DB_USER: ${DB_USER}
         DB_PASSWORD: ${DB_PASSWORD}
-    ports:
-      - 3306:3306
+        WP_NETWORK: ${WP_NETWORK}
+    # ports:
+    #   - 3306:3306
     networks:
       - net
   wordpress:
@@ -31,8 +32,8 @@ services:
         DB_PASSWORD: ${DB_PASSWORD}
         DB_HOST: mariadb
         FAST_CGI_SRC_HOST: nginx
-    ports:
-      - 9000:9000
+    # ports:
+    #   - 9000:9000
     networks:
       - net
       

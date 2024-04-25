@@ -123,7 +123,6 @@ A Compose file must declare a ```services``` top-level element as a map whose ke
 
 ----
 ##### ```build```
-Each service may also include a ```build``` section, which defines how to create the Docker image for the service. Compose supports building docker images using this service definition. If not used, the build section is ignored and the Compose file is still considered valid -it will search by default for the ```Dockerfile``` in the directory where the ```docker-compose.yml``` is located-. Inside the ```build``` section can be defined the ```context``` -relative or absolute path to the location of the ```Dockerfile```, better to use a relative path- and a ```dockerfile``` attribute to specify the ```Dockerfile```'s name if it is not the cannonical.  
 
 Also the ```args``` can be set here, those ```args``` will be used later in the ```Dockerfile``` by the ```ARG``` reference.
 
