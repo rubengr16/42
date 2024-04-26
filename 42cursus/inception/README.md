@@ -153,17 +153,29 @@ Each service defines runtime constraints and requirements to run its containers.
 ## NGINX
 
 ## MariaDB
+#### Arguments
+* `DB_NAME`
+* `DB_USER`
+* `DB_PASSWORD`
+* `WP_NETWORK`
+#### Packages
+* `mariadb`
+* `mysql-client`
 
-\> mariadb-install-db --no-defaults --skip-test-db --user=mysql 
-\> mariadbd-safe --datadir=/data --init-file=/init.sql # Levanta la base de datos en el datadir indicado
-init file necesita la ruta ABSOLUTA
-Revisar la config en:
-/etc/my.cnf.d/mariadb-server.cnf
-Comentar el skip-networking y descomentar el bind a la dirección de broadcasting
+#### create-config.sh
+We use `cat << EOF > /etc/my.cnf.d/mariadb-server.cnf` to redirect the MariaDB configuration and substitute automatically the `bind-address` field by the `WP_NETWORK` arg.  
+On the other hand, `skip-networking` will be commented and `user` and `data` will be hardcoded to `mysql` and `/data` which are necessary to work with MariaDB. By setting those parameters we don't need to use flags like `--user` and `--datadir` on the MariaDB programs.  
 
-mariadb --help
-Default options are read from the following files in the given order:  
-/etc/my.cnf /etc/mysql/my.cnf ~/.my.cnf 
+#### init.sh
+`mariadb-install-db  --skip-test-db`  
+Creates an initializes the DB. The `skip-test-db` option avoids the creation of an unwanted `test` DB.  
+
+`mariadbd --bootstrap --skip-grant-tables=false`  
+MariaDB is set for wordpress using again `cat << EOF` to substitute variables that will be passed to the MariaDB command.  
+Those settings include creating the wordpress DB with the given name in `DB_NAME`. Create an user identified by `DB_USER` which can connect from `WP_NETWORK` with the correct `BD_PASSWORD`. Grant privileges on all tables from `DB_NAME` to the user. Delete the general purpose user called `mysql` who can be used from `localhost`. And finally, set a randomly generated password to `root` --this password is generated using `/dev/urandom` and setting the wanted characters with `tr -dc` and `head -c20`.
+
+#### ENTRYPOINT `mariadbd-safe`  
+Starts safely the MariaDB daemon.
 
 ## Wordpress + PHP-fpm
 
