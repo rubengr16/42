@@ -151,6 +151,23 @@ The long one defines the needed services without a list. Inside each dependency 
 Each service defines runtime constraints and requirements to run its containers. The ```deploy``` section groups these constraints and allows the platform to adjust the deployment strategy to best match containers' needs with available resources. If not implemented the ```deploy``` section is ignored and the Compose file is still considered valid.  
 
 ## NGINX
+#### Arguments
+* 
+
+#### Packages
+* `nginx`
+* `openssl`
+
+#### Generate the RSA:2048 keys
+Use `openssl req` to create a RSA:2048 using flags like `-newkey` to indicate the action of generating a new key, among others. To bring up some flags: indicate the out file for storing the private key with `-keyout` and `out` to indicate the path of the public certificate. Finally the `-subj` gives some information about the `/O` organization, `/OU` organizational unit, `/CN` , `/C` country and `/ST` state, this information is not necessary.
+
+#### Configure NGINX
+The mail NGINX config file is located in `/etc/nginx/nginx.conf` which can include other files in `/etc/nginx/http.d/*.conf`, but we decide to change the first one as it is the main. Almost all possible directives will be parametrized and substituted by args using `sed -i`.  
+We add on the top-most level the `daemon off;` directive to execute NGINX without a daemon on the background and don't need to specified this with a flag.  
+Later, inside the `http` block we define a `server` one to attend our requirements.  
+On it we'll start by setting the `listen` directives for IPv4 and IPv6 in the port `443` for `ssl`. `SSL` or Secure Sockets Layer is the security protocol which enables the use of `https`. For this sake we add the `ssl_certificate` to indicate the location of the public certificate, `ssl_certificate_key` to set the path of the private key and the versions of TLS in `ssl_protocols` -Transfer Layer Security is the succesor and improved version of SSL3.0-.  
+With `server_name` we can set the desired names of the server.
+`root` sets the root directory for requests, it will be used when a location block has not its own root directive.  
 
 ## MariaDB
 #### Arguments
@@ -158,15 +175,16 @@ Each service defines runtime constraints and requirements to run its containers.
 * `DB_USER`
 * `DB_PASSWORD`
 * `WP_NETWORK`
+
 #### Packages
 * `mariadb`
 * `mysql-client`
 
-#### create-config.sh
+#### create-config\.sh
 We use `cat << EOF > /etc/my.cnf.d/mariadb-server.cnf` to redirect the MariaDB configuration and substitute automatically the `bind-address` field by the `WP_NETWORK` arg.  
 On the other hand, `skip-networking` will be commented and `user` and `data` will be hardcoded to `mysql` and `/data` which are necessary to work with MariaDB. By setting those parameters we don't need to use flags like `--user` and `--datadir` on the MariaDB programs.  
 
-#### init.sh
+#### init\.sh
 `mariadb-install-db  --skip-test-db`  
 Creates an initializes the DB. The `skip-test-db` option avoids the creation of an unwanted `test` DB.  
 
@@ -203,6 +221,7 @@ For the configuration
 * [Certificate Attributes](https://docs.oracle.com/cd/E24191_01/common/tutorials/authz_cert_attributes.html)
 * [SSL Country Codes](https://www.ssl.com/country-codes/)
 * [Generating a self-signed certificate using OpenSSL](https://www.ibm.com/docs/en/api-connect/2018.x?topic=overview-generating-self-signed-certificate-using-openssl)
+* [FastCGI Params](https://www.nginx.com/resources/wiki/start/topics/examples/phpfcgi/#fastcgi-params)
 
 * [Alpine MariaDB installation](https://wiki.alpinelinux.org/wiki/MariaDB)
 * [Sed options](https://www.gnu.org/software/sed/manual/sed.html#Command_002dLine-Options)
@@ -211,12 +230,7 @@ For the configuration
 * [mysqld_safe](https://mariadb.com/kb/en/mysqld_safe/)
 * [mariadbd](https://mariadb.com/kb/en/mariadbd-options/)
 * [mariadbd --init_file](https://mariadb.com/kb/en/server-system-variables/#init_file)
-
-* [Alpine WordPress Installation](https://wiki.alpinelinux.org/wiki/WordPress)
-
-THE KEY
-* [bootstrap](https://dev.mysql.com/doc/refman/5.7/en/server-options.html#option_mysqld_bootstrap)
-* [mariadb-install-db --extra-file](https://man.archlinux.org/man/extra/mariadb/mariadb-install-db.1.en)
+* [bootstrap flag](https://dev.mysql.com/doc/refman/5.7/en/server-options.html#option_mysqld_bootstrap)
 * [CREATE USER](https://dev.mysql.com/doc/refman/8.3/en/create-user.html)
 * [CREATE DATABASE](https://dev.mysql.com/doc/refman/8.3/en/create-database.html)
 * [CREATE ROLE](https://dev.mysql.com/doc/refman/8.0/en/create-role.html)
@@ -224,12 +238,10 @@ THE KEY
 * [FLUSH](https://dev.mysql.com/doc/refman/8.0/en/flush.html)
 * [DROP USER](https://dev.mysql.com/doc/refman/8.0/en/drop-user.html)
 * [How to Reset the Root Password](https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html)
-* [What is the difference between the Bash operators \[\[ vs \[ vs ( vs ((?](https://unix.stackexchange.com/a/306115)
+* [What is the difference between the Bash operators \[\[ vs \[ vs ( vs ((?](https://unix.stackexchange.com/a/306115)  
 
-https://test-dockerrr.readthedocs.io/en/latest/userguide/containers/dockervolumes/#mount-a-host-file-as-a-data-volume
-
-
-* [Alpine WordPress installation](https://wiki.alpinelinux.org/wiki/Apache_with_php-fpm)
+* [Alpine WordPress Installation](https://wiki.alpinelinux.org/wiki/WordPress)
+* [Alpine PHP-FPM installation](https://wiki.alpinelinux.org/wiki/Apache_with_php-fpm)
 * [PHP packages](https://pkgs.alpinelinux.org/packages?name=php83*&branch=v3.19&repo=&arch=&maintainer=)
 
 * [Wordpress download releases](https://wordpress.org/download/releases/)
