@@ -6,6 +6,7 @@
 * [Docker Compose](#docker-compose)
 * [Docker Compose commands](#docker-compose-commands)
 * [Docker Compose file](#docker-compose-file)
+* [NGINX](#nginx)
 * [Resources](#resources)
 
 ## Docker commands
@@ -14,10 +15,15 @@ In some systems the docker daemon starts automatically. To start it manually use
 
 | Command | Action |
 | -- | -- |
-| ```docker build [{-f \| --file} <name>.Dockerfile] <path_context>``` | Build image from Dockerfile |
-| ```docker image ls``` | List images |
-| ```docker inspect <id>``` | Inspect image |
-| ```docker history``` | See run history |
+| ```docker build [{-f \| --file} <name>.Dockerfile] <path_context> [-t <image_name>]``` | Build image from Dockerfile. |
+| ```docker run [-it] [-p host_port:container_port] <image_id> [<command>]``` | Run the chosen image -downloads it if is not present in the system- and optionally executes the chosen command. You can interact through terminal with ```-it``` flags. By using the ```{-p \[Dockerfile](#dockerfile)| --publish}``` flags you can set the port bindings and expose ports from the container -it is recommended to read ```EXPOSE``` on [Dockerfile](#dockerfile)-. |
+| ```docker exec [-it] <container_id> <command>``` | Run the command inside the specified container. As in ```docker run```, you can interact through terminal with ```-it``` flags. |
+| ```docker ps``` | List running docker processes. |
+| ```docker image ls``` | List images. |
+| ```docker image tag <image_id> <image_repository>[:<tag>]``` | Set the given name to the image with the selected id, tag is optional to indicate the version. |
+| ```docker inspect <image_id>``` | Inspect image. |
+| ```docker history``` | See run history. |
+| ```docker cp <container_id>:<host_file_path> <local_path>``` | Copies the ```<host_file_path>``` from the ```<container_id>``` to the``` <local_path>```, useful to extract container's files into the local host |
 
 ## Dockerfile
 
@@ -26,11 +32,12 @@ Docker builds images by reading the instructions from a ```Dockerfile```. A ```D
 | Instruction | Description |
 | -- | -- |
 | ``` FROM <image> ``` | Defines a **base for your image**. |
-| ``` RUN <command> ``` | Executes any commands in a new layer on top of the current image and commits the result. RUN also has a shell form for running commands. Use  ``` RUN --mount=type=bind ``` if you need to **add files from the build context to the container temporarily** to execute a RUN instruction. |
-| ``` WORKDIR <directory> ``` | **Sets the working directory** for any RUN, CMD, ENTRYPOINT, COPY, and ADD instructions that follow it in the Dockerfile. If the WORKDIR **doesn't exist, it will be created** even if it's not used in any subsequent Dockerfile instruction. |
+| ``` RUN <command> ``` | Executes any commands in a new layer on top of the current image and commits the result. ```RUN``` also has a shell form for running commands. Use  ``` RUN --mount=type=bind ``` if you need to **add files from the build context to the container temporarily** to execute a RUN instruction. Remind to set any default option as the ```Dockerfile``` cannot have human interaction. |
+| ``` WORKDIR <directory> ``` | **Sets the working directory** for any ```RUN```, ```CMD```, ```ENTRYPOINT```, ```COPY```, and ```ADD``` instructions that follow it in the Dockerfile. If the ```WORKDIR``` **doesn't exist, it will be created** even if it's not used in any subsequent Dockerfile instruction. |
 | ``` COPY <src> <dest> ``` | Copies **new files or directories** from \<src> and adds them to the filesystem of the container at the path \<dest>. |
 | ``` ADD <src> <dest> ``` | Copies new files, directories or remote file URLs from \<src> and adds them to the filesystem of the image at the path \<dest>. Note: better use ``` COPY ``` to copy files and directories and **only use ``` ADD ``` to access remote file URLS** -do not use a tool such as wget or tar- |
 | ``` CMD <command> ``` | Lets you define the default program that is run once you start the container based on this image. **Each Dockerfile only has one CMD, and only the last CMD instance is respected when multiple exist**. |
+| ```EXPOSE <port>``` | The ```EXPOSE``` instruction **informs** Docker that the container listens on the specified network ports at runtime, it just informs, **does not carry out any binding neither expose the ports**. |
 
 ## Docker Compose
 
@@ -110,13 +117,89 @@ This first command rebuilds the image for ```<modified_container_name>``` and th
 
 A service is an abstract definition of a computing resource within an application which can be scaled or replaced independently from other components. Services are backed by a set of containers, run by the platform according to replication requirements and placement constraints. As services are backed by containers, they are defined by a Docker image and set of runtime arguments. All containers within a service are identically created with these arguments.  
 
+---
+##### ```services```
 A Compose file must declare a ```services``` top-level element as a map whose keys are string representations of service names, and whose values are service definitions. A service definition contains the configuration that is applied to each service container.  
 
-Each service may also include a ```build``` section, which defines how to create the Docker image for the service. Compose supports building docker images using this service definition. If not used, the build section is ignored and the Compose file is still considered valid.  
+----
+##### ```build```
 
+Also the ```args``` can be set here, those ```args``` will be used later in the ```Dockerfile``` by the ```ARG``` reference.
+
+---
+##### ```depends_on```
+
+Expresses startup and shutdown dependencies between services.  
+
+The short syntax receives a list -set by a ```-```- of the needed service's names to be started before the dependent service, on shutdown the dependent service is the first to be removed.  
+
+The long one defines the needed services without a list. Inside each dependency service can be defined fields such as: ```restart``` when set to ```true``` it restarts after an update of the dependency service; ```condition``` which needs to be satisfied, can be chosen from ```service_started``` -equivalent to the short syntax behaviour-, ```service_healthy``` -a dependency needs to be "healthy" before starting the dependent service- or ```service_completed_successfully``` -a dependency is expected to run to successful completion before starting a dependent service-; finally, ```required``` set to ```false``` only warns when the dependency service is not started or available -by default is set to ```true```-.  
+```
+<service_name>:
+	build:
+		context: <path_to_dockerfile>
+		args:
+			<arg_name>: {value | ${env_vble_name}}
+```
+
+---
+
+
+
+---
+##### ```deploy```
 Each service defines runtime constraints and requirements to run its containers. The ```deploy``` section groups these constraints and allows the platform to adjust the deployment strategy to best match containers' needs with available resources. If not implemented the ```deploy``` section is ignored and the Compose file is still considered valid.  
 
+## NGINX
+#### Arguments
+* 
 
+#### Packages
+* `nginx`
+* `openssl`
+
+#### Generate the RSA:2048 keys
+Use `openssl req` to create a RSA:2048 using flags like `-newkey` to indicate the action of generating a new key, among others. To bring up some flags: indicate the out file for storing the private key with `-keyout` and `out` to indicate the path of the public certificate. Finally the `-subj` gives some information about the `/O` organization, `/OU` organizational unit, `/CN` , `/C` country and `/ST` state, this information is not necessary.
+
+#### Configure NGINX
+The mail NGINX config file is located in `/etc/nginx/nginx.conf` which can include other files in `/etc/nginx/http.d/*.conf`, but we decide to change the first one as it is the main. Almost all possible directives will be parametrized and substituted by args using `sed -i`.  
+We add on the top-most level the `daemon off;` directive to execute NGINX without a daemon on the background and don't need to specified this with a flag.  
+Later, inside the `http` block we define a `server` one to attend our requirements.  
+On it we'll start by setting the `listen` directives for IPv4 and IPv6 in the port `443` for `ssl`. `SSL` or Secure Sockets Layer is the security protocol which enables the use of `https`. For this sake we add the `ssl_certificate` to indicate the location of the public certificate, `ssl_certificate_key` to set the path of the private key and the versions of TLS in `ssl_protocols` -Transfer Layer Security is the succesor and improved version of SSL3.0-.  
+With `server_name` we can set the desired names of the server.
+`root` sets the root directory for requests, it will be used when a location block has not its own root directive.  
+
+## MariaDB
+#### Arguments
+* `DB_NAME`
+* `DB_USER`
+* `DB_PASSWORD`
+* `WP_NETWORK`
+
+#### Packages
+* `mariadb`
+* `mysql-client`
+
+#### create-config\.sh
+We use `cat << EOF > /etc/my.cnf.d/mariadb-server.cnf` to redirect the MariaDB configuration and substitute automatically the `bind-address` field by the `WP_NETWORK` arg.  
+On the other hand, `skip-networking` will be commented and `user` and `data` will be hardcoded to `mysql` and `/data` which are necessary to work with MariaDB. By setting those parameters we don't need to use flags like `--user` and `--datadir` on the MariaDB programs.  
+
+#### init\.sh
+`mariadb-install-db  --skip-test-db`  
+Creates an initializes the DB. The `skip-test-db` option avoids the creation of an unwanted `test` DB.  
+
+`mariadbd --bootstrap --skip-grant-tables=false`  
+MariaDB is set for wordpress using again `cat << EOF` to substitute variables that will be passed to the MariaDB command.  
+Those settings include creating the wordpress DB with the given name in `DB_NAME`. Create an user identified by `DB_USER` which can connect from `WP_NETWORK` with the correct `BD_PASSWORD`. Grant privileges on all tables from `DB_NAME` to the user. Delete the general purpose user called `mysql` who can be used from `localhost`. And finally, set a randomly generated password to `root` --this password is generated using `/dev/urandom` and setting the wanted characters with `tr -dc` and `head -c20`.
+
+#### ENTRYPOINT `mariadbd-safe`  
+Starts safely the MariaDB daemon.
+
+## Wordpress + PHP-fpm
+
+---  
+
+For the configuration 
 
 ## Resources
 
@@ -129,3 +212,38 @@ Each service defines runtime constraints and requirements to run its containers.
 * [ADD or COPY](https://docs.docker.com/develop/develop-images/instructions/#add-or-copy)  
 * [Hello docker-compose.yaml](https://docs.docker.com/compose/gettingstarted/)  
 * [Docker Compose file reference](https://docs.docker.com/compose/compose-file/)
+* [args](https://docs.docker.com/compose/compose-file/build/#args)
+
+* [Alpine NGINX installation](https://wiki.alpinelinux.org/wiki/Nginx)
+* [NGINX Docs](https://nginx.org/en/docs/)
+* [Creating NGINX Plus and NGINX Configuration Files](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/#:~:text=By%20default%20the%20file%20is,local%2Fetc%2Fnginx)
+* [Nginx SSL Certificate Self-Signed](https://tech.sadaalomma.com/nginx/nginx-ssl-certificate-self-signed/)
+* [Certificate Attributes](https://docs.oracle.com/cd/E24191_01/common/tutorials/authz_cert_attributes.html)
+* [SSL Country Codes](https://www.ssl.com/country-codes/)
+* [Generating a self-signed certificate using OpenSSL](https://www.ibm.com/docs/en/api-connect/2018.x?topic=overview-generating-self-signed-certificate-using-openssl)
+* [FastCGI Params](https://www.nginx.com/resources/wiki/start/topics/examples/phpfcgi/#fastcgi-params)
+
+* [Alpine MariaDB installation](https://wiki.alpinelinux.org/wiki/MariaDB)
+* [Sed options](https://www.gnu.org/software/sed/manual/sed.html#Command_002dLine-Options)
+* [Starting and stopping MariDB automatically](https://mariadb.com/kb/en/starting-and-stopping-mariadb-automatically/)
+* [mariadb-safe](https://mariadb.com/kb/en/mariadbd-safe/)
+* [mysqld_safe](https://mariadb.com/kb/en/mysqld_safe/)
+* [mariadbd](https://mariadb.com/kb/en/mariadbd-options/)
+* [mariadbd --init_file](https://mariadb.com/kb/en/server-system-variables/#init_file)
+* [bootstrap flag](https://dev.mysql.com/doc/refman/5.7/en/server-options.html#option_mysqld_bootstrap)
+* [CREATE USER](https://dev.mysql.com/doc/refman/8.3/en/create-user.html)
+* [CREATE DATABASE](https://dev.mysql.com/doc/refman/8.3/en/create-database.html)
+* [CREATE ROLE](https://dev.mysql.com/doc/refman/8.0/en/create-role.html)
+* [GRANT](https://dev.mysql.com/doc/refman/8.0/en/grant.html)
+* [FLUSH](https://dev.mysql.com/doc/refman/8.0/en/flush.html)
+* [DROP USER](https://dev.mysql.com/doc/refman/8.0/en/drop-user.html)
+* [How to Reset the Root Password](https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html)
+* [What is the difference between the Bash operators \[\[ vs \[ vs ( vs ((?](https://unix.stackexchange.com/a/306115)  
+
+* [Alpine WordPress Installation](https://wiki.alpinelinux.org/wiki/WordPress)
+* [Alpine PHP-FPM installation](https://wiki.alpinelinux.org/wiki/Apache_with_php-fpm)
+* [PHP packages](https://pkgs.alpinelinux.org/packages?name=php83*&branch=v3.19&repo=&arch=&maintainer=)
+
+* [Wordpress download releases](https://wordpress.org/download/releases/)
+* [How to install WordPress](https://developer.wordpress.org/advanced-administration/before-install/howto-install/)
+* [Editing wp-config.php](https://developer.wordpress.org/advanced-administration/wordpress/wp-config/)
