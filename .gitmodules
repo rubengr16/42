@@ -6,3 +6,7 @@
 	path = 42cursus/minishell
 	url = git@github.com:rubengr16/minishell.git
 	branch = main
+[submodule "42cursus/webserv"]
+	path = 42cursus/webserv
+	url = git@github.com:rubengr16/webserv.git
+	branch = main
