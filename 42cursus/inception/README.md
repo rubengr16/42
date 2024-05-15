@@ -222,6 +222,7 @@ For the configuration
 * [SSL Country Codes](https://www.ssl.com/country-codes/)
 * [Generating a self-signed certificate using OpenSSL](https://www.ibm.com/docs/en/api-connect/2018.x?topic=overview-generating-self-signed-certificate-using-openssl)
 * [FastCGI Params](https://www.nginx.com/resources/wiki/start/topics/examples/phpfcgi/#fastcgi-params)
+* [RFC 3875](https://datatracker.ietf.org/doc/html/rfc3875#section-4.1.13)
 
 * [Alpine MariaDB installation](https://wiki.alpinelinux.org/wiki/MariaDB)
 * [Sed options](https://www.gnu.org/software/sed/manual/sed.html#Command_002dLine-Options)
