@@ -167,7 +167,13 @@ We add on the top-most level the `daemon off;` directive to execute NGINX withou
 Later, inside the `http` block we define a `server` one to attend our requirements.  
 On it we'll start by setting the `listen` directives for IPv4 and IPv6 in the port `443` for `ssl`. `SSL` or Secure Sockets Layer is the security protocol which enables the use of `https`. For this sake we add the `ssl_certificate` to indicate the location of the public certificate, `ssl_certificate_key` to set the path of the private key and the versions of TLS in `ssl_protocols` -Transfer Layer Security is the succesor and improved version of SSL3.0-.  
 With `server_name` we can set the desired names of the server.
+The `location` directive sets the configuration depending on a request URI, using `~` after the directive indicates a regex will be used to match the location. In our case we will use `^.+\.php.*$`, but maybe with `\.php$` could be perfec.
 `root` sets the root directory for requests, it will be used when a location block has not its own root directive.  
+`include fastcgi_params` includes the basic params for fastcgi included in `/etc/nginx/fastcgi_params`. It defines by default the `QUERY_STRING` which receives the args writen after the `?` in the request line.
+`fastcgi_split_path_info regex;` defines a regular expression that captures a value for the `$fastcgi_path_info` variable. The regular expression should have two captures: the first becomes a value of the `$fastcgi_script_name` variable, the second becomes a value of the `$fastcgi_path_info variable`. In our case, we will be using the following regex `^(.+\.php)(.*)$`, where the first capture is everything until a `.php` is found -and included- and the rest is the second capture.
+After the split directive, we can define de params `SCRIPT_FILENAME` and `PATH_INFO` using `$document_root$fastcgi_script_name` and `$fastcgi_path_info` respectively. As you may notice, a new variable, `document_root`, has just arrived, it has the same value as the defined in the `root` directive.
+
+
 
 ## MariaDB
 #### Arguments
@@ -221,7 +227,7 @@ For the configuration
 * [Certificate Attributes](https://docs.oracle.com/cd/E24191_01/common/tutorials/authz_cert_attributes.html)
 * [SSL Country Codes](https://www.ssl.com/country-codes/)
 * [Generating a self-signed certificate using OpenSSL](https://www.ibm.com/docs/en/api-connect/2018.x?topic=overview-generating-self-signed-certificate-using-openssl)
-* [FastCGI Params](https://www.nginx.com/resources/wiki/start/topics/examples/phpfcgi/#fastcgi-params)
+* [https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_split_path_info](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_split_path_info)
 * [RFC 3875](https://datatracker.ietf.org/doc/html/rfc3875#section-4.1.13)
 
 * [Alpine MariaDB installation](https://wiki.alpinelinux.org/wiki/MariaDB)
