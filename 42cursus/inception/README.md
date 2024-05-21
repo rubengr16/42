@@ -169,11 +169,10 @@ On it we'll start by setting the `listen` directives for IPv4 and IPv6 in the po
 With `server_name` we can set the desired names of the server.
 The `location` directive sets the configuration depending on a request URI, using `~` after the directive indicates a regex will be used to match the location. In our case we will use `^.+\.php.*$`, but maybe with `\.php$` could be perfec.
 `root` sets the root directory for requests, it will be used when a location block has not its own root directive.  
+`index` and `fastcgi_index` sets a file name that will be appended after a URI that ends with a slash.
 `include fastcgi_params` includes the basic params for fastcgi included in `/etc/nginx/fastcgi_params`. It defines by default the `QUERY_STRING` which receives the args writen after the `?` in the request line.
 `fastcgi_split_path_info regex;` defines a regular expression that captures a value for the `$fastcgi_path_info` variable. The regular expression should have two captures: the first becomes a value of the `$fastcgi_script_name` variable, the second becomes a value of the `$fastcgi_path_info variable`. In our case, we will be using the following regex `^(.+\.php)(.*)$`, where the first capture is everything until a `.php` is found -and included- and the rest is the second capture.
 After the split directive, we can define de params `SCRIPT_FILENAME` and `PATH_INFO` using `$document_root$fastcgi_script_name` and `$fastcgi_path_info` respectively. As you may notice, a new variable, `document_root`, has just arrived, it has the same value as the defined in the `root` directive.
-
-
 
 ## MariaDB
 #### Arguments
