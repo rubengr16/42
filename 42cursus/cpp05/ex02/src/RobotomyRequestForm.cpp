@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/21 15:19:48 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:24:34 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,10 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-void	RobotomyRequestForm::execute(void) const
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	this->checkSigned();
+	this->checkExecute(executor.getGrade());
 	std::cout << "Beep, beeep, bruum, bruuum..." << std::endl;
 	if (std::rand() % 2)
 		std::cout << this->getTarget() << " has been successfully robotomized"

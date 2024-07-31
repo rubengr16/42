@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:12 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 00:52:27 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 14:10:11 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(void)
 			<< std::endl;
 		try
 		{
-			unSigned.execute();
+			unSigned.execute(bureaucrat);
 		}
 		catch(const AForm::NotSignedException& e)
 		{
@@ -39,7 +39,7 @@ int	main(void)
 		bureaucrat.signForm(pPForm);
 		std::cout << "----------------------------------------------------"
 			<< std::endl;
-		pPForm.execute();
+		pPForm.execute(bureaucrat);
 	}
 	std::cout << "===================================================="
 		<< "====================================================" << std::endl;
@@ -53,7 +53,7 @@ int	main(void)
 			<< std::endl;
 		try
 		{
-			unSigned.execute();
+			unSigned.execute(bureaucrat);
 		}
 		catch(const AForm::NotSignedException& e)
 		{
@@ -64,7 +64,7 @@ int	main(void)
 		bureaucrat.signForm(sCForm);
 		std::cout << "----------------------------------------------------"
 			<< std::endl;
-		sCForm.execute();
+		sCForm.execute(bureaucrat);
 	}
 	std::cout << "===================================================="
 		<< "====================================================" << std::endl;
@@ -73,13 +73,14 @@ int	main(void)
 		unsigned int		i;
 		RobotomyRequestForm	unSigned;
 		RobotomyRequestForm	rRForm("robotomized");
+		
 
 		std::cout << "THIS IS GOING TO FAIL: NOT SIGNED" << std::endl
 			<< "----------------------------------------------------"
 			<< std::endl;
 		try
 		{
-			unSigned.execute();
+			unSigned.execute(bureaucrat);
 		}
 		catch(const AForm::NotSignedException& e)
 		{
@@ -91,7 +92,28 @@ int	main(void)
 		std::cout << "----------------------------------------------------"
 			<< std::endl;
 		for (i = 0; i < 10; i++)
-			rRForm.execute();
+			rRForm.execute(bureaucrat);
+	}
+/* ***************************** EXECUTE TEST ****************************** */
+	{
+		RobotomyRequestForm	rRForm("robotomized");
+		Bureaucrat			simpleBureaucrat;
+
+		bureaucrat.signForm(rRForm);
+		std::cout << "THIS IS GOING TO FAIL: GRADE TOO LOW TO SIGN"
+			<< std::endl
+			<< "----------------------------------------------------"
+			<< std::endl;
+		try
+		{
+			rRForm.execute(simpleBureaucrat);
+		}
+		catch(const AForm::GradeTooLowException& e)
+		{
+			std::cerr << e.what() << std::endl
+				<< "----------------------------------------------------"
+				<< std::endl;
+		}
 	}
 	return (0);
 }
