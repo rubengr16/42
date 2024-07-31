@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:01:15 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/17 20:43:16 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:34:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ScalarConverter::toInt(const std::string& input, float flt)
 	else if (flt < std::numeric_limits<int>::min())
 		std::cout << FT_UNDERFLOW << std::endl;
 	else if (flt > std::numeric_limits<int>::max())
-		std::cout << OVERFLOW << std::endl;
+		std::cout << FT_OVERFLOW << std::endl;
 	else
 		std::cout << static_cast<int>(flt) << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:12 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 23:17:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:32:53 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	main(void)
 		Bureaucrat bureaucrat3("MaxBureaucrat", MAX_GRADE);
 		Bureaucrat bureaucrat4("MinBureaucrat", MIN_GRADE);
 
-		std::cout << "THIS IS GOING TO FAIL: GRADE TOO HIGH" << std::endl
+		std::cout << "THIS IS GOING TO FAIL: GRADE TOO LOW" << std::endl
 			<< "----------------------------------------------------"
 			<< std::endl;
 		try
