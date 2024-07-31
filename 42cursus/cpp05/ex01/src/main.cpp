@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:12 by rgallego          #+#    #+#             */
-/*   Updated: 2024/07/31 11:21:40 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:27:23 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ int	main(void)
 			<< "----------------------------------------------------"
 			<< std::endl;
 		signer.signForm(toBeSigned);
-		std::cout << "NAME: " << toBeSigned.getName() << std::endl
+		std::cout << "----------------------------------------------------"
+			<< "NAME: " << toBeSigned.getName() << std::endl
 			<< "SIGNED: " << toBeSigned.getSigned() << std::endl
 			<< "GRADE SIGN: " << toBeSigned.getGradeSign() << std::endl
 			<< "GRADE EXECUTE: " << toBeSigned.getGradeExecute() << std::endl
