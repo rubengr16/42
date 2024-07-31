@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:12 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 23:17:46 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:21:40 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,20 @@ int	main(void)
 			Form lowForm("lowForm", 151, 151);
 		}
 		catch(const Form::GradeTooLowException& e)
+		{
+			std::cerr << e.what() << std::endl
+				<< "----------------------------------------------------"
+				<< std::endl;
+		}
+	}
+	{
+		std::cout << "THIS IS GOING TO FAIL: GRADE TOO HIGH" << std::endl
+			<< "----------------------------------------------------" << std::endl;
+		try
+		{
+			Form highForm("highForm", 0, 149);
+		}
+		catch(const Form::GradeTooHighException& e)
 		{
 			std::cerr << e.what() << std::endl
 				<< "----------------------------------------------------"
