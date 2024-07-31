@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 14:43:31 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:24:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,10 @@ AForm*	PresidentialPardonForm::factory(const std::string& target)
 	return (new PresidentialPardonForm(target));
 }
 
-void	PresidentialPardonForm::execute(void) const
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	this->checkSigned();
+	this->checkExecute(executor.getGrade());
 	std::cout << this->getTarget() << " has been pardoned by Zaphod "
 		<< "Beeblebrox" << std::endl;
 }

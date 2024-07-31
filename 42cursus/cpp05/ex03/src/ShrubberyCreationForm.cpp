@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/23 19:15:35 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:24:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,12 @@ AForm*	ShrubberyCreationForm::factory(const std::string& target)
 	return (new ShrubberyCreationForm(target));
 }
 
-void	ShrubberyCreationForm::execute(void) const
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	std::ofstream	fout;
 
 	this->checkSigned();
+	this->checkExecute(executor.getGrade());
 	fout.open((this->getTarget() + "_shrubbery").c_str(), std::ifstream::out);
 	if (!fout.is_open())
 		throw (FailedOpenException());
