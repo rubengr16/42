@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+        */
+/*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:36:04 by rgallego          #+#    #+#             */
-/*   Updated: 2021/11/14 17:41:39 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/08/01 08:53:59 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_conversor(char c, va_list arg_list)
 	else
 		return ((int)write(1, &c, 1));
 }
-
+#include <stdio.h>
 int	ft_printf(const char *format, ...)
 {
 	va_list	arg_list;
@@ -45,8 +45,11 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[cnt] == '%')
 		{
-			cnt++;
-			n_char += ft_conversor(format[cnt], arg_list);
+			if (format[cnt + 1])
+			{
+				cnt++;
+				n_char += ft_conversor(format[cnt], arg_list);
+			}
 		}
 		else
 			n_char += write(1, &format[cnt], 1);
