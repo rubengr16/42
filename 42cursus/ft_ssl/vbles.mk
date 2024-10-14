@@ -6,18 +6,25 @@
 #    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 16:19:28 by rgallego          #+#    #+#              #
-#    Updated: 2024/10/10 16:28:41 by rgallego         ###   ########.fr        #
+#    Updated: 2024/10/10 17:13:19 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_DIR	=			src/
 
+UTILS_DIR	=		utils/
+
 INC_DIR	=			inc/
 
 FT_SSL	=			main.c
 
+UTILS	=			$(addprefix $(UTILS), \
+					utils.c
+					)
+
 SRCS	= 			$(addprefix $(SRC_DIR), \
 					$(FT_SSL) \
+					$(UTILS)
 					)
 
 OBJS	=			$(SRCS:.c=.o)

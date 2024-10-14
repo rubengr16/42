@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 21:02:09 by rgallego          #+#    #+#             */
-/*   Updated: 2024/10/10 17:05:11 by rgallego         ###   ########.fr       */
+/*   Created: 2024/10/10 17:06:52 by rgallego          #+#    #+#             */
+/*   Updated: 2024/10/10 17:10:19 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ssl.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-int	main(int argc, char **argv)
-{
-	if (argc < 2)
-	{
-		return (1);
-	}
-	return (0);
-}
+# include <unistd.h>	// write
+
+#endif

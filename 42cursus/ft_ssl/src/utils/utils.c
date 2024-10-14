@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 21:02:09 by rgallego          #+#    #+#             */
-/*   Updated: 2024/10/10 17:05:11 by rgallego         ###   ########.fr       */
+/*   Created: 2024/10/10 17:08:12 by rgallego          #+#    #+#             */
+/*   Updated: 2024/10/10 17:09:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ssl.h"
+#include "utils.h"
 
-int	main(int argc, char **argv)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (argc < 2)
+	if (!s)
+		return ;
+	while (*s)
 	{
-		return (1);
+		write(fd, s, 1);
+		s++;
 	}
-	return (0);
 }
+
