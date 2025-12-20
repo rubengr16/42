@@ -12,17 +12,18 @@
 
 FROM alpine:3.19.1
 
-ARG DB_NAME
-ARG DB_USER
-ARG DB_PASSWORD
-ARG WP_NETWORK
-
 RUN apk update && apk upgrade && apk add mariadb mysql-client
 
 COPY /tools /tmp
 
-RUN sh /tmp/create-config.sh && sh /tmp/init.sh
+ARG DB_NAME
+ARG DB_USER
 
-# EXPOSE 3306
+RUN sh /tmp/create-config.sh 
+RUN --mount=type=secret,id=db_user_password \
+    --mount=type=secret,id=db_root_password \
+    sh /tmp/init.sh
+
+EXPOSE 3306
 
 ENTRYPOINT mariadbd-safe
