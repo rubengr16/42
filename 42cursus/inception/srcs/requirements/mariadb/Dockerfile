@@ -10,14 +10,18 @@
 #                                                                              #
 # **************************************************************************** #
 
-FROM alpine:3.19.1
+FROM alpine:3.23.2
 
-RUN apk update && apk upgrade && apk add mariadb mysql-client
+RUN apk update && \
+    apk upgrade && \
+    apk add \
+        mariadb \
+        mysql-client
 
 COPY /tools /tmp
 
-ARG DB_NAME
-ARG DB_USER
+ARG DB_NAME \
+    DB_USER
 
 RUN sh /tmp/create-config.sh 
 RUN --mount=type=secret,id=db_user_password \

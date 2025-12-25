@@ -10,9 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-FROM alpine:3.19.1
+FROM alpine:3.23.2
 
-RUN apk update && apk add nginx openssl
+RUN apk update && \
+	apk add \
+		nginx \
+		openssl
 
 RUN openssl req \
 	-newkey rsa:2048 -nodes -x509 -days 365 \
@@ -20,11 +23,11 @@ RUN openssl req \
 	-out /etc/ssl/certificate.crt \
 	-subj "/O=42Madrid/OU=Student/CN=rgallego/C=ES/ST=MD"
 
-COPY conf/nginx.conf /etc/nginx/
+# COPY conf/nginx.conf /etc/nginx/
 
-RUN sed -i "s/FAST_CGI_DST_HOST/$FAST_CGI_DST_HOST/" /etc/nginx/nginx.conf
+# RUN sed -i "s/FAST_CGI_DST_HOST/$FAST_CGI_DST_HOST/" /etc/nginx/nginx.conf
 
-COPY tools/index.html /var/www/html/
+# COPY tools/index.html /var/www/html/
 
 EXPOSE 443
 
