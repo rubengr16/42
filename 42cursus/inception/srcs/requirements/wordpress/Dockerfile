@@ -26,28 +26,8 @@ RUN apk update && \
 		php83-fpm \
 		php83-mysqli
 
-WORKDIR /var/www/html
-
-RUN wget https://wordpress.org/wordpress-6.9.tar.gz && \
-	tar -xzf wordpress-6.9.tar.gz && \
-	rm wordpress-6.9.tar.gz && \
-	mv wordpress/* . && \
-	rmdir wordpress
-
-# COPY /config/wp-config.php .
-
-# RUN --mount=type=secret,id=db_user_password \
-# 	mv wp-config-sample.php wp-config.php && \
-# 	sed -i "s/database_name_here/$DB_NAME/" wp-config-sample.php && \
-# 	sed -i "s/username_here/$DB_USER/" wp-config-sample.php && \
-# 	sed -i "s/password_here/$DB_PASSWORD/" wp-config-sample.php && \
-# 	sed -i "s/localhost/$DB_HOST/" wp-config-sample.php
-
-# # Doubts on this, if it needs to be changed to 0.0.0.0
-# # Doubts on how to manage the user, if I need to change them
-# RUN sed -i "s/127.0.0.1/$FAST_CGI_SRC_HOST/" /etc/php83/php-fpm.d/www.conf
+COPY /tools /tmp
 
 EXPOSE 9000
 
-# Fails, to be tested with the docker compose
-CMD ["php-fpm83", "--nodaemonize"]
+ENTRYPOINT sh /tmp/start-php-fpm.sh

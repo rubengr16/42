@@ -10,7 +10,7 @@ cat << EOF > /etc/my.cnf.d/mariadb-server.cnf
 	# this is only for the mysqld standalone daemon
 	[mysqld]
 	user=mysql
-	datadir=/var/lib/mysql
+	datadir=/data
 	#skip-networking
 
 	# Galera-related settings

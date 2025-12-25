@@ -20,14 +20,14 @@ RUN apk update && \
 
 COPY /tools /tmp
 
-ARG DB_NAME \
-    DB_USER
+# ARG DB_NAME \
+#     DB_USER
 
 RUN sh /tmp/create-config.sh 
-RUN --mount=type=secret,id=db_user_password \
-    --mount=type=secret,id=db_root_password \
-    sh /tmp/init.sh
+# RUN --mount=type=secret,id=db_user_password \
+#     --mount=type=secret,id=db_root_password \
+#     sh /tmp/init.sh
 
 EXPOSE 3306
 
-ENTRYPOINT mariadbd-safe
+ENTRYPOINT sh /tmp/init.sh

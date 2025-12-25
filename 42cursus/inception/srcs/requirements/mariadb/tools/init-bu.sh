@@ -1,3 +1,4 @@
+set -x
 if [ ! -d /data/mysql ]; then
 	mariadb-install-db --skip-test-db
 
@@ -23,5 +24,3 @@ EOF
 		exit 1
 	fi
 fi
-
-mariadbd-safe
