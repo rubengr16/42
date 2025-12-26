@@ -1,3 +1,5 @@
+set -e
+
 if [ ! -d /data/mysql ]; then
 	mariadb-install-db --skip-test-db
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
+#    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/11 21:58:47 by rgallego          #+#    #+#              #
-#    Updated: 2024/04/22 22:15:55 by rgallego         ###   ########.fr        #
+#    Updated: 2025/12/26 12:52:48 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,16 @@ RUN apk update && \
 	apk add \
 		wget \
 		php83 \
+		php83-phar \
 		php83-fpm \
-		php83-mysqli
+		php83-mysqli\
+	ln -s /usr/bin/php83 /usr/bin/php
 
+RUN wget -O /usr/local/bin/wp/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pharhttps://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pharhttps://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pharhttps://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pharhttps://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+	chmod +x /usr/local/bin/wp/wp-cli.phar
+	
 COPY /tools /tmp
 
 EXPOSE 9000
 
-ENTRYPOINT sh /tmp/start-php-fpm.sh
+ENTRYPOINT sh /tmp/entrypoint.sh

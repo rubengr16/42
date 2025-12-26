@@ -20,16 +20,17 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
+/** Values set using ENV vbles and Docker Secrets */
 define( 'DB_NAME', getenv('DB_NAME') );
 
 /** Database username */
 define( 'DB_USER', getenv('DB_USER') );
 
 /** Database password */
-// define( 'DB_PASSWORD', 'user_password' );
 define( 'DB_PASSWORD', trim(file_get_contents(getenv('DB_USER_PASSWORD_FILE'))) );
 
 /** Database hostname */
+/** Hardcoded as it is be the name of the DB service aka the service network address */
 define( 'DB_HOST', 'mariadb' );
 
 /** Database charset to use in creating database tables. */

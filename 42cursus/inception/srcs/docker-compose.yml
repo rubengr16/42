@@ -8,8 +8,6 @@ services:
       DB_USER: ${DB_USER}
     volumes:
       - ./requirements/mariadb/data:/data
-    ports:
-      - 3306:3306
     networks:
       - net
     secrets:
@@ -27,13 +25,10 @@ services:
       DB_HOST: mariadb
       WP_DEBUG: ${WP_DEBUG}
       WP_DEBUG_LOG: ${WP_DEBUG_LOG}
-      # FAST_CGI_SRC_HOST: nginx
     volumes:
       - ./requirements/wordpress/html:/var/www/html
       - ./requirements/wordpress/conf/wp-config.php:/var/www/html/wp-config.php:ro
       - ./requirements/wordpress/conf/www.conf:/etc/php83/php-fpm.d/www.conf:ro
-    ports:
-      - 9000:9000
     networks:
       - net
     secrets:
@@ -41,8 +36,6 @@ services:
   nginx:
     build:
       context: ./requirements/nginx
-      # args:
-      #   FAST_CGI_DST_HOST: wordpress
     depends_on:
       - wordpress
     volumes:
