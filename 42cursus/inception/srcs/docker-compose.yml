@@ -60,7 +60,7 @@ networks:
 
 secrets:
   db_user_password:
-    file: ../secrets/db_user_password.txt
+    file: ./secrets/db_user_password.txt
   db_root_password:
-    file: ../secrets/db_root_password.txt
+    file: ./secrets/db_root_password.txt
   
