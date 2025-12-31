@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 09:48:21 by rgallego          #+#    #+#              #
-#    Updated: 2025/12/26 11:57:28 by rgallego         ###   ########.fr        #
+#    Updated: 2025/12/30 21:12:18 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ down:
 	$(COMPOSE_CMD) down
 
 build:
-	$(COMPOSE_CMD) build --no-cache
+	$(COMPOSE_CMD) build
 
 exec:
 	$(COMPOSE_CMD) exec -it $(SERVICE) sh

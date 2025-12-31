@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 09:59:14 by rgallego          #+#    #+#              #
-#    Updated: 2025/12/26 11:57:10 by rgallego         ###   ########.fr        #
+#    Updated: 2025/12/30 20:56:53 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MARIADB_DATA		=	$(SRC_DIR)$(REQS_DIR)$(MARIADB_DIR)data
 
 MARIADB_LOGFILE		=	/data/*.err
 
-WORDPRESS_DIR		=	worpress/
+WORDPRESS_DIR		=	wordpress/
 
 WORDPRESS_HTML		=	$(SRC_DIR)$(REQS_DIR)$(WORDPRESS_DIR)html
 
@@ -49,7 +49,7 @@ ifeq ($(SERVICE), )
 	SERVICE			=	mariadb
 endif
 LOGS_CMD			=	logs
-EXEC_CMD			=	cat
+EXEC_CMD			=	
 LOG_FILE				:=	$(strip $(or $(F),$(LOGFILE)))
 ifeq ($(LOGFILE), 1)
 	LOGS_CMD		=	exec
