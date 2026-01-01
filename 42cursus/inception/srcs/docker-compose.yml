@@ -1,4 +1,3 @@
-
 services:
   mariadb:
     build:
@@ -10,6 +9,7 @@ services:
       - /home/rgallego/data/mariadb:/data
     networks:
       - net
+    restart: always
     secrets:
       - db_user_password
       - db_root_password
@@ -47,6 +47,7 @@ services:
       - ./requirements/wordpress/conf/www.conf:/etc/php83/php-fpm.d/www.conf:ro
     networks:
       - net
+    restart: always
     secrets:
         - db_user_password
         - wp_user_password
@@ -73,10 +74,11 @@ services:
       - 443:443
     networks:
       - net
+    restart: always
 
 networks:
   net:
-    name: net
+    name: inception-net
     driver: bridge
 
 secrets:
