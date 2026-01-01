@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 09:59:14 by rgallego          #+#    #+#              #
-#    Updated: 2025/12/30 20:56:53 by rgallego         ###   ########.fr        #
+#    Updated: 2025/12/31 18:37:54 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,17 @@ SRC_DIR				=	srcs/
 
 REQS_DIR			=	requirements/
 
+VOLUMES_DIR			=	/home/rgallego/data/
+
 MARIADB_DIR			=	mariadb/
 
-MARIADB_DATA		=	$(SRC_DIR)$(REQS_DIR)$(MARIADB_DIR)data
+MARIADB_DATA		=	$(VOLUMES_DIR)mariadb
 
 MARIADB_LOGFILE		=	/data/*.err
 
 WORDPRESS_DIR		=	wordpress/
 
-WORDPRESS_HTML		=	$(SRC_DIR)$(REQS_DIR)$(WORDPRESS_DIR)html
+WORDPRESS_HTML		=	$(VOLUMES_DIR)html
 
 PHP_FPM_LOGFILE		=	/var/log/php83/error.log
 
@@ -32,7 +34,7 @@ NGINX_LOGFILE		=	/var/log/nginx/error.log
 
 COMPOSE_FILE 		=	docker-compose.yml
 
-COMPOSE_CMD	=	docker compose -f $(SRC_DIR)$(COMPOSE_FILE)
+COMPOSE_CMD			=	docker compose -f $(SRC_DIR)$(COMPOSE_FILE)
 
 DETACH				=	-d
 ifeq ($(strip $(or $(DL),$(DETACHLESS))),1)
@@ -51,7 +53,7 @@ endif
 LOGS_CMD			=	logs
 EXEC_CMD			=	
 LOG_FILE				:=	$(strip $(or $(F),$(LOGFILE)))
-ifeq ($(LOGFILE), 1)
+ifeq ($(LOG_FILE), 1)
 	LOGS_CMD		=	exec
 	EXEC_CMD		=	cat
 	ifeq ($(SERVICE), wordpress)

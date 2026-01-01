@@ -6,7 +6,7 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/08 17:52:14 by rgallego          #+#    #+#              #
-#    Updated: 2025/12/26 12:00:48 by rgallego         ###   ########.fr        #
+#    Updated: 2026/01/01 06:11:58 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,6 @@ RUN apk update && \
         mysql-client
 
 COPY /tools /tmp
-
-RUN sh /tmp/create-config.sh 
 
 EXPOSE 3306
 

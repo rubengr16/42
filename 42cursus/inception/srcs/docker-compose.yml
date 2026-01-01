@@ -7,7 +7,7 @@ services:
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
     volumes:
-      - ./requirements/mariadb/data:/data
+      - /home/rgallego/data/mariadb:/data
     networks:
       - net
     secrets:
@@ -25,7 +25,7 @@ services:
       DB_HOST: mariadb
       WP_DEBUG: ${WP_DEBUG}
       WP_DEBUG_LOG: ${WP_DEBUG_LOG}
-      WP_URL: ${WP_URL}
+      WP_URL: ${DOMAIN}
       WP_TITLE: ${WP_TITLE}
       WP_ADMIN: ${WP_ADMIN}
       WP_ADMIN_PASSWORD_FILE: /run/secrets/wp_admin_password
@@ -33,8 +33,16 @@ services:
       WP_USER: ${WP_USER}
       WP_USER_EMAIL: ${WP_USER_EMAIL}
       WP_USER_PASSWORD_FILE: /run/secrets/wp_user_password
+      WP_AUTH_KEY_FILE: /run/secrets/wp_auth_key
+      WP_AUTH_SALT_FILE: /run/secrets/wp_auth_salt
+      WP_LOGGED_IN_KEY_FILE: /run/secrets/wp_logged_in_key
+      WP_LOGGED_IN_SALT_FILE: /run/secrets/wp_logged_in_salt
+      WP_NONCE_KEY_FILE: /run/secrets/wp_nonce_key
+      WP_NONCE_SALT_FILE: /run/secrets/wp_nonce_salt
+      WP_SECURE_AUTH_KEY_FILE: /run/secrets/wp_secure_auth_key
+      WP_SECURE_AUTH_SALT_FILE: /run/secrets/wp_secure_auth_salt
     volumes:
-      - ./requirements/wordpress/html:/var/www/html
+      - /home/rgallego/data/html:/var/www/html
       - ./requirements/wordpress/conf/wp-config.php:/var/www/html/wp-config.php:ro
       - ./requirements/wordpress/conf/www.conf:/etc/php83/php-fpm.d/www.conf:ro
     networks:
@@ -43,14 +51,24 @@ services:
         - db_user_password
         - wp_user_password
         - wp_admin_password
+        - wp_auth_key
+        - wp_auth_salt
+        - wp_logged_in_key
+        - wp_logged_in_salt
+        - wp_nonce_key
+        - wp_nonce_salt
+        - wp_secure_auth_key
+        - wp_secure_auth_salt
   nginx:
     build:
       context: ./requirements/nginx
     depends_on:
       - wordpress
+    environment:
+      SERVER_NAME: ${DOMAIN}
     volumes:
-      - ./requirements/wordpress/html:/var/www/html
-      - ./requirements/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /home/rgallego/data/html:/var/www/html
+      - ./requirements/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 443:443
     networks:
@@ -70,4 +88,20 @@ secrets:
     file: ./secrets/wp_user_password.txt
   wp_admin_password:
     file: ./secrets/wp_admin_password.txt
+  wp_auth_key:
+    file: ./secrets/wp_auth_key.txt
+  wp_auth_salt:
+    file: ./secrets/wp_auth_salt.txt
+  wp_logged_in_key:
+    file: ./secrets/wp_logged_in_key.txt
+  wp_logged_in_salt:
+    file: ./secrets/wp_logged_in_salt.txt
+  wp_nonce_key:
+    file: ./secrets/wp_nonce_key.txt
+  wp_nonce_salt:
+    file: ./secrets/wp_nonce_salt.txt
+  wp_secure_auth_key:
+    file: ./secrets/wp_secure_auth_key.txt
+  wp_secure_auth_salt:
+    file: ./secrets/wp_secure_auth_salt.txt
   

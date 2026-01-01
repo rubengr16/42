@@ -12,11 +12,11 @@ if [ $(ls -1A /var/www/html | wc -l) -le 1 ]; then
         --admin_password="$(cat ${WP_ADMIN_PASSWORD_FILE})" \
         --admin_email="${WP_ADMIN_EMAIL}" \
         --skip-email \
-        --allow-root >> /install.txt
+        --allow-root
     wp user create \
         ${WP_USER} ${WP_USER_EMAIL} \
         --role=author \
-        --user_pass=$(cat ${WP_USER_PASSWORD_FILE}) >> /create.txt
+        --user_pass=$(cat ${WP_USER_PASSWORD_FILE})
 fi
 
 php-fpm83 --nodaemonize
