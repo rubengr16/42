@@ -1,7 +1,5 @@
 set -e
 
-sh /tmp/create-config.sh 
-
 if [ ! -d /data/mysql ]; then
 	mariadb-install-db --skip-test-db
 

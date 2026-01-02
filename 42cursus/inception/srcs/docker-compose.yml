@@ -6,9 +6,10 @@ services:
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
     volumes:
-      - /home/rgallego/data/mariadb:/data
+      - mariadb-data:/data
+      - ./requirements/mariadb/conf/mariadb-server.cnf:/etc/my.cnf.d/mariadb-server.cnf
     networks:
-      - net
+      - inception-net
     restart: always
     secrets:
       - db_user_password
@@ -42,11 +43,11 @@ services:
       WP_SECURE_AUTH_KEY_FILE: /run/secrets/wp_secure_auth_key
       WP_SECURE_AUTH_SALT_FILE: /run/secrets/wp_secure_auth_salt
     volumes:
-      - /home/rgallego/data/html:/var/www/html
+      - wordpress-html:/var/www/html
       - ./requirements/wordpress/conf/wp-config.php:/var/www/html/wp-config.php:ro
       - ./requirements/wordpress/conf/www.conf:/etc/php83/php-fpm.d/www.conf:ro
     networks:
-      - net
+      - inception-net
     restart: always
     secrets:
         - db_user_password
@@ -68,18 +69,31 @@ services:
     environment:
       SERVER_NAME: ${DOMAIN}
     volumes:
-      - /home/rgallego/data/html:/var/www/html
+      - wordpress-html:/var/www/html
       - ./requirements/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - inception-net
     ports:
       - 443:443
-    networks:
-      - net
     restart: always
 
 networks:
-  net:
-    name: inception-net
+  inception-net:
     driver: bridge
+
+volumes:
+  mariadb-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/rgallego/data/mariadb
+      o: bind
+  wordpress-html:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/rgallego/data/html
+      o: bind
 
 secrets:
   db_user_password:

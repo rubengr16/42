@@ -6,15 +6,17 @@
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/26 09:48:21 by rgallego          #+#    #+#              #
-#    Updated: 2026/01/01 05:42:03 by rgallego         ###   ########.fr        #
+#    Updated: 2026/01/02 13:03:23 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 -include vbles.mk
 
-all: up
+all: build up
 
 up:
+	sudo mkdir -p /home/rgallego/data/mariadb
+	sudo mkdir -p /home/rgallego/data/html
 	$(COMPOSE_CMD) up $(DETACH)
 
 up-detachless:
@@ -24,7 +26,7 @@ down:
 	$(COMPOSE_CMD) down
 
 build:
-	$(COMPOSE_CMD) build
+	$(COMPOSE_CMD) build --no-cache
 
 exec:
 	$(COMPOSE_CMD) exec -it $(SERVICE) sh
@@ -38,6 +40,8 @@ logs:
 clean: down
 	sudo $(RM) -rf $(MARIADB_DATA)
 	sudo $(RM) -rf $(WORDPRESS_HTML)
+	docker volume rm srcs_mariadb-data
+	docker volume rm srcs_wordpress-html
 
 fclean: clean
 
