@@ -10,3 +10,6 @@
 	path = 42cursus/webserv
 	url = git@github.com:rubengr16/webserv.git
 	branch = main
+[submodule "42cursus/ft_transcendence"]
+	path = 42cursus/ft_transcendence
+	url = git@github.com:aidasmiler/ft_transcendence.git

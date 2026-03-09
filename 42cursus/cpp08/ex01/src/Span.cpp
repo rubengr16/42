@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 22:16:15 by rgallego          #+#    #+#             */
-/*   Updated: 2023/12/27 00:32:14 by rgallego         ###   ########.fr       */
+/*   Updated: 2026/03/09 22:32:41 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ Span&	Span::operator=(const Span& span)
 }
 
 /* **************************** MEMBER FUNCTIONS **************************** */
-unsigned int	Span::getMaxSize(void)const 
+unsigned int	Span::getMaxSize(void) const
 {
 	return (this->_maxSize);
 }
