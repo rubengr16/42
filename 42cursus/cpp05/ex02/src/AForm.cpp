@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:12:07 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/23 19:17:22 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:18:33 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,12 @@ void	AForm::checkSigned(void) const
 {
 	if (!this->_signed)
 		throw (NotSignedException());
+}
+
+void	AForm::checkExecute(unsigned int grade) const
+{
+	if (grade > this->_gradeExecute)
+		throw (GradeTooLowException());
 }
 
 const std::string&	AForm::getName(void) const

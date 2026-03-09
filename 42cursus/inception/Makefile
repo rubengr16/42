@@ -1,0 +1,50 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/12/26 09:48:21 by rgallego          #+#    #+#              #
+#    Updated: 2026/01/02 13:03:23 by rgallego         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+-include vbles.mk
+
+all: build up
+
+up:
+	sudo mkdir -p /home/rgallego/data/mariadb
+	sudo mkdir -p /home/rgallego/data/html
+	$(COMPOSE_CMD) up $(DETACH)
+
+up-detachless:
+	$(MAKE) DL=1
+
+down:
+	$(COMPOSE_CMD) down
+
+build:
+	$(COMPOSE_CMD) build --no-cache
+
+exec:
+	$(COMPOSE_CMD) exec -it $(SERVICE) sh
+
+ps:
+	$(COMPOSE_CMD) ps $(PS_ALL)
+
+logs:
+	$(COMPOSE_CMD) $(LOGS_CMD) $(SERVICE) $(EXEC_CMD) $(LOG_FILE)
+
+clean: down
+	sudo $(RM) -rf $(MARIADB_DATA)
+	sudo $(RM) -rf $(WORDPRESS_HTML)
+	docker volume rm srcs_mariadb-data
+	docker volume rm srcs_wordpress-html
+
+fclean: clean
+
+re: fclean build all
+
+.PHONY: all clean fclean re up up-detachless down build ps logs

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:19:38 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/30 22:02:35 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/06/28 18:30:17 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ std::string	&ftReplace(std::string &str, const std::string oldString,
 	const std::string newString)
 {
 	std::size_t		pos;
+
 	pos = str.find(oldString);
 	if (str.empty() || oldString.empty())
 		return str;

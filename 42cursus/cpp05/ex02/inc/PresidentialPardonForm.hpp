@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/18 12:43:48 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:23:00 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class PresidentialPardonForm: public AForm
 		PresidentialPardonForm&	operator=(
 			const PresidentialPardonForm& pPForm);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		void					execute(void) const;
+		void					execute(Bureaucrat const & executor) const;
 };
 
 #endif

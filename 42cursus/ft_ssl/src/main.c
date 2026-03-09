@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 13:15:48 by rgallego          #+#    #+#             */
-/*   Updated: 2024/10/10 17:10:33 by rgallego         ###   ########.fr       */
+/*   Created: 2023/02/22 21:02:09 by rgallego          #+#    #+#             */
+/*   Updated: 2024/10/10 17:05:11 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_ssl.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	main(int argc, char **argv)
 {
-	if (s)
+	if (argc < 2)
 	{
-		while (*s)
-		{
-			ft_putchar_fd(*s, fd);
-			s++;
-		}
+		return (1);
 	}
+	return (0);
 }
-

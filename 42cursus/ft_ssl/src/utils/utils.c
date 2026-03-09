@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 13:15:48 by rgallego          #+#    #+#             */
-/*   Updated: 2024/10/10 17:10:33 by rgallego         ###   ########.fr       */
+/*   Created: 2024/10/10 17:08:12 by rgallego          #+#    #+#             */
+/*   Updated: 2024/10/10 17:09:35 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "utils.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (s)
+	if (!s)
+		return ;
+	while (*s)
 	{
-		while (*s)
-		{
-			ft_putchar_fd(*s, fd);
-			s++;
-		}
+		write(fd, s, 1);
+		s++;
 	}
 }
 

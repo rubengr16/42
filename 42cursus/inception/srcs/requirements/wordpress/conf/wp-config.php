@@ -20,16 +20,18 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'database_name_here' );
+/** Values set using ENV vbles and Docker Secrets */
+define( 'DB_NAME', getenv('DB_NAME') );
 
 /** Database username */
-define( 'DB_USER', 'username_here' );
+define( 'DB_USER', getenv('DB_USER') );
 
 /** Database password */
-define( 'DB_PASSWORD', 'password_here' );
+define( 'DB_PASSWORD', trim(file_get_contents(getenv('DB_USER_PASSWORD_FILE'))) );
 
 /** Database hostname */
-define( 'DB_HOST', 'localhost' );
+/** Hardcoded as it is be the name of the DB service aka the service network address */
+define( 'DB_HOST', 'mariadb' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -48,14 +50,14 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         '7!7_`-hhX8F1<wVSa;Ee^8.%1bp8Ei`}d9z-l~ahVMR;+Y)5FCE6 |2-SQ;yLRx0' );
-define( 'SECURE_AUTH_KEY',  'pL_pL(Zim=JZ/SAe>?e1)%Q8#2qq_I=Ath>1C;`?G-QCzpC)uoo0Yl:0WO|aFGbb' );
-define( 'LOGGED_IN_KEY',    'Kvt9U.62Ed{@i@|L;/h&QSa5k!/hqrK#+MqJ qZB,RtEZ[=LmK1_^=B,_mx|kD6x' );
-define( 'NONCE_KEY',        'LzNh+bA+i9KuayZ%-E]B<9`/U:H0.*%,)X@`&qo {1imMcH+RCG(r#yJ_S2]nFwu' );
-define( 'AUTH_SALT',        '-H:c|xN&4k1kBS;7g<S-/)V3LnEB0V~~*,_#2S~boztga,LgXk]F:GC.`FKdS&,_' );
-define( 'SECURE_AUTH_SALT', '/C6-g(0aps_&$!i}L>&.%&`-/n1TQ2JRUXABjT_^S)iF7+s|K+RH+qBrT/WwWaa!' );
-define( 'LOGGED_IN_SALT',   'hml apb:xMC.|D|o=Y|npGm]{bwqED$`*W^[<+Mp*~hp8Ueol3!8(]{,dTxHZMIf' );
-define( 'NONCE_SALT',       '9xPaZ1pu_5PKAHbd&EY/<uu3!!A,Rb9*~<>FJIEX9CAH~l)v*yoQp<O(CV-war8f' );
+define( 'AUTH_KEY',         trim(file_get_contents(getenv('WP_AUTH_KEY_FILE'))) );
+define( 'SECURE_AUTH_KEY',  trim(file_get_contents(getenv('WP_AUTH_SALT_FILE'))) );
+define( 'LOGGED_IN_KEY',    trim(file_get_contents(getenv('WP_LOGGED_IN_KEY_FILE'))) );
+define( 'NONCE_KEY',        trim(file_get_contents(getenv('WP_LOGGED_IN_SALT_FILE'))) );
+define( 'AUTH_SALT',        trim(file_get_contents(getenv('WP_NONCE_KEY_FILE'))) );
+define( 'SECURE_AUTH_SALT', trim(file_get_contents(getenv('WP_NONCE_SALT_FILE'))) );
+define( 'LOGGED_IN_SALT',   trim(file_get_contents(getenv('WP_SECURE_AUTH_KEY_FILE'))) );
+define( 'NONCE_SALT',       trim(file_get_contents(getenv('WP_SECURE_AUTH_SALT_FILE'))) );
 
 /**#@-*/
 
@@ -79,7 +81,9 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/documentation/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', getenv('WP_DEBUG') );
+define( 'WP_DEBUG_LOG', getenv('WP_DEBUG_LOG') );
+define( 'WP_DEBUG_DISPLAY', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 

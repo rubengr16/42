@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:11:55 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/04 12:36:20 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 14:11:06 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class	AForm
 			unsigned int gradeExecute, const std::string& target);
 		AForm(const AForm& form);
 		void				checkSigned(void) const;
+		void				checkExecute(unsigned int grade) const;
 
 	public:
 /* ******************************* DESTRUCTOR ******************************* */
@@ -52,7 +53,7 @@ class	AForm
 		void				setTarget(const std::string& target);
 		const std::string&	getTarget(void) const;
 		void				beSigned(const Bureaucrat& bureaucrat);
-		virtual void		execute(void) const = 0;
+		virtual void		execute(Bureaucrat const & executor) const = 0;
 /* ******************************* EXCEPTIONS ******************************* */
 	class	GradeTooHighException: public std::exception
 	{

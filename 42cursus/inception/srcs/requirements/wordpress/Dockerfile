@@ -3,43 +3,33 @@
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+         #
+#    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/11 21:58:47 by rgallego          #+#    #+#              #
-#    Updated: 2024/04/22 22:15:55 by rgallego         ###   ########.fr        #
+#    Updated: 2025/12/31 18:16:44 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM alpine:3.19.1
+FROM alpine:3.23.2
 
-ARG DB_NAME\
-	DB_USER\
-	DB_PASSWORD\
-	DB_HOST\
-	FAST_CGI_ORIGIN_HOST
+RUN apk update && \
+	apk upgrade && \
+	apk add \
+		php83 \
+		php83-phar \
+		php83-fpm \
+		php83-mysqli \
+		php83-mbstring \
+		php83-iconv \
+		php83-json \
+		php83-curl \
+		php83-zip \
+		php83-openssl \
+		php83-session && \
+	ln -s /usr/bin/php83 /usr/bin/php
 
-RUN apk update && apk upgrade && apk add php83 php83-fpm
+COPY /tools /tmp
 
-WORKDIR /usr/share/webapps/
+EXPOSE 9000
 
-RUN wget https://wordpress.org/wordpress-6.4.3.tar.gz &&\
-	tar -xzvf wordpress-6.4.3.tar.gz &&\
-	rm wordpress-6.4.3.tar.gz &&\
-	cd wordpress
-
-COPY /config/wp-config.php .
-
-RUN mv wp-config-sample.php wp-config.php &&\
-	sed -i "s/database_name_here/$DB_NAME/" wp-config-sample.php &&\
-	sed -i "s/username_here/$DB_USER/" wp-config-sample.php &&\
-	sed -i "s/password_here/$DB_PASSWORD/" wp-config-sample.php &&\
-	sed -i "s/localhost/$DB_HOST/" wp-config-sample.php
-
-# Doubts on this, if it needs to be changed to 0.0.0.0
-# Doubts on how to manage the user, if I need to change them
-RUN sed -i "s/127.0.0.1/$FAST_CGI_SRC_HOST/" /etc/php83/php-fpm.d/www.conf
-
-# EXPOSE 9000
-
-# Fails, to be tested with the docker compose
-ENTRYPOINT php-fpm83 --nodaemonize
+ENTRYPOINT sh /tmp/entrypoint.sh

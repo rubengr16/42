@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:33:12 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/15 23:17:46 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:28:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,20 @@ int	main(void)
 				<< std::endl;
 		}
 	}
+	{
+		std::cout << "THIS IS GOING TO FAIL: GRADE TOO HIGH" << std::endl
+			<< "----------------------------------------------------" << std::endl;
+		try
+		{
+			Form highForm("highForm", 0, 149);
+		}
+		catch(const Form::GradeTooHighException& e)
+		{
+			std::cerr << e.what() << std::endl
+				<< "----------------------------------------------------"
+				<< std::endl;
+		}
+	}
 /* ******************************** EXAMPLE 3 ******************************* */
 	{
 		Form	form2(form);
@@ -90,7 +104,8 @@ int	main(void)
 			<< "----------------------------------------------------"
 			<< std::endl;
 		signer.signForm(toBeSigned);
-		std::cout << "NAME: " << toBeSigned.getName() << std::endl
+		std::cout << "----------------------------------------------------"
+			<< std::endl << "NAME: " << toBeSigned.getName() << std::endl
 			<< "SIGNED: " << toBeSigned.getSigned() << std::endl
 			<< "GRADE SIGN: " << toBeSigned.getGradeSign() << std::endl
 			<< "GRADE EXECUTE: " << toBeSigned.getGradeExecute() << std::endl

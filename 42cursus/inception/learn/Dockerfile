@@ -1,5 +1,0 @@
-FROM alpine:3.14
-WORKDIR /a
-WORKDIR b
-WORKDIR c
-RUN pwd

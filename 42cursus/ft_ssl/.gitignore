@@ -1,25 +1,20 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Dockerfile                                         :+:      :+:    :+:    #
+#    .gitignore                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: rgallego <rgallego@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/08 17:52:14 by rgallego          #+#    #+#              #
-#    Updated: 2026/01/01 06:11:58 by rgallego         ###   ########.fr        #
+#    Created: 2021/09/14 12:47:31 by rgallego          #+#    #+#              #
+#    Updated: 2022/02/14 12:10:12 by rgallego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM alpine:3.23.2
-
-RUN apk update && \
-    apk upgrade && \
-    apk add \
-        mariadb \
-        mysql-client
-
-COPY /tools /tmp
-
-EXPOSE 3306
-
-ENTRYPOINT sh /tmp/entrypoint.sh
+### Make files ###
+date
+gcc
+hostname
+ft_ssl
+*.*.swp
+*.o
+*.d

@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:20:30 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/04 12:36:11 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:23:08 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class ShrubberyCreationForm: public AForm
 		ShrubberyCreationForm&	operator=(
 			const ShrubberyCreationForm& sCForm);
 /* **************************** MEMBER FUNCTIONS **************************** */
-		void					execute(void) const;
+		void					execute(Bureaucrat const & executor) const;
 /* ******************************* EXCEPTIONS ******************************* */
 	class	FailedOpenException: public std::exception
 	{

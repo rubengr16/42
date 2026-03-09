@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:59:45 by rgallego          #+#    #+#             */
-/*   Updated: 2023/11/21 18:09:25 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:37:50 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,21 @@ void	identify(Base& p)
 {
 	try
 	{
-		dynamic_cast<A&>(p);
+		(void)dynamic_cast<A&>(p);
 		std::cout << "p is of type A&" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		try
 		{
-			dynamic_cast<B&>(p);
+			(void)dynamic_cast<B&>(p);
 			std::cout << "p is of type B&" << std::endl;
 		}
 		catch(const std::exception& e)
 		{
 			try
 			{
-				dynamic_cast<C&>(p);
+				(void)dynamic_cast<C&>(p);
 				std::cout << "p is of type C&" << std::endl;
 			}
 			catch(const std::exception& e)

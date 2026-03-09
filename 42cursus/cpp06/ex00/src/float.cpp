@@ -6,7 +6,7 @@
 /*   By: rgallego <rgallego@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:02:28 by rgallego          #+#    #+#             */
-/*   Updated: 2024/01/17 20:43:01 by rgallego         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:36:02 by rgallego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ float	ScalarConverter::getFloat(std::string& input)
 	if ((errno == ERANGE && dbl == -HUGE_VALF)
 		|| dbl < -std::numeric_limits<float>::max())
 	{
-		input = UNDERFLOW;
+		input = FT_UNDERFLOW;
 		return (-std::numeric_limits<float>::max());
 	}
 	else if ((errno == ERANGE && dbl == HUGE_VALF)
 		|| dbl > std::numeric_limits<float>::max())
 	{
-		input = OVERFLOW;
+		input = FT_OVERFLOW;
 		return (std::numeric_limits<float>::max());
 	}
 	return (static_cast<float>(dbl));
