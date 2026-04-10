@@ -8,9 +8,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int fatal_error() {
+void fatal_error() {
   write(2, "Fatal error\n", 12);
-  return 1;
+  exit(1);
 }
 
 // Given
@@ -94,6 +94,7 @@ int main(int argc, char **argv) {
 	int maxfd = sockfd; // maxfd is the highest fd number. Right now, it's sockfd (the only one)
 	int ids[FD_SETSIZE];
 	char *bufs[FD_SETSIZE];
+
 	for (int i = 0; i < FD_SETSIZE; i++) {
 		ids[i] = -1;
 		bufs[i] = NULL;
@@ -105,61 +106,40 @@ int main(int argc, char **argv) {
 	while (1) {
 		read_fds = all_fds; // copy it
 		if (select(maxfd + 1, &read_fds, NULL, NULL, NULL) < 0)
-			return fatal_error();
-
+			fatal_error();
 		for (int fd = 0; fd <= maxfd; fd++) {
 			if (!FD_ISSET(fd, &read_fds))
-				continue; // this fd is not ready
-			if (fd == sockfd) { // new connection
-				struct sockaddr_in cli; //client
-				socklen_t len = sizeof(cli);
-				len = sizeof(cli);
-				connfd = accept(sockfd, (struct sockaddr *)&cli, &len);
-				if (connfd < 0)
-				return fatal_error();
-
-				FD_SET(connfd, &all_fds); // add new fd to the set
-				if (connfd > maxfd)
-				maxfd = connfd; // update maxfd
-				ids[connfd] = next_id++; // assign id to new client
-				bufs[connfd] = NULL;
-
+				// ************* Unused FD ************* //
+				continue;
+			if (fd == sockfd) {
+				// ********** New connection *********** //
+				struct sockaddr_in	cli;
 				char welcome_msg[64];
+				socklen_t			len = sizeof(cli);
+
+				connfd = accept(fd, (struct sockaddr *)&cli, &len);
+				if (connfd < 0)
+					fatal_error();
+				FD_SET(connfd, &all_fds); // 
+				if (connfd > maxfd) // Check and set if it is the new maxfd
+					maxfd = connfd;
+				ids[connfd] = next_id++; // Asign incremental ID
+				bufs[connfd] = NULL;
 				sprintf(welcome_msg, "server: client %d just arrived\n", ids[connfd]);
-				// broadcast welcome message
-				for (int other_fd = 0; other_fd <= maxfd; other_fd++) {
-					if (other_fd != sockfd && other_fd != connfd && FD_ISSET(other_fd, &all_fds)) {
-					if (send(other_fd, welcome_msg, strlen(welcome_msg), 0) < 0)
-					return fatal_error();
-				}
-				}
-			} else { // data sent by client or connection closed
-				int r = recv(fd, buffer, sizeof(buffer) - 1, 0);
-				if (r <= 0)
-				{ // connection closed or error
-					char goodbye_msg[64];
-					sprintf(goodbye_msg, "server: client %d just left\n", ids[fd]);
-					// broadcast goodbye message
-					for (int other_fd = 0; other_fd <= maxfd; other_fd++)
-					{
-						if (other_fd != sockfd && other_fd != fd && FD_ISSET(other_fd, &all_fds)) 
-							if (send(other_fd, goodbye_msg, strlen(goodbye_msg), 0) < 0)
-								return fatal_error();
-					}
-					// clean up fds and buffers
-					FD_CLR(fd, &all_fds);
-					close(fd);
-					if (bufs[fd] != NULL)
-						free(bufs[fd]);
-					bufs[fd] = NULL;
-					ids[fd] = -1;
-				} 
-				else
-				{ // data received
-					buffer[r] = '\0';
+				for (int other_fd = 0; other_fd <= maxfd; other_fd++)
+					// Send new client connected msg to every client except the new one
+					if (other_fd != fd && other_fd != connfd && FD_ISSET(other_fd, &all_fds)
+						&& send(other_fd, welcome_msg, strlen(welcome_msg), 0) < 0)
+							fatal_error();
+			} else 
+			{ // data sent by client or connection closed
+				int read_bytes = recv(fd, buffer, sizeof(buffer) - 1, 0);
+				if (read_bytes > 0)
+				{
+					buffer[read_bytes] = '\0';
 					bufs[fd] = str_join(bufs[fd], buffer);
-					if (bufs[fd] == NULL || !bufs[fd])
-						return fatal_error();
+					if (bufs[fd])
+						fatal_error();
 
 					char *line = NULL;
 					int msg_extracted;
@@ -170,19 +150,35 @@ int main(int argc, char **argv) {
 						// broadcast message
 						for (int other_fd = 0; other_fd <= maxfd; other_fd++)
 						{
-							if (other_fd != sockfd && other_fd != fd && FD_ISSET(other_fd, &all_fds))
-							{
-								if (send(other_fd, prefix, strlen(prefix), 0) < 0)
-									return fatal_error();
-								if (send(other_fd, line, strlen(line), 0) < 0)
-									return fatal_error();
-							}
+							if (other_fd != sockfd && other_fd != fd && FD_ISSET(other_fd, &all_fds)
+								&& send(other_fd, prefix, strlen(prefix), 0) < 0
+								&& send(other_fd, line, strlen(line), 0) < 0)
+									fatal_error();
 						}
 						free(line);
 						line = NULL;
 					}
 					if (msg_extracted < 0)
-						return fatal_error();
+						fatal_error();
+				}
+				else
+				{
+					char goodbye_msg[64];
+					int other_fd;
+
+					sprintf(goodbye_msg, "server: client %d just left\n", ids[fd]);
+					for (other_fd = 0; other_fd <= maxfd; other_fd++)
+						// Send client disconnected msg to every client except the new one
+						if (other_fd != sockfd && other_fd != fd && FD_ISSET(other_fd, all_fds)
+							&& send(other_fd, goodbye_msg, strlen(goodbye_msg), 0) < 0)
+								fatal_error();
+					// clean up fds and buffers
+					FD_CLR(fd, &all_fds);
+					close(fd);
+					if (bufs[fd] != NULL)
+						free(bufs[fd]);
+					bufs[fd] = NULL;
+					ids[fd] = -1;
 				}
 			}
 		}

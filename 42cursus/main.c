@@ -7,6 +7,12 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
+int sockfd, connfd, len;
+struct sockaddr_in servaddr, cli; 
+int	ids[FD_SETSIZE];
+char*	msgs[FD_SETSIZE];
+
+
 int extract_message(char **buf, char **msg)
 {
 	char	*newbuf;
@@ -55,10 +61,7 @@ char *str_join(char *buf, char *add)
 }
 
 
-int main() {
-	int sockfd, connfd, len;
-	struct sockaddr_in servaddr, cli; 
-
+int main(int argc, char** argv) {
 	// socket create and verification 
 	sockfd = socket(AF_INET, SOCK_STREAM, 0); 
 	if (sockfd == -1) { 
@@ -79,8 +82,8 @@ int main() {
 		printf("socket bind failed...\n"); 
 		exit(0); 
 	} 
-	else
-		printf("Socket successfully binded..\n");
+	// else
+	// 	printf("Socket successfully binded..\n");
 	if (listen(sockfd, 10) != 0) {
 		printf("cannot listen\n"); 
 		exit(0); 
